@@ -12,7 +12,7 @@
 #include <iomanip>                  //  setprecision
 #include <cctype>                   //  toupper
 #include <cstdlib>                  //  atoi, atof
-#include "../../headers/funksjonHeader/LesData3.h"    //  Prototypene for denne filens innhold
+#include "LesData3.h"    //  Prototypene for denne filens innhold
 
 /**
  *  Leser og returnerer ett (upcaset) tegn.

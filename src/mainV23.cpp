@@ -14,8 +14,6 @@
 #include "LesData3.cpp"
 #include "kunder.cpp"
 
-using namespace std;
-
 Kunder     gKundebase;    // Globalt container-objekt med ALLE kundene.
 Kategorier gKategoribase; // Globalt container-objekt med ALLE kategoriene.
 
@@ -55,7 +53,7 @@ int main()  {
     gKundebase.skrivTilFil();
     gKategoribase.skrivTilFil();
 
-    cout << "\n\n";
+    std::cout << "\n\n";
 
     return 0;
 }

@@ -8,7 +8,6 @@
 #include <iostream>
 #include <fstream>
 #include "Kunder.h"
-using namespace std;
 
 /**
  *  todo
@@ -33,13 +32,13 @@ class Kunder {
 
         // Leser fra fil
         void lesFraFil() {
-            ifstream kundeFil;
+            std::ifstream kundeFil;
             kundeFil.open("../data/KUNDER.DTA");
 
             if (kundeFil.is_open()) {
                 // les fra kundefil
             } else {
-                cout << "Kunne ikke lese fra /data/KUNDER.DTA." << endl;
+                std::cout << "Kunne ikke lese fra /data/KUNDER.DTA." << std::endl;
             };
         
             // write here
@@ -48,13 +47,13 @@ class Kunder {
 
         // Skriver til fil
         void skrivTilFil(){
-            ofstream kundeFil;
+            std::ofstream kundeFil;
             kundeFil.open("../data/KUNDER.DTA");
 
             if (kundeFil.is_open()) {
                 // skriv til kundefil
             } else {
-                cout << "Kunne ikke skrive til /data/KUNDER.DTA." << endl;
+                std::cout << "Kunne ikke skrive til /data/KUNDER.DTA." << std::endl;
             };
 
             // write here

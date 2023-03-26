@@ -7,7 +7,6 @@
 
 #include <iostream>
 #include "Kunde.h"
-using namespace std;
 
 /**
  *  todo

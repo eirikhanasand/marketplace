@@ -8,6 +8,8 @@
 #ifndef __KUNDE_H
 #define __KUNDE_H
 
+#include <string>
+
 class Kunde {
     int mobilNummer;
     int postNummer;
@@ -15,10 +17,10 @@ class Kunde {
     int antallTingSolgt;
     int antallTilSalgs;
 
-    string navn;
-    string gateAdresse;
-    string poststed;
-    string mailAdresse;
+    std::string navn;
+    std::string gateAdresse;
+    std::string poststed;
+    std::string mailAdresse;
 };
 
 #endif
