@@ -22,6 +22,9 @@ struct Kunder {
         // Constructor
         Kunder();
 
+        // Destructor
+        ~Kunder();
+
         // Håndterer valg
         void handling();
 

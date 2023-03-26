@@ -11,28 +11,33 @@ using namespace std;
 
 /**
  *  todo
-*/
-class Kunder {
+ */
+class Kunder
+{
 
-    public:
-        // Constructor
-        Kunder() {
+public:
+    // Constructor
+    Kunder(){
 
-        };
+    };
 
-        // Håndterer valg
-        void handling() {
+    // Destructor
+    ~Kunder(){
 
-        };
+    };
 
-        // Leser fra fil
-        void lesFraFil() {
-            
-        };
+    // Håndterer valg
+    void handling(){
 
-        // Skriver til fil
-        void skrivTilFil() {
+    };
 
-        };
+    // Leser fra fil
+    void lesFraFil(){
 
+    };
+
+    // Skriver til fil
+    void skrivTilFil(){
+
+    };
 };

@@ -20,6 +20,11 @@ class Kategorier {
 
         };
 
+        // Destructor
+        ~Kategorier(){
+
+        };
+
         // Håndterer valg
         void handling(char valg) {
 
