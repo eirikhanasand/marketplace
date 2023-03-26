@@ -9,9 +9,9 @@
 
 #include <iostream>
 
-#include "./funksjonDefinisjon/skrivMeny.cpp"
+#include "skrivMeny.cpp"
 #include "kategorier.cpp"
-#include "./funksjonDefinisjon/LesData3.cpp"
+#include "LesData3.cpp"
 #include "kunder.cpp"
 
 using namespace std;

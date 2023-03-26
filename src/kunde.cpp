@@ -6,7 +6,7 @@
  */
 
 #include <iostream>
-#include "../headers/kunder/Kunde.h"
+#include "Kunde.h"
 using namespace std;
 
 /**

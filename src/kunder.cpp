@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <fstream>
-#include "../headers/kunder/Kunder.h"
+#include "Kunder.h"
 using namespace std;
 
 /**

@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <fstream>
-#include "../headers/kategorier/Kategorier.h"
+#include "Kategorier.h"
 using namespace std;
 
 /**

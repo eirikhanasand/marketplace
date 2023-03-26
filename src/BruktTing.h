@@ -9,7 +9,7 @@
 #define __BRUKTTING_H
 
 #include <iostream>
-#include "../ting/NyTing.h"
+#include "NyTing.h"
 
 class BruktTing : NyTing {
     int år;
