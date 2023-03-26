@@ -8,13 +8,13 @@
 #ifndef __KATEGORI_H
 #define __KATEGORI_H
 
-#include "../ting/NyTing.h"
 #include <iostream>
 #include <list>
+#include "../ting/NyTing.h"
 
-struct Kategori {
+class Kategori {
     int sisteNr;
-    
+
     std::list <NyTing*> NyTing;
 };
 

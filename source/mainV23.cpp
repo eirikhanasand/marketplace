@@ -28,27 +28,34 @@ Kategorier gKategoribase; // Globalt container-objekt med ALLE kategoriene.
  *  Hovedprogram.
  */
 int main()  {
-  char valg;
+    char valg;
 
-  gKundebase.lesFraFil();
-  gKategoribase.lesFraFil();
+    gKundebase.lesFraFil();
+    gKategoribase.lesFraFil();
 
-  skrivMeny();
-  valg = lesChar("\nKommando");
+    skrivMeny();
 
-  while (valg != 'Q')  {
-    switch(valg)  {
-      case 'U':  gKundebase.handling();          break;
-      case 'A':  case 'K':  case 'T':
-                 gKategoribase.handling(valg);   break;
-      default:   skrivMeny();                    break;
-    }
     valg = lesChar("\nKommando");
-  }
 
-  gKundebase.skrivTilFil();
-  gKategoribase.skrivTilFil();
+    while (valg != 'Q') {
 
-  cout << "\n\n";
-  return 0;
+        switch(valg) {
+
+            case 'U':   gKundebase.handling();          break;
+            case 'A':  
+            case 'K':  
+            case 'T':   gKategoribase.handling(valg);   break;
+            default:    skrivMeny();                    break;
+
+        };
+
+        valg = lesChar("\nKommando");
+    };
+
+    gKundebase.skrivTilFil();
+    gKategoribase.skrivTilFil();
+
+    cout << "\n\n";
+
+    return 0;
 }

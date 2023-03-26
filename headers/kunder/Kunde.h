@@ -8,17 +8,17 @@
 #ifndef __KUNDE_H
 #define __KUNDE_H
 
-struct Kunde {
+class Kunde {
     int mobilNummer;
     int postNummer;
     int antallTingKjøpt;
     int antallTingSolgt;
     int antallTilSalgs;
 
-    std::string navn;
-    std::string gateAdresse;
-    std::string poststed;
-    std::string mailAdresse;
+    string navn;
+    string gateAdresse;
+    string poststed;
+    string mailAdresse;
 };
 
 #endif

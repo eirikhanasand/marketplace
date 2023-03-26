@@ -10,9 +10,9 @@
 
 #include <iostream>
 
-struct NyTing {
+class NyTing {
     int nr;
-    
+
     std::string navn;
     std::string beskrivelse;
 };

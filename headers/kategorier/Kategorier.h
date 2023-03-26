@@ -8,11 +8,11 @@
 #ifndef __KATEGORIER_H
 #define __KATEGORIER_H
 
-#include "Kategori.h"
 #include <iostream>
 #include <map>
+#include "Kategori.h"
 
-struct Kategorier {
+class Kategorier {
     int sisteNr;
 
     std::map <std::string, Kategori*> nytingMap;

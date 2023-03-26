@@ -8,10 +8,10 @@
 #ifndef __BRUKTTING_H
 #define __BRUKTTING_H
 
-#include "../ting/NyTing.h"
 #include <iostream>
+#include "../ting/NyTing.h"
 
-struct BruktTing : NyTing {
+class BruktTing : NyTing {
     int år;
     
     enum kvalitet {

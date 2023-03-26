@@ -6,16 +6,13 @@
  */
 
 #include <iostream>
-
 #include "../../headers/funksjonHeader/SkrivMeny.h"
-
 using namespace std;
 
 /**
  *  Skriver programmets hovedmeny
 */
 void skrivMeny() {
-
     cout << "Meny" << endl;
     cout << "UN - Opprett ny kunde" << endl;
     cout << "UA - Skriv alle kunder" << endl;
@@ -27,5 +24,4 @@ void skrivMeny() {
     cout << "TN - Opprett ny ting" << endl;
     cout << "TE - Endre ting" << endl;
     cout << " K - Kjøp ting" << endl;
-
 };

@@ -6,9 +6,7 @@
  */
 
 #include <iostream>
-
 #include "../headers/kunder/Kunde.h"
-
 using namespace std;
 
 /**

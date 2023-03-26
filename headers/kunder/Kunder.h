@@ -10,15 +10,14 @@
 
 #include <iostream>
 #include <list>
-
 #include "Kunde.h"
 
-struct Kunder {
+class Kunder {
     int sisteNr;
 
     std::list <Kunde*> kundeListe;
 
-     public:
+    public:
         // Constructor
         Kunder();
 
