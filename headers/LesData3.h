@@ -8,13 +8,10 @@
  *   @author   Frode Haug, NTNU
  */
 
-
 #ifndef __LESDATA3_H
 #define __LESDATA3_H
 
-
 const int  MAXCHAR = 200;      //  Max.tegn i input-buffer.
-
 
 char  lesChar(const char* t);
 float lesFloat(const char* t, const float min, const float max);
