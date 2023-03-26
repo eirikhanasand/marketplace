@@ -8,7 +8,7 @@
 #ifndef __KATEGORI_H
 #define __KATEGORI_H
 
-#include "NyTing.h"
+#include "../ting/NyTing.h"
 #include <iostream>
 #include <list>
 

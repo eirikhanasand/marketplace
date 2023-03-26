@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-#include "../../headers/functionHeader/SkrivMeny.h"
+#include "../../headers/funksjonHeader/SkrivMeny.h"
 
 using namespace std;
 

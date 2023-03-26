@@ -8,7 +8,7 @@
 #ifndef __BRUKTTING_H
 #define __BRUKTTING_H
 
-#include "NyTing.h"
+#include "../ting/NyTing.h"
 #include <iostream>
 
 struct BruktTing : NyTing {

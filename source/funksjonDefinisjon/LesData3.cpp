@@ -14,7 +14,7 @@
 #include <cctype>                   //  toupper
 #include <cstdlib>                  //  atoi, atof
 
-#include "../headers/LesData3.h"    //  Prototypene for denne filens innhold
+#include "../../headers/funksjonHeader/LesData3.h"    //  Prototypene for denne filens innhold
 
 
 /**

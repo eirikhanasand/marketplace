@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-#include "../headers/Kunde.h"
+#include "../headers/kunder/Kunde.h"
 
 using namespace std;
 
