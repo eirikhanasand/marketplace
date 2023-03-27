@@ -9,11 +9,11 @@
 #include "NyTing.h"
 
 // Constructor
-NyTing :: NyTing() {
+NyTing::NyTing() {
 
 };
 
 // Destructor
-NyTing :: ~NyTing(){
+NyTing::~NyTing(){
 
 };

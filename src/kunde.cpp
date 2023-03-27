@@ -9,11 +9,11 @@
 #include "Kunde.h"
 
 // Constructor
-Kunde :: Kunde() {
+Kunde::Kunde() {
 
 };
 
 // Destructor
-Kunde :: ~Kunde(){
+Kunde::~Kunde(){
 
 };
