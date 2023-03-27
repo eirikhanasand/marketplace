@@ -14,7 +14,7 @@ class Kunde {
     int kundeNummer;
     int mobilNummer;
     int postNummer;
-    int antallTingKjøpt;
+    int antallTingKjopt;
     int antallTingSolgt;
     int antallTilSalgs;
 

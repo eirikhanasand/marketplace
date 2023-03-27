@@ -40,7 +40,7 @@ void Kunde::settData() {
 
     postNummer = lesInt("Postnummer", 0, 9999);
 
-    antallTingKjøpt = 0;
+    antallTingKjopt = 0;
     antallTingSolgt = 0;
     antallTilSalgs = 0;
 };

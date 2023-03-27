@@ -12,7 +12,7 @@
 #include "NyTing.h"
 
 class BruktTing : NyTing {
-    int år;
+    int aar;
     
     enum kvalitet {
         SomNy,
