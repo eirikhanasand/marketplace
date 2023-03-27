@@ -36,9 +36,7 @@ int main()  {
     valg = lesChar("\nKommando");
 
     while (valg != 'Q') {
-
         switch(valg) {
-
             case 'U':   gKundebase.handling();          break;
             case 'A':  
             case 'K':  
@@ -46,10 +44,8 @@ int main()  {
             default:    skrivMeny();                    break;
 
         };
-
         valg = lesChar("\nKommando");
-    };
-
+    }
     gKundebase.skrivTilFil();
     gKategoribase.skrivTilFil();
 

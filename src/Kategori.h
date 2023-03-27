@@ -15,7 +15,7 @@
 class Kategori {
     int sisteNr;
 
-    std::list <NyTing*> NyTing;
+    std::list<NyTing*> NyTing;
 };
 
 #endif

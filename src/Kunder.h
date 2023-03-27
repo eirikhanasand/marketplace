@@ -15,7 +15,7 @@
 class Kunder {
     int sisteNr;
 
-    std::list <Kunde*> kundeListe;
+    std::list<Kunde*> kundeListe;
 
     public:
         // Constructor
@@ -26,6 +26,8 @@ class Kunder {
 
         // Håndterer valg
         void handling();
+
+        void skrivAlleKunder();
 
         // Leser fra fil
         void lesFraFil();

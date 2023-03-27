@@ -8,6 +8,7 @@
 #include <iostream>
 #include <fstream>
 #include "Kunder.h"
+#include "LesData3.h"
 
 // Constructor
 Kunder::Kunder() {
@@ -21,7 +22,28 @@ Kunder::~Kunder() {
 
 // Håndterer valg
 void Kunder::handling() {
+    char valg;
 
+    valg = lesChar("\nKommando: ");
+
+    switch (valg) {
+        case 'N': {
+
+            break;
+        }
+        case 'A': {
+
+            break;
+        }
+        case 'S': {
+
+            break;
+        }
+        case 'F': {
+
+            break;
+        }
+    }
 };
 
 // Leser fra fil

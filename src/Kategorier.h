@@ -10,12 +10,13 @@
 
 #include <iostream>
 #include <map>
+#include "unordered_map"
 #include "Kategori.h"
 
 class Kategorier {
     int sisteNr;
 
-    std::map <std::string, Kategori*> nytingMap;
+    std::unordered_map<std::string, Kategori*> nyTingMap;
 
     public:
         // Constructor
