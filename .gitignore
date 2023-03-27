@@ -8,6 +8,8 @@ prosjekt
 .idea/**/dictionaries
 .idea/**/shelf
 .idea
+.idea/misc.xml
+.idea/vcs.xml
 out
 CMakeLists.txt
 cmake-build-debug
