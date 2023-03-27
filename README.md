@@ -1,4 +1,4 @@
 Gruppe 98
 Eirik Hanasand
 Sindre Hagen Strømdal
-Steffen Ludviksen 
+Steffen Ludviksen Sæther
