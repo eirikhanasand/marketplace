@@ -13,7 +13,7 @@ extern Kunder gKundebase;
 
 // Constructor
 Kunde::Kunde() {
-
+    
 };
 
 // Destructor

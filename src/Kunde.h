@@ -11,6 +11,7 @@
 #include <string>
 
 class Kunde {
+    int kundeNummer;
     int mobilNummer;
     int postNummer;
     int antallTingKjøpt;
