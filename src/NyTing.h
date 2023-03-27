@@ -13,9 +13,11 @@
 class NyTing {
     int nr;
 
+    NyTing();
+    ~NyTing();
+
     std::string navn;
     std::string beskrivelse;
-    
 };
 
 #endif
