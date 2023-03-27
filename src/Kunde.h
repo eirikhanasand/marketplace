@@ -33,6 +33,9 @@ class Kunde {
         // Input user data
         void settData();
 
+        // Writes name of customer
+        void skrivKunde();
+
         // Prints user data
         void skrivData();
 

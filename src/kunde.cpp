@@ -23,6 +23,15 @@ Kunde::~Kunde(int kundeNummer) {
     
 };
 
+void skrivKunde() {
+    lesInt("Kundenummer: ",1,INT32_MAX);
+    if (gKundebase.hentKunde()) {
+        kundeSkrivData();  
+    } else {
+        std::cout << "Kunde finnes ikke." << std::endl;
+    };
+} 
+
 void Kunde::settData() {
     std::cout << "Navn: " << std::endl;
     std::getline(std::cin, navn);
