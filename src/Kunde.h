@@ -25,7 +25,7 @@ class Kunde {
 
     public:
         // Constructor
-        Kunde(int KundeNummer, std::string Navn);
+        Kunde(int KundeNummer);
 
         // Destructor
         ~Kunde();
