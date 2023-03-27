@@ -64,7 +64,7 @@ void Kunde::skrivData() {
     std::cout << "Antall til salgs: " << antallTilSalgs << std::endl;
 };
 
-void Kunde::hentKunde() {
+auto Kunde::hentKunde() {
     int kundeNummer;
 
     kundeNummer = lesInt("Kundenummer: ", 1, INT32_MAX);

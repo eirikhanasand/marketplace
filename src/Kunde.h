@@ -40,7 +40,7 @@ class Kunde {
         void skrivData();
 
         // Checks if customer exists
-        void hentKunde();
+        auto hentKunde();
 };
 
 #endif
