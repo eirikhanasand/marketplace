@@ -39,4 +39,8 @@ void Kunde::settData() {
     std::getline(std::cin, postSted);
 
     postNummer = lesInt("Postnummer", 0, 9999);
+
+    antallTingKjøpt = 0;
+    antallTingSolgt = 0;
+    antallTilSalgs = 0;
 };
