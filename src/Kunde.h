@@ -20,15 +20,18 @@ class Kunde {
 
     std::string navn;
     std::string gateAdresse;
-    std::string poststed;
+    std::string postSted;
     std::string mailAdresse;
 
     public:
         // Constructor
-        Kunde();
+        Kunde(int KundeNummer, std::string Navn);
 
         // Destructor
         ~Kunde();
+
+        // Reads user data
+        void settData();
 };
 
 #endif
