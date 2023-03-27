@@ -19,8 +19,8 @@ Kunde::Kunde(int KundeNummer) {
 };
 
 // Destructor
-Kunde::~Kunde() {
-
+Kunde::~Kunde(int kundeNummer) {
+    
 };
 
 void Kunde::settData() {
@@ -43,4 +43,16 @@ void Kunde::settData() {
     antallTingKjøpt = 0;
     antallTingSolgt = 0;
     antallTilSalgs = 0;
+};
+
+void Kunde::skrivData() {
+    std::cout << "Navn: " << navn << std::endl;
+    std::cout << "Gateadresse: " << gateAdresse << std::endl;
+    std::cout << "Mobilnummer: " << mobilNummer << std::endl;
+    std::cout << "Mailadresse: " << mailAdresse << std::endl;
+    std::cout << "Poststed: " << postSted << std::endl;
+    std::cout << "Postnummer: " << postNummer << std::endl;
+    std::cout << "Antall ting kjøpt: " << antallTingKjøpt << std::endl;
+    std::cout << "Antall ting solgt: " << antallTingSolgt << std::endl;
+    std::cout << "Antall til salgs: " << antallTilSalgs << std::endl;
 };

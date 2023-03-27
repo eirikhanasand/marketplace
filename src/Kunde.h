@@ -30,8 +30,14 @@ class Kunde {
         // Destructor
         ~Kunde();
 
-        // Reads user data
+        // Input user data
         void settData();
+
+        // Prints user data
+        void skrivData();
+
+        // Checks if customer exists
+        void hentKunde();
 };
 
 #endif
