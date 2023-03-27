@@ -12,21 +12,19 @@
 
 extern Kunder gKundebase;
 
-// Constructor
 Kunde::Kunde(int KundeNummer) {
     kundeNummer = KundeNummer;
     settData();
 };
 
-// Destructor
 Kunde::~Kunde(int kundeNummer) {
     
 };
 
-void skrivKunde() {
-    lesInt("Kundenummer: ",1,INT32_MAX);
-    if (gKundebase.hentKunde()) {
-        kundeSkrivData();  
+void Kunde::skrivKunde() {
+    auto kunde = hentKunde();
+    if (kunde) {
+        skrivData();  
     } else {
         std::cout << "Kunde finnes ikke." << std::endl;
     };
@@ -65,3 +63,12 @@ void Kunde::skrivData() {
     std::cout << "Antall ting solgt: " << antallTingSolgt << std::endl;
     std::cout << "Antall til salgs: " << antallTilSalgs << std::endl;
 };
+
+void Kunde::hentKunde() {
+    int kundeNummer;
+
+    kundeNummer = lesInt("Kundenummer: ", 1, INT32_MAX);
+
+    // todo
+    return gKundebase.contains(kundeNummer);
+}

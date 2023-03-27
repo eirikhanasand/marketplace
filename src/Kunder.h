@@ -24,6 +24,9 @@ class Kunder {
         // Destructor
         ~Kunder();
 
+        // First customer
+        void sisteKunde();
+
         // Håndterer valg
         void handling();
 

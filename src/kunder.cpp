@@ -20,6 +20,11 @@ Kunder::~Kunder() {
 
 };
 
+// First customer
+int Kunder::sisteKunde() {
+    return sisteKunde;
+};
+
 // Håndterer valg
 void Kunder::handling() {
     char valg;
@@ -30,20 +35,20 @@ void Kunder::handling() {
         case 'N': {
 
             break;
-        }
+        };
         case 'A': {
 
             break;
-        }
+        };
         case 'S': {
 
             break;
-        }
+        };
         case 'F': {
 
             break;
-        }
-    }
+        };
+    };
 };
 
 // Leser fra fil

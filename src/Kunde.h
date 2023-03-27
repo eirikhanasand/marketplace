@@ -28,11 +28,11 @@ class Kunde {
         Kunde(int KundeNummer);
 
         // Destructor
-        ~Kunde();
+        ~Kunde(int KundeNummer);
 
         // Input user data
         void settData();
-
+    
         // Writes name of customer
         void skrivKunde();
 
