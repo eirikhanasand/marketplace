@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <fstream>
-#include "Kategorier.h"
+#include "kategorier.h"
 
 // Constructor
 Kategorier::Kategorier() {

@@ -11,7 +11,7 @@
 
 #include "skrivMeny.cpp"
 #include "kategorier.cpp"
-#include "LesData3.cpp"
+#include "lesData3.cpp"
 #include "kunder.cpp"
 
 Kunder     gKundebase;    // Globalt container-objekt med ALLE kundene.

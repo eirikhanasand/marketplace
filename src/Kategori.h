@@ -10,7 +10,7 @@
 
 #include <iostream>
 #include <list>
-#include "NyTing.h"
+#include "nyTing.h"
 
 class Kategori {
     int sisteNr;

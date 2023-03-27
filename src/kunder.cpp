@@ -7,8 +7,8 @@
 
 #include <iostream>
 #include <fstream>
-#include "Kunder.h"
-#include "LesData3.h"
+#include "kunder.h"
+#include "lesData3.h"
 
 // Constructor
 Kunder::Kunder() {

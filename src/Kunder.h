@@ -10,7 +10,7 @@
 
 #include <iostream>
 #include <list>
-#include "Kunde.h"
+#include "kunde.h"
 
 class Kunder {
     int sisteNr;

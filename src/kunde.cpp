@@ -6,9 +6,9 @@
  */
 
 #include <iostream>
-#include "Kunde.h"
-#include "Kunder.h"
-#include "LesData3.h"
+#include "kunde.h"
+#include "kunder.h"
+#include "lesData3.h"
 
 Kunde::Kunde(int KundeNummer) {
     kundeNummer = KundeNummer;

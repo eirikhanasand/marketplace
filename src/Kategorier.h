@@ -10,7 +10,7 @@
 
 #include <iostream>
 #include <map>
-#include "Kategori.h"
+#include "kategori.h"
 
 class Kategorier {
     int sisteNr;

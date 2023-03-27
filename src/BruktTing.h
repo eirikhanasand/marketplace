@@ -9,7 +9,7 @@
 #define __BRUKTTING_H
 
 #include <iostream>
-#include "NyTing.h"
+#include "nyTing.h"
 
 class BruktTing : NyTing {
     int aar;
