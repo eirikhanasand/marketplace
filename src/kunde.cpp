@@ -59,7 +59,7 @@ void Kunde::skrivData() {
     std::cout << "Mailadresse: " << mailAdresse << std::endl;
     std::cout << "Poststed: " << postSted << std::endl;
     std::cout << "Postnummer: " << postNummer << std::endl;
-    std::cout << "Antall ting kjøpt: " << antallTingKjøpt << std::endl;
+    std::cout << "Antall ting kjøpt: " << antallTingKjopt << std::endl;
     std::cout << "Antall ting solgt: " << antallTingSolgt << std::endl;
     std::cout << "Antall til salgs: " << antallTilSalgs << std::endl;
 };
