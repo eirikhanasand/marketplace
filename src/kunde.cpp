@@ -7,6 +7,9 @@
 
 #include <iostream>
 #include "Kunde.h"
+#include "Kunder.h"
+
+extern Kunder gKundebase;
 
 // Constructor
 Kunde::Kunde() {
