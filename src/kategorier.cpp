@@ -10,22 +10,22 @@
 #include "Kategorier.h"
 
 // Constructor
-Kategorier :: Kategorier() {
+Kategorier::Kategorier() {
 
 };
 
 // Destructor
-Kategorier :: ~Kategorier(){
+Kategorier::~Kategorier(){
 
 };
 
 // Håndterer valg
-void Kategorier :: handling(char valg) {
+void Kategorier::handling(char valg) {
 
 };
 
 // Leser fra fil
-void Kategorier :: lesFraFil() {
+void Kategorier::lesFraFil() {
     std::ifstream kundeFil;
     kundeFil.open("../data/KATEGORIER.DTA");
 
@@ -40,7 +40,7 @@ void Kategorier :: lesFraFil() {
 };
 
 // Skriver til fil
-void Kategorier :: skrivTilFil(){
+void Kategorier::skrivTilFil(){
     std::ofstream kundeFil;
     kundeFil.open("../data/KATEGORIER.DTA");
 

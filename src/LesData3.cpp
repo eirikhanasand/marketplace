@@ -38,7 +38,7 @@ char lesChar(const char* t)  {
  *
  *  @return  Godtatt verdi i intervallet 'min' - 'max'
  */
-float lesFloat (const char* t, const float min, const float max)  {
+float lesFloat(const char* t, const float min, const float max)  {
     char buffer[MAXCHAR] = "";
     float tall = 0.0F;
     bool  feil = false;

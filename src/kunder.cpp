@@ -10,22 +10,22 @@
 #include "Kunder.h"
 
 // Constructor
-Kunder :: Kunder() {
+Kunder::Kunder() {
 
 };
 
 // Destructor
-Kunder :: ~Kunder() {
+Kunder::~Kunder() {
 
 };
 
 // Håndterer valg
-void Kunder ::  handling() {
+void Kunder::handling() {
 
 };
 
 // Leser fra fil
-void Kunder ::  lesFraFil() {
+void Kunder::lesFraFil() {
     std::ifstream kundeFil;
     kundeFil.open("../data/KUNDER.DTA");
 
@@ -40,7 +40,7 @@ void Kunder ::  lesFraFil() {
 };
 
 // Skriver til fil
-void Kunder :: skrivTilFil(){
+void Kunder::skrivTilFil(){
     std::ofstream kundeFil;
     kundeFil.open("../data/KUNDER.DTA");
 

@@ -8,3 +8,5 @@ prosjekt
 .idea/**/dictionaries
 .idea/**/shelf
 out
+CMakeLists.txt
+cmake-build-debug
