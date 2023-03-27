@@ -21,6 +21,13 @@ class Kunde {
     std::string gateAdresse;
     std::string poststed;
     std::string mailAdresse;
+
+    public:
+        // Constructor
+        Kunde();
+
+        // Destructor
+        ~Kunde();
 };
 
 #endif

@@ -15,6 +15,7 @@ class NyTing {
 
     std::string navn;
     std::string beskrivelse;
+    
 };
 
 #endif
