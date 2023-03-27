@@ -28,7 +28,7 @@ void Kunde::settData() {
     std::getline(std::cin, gateAdresse);
 
     std::cout << "Mobilnummer: " << std::endl;
-    std::getline(std::cin, mobilNummer);
+    std::cin >> mobilNummer;
 
     std::cout << "Mailadresse: " << std::endl;
     std::getline(std::cin, mailAdresse);
@@ -37,5 +37,5 @@ void Kunde::settData() {
     std::getline(std::cin, postSted);
 
     std::cout << "Postnummer: " << std::endl;
-    std::getline(std::cin, postNummer);
-}
+    std::cin >> postNummer;
+};
