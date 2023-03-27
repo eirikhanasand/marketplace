@@ -8,13 +8,13 @@
 #include <iostream>
 #include "Kunde.h"
 #include "Kunder.h"
+#include "LesData3.h"
 
 extern Kunder gKundebase;
 
 // Constructor
-Kunde::Kunde(int KundeNummer, std::string Navn) {
+Kunde::Kunde(int KundeNummer) {
     kundeNummer = KundeNummer;
-    navn = Navn;
     settData();
 };
 
@@ -24,11 +24,13 @@ Kunde::~Kunde() {
 };
 
 void Kunde::settData() {
+    std::cout << "Navn: " << std::endl;
+    std::getline(std::cin, navn);
+
     std::cout << "Gateadresse: " << std::endl;
     std::getline(std::cin, gateAdresse);
 
-    std::cout << "Mobilnummer: " << std::endl;
-    std::cin >> mobilNummer;
+    mobilNummer = lesInt("Mobilnummer", 40000000, 99999999);
 
     std::cout << "Mailadresse: " << std::endl;
     std::getline(std::cin, mailAdresse);
@@ -36,6 +38,5 @@ void Kunde::settData() {
     std::cout << "Poststed: " << std::endl;
     std::getline(std::cin, postSted);
 
-    std::cout << "Postnummer: " << std::endl;
-    std::cin >> postNummer;
+    postNummer = lesInt("Postnummer", 0, 9999);
 };
