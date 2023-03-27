@@ -9,54 +9,47 @@
 #include <fstream>
 #include "Kunder.h"
 
-/**
- *  todo
- */
-class Kunder {
+// Constructor
+Kunder :: Kunder() {
 
-    public:
-        // Constructor
-        Kunder() {
+};
 
-        };
+// Destructor
+Kunder :: ~Kunder() {
 
-        // Destructor
-        ~Kunder() {
+};
 
-        };
+// Håndterer valg
+void Kunder ::  handling() {
 
-        // Håndterer valg
-        void handling() {
+};
 
-        };
+// Leser fra fil
+void Kunder ::  lesFraFil() {
+    std::ifstream kundeFil;
+    kundeFil.open("../data/KUNDER.DTA");
 
-        // Leser fra fil
-        void lesFraFil() {
-            std::ifstream kundeFil;
-            kundeFil.open("../data/KUNDER.DTA");
-
-            if (kundeFil.is_open()) {
-                // les fra kundefil
-            } else {
-                std::cout << "Kunne ikke lese fra /data/KUNDER.DTA." << std::endl;
-            };
+    if (kundeFil.is_open()) {
+        // les fra kundefil
+    } else {
+        std::cout << "Kunne ikke lese fra /data/KUNDER.DTA." << std::endl;
+    };
         
-            // write here
-            kundeFil.close();
-        };
+    // write here
+    kundeFil.close();
+};
 
-        // Skriver til fil
-        void skrivTilFil(){
-            std::ofstream kundeFil;
-            kundeFil.open("../data/KUNDER.DTA");
+// Skriver til fil
+void Kunder :: skrivTilFil(){
+    std::ofstream kundeFil;
+    kundeFil.open("../data/KUNDER.DTA");
 
-            if (kundeFil.is_open()) {
-                // skriv til kundefil
-            } else {
-                std::cout << "Kunne ikke skrive til /data/KUNDER.DTA." << std::endl;
-            };
+    if (kundeFil.is_open()) {
+        // skriv til kundefil
+    } else {
+        std::cout << "Kunne ikke skrive til /data/KUNDER.DTA." << std::endl;
+    };
 
-            // write here
-            kundeFil.close();
-        };
+    // write here
+    kundeFil.close();
 };

@@ -8,19 +8,12 @@
 #include <iostream>
 #include "Kunde.h"
 
-/**
- *  todo
-*/
-class Kunde {
+// Constructor
+Kunde :: Kunde() {
 
-    public: 
-        // Constructor
-        Kunde() {
+};
 
-        };
+// Destructor
+Kunde :: ~Kunde(){
 
-        // Destructor
-        ~Kunde(){
-
-        };
 };
