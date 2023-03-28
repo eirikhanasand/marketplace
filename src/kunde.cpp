@@ -74,3 +74,9 @@ Kunde* Kunde::finnKunde() {
     };
     return nullptr;
 };
+
+Kunde::skrivAlle() {
+    for (kunde&k : gKundebase) {
+        std::cout << "Kundenummer: " << k->kundeNummer << "\tNavn: " << k->navn << "\tTlf: " << k->mobilNummer << std::endl;
+    }
+}
