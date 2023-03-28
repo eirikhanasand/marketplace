@@ -70,3 +70,4 @@ void Kategorier::nyKategori() {
 //Sjekker om kategori finnes med samme navn
 void Kategorier::kategoriFinnes(std::string kategoriNavn) {
     for (auto kategori : gKategorier) 
+}
