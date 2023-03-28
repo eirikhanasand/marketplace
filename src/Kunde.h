@@ -11,6 +11,8 @@
 #include <string>
 
 class Kunde {
+
+public:
     int kundeNummer;
     int mobilNummer;
     int postNummer;
@@ -23,21 +25,20 @@ class Kunde {
     std::string postSted;
     std::string mailAdresse;
 
-    public:
-        // Constructor
-        Kunde(int KundeNummer);
+    // Constructor
+    Kunde(int KundeNummer);
 
-        // Destructor
-        ~Kunde();
+    // Destructor
+    ~Kunde();
 
-        // Input user data
-        void settData();
-    
-        // Writes name of customer
-        void skrivKunde();
+    // Input user data
+    void settData();
 
-        // Prints user data
-        void skrivData();
+    // Writes name of customer
+    void skrivKunde();
+
+    // Prints user data
+    void skrivData();
 };
 
 #endif

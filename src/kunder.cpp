@@ -11,7 +11,7 @@
 #include "kunde.h"
 #include "lesData3.h"
 
-extern Kunde gKundebase;
+extern Kunder gKundebase;
 
 // Constructor
 Kunder::Kunder() {
@@ -32,10 +32,15 @@ void Kunder::handling() {
             case 'N':
                 break;
             case 'A':
+                skrivAlle();
                 break;
-            case 'S':
+            case 'S': {
+                int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.kundeListe.size());
+                Kunde* kunde = finnKunde(kundeNummer);
                 break;
+            }
             case 'F':
+                // TODO
                 break;
             default:
                 valg = toupper(lesChar("\nKommando: "));
@@ -77,7 +82,7 @@ void Kunder::skrivTilFil(){
 // Deletes customer 
 void Kunder::slettKunde() { 
     char bekreftelse = lesChar("Er du sikker på at du vil slette kunden? (J/N): ");
-    int kundeNummer = lesInt("Kundenummer: ",0,gKundebase.size());
+    int kundeNummer = lesInt("Kundenummer: ",0,gKundebase.kundeListe.size());
     auto kunde = finnKunde(kundeNummer);
     
     if (kunde) {
@@ -93,11 +98,10 @@ void Kunder::slettKunde() {
 }
 
 // Finds customer
-Kunde* Kunder::finnKunde() {
-    int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.kundeListe.size());
-    for (Kunde& k : gKundebase) {
+Kunde* Kunder::finnKunde(int kundeNummer) {
+    for (auto &k : gKundebase.kundeListe) {
         if (k.kundeNummer == kundeNummer) {
-            return &k;
+            return k;
         };
     };
     return nullptr;

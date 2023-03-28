@@ -41,7 +41,7 @@ class Kunder {
         void slettKunde();
 
         // Checks if customer exists
-        Kunde* finnKunde();
+        Kunde* finnKunde(int kundeNummer);
 };
 
 #endif
