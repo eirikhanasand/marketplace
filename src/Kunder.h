@@ -38,7 +38,7 @@ class Kunder {
         void skrivTilFil();
 
         // Deletes customer
-        void slettKunde();
+        void slettKunde(int kundeNummer);
 
         // Checks if customer exists
         Kunde* finnKunde(int kundeNummer);
