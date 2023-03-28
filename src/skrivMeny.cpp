@@ -23,4 +23,4 @@ void skrivMeny() {
     std::cout << "TN - Opprett ny ting" << std::endl;
     std::cout << "TE - Endre ting" << std::endl;
     std::cout << " K - Kjøp ting" << std::endl;
-};
+}

@@ -8,22 +8,20 @@
 #include <iostream>
 #include <fstream>
 #include "kunder.h"
+#include "kunde.h"
 #include "lesData3.h"
+
+extern Kunde gKundebase;
 
 // Constructor
 Kunder::Kunder() {
 
-};
+}
 
 // Destructor
 Kunder::~Kunder() {
 
-};
-
-// First customer
-int Kunder::sisteKunde() {
-    return sisteKunde;
-};
+}
 
 // Håndterer valg
 void Kunder::handling() {
@@ -59,7 +57,7 @@ void Kunder::lesFraFil() {
         
     // write here
     kundeFil.close();
-};
+}
 
 // Skriver til fil
 void Kunder::skrivTilFil(){
@@ -74,4 +72,39 @@ void Kunder::skrivTilFil(){
 
     // write here
     kundeFil.close();
-};
+}
+
+// Deletes customer 
+void Kunder::slettKunde() { 
+    char bekreftelse = lesChar("Er du sikker på at du vil slette kunden? (J/N): ");
+    int kundeNummer = lesInt("Kundenummer: ",0,gKundebase.size());
+    auto kunde = finnKunde(kundeNummer);
+    
+    if (kunde) {
+        if (bekreftelse == "J"){
+            kunde->skrivData();
+            kunde->~Kunde();
+        } else {
+            std::cout << "Kunde ble ikke slettet." << std::endl;
+        };
+    } else {
+        std::cout << "Kunde finnes ikke." << std::endl;
+    };
+}
+
+// Finds customer
+Kunde* Kunder::finnKunde() {
+    int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.kundeListe.size());
+    for (Kunde& k : gKundebase) {
+        if (k.kundeNummer == kundeNummer) {
+            return &k;
+        };
+    };
+    return nullptr;
+}
+
+void Kunder::skrivAlle() {
+    for (const auto &k: gKundebase.kundeListe) {
+        std::cout << "Kundenummer: " << k->kundeNummer << "\tNavn: " << k->navn << "\tTlf: " << k->mobilNummer << std::endl;
+    };
+}

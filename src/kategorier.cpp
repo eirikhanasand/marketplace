@@ -12,17 +12,17 @@
 // Constructor
 Kategorier::Kategorier() {
 
-};
+}
 
 // Destructor
 Kategorier::~Kategorier(){
 
-};
+}
 
 // Håndterer valg
 void Kategorier::handling(char valg) {
 
-};
+}
 
 // Leser fra fil
 void Kategorier::lesFraFil() {
@@ -37,7 +37,7 @@ void Kategorier::lesFraFil() {
 
     // write here
     kundeFil.close();
-};
+}
 
 // Skriver til fil
 void Kategorier::skrivTilFil(){
@@ -52,4 +52,4 @@ void Kategorier::skrivTilFil(){
 
     // write here
     kundeFil.close();
-};
+}

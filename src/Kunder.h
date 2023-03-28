@@ -29,14 +29,19 @@ class Kunder {
         // Håndterer valg
         void handling();
 
-        void skrivAlleKunder();
+        void skrivAlle();
 
-        // Leser fra fil
+        // Reads from file
         void lesFraFil();
 
-        // Skriver til fil
+        // Writes to file
         void skrivTilFil();
 
+        // Deletes customer
+        void slettKunde();
+
+        // Checks if customer exists
+        Kunde* finnKunde();
 };
 
 #endif

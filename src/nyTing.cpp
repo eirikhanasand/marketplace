@@ -11,9 +11,9 @@
 // Constructor
 NyTing::NyTing() {
 
-};
+}
 
 // Destructor
 NyTing::~NyTing(){
 
-};
+}
