@@ -82,7 +82,7 @@ void Kunde::skrivAlle() {
 };
 
 // Deletes customer 
-Kunde::slettKunde() { 
+void Kunde::slettKunde() { 
     char bekreftelse = lesChar("Er du sikker på at du vil slette kunden? (J/N): ");
     int kundeNummer = lesInt("Kundenummer: ",0,gKundebase.size());
     auto kunde = finnKunde(kundeNummer);

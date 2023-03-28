@@ -39,10 +39,14 @@ class Kunde {
         // Prints user data
         void skrivData();
 
+        // Writes all
         void skrivAlle();
 
         // Checks if customer exists
-        Kunde *finnKunde();
+        Kunde* finnKunde();
+
+        // Deletes customer
+        void Kunde::slettKunde();
 };
 
 #endif
