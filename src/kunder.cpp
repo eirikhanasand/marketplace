@@ -27,29 +27,24 @@ int Kunder::sisteKunde() {
 
 // Håndterer valg
 void Kunder::handling() {
-    char valg;
+    char valg = toupper(lesChar("\nKommando: "));
 
-    valg = lesChar("\nKommando: ");
-
-    switch (valg) {
-        case 'N': {
-
-            break;
-        };
-        case 'A': {
-
-            break;
-        };
-        case 'S': {
-
-            break;
-        };
-        case 'F': {
-
-            break;
-        };
-    };
-};
+    while (valg != 'Q') {
+        switch (valg) {
+            case 'N':
+                break;
+            case 'A':
+                break;
+            case 'S':
+                break;
+            case 'F':
+                break;
+            default:
+                valg = toupper(lesChar("\nKommando: "));
+                break;
+        }
+    }
+}
 
 // Leser fra fil
 void Kunder::lesFraFil() {
