@@ -15,11 +15,11 @@ extern Kunder gKundebase;
 Kunde::Kunde(int KundeNummer) {
     kundeNummer = KundeNummer;
     settData();
-};
+}
 
 Kunde::~Kunde() {
-    
-};
+    gKundebase.remove()
+}
 
 void Kunde::skrivKunde() {
     auto kunde = finnKunde();
@@ -28,7 +28,7 @@ void Kunde::skrivKunde() {
     } else {
         std::cout << "Kunde finnes ikke." << std::endl;
     };
-};
+}
 
 void Kunde::settData() {
     std::cout << "Navn: " << std::endl;
@@ -50,7 +50,7 @@ void Kunde::settData() {
     antallTingKjopt = 0;
     antallTingSolgt = 0;
     antallTilSalgs = 0;
-};
+}
 
 void Kunde::skrivData() {
     std::cout << "Navn: " << navn << std::endl;
@@ -62,7 +62,7 @@ void Kunde::skrivData() {
     std::cout << "Antall ting kjøpt: " << antallTingKjopt << std::endl;
     std::cout << "Antall ting solgt: " << antallTingSolgt << std::endl;
     std::cout << "Antall til salgs: " << antallTilSalgs << std::endl;
-};
+}
 
 // Finds customer
 Kunde* Kunde::finnKunde() {
@@ -73,13 +73,13 @@ Kunde* Kunde::finnKunde() {
         };
     };
     return nullptr;
-};
+}
 
 void Kunde::skrivAlle() {
     for (const auto &k: gKundebase.kundeListe) {
         std::cout << "Kundenummer: " << k->kundeNummer << "\tNavn: " << k->navn << "\tTlf: " << k->mobilNummer << std::endl;
     };
-};
+}
 
 // Deletes customer 
 void Kunde::slettKunde() { 
@@ -96,5 +96,5 @@ void Kunde::slettKunde() {
         };
     } else {
         std::cout << "Kunde finnes ikke." << std::endl;
-        };
-};
+    };
+}
