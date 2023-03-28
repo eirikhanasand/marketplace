@@ -54,6 +54,7 @@ void Kategorier::skrivTilFil(){
     kundeFil.close();
 };
 
+// Oppretter ny kategori
 void Kategorier::nyKategori() {
     std::cout << "Skriv inn navnet på kategorien: " << std::endl;
     std::string kategoriNavn;
@@ -66,5 +67,6 @@ void Kategorier::nyKategori() {
     };
 };
 
+//Sjekker om kategori finnes med samme navn
 void Kategorier::kategoriFinnes(std::string kategoriNavn) {
     for (auto kategori : gKategorier) 
