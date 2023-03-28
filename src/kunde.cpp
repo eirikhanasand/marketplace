@@ -80,3 +80,20 @@ Kunde::skrivAlle() {
         std::cout << "Kundenummer: " << k->kundeNummer << "\tNavn: " << k->navn << "\tTlf: " << k->mobilNummer << std::endl;
     }
 }
+
+// Deletes customer 
+Kunde::slettKunde() { 
+    char bekreftelse = lesChar("Er du sikker på at du vil slette kunden? (J/N): ");
+    int kundeNummer = lesInt("Kundenummer: ",0,gKundebase.size());
+    auto kunde = finnKunde(kundeNummer);
+    
+    if (kunde) {
+        if (bekreftelse == "J"){
+            kunde->~Kunde();
+        } else {
+            std::cout << "Kunde ble ikke slettet." << std::endl;
+        }
+    } else {
+        std::cout << "Kunde finnes ikke." << std::endl;
+        }
+}
