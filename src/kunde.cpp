@@ -24,11 +24,11 @@ Kunde::~Kunde(int kundeNummer) {
 void Kunde::skrivKunde() {
     auto kunde = hentKunde();
     if (kunde) {
-        skrivData();  
+        skrivData();
     } else {
         std::cout << "Kunde finnes ikke." << std::endl;
     };
-} 
+};
 
 void Kunde::settData() {
     std::cout << "Navn: " << std::endl;
