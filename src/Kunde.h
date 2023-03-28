@@ -28,7 +28,7 @@ class Kunde {
         Kunde(int KundeNummer);
 
         // Destructor
-        ~Kunde(int KundeNummer);
+        ~Kunde();
 
         // Input user data
         void settData();
@@ -39,8 +39,10 @@ class Kunde {
         // Prints user data
         void skrivData();
 
+        void skrivAlle();
+
         // Checks if customer exists
-        auto hentKunde();
+        Kunde *finnKunde();
 };
 
 #endif

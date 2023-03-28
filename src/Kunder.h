@@ -15,9 +15,8 @@
 class Kunder {
     int sisteNr;
 
-    std::list<Kunde*> kundeListe;
-
     public:
+        std::list<Kunde*> kundeListe;
         // Constructor
         Kunder();
 
