@@ -10,6 +10,8 @@
 #include "kunder.h"
 #include "lesData3.h"
 
+extern Kunde gKundebase;
+
 Kunde::Kunde(int KundeNummer) {
     kundeNummer = KundeNummer;
     settData();
