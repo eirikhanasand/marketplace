@@ -63,11 +63,15 @@ void Kategorier::nyKategori() {
         std::cout << "Kategorien finnes allerede." << std::endl;
     } else {
         Kategori nyKategori(kategoriNavn);
-        gKategorier.push_back(nyKategori);
+        gKategoribase.push_back(nyKategori);
     };
 };
 
 //Sjekker om kategori finnes med samme navn
 void Kategorier::kategoriFinnes(std::string kategoriNavn) {
-    for (auto kategori : gKategorier) 
+    for (auto k : gKategoribase) {
+        if (k.hentNavn() == kategoriNavn) {
+            return true;
+        };
+    };
 }
