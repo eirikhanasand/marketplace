@@ -10,14 +10,14 @@
 #include "kunder.h"
 #include "lesData3.h"
 
-extern Kunde gKundebase;
+extern Kunder gKundebase;
 
 Kunde::Kunde(int KundeNummer) {
     kundeNummer = KundeNummer;
     settData();
 };
 
-Kunde::~Kunde(int kundeNummer) {
+Kunde::~Kunde() {
     
 };
 
@@ -70,7 +70,7 @@ Kunde* Kunde::finnKunde() {
     for (Kunde& k : gKundebase) {
         if (k.kundeNummer == kundeNummer) {
             return &k;
-        }
+        };
     };
     return nullptr;
 };
