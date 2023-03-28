@@ -78,8 +78,8 @@ Kunde* Kunde::finnKunde() {
 void Kunde::skrivAlle() {
     for (const auto &k: gKundebase.kundeListe) {
         std::cout << "Kundenummer: " << k->kundeNummer << "\tNavn: " << k->navn << "\tTlf: " << k->mobilNummer << std::endl;
-    }
-}
+    };
+};
 
 // Deletes customer 
 Kunde::slettKunde() { 
@@ -93,8 +93,8 @@ Kunde::slettKunde() {
             kunde->~Kunde();
         } else {
             std::cout << "Kunde ble ikke slettet." << std::endl;
-        }
+        };
     } else {
         std::cout << "Kunde finnes ikke." << std::endl;
-        }
-}
+        };
+};
