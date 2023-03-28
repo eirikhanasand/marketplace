@@ -32,6 +32,12 @@ class Kategorier {
 
         // Skriver til fil
         void skrivTilFil();
+
+        // Oppretter ny kategori
+        void nyKategori();
+
+        //Sjekker om kategori finnes med samme navn
+        void kategoriFinnes(std::string kategoriNavn);
 };
 
 #endif

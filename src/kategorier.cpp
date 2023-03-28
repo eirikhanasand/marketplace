@@ -52,4 +52,19 @@ void Kategorier::skrivTilFil(){
 
     // write here
     kundeFil.close();
-}
+};
+
+void Kategorier::nyKategori() {
+    std::cout << "Skriv inn navnet på kategorien: " << std::endl;
+    std::string kategoriNavn;
+    std::getline(std::cin, kategoriNavn);
+    if (kategoriFinnes(kategoriNavn)) {
+        std::cout << "Kategorien finnes allerede." << std::endl;
+    } else {
+        Kategori nyKategori(kategoriNavn);
+        gKategorier.push_back(nyKategori);
+    };
+};
+
+void Kategorier::kategoriFinnes(std::string kategoriNavn) {
+    for (auto kategori : gKategorier) 
