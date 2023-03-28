@@ -89,6 +89,7 @@ Kunde::slettKunde() {
     
     if (kunde) {
         if (bekreftelse == "J"){
+            kunde->skrivData();
             kunde->~Kunde();
         } else {
             std::cout << "Kunde ble ikke slettet." << std::endl;
