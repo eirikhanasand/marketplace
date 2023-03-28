@@ -22,9 +22,9 @@ Kunde::~Kunde(int kundeNummer) {
 };
 
 void Kunde::skrivKunde() {
-    auto kunde = hentKunde();
+    auto kunde = finnKunde();
     if (kunde) {
-        skrivData();
+        kunde->skrivData();
     } else {
         std::cout << "Kunde finnes ikke." << std::endl;
     };
@@ -64,11 +64,12 @@ void Kunde::skrivData() {
     std::cout << "Antall til salgs: " << antallTilSalgs << std::endl;
 };
 
-auto Kunde::hentKunde() {
-    int kundeNummer;
-
-    kundeNummer = lesInt("Kundenummer: ", 1, INT32_MAX);
-
-    // todo
-    return gKundebase.contains(kundeNummer);
-}
+// Finds customer
+Kunde* Kunde::finnKunde() {
+    int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.size());
+    for (Kunde& k : gKundebase) {
+        if (k.kundeNummer == kundeNummer) 
+            return &k;
+    };
+    return nullptr;
+};
