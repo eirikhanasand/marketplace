@@ -12,7 +12,7 @@
 
 class Kunde {
 
-public:
+    public:
     int kundeNummer;
     int mobilNummer;
     int postNummer;

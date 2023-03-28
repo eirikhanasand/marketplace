@@ -100,7 +100,7 @@ void Kunder::slettKunde() {
 // Finds customer
 Kunde* Kunder::finnKunde(int kundeNummer) {
     for (auto &k : gKundebase.kundeListe) {
-        if (k.kundeNummer == kundeNummer) {
+        if (k->kundeNummer == kundeNummer) {
             return k;
         };
     };
