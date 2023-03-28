@@ -68,8 +68,9 @@ void Kunde::skrivData() {
 Kunde* Kunde::finnKunde() {
     int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.size());
     for (Kunde& k : gKundebase) {
-        if (k.kundeNummer == kundeNummer) 
+        if (k.kundeNummer == kundeNummer) {
             return &k;
+        }
     };
     return nullptr;
 };
