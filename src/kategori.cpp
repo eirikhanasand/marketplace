@@ -13,6 +13,8 @@
 #include "Kategorier.hpp"
 #include "LesData3.hpp"
 
+
+
 Kategori::Kategori(std::string KategoriNavn) {
     kategoriNavn = KategoriNavn;
     settData();
@@ -46,12 +48,9 @@ int Kategori::hentAntallTing() {
 }
 
 void Kategori::skrivFullKategori() {
-    for (const auto &kategori: kategoriMap) {
-        kategori.second->skrivData();
-        for (const auto &ting: kategoriMap) {
-            ting.second->skrivData();
-        };
-        // Skriv alle data om alle ting i denne kategorien utenom selgerens nummer, 
-        // om den er NY eller BRUKT og tingens unike nummer fra 1 og oppover
+    for (const auto &ting: tingListe) {
+        ting.second->skrivData();
     };
-}
+    // Skriv alle data om alle ting i denne kategorien utenom selgerens nummer, 
+    // om den er NY eller BRUKT og tingens unike nummer fra 1 og oppover
+};
