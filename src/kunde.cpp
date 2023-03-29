@@ -22,25 +22,16 @@ Kunde::~Kunde() {
 }
 
 void Kunde::settData() {
-    std::cout << "Navn: " << std::endl;
-    std::getline(std::cin, navn);
+    kategoriNavn = lesString("Navn");
+    kategoriNavn = lesString("Gateadresse");
+    mobilNummer  = lesInt("Mobilnummer", 40000000, 99999999);
+    kategoriNavn = lesString("Mailadresse");
+    kategoriNavn = lesString("Poststed");
+    postNummer   = lesInt("Postnummer", 0, 9999);
 
-    std::cout << "Gateadresse: " << std::endl;
-    std::getline(std::cin, gateAdresse);
-
-    mobilNummer = lesInt("Mobilnummer", 40000000, 99999999);
-
-    std::cout << "Mailadresse: " << std::endl;
-    std::getline(std::cin, mailAdresse);
-
-    std::cout << "Poststed: " << std::endl;
-    std::getline(std::cin, postSted);
-
-    postNummer = lesInt("Postnummer", 0, 9999);
-
-    antallTingKjopt = 0;
-    antallTingSolgt = 0;
-    antallTilSalgs = 0;
+    antallTingKjopt    = 0;
+    antallTingSolgt    = 0;
+    antallTingTilSalgs = 0;
 }
 
 void Kunde::skrivKunde() {

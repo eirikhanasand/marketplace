@@ -13,8 +13,9 @@
 
 const int  MAXCHAR = 200;      //  Max.tegn i input-buffer.
 
-char  lesChar(const char* t);
-float lesFloat(const char* t, const float min, const float max);
-int   lesInt(const char* t, const int min, const int max);
+char        lesChar(const char* t);
+float       lesFloat(const char* t, const float min, const float max);
+int         lesInt(const char* t, const int min, const int max);
+std::string lesString(std::string tekst);
 
 #endif

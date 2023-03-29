@@ -62,10 +62,7 @@ void Kategorier::skrivTilFil(){
 
 // Oppretter ny kategori
 void Kategorier::nyKategori() {
-    std::string kategoriNavn;
-
-    std::cout << "Skriv inn navnet på kategorien: " << std::endl;
-    std::getline(std::cin, kategoriNavn);
+    std::string kategoriNavn = lesString("Kategorinavn");
 
     if (!kategoriFinnes(kategoriNavn)) {
         Kategori* kategori = new Kategori(kategoriNavn);

@@ -25,8 +25,7 @@ Kategori::~Kategori() {
 
 // Input category data
 void Kategori::settData() {
-    std::cout << "Kategorinavn: " << std::endl;
-    std::getline(std::cin, kategoriNavn);
+    kategoriNavn = lesString("Kategorinavn");
 }
 
 // Prints category data

@@ -17,13 +17,13 @@ class Kunde {
     int postNummer;
     int antallTingKjopt;
     int antallTingSolgt;
-    int antallTilSalgs;
+    int antallTingTilSalgs;
 
     std::string navn;
     std::string gateAdresse;
     std::string postSted;
     std::string mailAdresse;
-
+    
     // Constructor
     Kunde(int KundeNummer);
 

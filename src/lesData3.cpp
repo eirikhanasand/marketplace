@@ -86,3 +86,17 @@ int lesInt(const char* t, const int min, const int max)  {
 
     return tall;
 }
+
+/**
+ *  Leser og returnerer en linje
+ *
+ *  @param   tekst - Ledetekst til brukeren
+ *
+ *  @return  string
+ */
+std::string lesString(std::string tekst) {
+    std::string string;
+    std::cout << tekst << ':' << std::endl;
+    std::getline(std::cin, t);
+    return t;
+};
