@@ -53,20 +53,20 @@ void Kunder::handling() {
                     } else {
                         std::cout << "Det finnes ingen kunde med kundenummer " << kundeNummer << std::endl;
                     }
-                    valg = 0;
                 } else {
                     std::cout << "Det finnes ingen kunder, kan derfor ikke skrive enkeltkunde." << std::endl;
                 }
+                valg = 0;
                 break;
             }
             case 'F': {
                 if(kundeListe.size()) {
                     int kundeNummer = lesInt("Kundenummer:", 0, kundeListe.size());
                     fjernKunde(kundeNummer);
-                    valg = 0;
                 } else {
                     std::cout << "Det finnes ingen kunder å slette." << std::endl;
                 }
+                valg = 0;
                 break;
             }
 
