@@ -16,7 +16,7 @@ public:
 
     ~NyTing();
 
-    void settData();
+    virtual void settData();
 
     std::string hentNavn() const;
 
