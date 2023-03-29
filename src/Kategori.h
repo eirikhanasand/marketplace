@@ -31,7 +31,7 @@ public:
     std::string hentNavn() const;
 
 private:
-    std::list<NyTing *> NyTing;
+    std::list<NyTing *> tingMap;
 
     int antallTingTilSalgs;
 

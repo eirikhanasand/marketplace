@@ -98,7 +98,9 @@ int lesInt(const char *t, const int min, const int max) {
  */
 std::string lesString(std::string tekst) {
     std::string string;
+    
     std::cout << tekst << ':' << std::endl;
     std::getline(std::cin, string);
+
     return string;
 };

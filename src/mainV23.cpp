@@ -53,6 +53,7 @@ int main() {
         };
         valg = lesChar("\nKommando");
     }
+    
     gKundebase.skrivTilFil();
     gKategoribase.skrivTilFil();
 

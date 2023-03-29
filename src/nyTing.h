@@ -12,11 +12,22 @@
 
 class NyTing {
 public:
+    // Constructor
     NyTing();
 
+    // Destructor
     ~NyTing();
+
+    // Setter data
+    void settData(int Nummer);
+
+    // Kjøper en ting
+    void kjopTing();
+
 private:
-    int nr;
+    int nummer;
+    int pris;
+    int antall;
 
     std::string navn;
     std::string beskrivelse;

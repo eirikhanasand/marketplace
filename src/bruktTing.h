@@ -12,6 +12,17 @@
 #include "nyTing.h"
 
 class BruktTing : NyTing {
+public:
+    // Constructor
+    BruktTing();
+
+    // Deconstructor
+    ~BruktTing();
+
+    // Leser inn data om brukt ting
+    void settData();
+
+private:
     int aar;
 
     enum kvalitet {

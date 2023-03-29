@@ -133,12 +133,36 @@ void Kategorier::skrivAlle() {
     }
 }
 
-Kategori *Kategorier::finnKategori(std::string kategoriNavn) {
+Kategori* Kategorier::finnKategori(std::string kategoriNavn) {
     Kategori *kategori = nullptr;
+
     for (const auto &k: kategoriMap) {
         if (!k.second->hentNavn().compare(0, kategoriNavn.size(), kategoriNavn)) {
             kategori = dynamic_cast<Kategori *>(k.second);
         };
     };
+
     return kategori;
+}
+
+void Kategorier::skrivFullKategori() {
+    for (const auto &k: kategoriMap) {
+        k->skrivData();
+        for (const auto &t: NyTing)
+        // Skriv alle data om alle ting i denne kategorien utenom selgerens nummer, 
+        // om den er NY eller BRUKT og tingens unike nummer fra 1 og oppover
+    }
+}
+
+void Kategorier::lagTing() {
+    std::string kategoriNavn = lesString("Velg kategori");
+    auto k = finnKategori(kategoriNavn);
+    NyTing* ting = new NyTing();
+
+    if (k) {
+        k->NyTing.push_back(ting);
+    } else {
+        std::cout << "Det finnes ingen kategori med navn " << kategoriNavn << std::endl;
+    };
+
 }

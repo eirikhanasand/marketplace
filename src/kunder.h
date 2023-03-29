@@ -32,7 +32,7 @@ public:
     // Skriver til fil
     void skrivTilFil();
 
-    // Deletes customer
+    // Fjerner kunde
     void fjernKunde(int kundeNummer);
 
     // Finner kunde

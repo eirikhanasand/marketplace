@@ -45,6 +45,12 @@ public:
     // Finner kategori hvis kategori stemmer
     Kategori *finnKategori(std::string kategoriNavn);
 
+    // Skriver alle tingene som ligger i en kategori
+    void skrivFullKategori();
+    
+    // Legger inn en ny ting i datastrukturen
+    void lagTing();
+
 private:
     // Kart over kategorier
     std::map<std::string, Kategori *> kategoriMap;
