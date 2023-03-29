@@ -33,7 +33,7 @@ void NyTing::settData() {
     antall = lesInt("Hvor mange selger du", 0, INT32_MAX);
 }
 
-std::string NyTing::hentNavn() {
+std::string NyTing::hentNavn() const {
     return navn;
 }
 

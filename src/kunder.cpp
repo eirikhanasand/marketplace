@@ -15,9 +15,9 @@
 Kunder::Kunder() {
     Kunde* kunde = new Kunde(kundeListe.size());
     kundeListe.push_back(kunde);
-    std::cout << "Opprettet kunde med " << kunde->skrivInfo();
-} 
-
+    std::cout << "Opprettet kunde med ";
+    kunde->skrivInfo();
+}
 // Destructor
 Kunder::~Kunder() {
     for(auto &k : kundeListe) {
