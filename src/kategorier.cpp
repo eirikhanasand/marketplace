@@ -162,7 +162,7 @@ void Kategorier::lagTing() {
     std::string kategoriNavn = lesString("Velg kategori");
     auto kategori = finnKategori(kategoriNavn);
 
-    if (kategori != nullptr) {
+    if (kategori) {
         kategori->addTing();
     } else {
         std::cout << "Det finnes ingen kategori med navn " << kategoriNavn << std::endl;
