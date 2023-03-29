@@ -130,14 +130,14 @@ void Kategorier::fjernKategori(Kategori *kategori) {
 // Skriver alle kategorier
 void Kategorier::skrivAlle() {
     for (const auto &kategori: kategoriMap) {
-        k.second->skrivData();
+        kategori.second->skrivData();
     }
 }
 
 Kategori* Kategorier::finnKategori(std::string kategoriNavn) {
     for (const auto &kategori: kategoriMap) {
-        if (!k.second->hentNavn().compare(0, kategoriNavn.size(), kategoriNavn)) {
-            return dynamic_cast<Kategori *>(k.second);
+        if (!kategori.second->hentNavn().compare(0, kategoriNavn.size(), kategoriNavn)) {
+            return dynamic_cast<Kategori *>(kategori.second);
         };
     };
     return nullptr;
@@ -162,7 +162,7 @@ void Kategorier::kjopTing() {
     auto kategori = finnKategori(kategoriNavn);
 
     if(kategori) {
-        kategori->skrivFullKategori(); 
+        kategori->skrivFullKategori();
         ting = lesInt("Skriv inn nummer på tingen du vil kjøpe", 0, kategori->tingListe.size());
         /**
          * Ifm. kjøpet må alt følgende skje: Kjøperens antall kjøp telles opp med en. 
