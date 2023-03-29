@@ -14,7 +14,7 @@
 #include "Enum.hpp"
 #include "NyTing.hpp"
 
-class BruktTing : NyTing {
+class BruktTing : public NyTing {
 public:
     BruktTing(int Nummer);
     BruktTing(std::ifstream &tingFil);

@@ -23,6 +23,8 @@ float lesFloat(const char *t, const float min, const float max);
 
 int lesInt(const char *t, const int min, const int max);
 
+bool lesBool(const char *t, const char ja = 'j', const char nei = 'n');
+
 std::string lesString(std::string tekst);
 
 #endif

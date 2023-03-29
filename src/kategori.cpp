@@ -12,6 +12,7 @@
 #include "Kategori.hpp"
 #include "Kategorier.hpp"
 #include "LesData3.hpp"
+#include "BruktTing.hpp"
 
 
 
@@ -48,7 +49,15 @@ NyTing* Kategori::finnTing(int kundeNummer) {
 }
 
 void Kategori::lagTing() {
-    auto *ting = new NyTing(tingListe.size());
+    bool brukt = lesBool("Brukt (j/n)");
+    NyTing* ting = nullptr;
+
+    if (brukt) {
+        ting = new BruktTing(tingListe.size());
+    } else {
+        ting = new NyTing(tingListe.size());
+    }
+
     ting->settData();
     tingListe.push_back(ting);
 }
