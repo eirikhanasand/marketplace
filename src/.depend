@@ -1,0 +1,14 @@
+bruktTing.o: bruktTing.cpp NyTing.hpp BruktTing.hpp Enum.hpp LesData3.hpp \
+  Kategorier.hpp Kategori.hpp Kunde.hpp
+kategori.o: kategori.cpp Kategori.hpp NyTing.hpp Kategorier.hpp Kunde.hpp \
+  LesData3.hpp
+kategorier.o: kategorier.cpp Kunder.hpp Kunde.hpp Kategorier.hpp \
+  Kategori.hpp NyTing.hpp LesData3.hpp
+kunde.o: kunde.cpp Kunde.hpp Kunder.hpp LesData3.hpp
+kunder.o: kunder.cpp Kunder.hpp Kunde.hpp LesData3.hpp
+lesData3.o: lesData3.cpp LesData3.hpp
+mainV23.o: mainV23.cpp SkrivMeny.hpp Kategorier.hpp Kategori.hpp \
+  NyTing.hpp Kunde.hpp LesData3.hpp Kunder.hpp
+nyTing.o: nyTing.cpp NyTing.hpp LesData3.hpp Kunder.hpp Kunde.hpp \
+  Kategorier.hpp Kategori.hpp
+skrivMeny.o: skrivMeny.cpp SkrivMeny.hpp

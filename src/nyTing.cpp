@@ -51,5 +51,5 @@ void NyTing::kjopTing() {
         */
     } else {
         std::cout << "Denne kategorien finnes ikke!" << std::endl;
-    }
+    };
 }

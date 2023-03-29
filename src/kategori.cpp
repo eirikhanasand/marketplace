@@ -29,7 +29,7 @@ void Kategori::settData() {
 
 // Prints category data
 void Kategori::skrivData() {
-    std::cout << "Kategorinavn: " << kategoriNavn << "\tAntall ting til salgs: " << antallTilSalgs << std::endl;
+    std::cout << "Kategorinavn: " << kategoriNavn << "\tAntall ting til salgs: " << antallTingTilSalgs << std::endl;
 }
 
 std::string Kategori::hentNavn() const {

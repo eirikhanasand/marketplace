@@ -9,11 +9,12 @@
 #define __BRUKTTING_H
 
 #include <iostream>
+#include "Enum.hpp"
 #include "NyTing.hpp"
 
 class BruktTing : NyTing {
 public:
-    BruktTing();
+    BruktTing(int Nummer);
 
     ~BruktTing();
 
@@ -21,14 +22,7 @@ public:
 
 private:
     int aar;
-
-    enum kvalitet {
-        SomNy,
-        PentBrukt,
-        Brukt,
-        GodtBrukt,
-        Sliten
-    };
+    Kvalitet kvalitet;
 };
 
 #endif

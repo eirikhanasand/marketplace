@@ -9,23 +9,25 @@
 #include <fstream>
 #include <string>
 #include <map>
+#include "Kunder.hpp"
 #include "Kategorier.hpp"
 #include "Kategori.hpp"
 #include "LesData3.hpp"
 
+extern Kunder gKundebase;
+extern Kategorier gKategoribase;
+
 // Constructor
 Kategorier::Kategorier() {
-    std::navn = lesString("Kategorinavn");
+    std::string navn = lesString("Kategorinavn");
+
     if(!kategoriFinnes(navn)) {
          Kategori* kategori = new Kategori(navn);
-         
+         kategori->settData();
+         std::cout << "Opprettet kategori " << navn << std::endl;
     } else {
-        std::cout << "Beklager, det finnes allerede en " << navn " kategori!" << std::endl;
+        std::cout << "Beklager, det finnes allerede en " << navn << " kategori!" << std::endl;
     };
-
-    Kunde* kunde = new Kunde(kundeListe.size());
-    kundeListe.push_back(kunde);
-    std::cout << "Opprettet kunde med " << kunde->skrivInfo();
 }
 
 // Destructor
@@ -47,8 +49,8 @@ void Kategorier::handling(char valg) {
                 skrivAlle();
                 break;
             case 'S': {
-                int kundeNummer = lesInt("Kundenummer:", 0, kundeListe.size());
-                Kunde *kunde = finnKunde(kundeNummer);
+                int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.antallKunder());
+                Kunde *kunde = gKundebase.finnKunde(kundeNummer);
                 if(kunde) {
                     kunde->skrivData();
                 } else {
@@ -57,8 +59,8 @@ void Kategorier::handling(char valg) {
                 break;
             }
             case 'F': {
-                int kundeNummer = lesInt("Kundenummer:", 0, kundeListe.size());
-                fjernKunde(kundeNummer);
+                int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.antallKunder());
+                gKundebase.fjernKunde(kundeNummer);
                 break;
             }
 
@@ -147,22 +149,22 @@ Kategori* Kategorier::finnKategori(std::string kategoriNavn) {
 
 void Kategorier::skrivFullKategori() {
     for (const auto &k: kategoriMap) {
-        k->skrivData();
-        for (const auto &t: NyTing)
+        k.second->skrivData();
+        for (const auto &t: gKategoribase.kategoriMap) {
+            t.second->skrivData();
+        };
         // Skriv alle data om alle ting i denne kategorien utenom selgerens nummer, 
         // om den er NY eller BRUKT og tingens unike nummer fra 1 og oppover
-    }
+    };
 }
 
 void Kategorier::lagTing() {
     std::string kategoriNavn = lesString("Velg kategori");
     auto k = finnKategori(kategoriNavn);
-    NyTing* ting = new NyTing();
-
+    NyTing* ting = new NyTing(k->tingMap.size());
     if (k) {
         k->NyTing.push_back(ting);
     } else {
         std::cout << "Det finnes ingen kategori med navn " << kategoriNavn << std::endl;
     };
-
 }
