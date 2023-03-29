@@ -41,7 +41,7 @@ public:
 private:
     std::list<Kunde *> kundeListe;
 
-    int sisteNr;
+    int sisteNummer;
 };
 
 #endif

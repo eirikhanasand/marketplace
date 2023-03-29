@@ -13,12 +13,17 @@
 
 // Constructor
 Kunder::Kunder() {
-
-}
+    Kunde* kunde = new Kunde(kundeListe.size());
+    kundeListe.push_back(kunde);
+    std::cout << "Opprettet kunde med " << kunde->skrivInfo();
+} 
 
 // Destructor
 Kunder::~Kunder() {
-
+    for(auto &k : kundeListe) {
+        k->~Kunde;
+    }
+    std::cout << "Slettet alle kunder." << std::endl;
 }
 
 // Håndterer valg
@@ -27,15 +32,22 @@ void Kunder::handling() {
 
     while (valg != 'Q') {
         switch (valg) {
-            case 'N':
-                // TODO
+            case 'N': {
+                Kunder();
                 break;
-            case 'A':
+            }
+            case 'A': {
                 skrivAlle();
                 break;
+            }
             case 'S': {
                 int kundeNummer = lesInt("Kundenummer:", 0, kundeListe.size());
                 Kunde *kunde = finnKunde(kundeNummer);
+                if(kunde) {
+                    kunde->skrivData();
+                } else {
+                    std::cout << "Det finnes ingen kunde med kundenummer " << kundeNummer << std::endl;
+                };
                 break;
             }
             case 'F': {
@@ -83,15 +95,11 @@ void Kunder::skrivTilFil() {
 
 // Deletes customer 
 void Kunder::fjernKunde(int kundeNummer) {
-    char bekreftelse = lesChar("Er du sikker på at du vil slette kunden? (J/N): ");
+    char bekreftelse = lesChar("Er du sikker på at du vil slette kunden? (j/N)");
     auto kunde = finnKunde(kundeNummer);
 
-    while (bekreftelse != 'J' && bekreftelse != 'N') {
-        bekreftelse = lesChar("Feil input, prøv på nytt: ");
-    }
-
     if (kunde) {
-        if (bekreftelse == 'J') {
+        if (bekreftelse == 'j') {
             kunde->skrivData();
             kundeListe.remove(kunde);
             kunde->~Kunde();
@@ -104,7 +112,7 @@ void Kunder::fjernKunde(int kundeNummer) {
 }
 
 // Finds customer
-Kunde *Kunder::finnKunde(int kundeNummer) {
+Kunde* Kunder::finnKunde(int kundeNummer) {
     for (auto &k: kundeListe) {
         if (k->hentKundeNummer() == kundeNummer) {
             return k;
@@ -114,9 +122,19 @@ Kunde *Kunder::finnKunde(int kundeNummer) {
 }
 
 void Kunder::skrivAlle() {
+    int i = 0;
+    char valg;
+
+    std::cout << "Siste kunde: " << sisteNummer << ". " << "Det finnes nå " 
+              << kundeListe.size() << " kunder." << std::endl;
+        
     for (const auto &k: kundeListe) {
-        // std::cout << "Kundenummer: " << k->hentKundeNummer() << "\tNavn: " << k->navn << "\tTlf: " << k->mobilNummer << std::endl;
-        // Usikker om dette er riktig.
-        k->skrivData();
+        if (i && i % 20 == 0) {
+            valg = lesChar("Skriv ut 20 kunder til? (y/N)");
+            if (valg != 'y') break;
+        }
+        k->skrivInfo();
+        i++;
     };
 }
+

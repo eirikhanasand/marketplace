@@ -15,7 +15,17 @@
 
 // Constructor
 Kategorier::Kategorier() {
+    std::navn = lesString("Kategorinavn");
+    if(!kategoriFinnes(navn)) {
+         Kategori* kategori = new Kategori(navn);
+         
+    } else {
+        std::cout << "Beklager, det finnes allerede en " << navn " kategori!" << std::endl;
+    };
 
+    Kunde* kunde = new Kunde(kundeListe.size());
+    kundeListe.push_back(kunde);
+    std::cout << "Opprettet kunde med " << kunde->skrivInfo();
 }
 
 // Destructor
@@ -28,7 +38,35 @@ Kategorier::~Kategorier() {
 
 // Håndterer valg
 void Kategorier::handling(char valg) {
+    while (valg != 'Q') {
+        switch (valg) {
+            case 'N':
+                Kategorier();
+                break;
+            case 'A':
+                skrivAlle();
+                break;
+            case 'S': {
+                int kundeNummer = lesInt("Kundenummer:", 0, kundeListe.size());
+                Kunde *kunde = finnKunde(kundeNummer);
+                if(kunde) {
+                    kunde->skrivData();
+                } else {
+                    std::cout << "Det finnes ingen kunde med kundenummer " << kundeNummer << std::endl;
+                };
+                break;
+            }
+            case 'F': {
+                int kundeNummer = lesInt("Kundenummer:", 0, kundeListe.size());
+                fjernKunde(kundeNummer);
+                break;
+            }
 
+            default:
+                valg = toupper(lesChar("\nKommando: "));
+                break;
+        }
+    }
 }
 
 // Leser fra fil

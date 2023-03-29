@@ -18,7 +18,7 @@ Kunde::Kunde(int KundeNummer) {
 }
 
 Kunde::~Kunde() {
-    //
+    // todo
 }
 
 void Kunde::settData() {
@@ -38,15 +38,6 @@ int Kunde::hentKundeNummer() {
     return kundeNummer;
 }
 
-void Kunde::skrivKunde() {
-    /*auto kunde = finnKunde();
-    if (kunde) {
-        kunde->skrivData();
-    } else {
-        std::cout << "Kunde finnes ikke." << std::endl;
-    };*/ // TODO
-}
-
 void Kunde::skrivData() {
     std::cout << "Navn: " << navn << std::endl;
     std::cout << "Gateadresse: " << gateAdresse << std::endl;
@@ -57,4 +48,8 @@ void Kunde::skrivData() {
     std::cout << "Antall ting kjøpt: " << antallTingKjopt << std::endl;
     std::cout << "Antall ting solgt: " << antallTingSolgt << std::endl;
     std::cout << "Antall til salgs: " << antallTingTilSalgs << std::endl;
+}
+
+void Kunde::skrivInfo() {
+    std::cout << "Kundenummer: " << kundeNummer << "\tNavn: " << navn << "\tTlf: " << mobilNummer << std::endl;
 }

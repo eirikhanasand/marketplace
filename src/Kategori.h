@@ -33,7 +33,7 @@ public:
 private:
     std::list<NyTing *> NyTing;
 
-    int antallTilSalgs;
+    int antallTingTilSalgs;
 
     std::string kategoriNavn;
 };

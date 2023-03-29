@@ -21,13 +21,14 @@ public:
     // Input user data
     void settData();
 
-    // Writes name of customer
-    void skrivKunde();
-
-    // Prints user data
+    // Skriver data om kunden
     void skrivData();
 
+    // Henter kundenummer
     int hentKundeNummer();
+
+    // Printer kundenummer navn og telefonnummer
+    void skrivInfo();
 
 private:
     int kundeNummer;

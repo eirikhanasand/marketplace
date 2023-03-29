@@ -24,7 +24,7 @@ Kategori::~Kategori() {
 
 // Input category data
 void Kategori::settData() {
-    kategoriNavn = lesString("Kategorinavn");
+    antallTingTilSalgs = 0;
 }
 
 // Prints category data
