@@ -64,7 +64,7 @@ void NyTing::endreTing() {
     cout << "4. Beskrivelse" << endl;
     cout << "5. Avbryt" << endl;
     char valg = lesChar("Valg: ", "12345");
-    
+
     switch (valg) {
         case '1': {
             NyTing::endreNavn(std::string nyttNavn);
@@ -84,7 +84,11 @@ void NyTing::endreTing() {
         }
         case '5': {
             break;
-    }
+        }
+         default: {
+            std::cout << "Det er ikke en gyldig kommando!" << std::endl;
+            break;
+ 
 
         }
 }
