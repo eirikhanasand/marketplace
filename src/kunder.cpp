@@ -30,6 +30,7 @@ void Kunder::handling() {
     while (valg != 'Q') {
         switch (valg) {
             case 'N':
+                // TODO
                 break;
             case 'A':
                 skrivAlle();
@@ -86,7 +87,7 @@ void Kunder::slettKunde() {
     auto kunde = finnKunde(kundeNummer);
     
     if (kunde) {
-        if (bekreftelse == "J"){
+        if (bekreftelse == 'J'){
             kunde->skrivData();
             kunde->~Kunde();
         } else {

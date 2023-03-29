@@ -10,12 +10,31 @@
 
 #include <iostream>
 #include <list>
+#include <string>
 #include "nyTing.h"
 
 class Kategori {
-    int sisteNr;
+    int antallTilSalgs;
+    
+    std::string kategoriNavn;
+    
+    public:
+        std::list<NyTing*> NyTing;
+        
+        // Constructor
+        Kategori(std::string KategoriNavn);
 
-    std::list<NyTing*> NyTing;
+        // Destructor
+        ~Kategori();
+
+        // Setter kategoridata
+        void settData();
+
+        // Skriver kategoridata
+        void skrivData();
+
+        // Henter kategorinavn
+        std::string hentNavn() const;
 };
 
 #endif

@@ -18,7 +18,7 @@ Kunde::Kunde(int KundeNummer) {
 }
 
 Kunde::~Kunde() {
-    gKundebase.remove()
+    gKundebase.remove();
 }
 
 void Kunde::settData() {

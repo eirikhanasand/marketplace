@@ -7,7 +7,12 @@
 
 #include <iostream>
 #include <fstream>
+#include <string>
+#include <map>
 #include "kategorier.h"
+#include "kategori.h"
+
+extern Kategorier gKategoribase;
 
 // Constructor
 Kategorier::Kategorier() {
@@ -16,12 +21,15 @@ Kategorier::Kategorier() {
 
 // Destructor
 Kategorier::~Kategorier(){
-
+    for(auto &k: nyTingMap) {
+        delete k.second;
+    };
+    nyTingMap.clear();
 }
 
 // Håndterer valg
 void Kategorier::handling(char valg) {
-
+    
 }
 
 // Leser fra fil
@@ -35,7 +43,6 @@ void Kategorier::lesFraFil() {
         std::cout << "Kunne ikke lese fra /data/KATEGORIER.DTA." << std::endl;
     };
 
-    // write here
     kundeFil.close();
 }
 
@@ -50,28 +57,48 @@ void Kategorier::skrivTilFil(){
         std::cout << "Kunne ikke skrive til /data/KATEGORIER.DTA." << std::endl;
     };
 
-    // write here
     kundeFil.close();
 };
 
 // Oppretter ny kategori
 void Kategorier::nyKategori() {
-    std::cout << "Skriv inn navnet på kategorien: " << std::endl;
     std::string kategoriNavn;
+
+    std::cout << "Skriv inn navnet på kategorien: " << std::endl;
     std::getline(std::cin, kategoriNavn);
-    if (kategoriFinnes(kategoriNavn)) {
-        std::cout << "Kategorien finnes allerede." << std::endl;
+
+    if (!kategoriFinnes(kategoriNavn)) {
+        Kategori* kategori = new Kategori(kategoriNavn);
+        // Kategori nyKategori(kategoriNavn);
+        // gKategoribase.push_back(nyKategori);
     } else {
-        Kategori nyKategori(kategoriNavn);
-        gKategoribase.push_back(nyKategori);
+        std::cout << "Kategorien finnes allerede." << std::endl;
     };
 };
 
 //Sjekker om kategori finnes med samme navn
-void Kategorier::kategoriFinnes(std::string kategoriNavn) {
-    for (auto k : gKategoribase) {
-        if (k.hentNavn() == kategoriNavn) {
+bool Kategorier::kategoriFinnes(std::string kategoriNavn) {
+    for (const auto &k: gKategoribase.nyTingMap) {
+        if (k.second->hentNavn() == kategoriNavn) {
             return true;
         };
     };
+    return false;
+}
+
+// Skriver alle kategorier
+void Kategorier::skrivAlle() {
+    for (const auto &k: gKategoribase.nyTingMap) {
+        k.second->skrivData();
+    }
+}
+
+Kategori* Kategorier::finnKategori(std::string kategoriNavn) {
+    Kategori* kategori = nullptr;
+    for (const auto &k: gKategoribase.nyTingMap) {
+        if (!k.second->hentNavn().compare(0, kategoriNavn.size(), kategoriNavn)) {
+            kategori = dynamic_cast <Kategori*> (k.second);
+        };
+    };
+    return kategori;
 }

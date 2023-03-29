@@ -9,15 +9,15 @@
 #define __KATEGORIER_H
 
 #include <iostream>
+#include <string>
 #include <map>
 #include "kategori.h"
 
 class Kategorier {
-    int sisteNr;
-
-    std::map<std::string, Kategori*> nyTingMap;
-
     public:
+        // Kart over kategorier
+        std::map<std::string, Kategori*> nyTingMap;
+
         // Constructor
         Kategorier();
 
@@ -36,8 +36,14 @@ class Kategorier {
         // Oppretter ny kategori
         void nyKategori();
 
-        //Sjekker om kategori finnes med samme navn
-        void kategoriFinnes(std::string kategoriNavn);
+        // Sjekker om kategori finnes med samme navn
+        bool kategoriFinnes(std::string kategoriNavn);
+
+        // Skriver alle kategorier
+        void skrivAlle();
+
+        // Finner kategori hvis kategori stemmer
+        Kategori* finnKategori(std::string kategoriNavn);
 };
 
 #endif

@@ -23,24 +23,22 @@ class Kunder {
         // Destructor
         ~Kunder();
 
-        // First customer
-        void sisteKunde();
-
         // Håndterer valg
         void handling();
 
+        // Skriver alle kunder
         void skrivAlle();
 
-        // Reads from file
+        // Leser fra fil
         void lesFraFil();
 
-        // Writes to file
+        // Skriver til fil
         void skrivTilFil();
 
-        // Deletes customer
+        // Sletter kunde
         void slettKunde();
 
-        // Checks if customer exists
+        // Finner kunde
         Kunde* finnKunde(int kundeNummer);
 };
 

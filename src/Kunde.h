@@ -11,7 +11,6 @@
 #include <string>
 
 class Kunde {
-
     public:
     int kundeNummer;
     int mobilNummer;
