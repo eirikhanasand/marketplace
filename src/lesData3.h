@@ -11,6 +11,8 @@
 #ifndef __LESDATA3_H
 #define __LESDATA3_H
 
+#include <string>
+
 const int  MAXCHAR = 200;      //  Max.tegn i input-buffer.
 
 char        lesChar(const char* t);
