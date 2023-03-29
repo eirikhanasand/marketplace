@@ -15,7 +15,6 @@
 #include "LesData3.hpp"
 
 extern Kunder gKundebase;
-extern Kategorier gKategoribase;
 
 // Constructor
 Kategorier::Kategorier() {
@@ -136,15 +135,12 @@ void Kategorier::skrivAlle() {
 }
 
 Kategori* Kategorier::finnKategori(std::string kategoriNavn) {
-    Kategori *kategori = nullptr;
-
     for (const auto &k: kategoriMap) {
         if (!k.second->hentNavn().compare(0, kategoriNavn.size(), kategoriNavn)) {
-            kategori = dynamic_cast<Kategori *>(k.second);
+            return dynamic_cast<Kategori *>(k.second);
         };
     };
-
-    return kategori;
+    return nullptr
 }
 
 void Kategorier::skrivFullKategori() {
