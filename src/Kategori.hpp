@@ -37,6 +37,8 @@ public:
     void skrivTilFil(std::ofstream &kundeFil);
 
 
+    NyTing* finnTing(int kundeNummer);
+
 private:
     std::list<NyTing*> tingListe;
 

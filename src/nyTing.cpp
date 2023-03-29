@@ -58,8 +58,45 @@ void NyTing::endreBeskrivelse(std::string nyBeskrivelse) {
     beskrivelse = nyBeskrivelse;
 }
 
-void NyTing::skrivTilFil(ofstream &tingFil) {
-    tingFil >> nummer >> ' ' >> pris >> ' ' >> antall >> ' ' >> 0 >> ' ' >> 0 >> '\n' >> navn >> '\n' >> beskrivelse >> '\n';
+int NyTing::hentKundeNummer() const {
+    return nummer;
+}
+
+void NyTing::endreTing() {
+    std::cout << "Hva vil du endre på?" << '\n'
+        << "1. Navn" << '\n'
+        << "2. Antall" << '\n'
+        << "3. Pris" << '\n'
+        << "4. Beskrivelse" << '\n'
+        << "5. Avbryt" << '\n';
+
+    int valg = lesInt("Valg: ", 1, 5);
+
+    switch (valg) {
+        case '1': {
+            std::string navn = lesString("Nytt navn: ");
+            NyTing::endreNavn(navn);
+            break;
+        }
+        case '2': {
+            int antall = lesInt("Nytt antall: ", 0, INT32_MAX);
+            NyTing::endreAntall(antall);
+            break;
+        }
+        case '3': {
+            int pris = lesInt("Ny pris: ", 0, INT32_MAX);
+            NyTing::endrePris(pris);
+            break;
+        }
+        case '4': {
+            std::string beskrivelse = lesString("Ny beskrivelse: ");
+            NyTing::endreBeskrivelse(0);
+            break;
+        }
+        case '5': {
+            break;
+        }
+    }
 }
 
 NyTing::NyTing(ofstream & tingFil) {

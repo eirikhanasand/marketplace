@@ -38,6 +38,15 @@ std::string Kategori::hentNavn() const {
     return kategoriNavn;
 }
 
+NyTing* Kategori::finnTing(int kundeNummer) {
+    for (const auto &item: tingListe) {
+        if (item->hentKundeNummer() == kundeNummer) {
+            return item;
+        }
+    }
+    return nullptr;
+}
+
 void Kategori::lagTing() {
     auto *ting = new NyTing(tingListe.size());
     ting->settData();

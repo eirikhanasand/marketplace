@@ -33,46 +33,56 @@ Kategorier::~Kategorier() {
 void Kategorier::lagKategorier() {
     std::string navn = lesString("Kategorinavn");
 
-    if(!kategoriFinnes(navn)) {
-         Kategori* kategori = new Kategori(navn);
-         kategori->settData();
-         std::cout << "Opprettet kategori " << navn << std::endl;
+    if (!kategoriFinnes(navn)) {
+        auto *kategori = new Kategori(navn);
+        kategori->settData();
+        std::cout << "Opprettet kategori " << navn << std::endl;
     } else {
         std::cout << "Beklager, det finnes allerede en " << navn << " kategori!" << std::endl;
     }
 }
 
-// Håndterer valg
-void Kategorier::handling(char valg) {
-    while (valg != 'Q') {
-        switch (valg) {
-            case 'N':
-                Kategorier();
-                break;
-            case 'A':
-                skrivAlle();
-                break;
-            case 'S': {
-                int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.antallKunder());
-                Kunde *kunde = gKundebase.finnKunde(kundeNummer);
-                if(kunde) {
-                    kunde->skrivData();
-                } else {
-                    std::cout << "Det finnes ingen kunde med kundenummer " << kundeNummer << std::endl;
-                }
-                break;
-            }
-            case 'F': {
-                int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.antallKunder());
-                gKundebase.fjernKunde(kundeNummer);
-                break;
-            }
+void Kategorier::tingHandling(char valg) {
+    if (valg == 'N') {
+        lagTingIKategori();
+    } else if (valg == 'E') {
 
-            default:
-                valg = toupper(lesChar("\nKommando: "));
-                break;
-        }
+    } else {
+        std::cout << "Ugyldig kommando!\n";
     }
+}
+
+
+// Håndterer valg
+void Kategorier::kategoriHandling(char valg) {
+    switch (valg) {
+        case 'N':
+            Kategorier();
+            break;
+        case 'A':
+            skrivAlle();
+            break;
+        case 'S': {
+            int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.antallKunder());
+            Kunde *kunde = gKundebase.finnKunde(kundeNummer);
+            if (kunde) {
+                kunde->skrivData();
+            } else {
+                std::cout << "Det finnes ingen kunde med kundenummer " << kundeNummer << std::endl;
+            }
+            break;
+        }
+        case 'F': {
+            int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.antallKunder());
+            gKundebase.fjernKunde(kundeNummer);
+            break;
+        }
+
+        default:
+            std::cout << "Ugyldig kommando!\n";
+            break;
+    }
+
 }
 
 // Leser fra fil
@@ -125,7 +135,7 @@ void Kategorier::skrivAlle() {
     }
 }
 
-Kategori* Kategorier::finnKategori(std::string kategoriNavn) {
+Kategori *Kategorier::finnKategori(std::string kategoriNavn) {
     for (const auto &kategori: kategoriMap) {
         if (!kategori.second->hentNavn().compare(0, kategoriNavn.size(), kategoriNavn)) {
             return dynamic_cast<Kategori *>(kategori.second);
@@ -145,6 +155,18 @@ void Kategorier::lagTingIKategori() {
     }
 }
 
+void Kategorier::endreTingIKategori() {
+    std::string kategoriNavn = lesString("Velg kategori");
+    auto kategori = finnKategori(kategoriNavn);
+
+    if (kategori) {
+        int kundeNummer = lesInt("Kundenummer: ", 1, kategori->hentAntallTing());
+        kategori->finnTing(kundeNummer-1)->endreTing();
+    } else {
+        std::cout << "Det finnes ingen kategori med navn " << kategoriNavn << std::endl;
+    }
+}
+
 void Kategorier::kjopTing() {
     int ting;
     int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.antallKunder());
@@ -152,8 +174,8 @@ void Kategorier::kjopTing() {
 
     auto kategori = finnKategori(kategoriNavn);
 
-    if(kategori) {
-        kategori->skrivFullKategori(); 
+    if (kategori) {
+        kategori->skrivFullKategori();
         ting = lesInt("Skriv inn nummer på tingen du vil kjøpe", 0, kategori->hentAntallTing());
         /**
          * Ifm. kjøpet må alt følgende skje: Kjøperens antall kjøp telles opp med en. 

@@ -22,7 +22,9 @@ public:
 
     ~Kategorier();
 
-    void handling(char valg);
+    void kategoriHandling(char valg);
+
+    void tingHandling(char valg);
 
     void lesFraFil();
 
@@ -37,6 +39,8 @@ public:
     Kategori *finnKategori(std::string kategoriNavn);
 
     void lagTingIKategori();
+
+    void endreTingIKategori();
 
     void kjopTing();
 

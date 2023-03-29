@@ -26,30 +26,38 @@ Kategorier gKategoribase; // Globalt container-objekt med ALLE kategoriene.
  *  Hovedprogram.
  */
 int main() {
-    char valg;
+    std::string valg;
 
     gKundebase.lesFraFil();
     gKategoribase.lesFraFil();
 
     skrivMeny();
 
-    valg = lesChar("\nKommando");
+    valg = lesString("\nKommando");
 
-    while (valg != 'Q') {
-        switch (valg) {
+    char forsteValg = valg.at(0);
+    char andreValg = valg.at(1);
+
+    while (forsteValg != 'Q') {
+        switch (forsteValg) {
             case 'U':
-                gKundebase.handling();
+                gKundebase.handling(andreValg);
                 break;
             case 'A':
-            case 'K':
+                gKategoribase.kategoriHandling(andreValg);
+                break;
+            case 'K': break;
             case 'T':
-                gKategoribase.handling(valg);
+                gKategoribase.tingHandling(andreValg);
                 break;
             default:
                 skrivMeny();
                 break;
         }
-        valg = lesChar("\nKommando");
+
+        valg = lesString("\nKommando");
+        forsteValg = valg.at(0);
+        andreValg = valg.at(1);
     }
     
     gKundebase.skrivTilFil();
