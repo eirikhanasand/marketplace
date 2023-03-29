@@ -162,8 +162,8 @@ void Kategorier::kjopTing() {
     auto k = finnKategori(kategoriNavn);
 
     if(k) {
-        k->skrivFullKategori();
-        ting = lesInt("Skriv inn nummer på tingen du vil kjøpe", 0, k->tingMap.size());
+        k->skrivFullKategori(); 
+        ting = lesInt("Skriv inn nummer på tingen du vil kjøpe", 0, k->tingListe.size());
         /**
          * Ifm. kjøpet må alt følgende skje: Kjøperens antall kjøp telles opp med en. 
          * Selgerens antall salg telles opp med en. Antall av tingen telles ned med en, 
