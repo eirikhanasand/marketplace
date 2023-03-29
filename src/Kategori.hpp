@@ -25,8 +25,10 @@ public:
 
     std::string hentNavn() const;
 
+    void addTing();
+
 private:
-    std::list<NyTing *> tingMap;
+    std::list<NyTing*> tingListe;
 
     int antallTingTilSalgs;
 

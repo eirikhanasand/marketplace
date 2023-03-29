@@ -35,3 +35,8 @@ void Kategori::skrivData() {
 std::string Kategori::hentNavn() const {
     return kategoriNavn;
 }
+
+void Kategori::addTing() {
+    auto *ting = new NyTing(tingListe.size());
+    tingListe.push_back(ting);
+}

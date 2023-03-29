@@ -20,6 +20,8 @@ public:
 
     void kjopTing();
 
+    std::string hentNavn() const;
+
 private:
     int nummer;
     int pris;

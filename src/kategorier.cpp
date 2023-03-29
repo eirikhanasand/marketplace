@@ -160,10 +160,10 @@ void Kategorier::skrivFullKategori() {
 
 void Kategorier::lagTing() {
     std::string kategoriNavn = lesString("Velg kategori");
-    auto k = finnKategori(kategoriNavn);
-    NyTing* ting = new NyTing(k->tingMap.size());
-    if (k) {
-        k->tingMap.push_back(ting);
+    auto kategori = finnKategori(kategoriNavn);
+
+    if (kategori != nullptr) {
+        kategori->addTing();
     } else {
         std::cout << "Det finnes ingen kategori med navn " << kategoriNavn << std::endl;
     };

@@ -33,6 +33,10 @@ void NyTing::settData() {
     antall = lesInt("Hvor mange selger du", 0, INT32_MAX);
 }
 
+std::string NyTing::hentNavn() {
+    return navn;
+}
+
 void NyTing::kjopTing() {
     int ting;
     int kundeNummer = lesInt("Kundenummer:", 0, noe);
