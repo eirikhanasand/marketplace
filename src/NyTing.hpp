@@ -27,6 +27,8 @@ public:
     void endreAntall(int nyttAntall);
     void endreBeskrivelse(std::string nyBeskrivelse);
 
+    void endreTing();
+
 private:
     int nummer;
     int pris;

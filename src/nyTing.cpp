@@ -57,36 +57,37 @@ void NyTing::endreBeskrivelse(std::string nyBeskrivelse) {
 }
 
 void NyTing::endreTing() {
-    cout << "Hva vil du endre på?" << endl;
-    cout << "1. Navn" << endl;
-    cout << "2. Antall" << endl;    
-    cout << "3. Pris" << endl;
-    cout << "4. Beskrivelse" << endl;
-    cout << "5. Avbryt" << endl;
-    char valg = lesChar("Valg: ", "12345");
+    std::cout << "Hva vil du endre på?" << '\n'
+        << "1. Navn" << '\n'
+        << "2. Antall" << '\n'
+        << "3. Pris" << '\n'
+        << "4. Beskrivelse" << '\n'
+        << "5. Avbryt" << '\n';
+
+    int valg = lesInt("Valg: ", 1, 5);
 
     switch (valg) {
         case '1': {
-            NyTing::endreNavn(std::string nyttNavn);
+            std::string navn = lesString("Nytt navn: ");
+            NyTing::endreNavn(navn);
             break;
         }
         case '2': {
-            NyTing::endreAntall(int nyttAntall);
+            int antall = lesInt("Nytt antall: ", 0, INT32_MAX);
+            NyTing::endreAntall(antall);
             break;
         }
         case '3': {
-            NyTing::endrePris(int nyPris);
+            int pris = lesInt("Ny pris: ", 0, INT32_MAX);
+            NyTing::endrePris(pris);
             break;
         }
         case '4': {
-            NyTing::endreBeskrivelse(std::string nyBeskrivelse);
+            std::string beskrivelse = lesString("Ny beskrivelse: ");
+            NyTing::endreBeskrivelse(0);
             break;
         }
         case '5': {
-            break;
-        }
-         default: {
-            std::cout << "Det er ikke en gyldig kommando!" << std::endl;
             break;
         }
     }
