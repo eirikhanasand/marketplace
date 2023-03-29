@@ -143,7 +143,7 @@ Kategori* Kategorier::finnKategori(std::string kategoriNavn) {
     return nullptr;
 }
 
-void Kategorier::lagTing() {
+void Kategorier::lagTingIKategori() {
     std::string kategoriNavn = lesString("Velg kategori");
     auto kategori = finnKategori(kategoriNavn);
 
@@ -163,7 +163,7 @@ void Kategorier::kjopTing() {
 
     if(kategori) {
         kategori->skrivFullKategori(); 
-        ting = lesInt("Skriv inn nummer på tingen du vil kjøpe", 0, kategori->tingListe.size());
+        ting = lesInt("Skriv inn nummer på tingen du vil kjøpe", 0, kategori->hentAntallTing());
         /**
          * Ifm. kjøpet må alt følgende skje: Kjøperens antall kjøp telles opp med en. 
          * Selgerens antall salg telles opp med en. Antall av tingen telles ned med en, 

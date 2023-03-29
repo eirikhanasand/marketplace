@@ -36,7 +36,7 @@ public:
 
     Kategori *finnKategori(std::string kategoriNavn);
     
-    void lagTing();
+    void lagTingIKategori();
 
     void kjopTing();
 
