@@ -60,7 +60,7 @@ float lesFloat(const char *t, const float min, const float max) {
     } while (feil || tall < min || tall > max);
 
     return tall;
-};
+}
 
 
 /**
@@ -104,4 +104,4 @@ std::string lesString(std::string tekst) {
     std::getline(std::cin, string);
     
     return string;
-};
+}

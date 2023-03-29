@@ -25,7 +25,7 @@ Kategorier::Kategorier() {
 Kategorier::~Kategorier() {
     for (auto &kategori: kategoriMap) {
         delete kategori.second;
-    };
+    }
     kategoriMap.clear();
 }
 
@@ -38,7 +38,7 @@ void Kategorier::lagKategorier() {
          std::cout << "Opprettet kategori " << navn << std::endl;
     } else {
         std::cout << "Beklager, det finnes allerede en " << navn << " kategori!" << std::endl;
-    };
+    }
 }
 
 // Håndterer valg
@@ -58,7 +58,7 @@ void Kategorier::handling(char valg) {
                     kunde->skrivData();
                 } else {
                     std::cout << "Det finnes ingen kunde med kundenummer " << kundeNummer << std::endl;
-                };
+                }
                 break;
             }
             case 'F': {
@@ -83,7 +83,7 @@ void Kategorier::lesFraFil() {
         // les fra kundefil
     } else {
         std::cout << "Kunne ikke lese fra /data/KATEGORIER.DTA." << std::endl;
-    };
+    }
 
     kundeFil.close();
 }
@@ -97,10 +97,10 @@ void Kategorier::skrivTilFil() {
         // skriv til kundefil
     } else {
         std::cout << "Kunne ikke skrive til /data/KATEGORIER.DTA." << std::endl;
-    };
+    }
 
     kundeFil.close();
-};
+}
 
 // Oppretter ny kategori
 void Kategorier::nyKategori() {
@@ -111,16 +111,16 @@ void Kategorier::nyKategori() {
         kategoriMap.insert(std::pair<std::string, Kategori *>(kategoriNavn, kategori));
     } else {
         std::cout << "Kategorien finnes allerede." << std::endl;
-    };
-};
+    }
+}
 
 //Sjekker om kategori finnes med samme navn
 bool Kategorier::kategoriFinnes(std::string kategoriNavn) {
     for (const auto &kategori: kategoriMap) {
         if (kategori.second->hentNavn() == kategoriNavn) {
             return true;
-        };
-    };
+        }
+    }
     return false;
 }
 
@@ -142,8 +142,8 @@ Kategori* Kategorier::finnKategori(std::string kategoriNavn) {
     for (const auto &kategori: kategoriMap) {
         if (!kategori.second->hentNavn().compare(0, kategoriNavn.size(), kategoriNavn)) {
             return dynamic_cast<Kategori *>(kategori.second);
-        };
-    };
+        }
+    }
     return nullptr;
 }
 
@@ -155,7 +155,7 @@ void Kategorier::lagTingIKategori() {
         kategori->lagTing();
     } else {
         std::cout << "Det finnes ingen kategori med navn " << kategoriNavn << std::endl;
-    };
+    }
 }
 
 void Kategorier::kjopTing() {
@@ -176,5 +176,5 @@ void Kategorier::kjopTing() {
         */
     } else {
         std::cout << "Denne kategorien finnes ikke!" << std::endl;
-    };
+    }
 }

@@ -49,7 +49,7 @@ int main() {
                 skrivMeny();
                 break;
 
-        };
+        }
         valg = lesChar("\nKommando");
     }
     

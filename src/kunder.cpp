@@ -31,26 +31,42 @@ void Kunder::handling() {
     while (valg != 'Q') {
         switch (valg) {
             case 'N': {
-                Kunder();
+                lagKunde();
+                valg = 0;
                 break;
             }
             case 'A': {
-                skrivAlle();
+                if (kundeListe.size()) {
+                    skrivAlle();
+                } else {
+                    std::cout << "Det finnes ingen kunder" << std::endl;
+                }
+                valg = 0;
                 break;
             }
             case 'S': {
-                int kundeNummer = lesInt("Kundenummer:", 0, kundeListe.size());
-                Kunde *kunde = finnKunde(kundeNummer);
-                if(kunde) {
-                    kunde->skrivData();
+                if (kundeListe.size()) {
+                    int kundeNummer = lesInt("Kundenummer:", 0, kundeListe.size());
+                    Kunde *kunde = finnKunde(kundeNummer);
+                    if(kunde) {
+                        kunde->skrivData();
+                    } else {
+                        std::cout << "Det finnes ingen kunde med kundenummer " << kundeNummer << std::endl;
+                    }
+                    valg = 0;
                 } else {
-                    std::cout << "Det finnes ingen kunde med kundenummer " << kundeNummer << std::endl;
-                };
+                    std::cout << "Det finnes ingen kunder." << std::endl;
+                }
                 break;
             }
             case 'F': {
-                int kundeNummer = lesInt("Kundenummer:", 0, kundeListe.size());
-                fjernKunde(kundeNummer);
+                if(kundeListe.size()) {
+                    int kundeNummer = lesInt("Kundenummer:", 0, kundeListe.size());
+                    fjernKunde(kundeNummer);
+                    valg = 0;
+                } else {
+                    std::cout << "Det finnes ingen kunder." << std::endl;
+                }
                 break;
             }
 
@@ -70,7 +86,7 @@ void Kunder::lesFraFil() {
         // les fra kundefil
     } else {
         std::cout << "Kunne ikke lese fra /data/KUNDER.DTA." << std::endl;
-    };
+    }
 
     // write here
     kundeFil.close();
@@ -85,7 +101,7 @@ void Kunder::skrivTilFil() {
         // skriv til kundefil
     } else {
         std::cout << "Kunne ikke skrive til /data/KUNDER.DTA." << std::endl;
-    };
+    }
 
     // write here
     kundeFil.close();
@@ -103,10 +119,10 @@ void Kunder::fjernKunde(int kundeNummer) {
             kunde->~Kunde();
         } else {
             std::cout << "Kunde ble ikke slettet." << std::endl;
-        };
+        }
     } else {
         std::cout << "Kunde finnes ikke." << std::endl;
-    };
+    }
 }
 
 // Finds customer
@@ -114,8 +130,8 @@ Kunde* Kunder::finnKunde(int kundeNummer) {
     for (auto &kunde: kundeListe) {
         if (kunde->hentKundeNummer() == kundeNummer) {
             return kunde;
-        };
-    };
+        }
+    }
     return nullptr;
 }
 
@@ -133,7 +149,7 @@ void Kunder::skrivAlle() {
         }
         kunde->skrivInfo();
         i++; 
-    };
+    }
 }
 
 int Kunder::antallKunder() {

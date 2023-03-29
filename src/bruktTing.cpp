@@ -14,6 +14,7 @@
 
 // Constructor
 BruktTing::BruktTing(int Nummer):NyTing(Nummer) {
+
 }
 
 // Destructor
@@ -32,7 +33,7 @@ void BruktTing::settData() {
         case 3: kvalitet = Brukt;       break;
         case 4: kvalitet = GodtBrukt;   break;
         case 5: kvalitet = Sliten;      break;
-    };
+    }
 }
 
 void BruktTing::skrivData() {
