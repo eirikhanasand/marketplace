@@ -6,8 +6,8 @@ CPPFLAGS=-g -Wall -std=c++11
 LDFLAGS=-g
 
 # Source files
-SRCS=$(wildcard *.cpp)
-OBJS=$(subst .cpp,.o,$(SRCS))
+SRCS=$(wildcard src/*.cpp)
+OBJS=$(subst src/.cpp,.o,$(SRCS))
 
 # Compiled binary filename
 BINOUT=prosjekt
