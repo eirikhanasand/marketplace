@@ -1,7 +1,7 @@
 /**
- *   Header for klassen Kategori
+ *   Header for klassen Kunde
  *
- *   @file      Kategori.h
+ *   @file      Kunde.h
  *   @authors   todo
  */
 
@@ -14,27 +14,28 @@
 #include "nyTing.h"
 
 class Kategori {
+public:
+    // Constructor
+    Kategori(std::string KategoriNavn);
+
+    // Destructor
+    ~Kategori();
+
+    // Setter kategoridata
+    void settData();
+
+    // Skriver kategoridata
+    void skrivData();
+
+    // Henter kategorinavn
+    std::string hentNavn() const;
+
+private:
+    std::list<NyTing *> NyTing;
+
     int antallTilSalgs;
-    
+
     std::string kategoriNavn;
-    
-    public:
-        std::list<NyTing*> NyTing;
-        
-        // Constructor
-        Kategori(std::string KategoriNavn);
-
-        // Destructor
-        ~Kategori();
-
-        // Setter kategoridata
-        void settData();
-
-        // Skriver kategoridata
-        void skrivData();
-
-        // Henter kategorinavn
-        std::string hentNavn() const;
 };
 
 #endif

@@ -11,8 +11,7 @@
 
 #include "kategori.h"
 #include "kategorier.h"
-
-extern Kategorier gKategoribase;
+#include "lesData3.h"
 
 Kategori::Kategori(std::string KategoriNavn) {
     kategoriNavn = KategoriNavn;
@@ -20,7 +19,7 @@ Kategori::Kategori(std::string KategoriNavn) {
 }
 
 Kategori::~Kategori() {
-    gKategoribase.remove();
+    //TODO
 }
 
 // Input category data
@@ -33,6 +32,6 @@ void Kategori::skrivData() {
     std::cout << "Kategorinavn: " << kategoriNavn << "\tAntall ting til salgs: " << antallTilSalgs << std::endl;
 }
 
-std::string Kategori::hentNavn() const { 
-    return kategoriNavn; 
+std::string Kategori::hentNavn() const {
+    return kategoriNavn;
 }

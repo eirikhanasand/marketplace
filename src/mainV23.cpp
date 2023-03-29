@@ -15,7 +15,7 @@
 #include "kunder.h"
 #include "kunde.h"
 
-Kunder     gKundebase;    // Globalt container-objekt med ALLE kundene.
+Kunder gKundebase;    // Globalt container-objekt med ALLE kundene.
 Kategorier gKategoribase; // Globalt container-objekt med ALLE kategoriene.
 
 //  Kode som legges innledningsvis i de .cpp-filene som trenger å bruke
@@ -26,7 +26,7 @@ Kategorier gKategoribase; // Globalt container-objekt med ALLE kategoriene.
 /**
  *  Hovedprogram.
  */
-int main()  {
+int main() {
     char valg;
 
     gKundebase.lesFraFil();
@@ -37,12 +37,18 @@ int main()  {
     valg = lesChar("\nKommando");
 
     while (valg != 'Q') {
-        switch(valg) {
-            case 'U':   gKundebase.handling();          break;
-            case 'A':  
-            case 'K':  
-            case 'T':   gKategoribase.handling(valg);   break;
-            default:    skrivMeny();                    break;
+        switch (valg) {
+            case 'U':
+                gKundebase.handling();
+                break;
+            case 'A':
+            case 'K':
+            case 'T':
+                gKategoribase.handling(valg);
+                break;
+            default:
+                skrivMeny();
+                break;
 
         };
         valg = lesChar("\nKommando");

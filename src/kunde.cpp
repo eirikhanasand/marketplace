@@ -18,29 +18,33 @@ Kunde::Kunde(int KundeNummer) {
 }
 
 Kunde::~Kunde() {
-    gKundebase.remove();
+    //
 }
 
 void Kunde::settData() {
-    kategoriNavn = lesString("Navn");
-    kategoriNavn = lesString("Gateadresse");
-    mobilNummer  = lesInt("Mobilnummer", 40000000, 99999999);
-    kategoriNavn = lesString("Mailadresse");
-    kategoriNavn = lesString("Poststed");
-    postNummer   = lesInt("Postnummer", 0, 9999);
+    navn = lesString("Navn");
+    gateAdresse = lesString("Gateadresse");
+    mobilNummer = lesInt("Mobilnummer", 40000000, 99999999);
+    mailAdresse = lesString("Mailadresse");
+    postSted = lesString("Poststed");
+    postNummer = lesInt("Postnummer", 0, 9999);
 
-    antallTingKjopt    = 0;
-    antallTingSolgt    = 0;
+    antallTingKjopt = 0;
+    antallTingSolgt = 0;
     antallTingTilSalgs = 0;
 }
 
+int Kunde::hentKundeNummer() {
+    return kundeNummer;
+}
+
 void Kunde::skrivKunde() {
-    auto kunde = finnKunde();
+    /*auto kunde = finnKunde();
     if (kunde) {
         kunde->skrivData();
     } else {
         std::cout << "Kunde finnes ikke." << std::endl;
-    };
+    };*/ // TODO
 }
 
 void Kunde::skrivData() {
@@ -52,5 +56,5 @@ void Kunde::skrivData() {
     std::cout << "Postnummer: " << postNummer << std::endl;
     std::cout << "Antall ting kjøpt: " << antallTingKjopt << std::endl;
     std::cout << "Antall ting solgt: " << antallTingSolgt << std::endl;
-    std::cout << "Antall til salgs: " << antallTilSalgs << std::endl;
+    std::cout << "Antall til salgs: " << antallTingTilSalgs << std::endl;
 }

@@ -22,10 +22,11 @@
  *
  *  @return  Ett (upcaset) tegn.
  */
-char lesChar(const char* t)  {
+char lesChar(const char *t) {
     char tegn;
     std::cout << t << ":  ";
-    std::cin >> tegn;  std::cin.ignore(MAXCHAR, '\n');
+    std::cin >> tegn;
+    std::cin.ignore(MAXCHAR, '\n');
     return (toupper(tegn));
 }
 
@@ -39,10 +40,10 @@ char lesChar(const char* t)  {
  *
  *  @return  Godtatt verdi i intervallet 'min' - 'max'
  */
-float lesFloat(const char* t, const float min, const float max)  {
+float lesFloat(const char *t, const float min, const float max) {
     char buffer[MAXCHAR] = "";
     float tall = 0.0F;
-    bool  feil = false;
+    bool feil = false;
 
     do {
         feil = false;
@@ -50,11 +51,11 @@ float lesFloat(const char* t, const float min, const float max)  {
         std::cout << t << " (" << min << " - " << max << "):  ";
         std::cin.getline(buffer, MAXCHAR);
         tall = static_cast <float> (atof(buffer));
-        if (tall == 0 && buffer[0] != '0') {  
-            feil = true;   
-            std::cout << "\nERROR: Not a float\n\n";  
+        if (tall == 0 && buffer[0] != '0') {
+            feil = true;
+            std::cout << "\nERROR: Not a float\n\n";
         }
-    } while (feil ||  tall < min  ||  tall > max);
+    } while (feil || tall < min || tall > max);
 
     return tall;
 };
@@ -69,9 +70,9 @@ float lesFloat(const char* t, const float min, const float max)  {
  *
  *  @return  Godtatt verdi i intervallet 'min' - 'max'
  */
-int lesInt(const char* t, const int min, const int max)  {
+int lesInt(const char *t, const int min, const int max) {
     char buffer[MAXCHAR] = "";
-    int  tall = 0;
+    int tall = 0;
     bool feil = false;
 
     do {
@@ -79,11 +80,11 @@ int lesInt(const char* t, const int min, const int max)  {
         std::cout << t << " (" << min << " - " << max << "):  ";
         std::cin.getline(buffer, MAXCHAR);
         tall = atoi(buffer);
-        if (tall == 0 && buffer[0] != '0') { 
-            feil = true;   
-            std::cout << "\nERROR: Not an integer\n\n";  
+        if (tall == 0 && buffer[0] != '0') {
+            feil = true;
+            std::cout << "\nERROR: Not an integer\n\n";
         }
-    } while (feil  ||  tall < min  ||  tall > max);
+    } while (feil || tall < min || tall > max);
 
     return tall;
 }
@@ -98,6 +99,6 @@ int lesInt(const char* t, const int min, const int max)  {
 std::string lesString(std::string tekst) {
     std::string string;
     std::cout << tekst << ':' << std::endl;
-    std::getline(std::cin, t);
-    return t;
+    std::getline(std::cin, string);
+    return string;
 };

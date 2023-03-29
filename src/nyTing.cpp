@@ -14,6 +14,6 @@ NyTing::NyTing() {
 }
 
 // Destructor
-NyTing::~NyTing(){
+NyTing::~NyTing() {
 
 }

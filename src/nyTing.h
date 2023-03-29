@@ -11,14 +11,15 @@
 #include <iostream>
 
 class NyTing {
+public:
+    NyTing();
+
+    ~NyTing();
+private:
     int nr;
 
     std::string navn;
     std::string beskrivelse;
-
-    public:
-        NyTing();
-        ~NyTing();
 };
 
 #endif

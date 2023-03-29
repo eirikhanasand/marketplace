@@ -11,8 +11,6 @@
 #include "kunde.h"
 #include "lesData3.h"
 
-extern Kunder gKundebase;
-
 // Constructor
 Kunder::Kunder() {
 
@@ -36,13 +34,13 @@ void Kunder::handling() {
                 skrivAlle();
                 break;
             case 'S': {
-                int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.kundeListe.size());
-                Kunde* kunde = finnKunde(kundeNummer);
+                int kundeNummer = lesInt("Kundenummer:", 0, kundeListe.size());
+                Kunde *kunde = finnKunde(kundeNummer);
                 break;
             }
             case 'F': {
-                int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.kundeListe.size());
-                slettKunde(kundeNummer);
+                int kundeNummer = lesInt("Kundenummer:", 0, kundeListe.size());
+                fjernKunde(kundeNummer);
                 break;
             }
 
@@ -63,13 +61,13 @@ void Kunder::lesFraFil() {
     } else {
         std::cout << "Kunne ikke lese fra /data/KUNDER.DTA." << std::endl;
     };
-        
+
     // write here
     kundeFil.close();
 }
 
 // Skriver til fil
-void Kunder::skrivTilFil(){
+void Kunder::skrivTilFil() {
     std::ofstream kundeFil;
     kundeFil.open("../data/KUNDER.DTA");
 
@@ -84,13 +82,18 @@ void Kunder::skrivTilFil(){
 }
 
 // Deletes customer 
-void Kunder::slettKunde(int kundeNummer) {
+void Kunder::fjernKunde(int kundeNummer) {
     char bekreftelse = lesChar("Er du sikker på at du vil slette kunden? (J/N): ");
     auto kunde = finnKunde(kundeNummer);
-    
+
+    while (bekreftelse != 'J' && bekreftelse != 'N') {
+        bekreftelse = lesChar("Feil input, prøv på nytt: ");
+    }
+
     if (kunde) {
-        if (bekreftelse == 'J'){
+        if (bekreftelse == 'J') {
             kunde->skrivData();
+            kundeListe.remove(kunde);
             kunde->~Kunde();
         } else {
             std::cout << "Kunde ble ikke slettet." << std::endl;
@@ -101,9 +104,9 @@ void Kunder::slettKunde(int kundeNummer) {
 }
 
 // Finds customer
-Kunde* Kunder::finnKunde(int kundeNummer) {
-    for (auto &k : gKundebase.kundeListe) {
-        if (k->kundeNummer == kundeNummer) {
+Kunde *Kunder::finnKunde(int kundeNummer) {
+    for (auto &k: kundeListe) {
+        if (k->hentKundeNummer() == kundeNummer) {
             return k;
         };
     };
@@ -111,7 +114,9 @@ Kunde* Kunder::finnKunde(int kundeNummer) {
 }
 
 void Kunder::skrivAlle() {
-    for (const auto &k: gKundebase.kundeListe) {
-        std::cout << "Kundenummer: " << k->kundeNummer << "\tNavn: " << k->navn << "\tTlf: " << k->mobilNummer << std::endl;
+    for (const auto &k: kundeListe) {
+        // std::cout << "Kundenummer: " << k->hentKundeNummer() << "\tNavn: " << k->navn << "\tTlf: " << k->mobilNummer << std::endl;
+        // Usikker om dette er riktig.
+        k->skrivData();
     };
 }
