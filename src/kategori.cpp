@@ -50,7 +50,7 @@ int Kategori::hentAntallTing() {
 
 void Kategori::skrivFullKategori() {
     for (const auto &ting: tingListe) {
-        tin.
+        ting->skrivData();
     };
     // Skriv alle data om alle ting i denne kategorien utenom selgerens nummer, 
     // om den er NY eller BRUKT og tingens unike nummer fra 1 og oppover
