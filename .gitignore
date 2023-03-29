@@ -15,5 +15,14 @@ out
 CMakeLists.txt
 cmake-build-debug
 
-#VSCode
+# VSCode
 .vscode
+
+# Makefile
+bruktTing.o
+kategori.o
+kategorier.o
+kunde.o
+kunder.o
+lesData3.o
+mainV23.o
