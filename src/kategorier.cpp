@@ -31,8 +31,8 @@ Kategorier::Kategorier() {
 
 // Destructor
 Kategorier::~Kategorier() {
-    for (auto &k: kategoriMap) {
-        delete k.second;
+    for (auto &kategori: kategoriMap) {
+        delete kategori.second;
     };
     kategoriMap.clear();
 }
@@ -112,8 +112,8 @@ void Kategorier::nyKategori() {
 
 //Sjekker om kategori finnes med samme navn
 bool Kategorier::kategoriFinnes(std::string kategoriNavn) {
-    for (const auto &k: kategoriMap) {
-        if (k.second->hentNavn() == kategoriNavn) {
+    for (const auto &kategori: kategoriMap) {
+        if (kategori.second->hentNavn() == kategoriNavn) {
             return true;
         };
     };
@@ -129,13 +129,13 @@ void Kategorier::fjernKategori(Kategori *kategori) {
 
 // Skriver alle kategorier
 void Kategorier::skrivAlle() {
-    for (const auto &k: kategoriMap) {
+    for (const auto &kategori: kategoriMap) {
         k.second->skrivData();
     }
 }
 
 Kategori* Kategorier::finnKategori(std::string kategoriNavn) {
-    for (const auto &k: kategoriMap) {
+    for (const auto &kategori: kategoriMap) {
         if (!k.second->hentNavn().compare(0, kategoriNavn.size(), kategoriNavn)) {
             return dynamic_cast<Kategori *>(k.second);
         };
@@ -159,11 +159,11 @@ void Kategorier::kjopTing() {
     int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.antallKunder());
     std::string kategoriNavn = lesString("Kategori");
 
-    auto k = finnKategori(kategoriNavn);
+    auto kategori = finnKategori(kategoriNavn);
 
-    if(k) {
-        k->skrivFullKategori(); 
-        ting = lesInt("Skriv inn nummer på tingen du vil kjøpe", 0, k->tingListe.size());
+    if(kategori) {
+        kategori->skrivFullKategori(); 
+        ting = lesInt("Skriv inn nummer på tingen du vil kjøpe", 0, kategori->tingListe.size());
         /**
          * Ifm. kjøpet må alt følgende skje: Kjøperens antall kjøp telles opp med en. 
          * Selgerens antall salg telles opp med en. Antall av tingen telles ned med en, 

@@ -42,10 +42,10 @@ void Kategori::lagTing() {
 }
 
 void Kategori::skrivFullKategori() {
-    for (const auto &k: kategoriMap) {
-        k.second->skrivData();
-        for (const auto &t: kategoriMap) {
-            t.second->skrivData();
+    for (const auto &kategori: kategoriMap) {
+        kategori.second->skrivData();
+        for (const auto &ting: kategoriMap) {
+            ting.second->skrivData();
         };
         // Skriv alle data om alle ting i denne kategorien utenom selgerens nummer, 
         // om den er NY eller BRUKT og tingens unike nummer fra 1 og oppover
