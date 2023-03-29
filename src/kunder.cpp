@@ -81,7 +81,7 @@ void Kunder::lesFraFil() {
         std::cout << "Leser fra filen KUNDER.DTA" << std::endl;
 
         while(!kundeFil.eof()) {
-            kundeListe.push_back(new Kunde(innfil));
+            kundeListe.push_back(new Kunde(kundeFil));
         }
 
         kundeFil.close();

@@ -196,7 +196,7 @@ void Kategorier::skrivAlleTilFil() {
         std::cout << "Leser til filen KATEGORIER.DTA" << std::endl;
 
         for(const auto &kategori: kategoriMap) {
-            kategori->skrivTilFil(kategoriFil);
+            kategori.second->skrivTilFil(kategoriFil);
         }
 
         kategoriFil.close();
@@ -214,7 +214,8 @@ void Kategorier::lesAlleFraFil() {
         std::cout << "Leser fra filen KUNDER.DTA" << std::endl;
 
         while(!kategoriFil.eof()) {
-            kategoriMap.push_back(new Kategori(innfil));
+            Kategori* kategori = new Kategori(kategoriFil);
+            kategoriMap.insert(std::pair<std::string, Kategori*>(kategori->hentNavn(), kategori));
         }
 
         kategoriFil.close();

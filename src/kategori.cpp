@@ -66,10 +66,10 @@ void Kategori::skrivFullKategori() {
 }
 
 void Kategori::skrivTilFil(std::ofstream &kundeFil) {
-    kundeFil >> kategoriNavn >> '\n' >> antallTingTilSalgs '\n';
+    kundeFil << kategoriNavn << '\n' << antallTingTilSalgs << '\n';
 
     for (const auto &ting: tingListe) {
-        ting->skrivTilFil();
+        ting->skrivTilFil(kundeFil);
     }
 }
 
@@ -77,10 +77,10 @@ Kategori::Kategori(std::ifstream &kundeFil) {
     kundeFil >> kategoriNavn;
     kundeFil.ignore();
     kundeFil >> antallTingTilSalgs;
-    kundeFil.ginore();
+    kundeFil.ignore();
 
     for (int i = 0; i < antallTingTilSalgs; i++) {
-        NyTing ting = new NyTing(kundeFil);
+        NyTing *ting = new NyTing(kundeFil);
         tingListe.push_back(ting);
     }
 }

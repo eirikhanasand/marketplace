@@ -44,8 +44,8 @@ void BruktTing::skrivData() {
 }
 
 void BruktTing::skrivTilFil(std::ofstream &tingFil) {
-    // todo
-    tingFil >> nummer >> ' ' >> pris >> ' ' >> antall >> ' ' >> aar >> ' ' >> kvalitet >> '\n' >> navn >> '\n' >> beskrivelse >> '\n';
+    NyTing::skrivTilFil(tingFil);
+    tingFil << aar << ' ' << kvalitet << '\n';
 }
 
 void BruktTing::BruktTing(std::ifstream &tingFil):NyTing(std::ofstream &tingFil) { // noe e cursed her

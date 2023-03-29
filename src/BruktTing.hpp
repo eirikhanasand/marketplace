@@ -17,7 +17,7 @@
 class BruktTing : NyTing {
 public:
     BruktTing(int Nummer);
-    BruktTing(std::ifstream &tingFil)
+    BruktTing(std::ifstream &tingFil);
 
     ~BruktTing();
 

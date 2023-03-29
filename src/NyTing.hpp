@@ -15,7 +15,7 @@ class NyTing {
 public:
     NyTing(int Nummer);
 
-    NyTing(ofstream & tingFil); // kan denne være virtual? Trengs mtp bruktting
+    NyTing(std::ifstream & tingFil); // kan denne være virtual? Trengs mtp bruktting
 
     ~NyTing();
 
@@ -32,9 +32,9 @@ public:
     void endreAntall(int nyttAntall);
     void endreBeskrivelse(std::string nyBeskrivelse);
 
-    virtual void skrivTilFil(ofstream & tingFil);
+    virtual void skrivTilFil(std::ofstream & tingFil);
     void endreTing();
-    
+
 private:
     int nummer;
     int pris;

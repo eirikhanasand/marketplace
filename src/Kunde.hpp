@@ -26,7 +26,7 @@ public:
 
     void skrivInfo();
     
-    void skrivTilFil(ofstream &kundeFil);
+    void skrivTilFil(std::ofstream &kundeFil);
 
 private:
     int kundeNummer;

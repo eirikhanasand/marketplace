@@ -60,8 +60,8 @@ int main() {
         andreValg = valg.at(1);
     }
     
-    gKundebase.skrivTilFil();
-    gKategoribase.skrivTilFil();
+    gKundebase.skrivAlleTilFil();
+    gKategoribase.skrivAlleTilFil();
 
     std::cout << "\n\n";
 
