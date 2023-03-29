@@ -43,6 +43,8 @@ void Kategorier::lagKategorier() {
 
 // Håndterer valg
 void Kategorier::handling(char valg) {
+    char valg = toupper(lesChar("\nKommando: "));
+
     while (valg != 'Q') {
         switch (valg) {
             case 'N':
