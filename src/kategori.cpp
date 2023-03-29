@@ -41,6 +41,10 @@ void Kategori::lagTing() {
     tingListe.push_back(ting);
 }
 
+int Kategori::hentAntallTing() {
+    return tingListe.size();
+}
+
 void Kategori::skrivFullKategori() {
     for (const auto &k: kategoriMap) {
         k.second->skrivData();

@@ -29,6 +29,8 @@ public:
     
     void skrivFullKategori();
 
+    int hentAntallTing();
+
 private:
     std::list<NyTing*> tingListe;
 
