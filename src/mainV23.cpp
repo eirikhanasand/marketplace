@@ -48,7 +48,6 @@ int main() {
             default:
                 skrivMeny();
                 break;
-
         }
         valg = lesChar("\nKommando");
     }
