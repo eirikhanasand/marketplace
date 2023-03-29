@@ -15,7 +15,6 @@
 #include "LesData3.hpp"
 
 extern Kunder gKundebase;
-extern Kategorier gKategoribase;
 
 // Constructor
 Kategorier::Kategorier() {
@@ -150,7 +149,7 @@ Kategori* Kategorier::finnKategori(std::string kategoriNavn) {
 void Kategorier::skrivFullKategori() {
     for (const auto &k: kategoriMap) {
         k.second->skrivData();
-        for (const auto &t: gKategoribase.kategoriMap) {
+        for (const auto &t: kategoriMap) {
             t.second->skrivData();
         };
         // Skriv alle data om alle ting i denne kategorien utenom selgerens nummer, 
