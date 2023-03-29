@@ -32,6 +32,8 @@ public:
 
     int antallKunder();
 
+    void lagKunde();
+
 private:
     std::list<Kunde *> kundeListe;
 

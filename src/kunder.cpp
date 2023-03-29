@@ -13,11 +13,9 @@
 
 // Constructor
 Kunder::Kunder() {
-    Kunde* kunde = new Kunde(kundeListe.size());
-    kundeListe.push_back(kunde);
-    std::cout << "Opprettet kunde med ";
-    kunde->skrivInfo();
+    
 }
+
 // Destructor
 Kunder::~Kunder() {
     for(auto &kunde : kundeListe) {
@@ -140,4 +138,11 @@ void Kunder::skrivAlle() {
 
 int Kunder::antallKunder() {
     return kundeListe.size();
+}
+
+void Kunder::lagKunde() {
+    Kunde* kunde = new Kunde(kundeListe.size());
+    kundeListe.push_back(kunde);
+    std::cout << "Opprettet kunde med ";
+    kunde->skrivInfo();
 }

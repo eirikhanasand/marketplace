@@ -18,6 +18,18 @@ extern Kunder gKundebase;
 
 // Constructor
 Kategorier::Kategorier() {
+
+}
+
+// Destructor
+Kategorier::~Kategorier() {
+    for (auto &kategori: kategoriMap) {
+        delete kategori.second;
+    };
+    kategoriMap.clear();
+}
+
+void Kategorier::lagKategorier() {
     std::string navn = lesString("Kategorinavn");
 
     if(!kategoriFinnes(navn)) {
@@ -27,14 +39,6 @@ Kategorier::Kategorier() {
     } else {
         std::cout << "Beklager, det finnes allerede en " << navn << " kategori!" << std::endl;
     };
-}
-
-// Destructor
-Kategorier::~Kategorier() {
-    for (auto &kategori: kategoriMap) {
-        delete kategori.second;
-    };
-    kategoriMap.clear();
 }
 
 // Håndterer valg

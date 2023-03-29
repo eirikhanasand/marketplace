@@ -40,6 +40,8 @@ public:
 
     void kjopTing();
 
+    void lagKategorier();
+
 private:
     std::map<std::string, Kategori *> kategoriMap;
 };
