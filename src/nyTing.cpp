@@ -55,3 +55,36 @@ void NyTing::endrePris(int nyPris) {
 void NyTing::endreBeskrivelse(std::string nyBeskrivelse) {
     beskrivelse = nyBeskrivelse;
 }
+
+void NyTing::endreTing() {
+    cout << "Hva vil du endre på?" << endl;
+    cout << "1. Navn" << endl;
+    cout << "2. Antall" << endl;    
+    cout << "3. Pris" << endl;
+    cout << "4. Beskrivelse" << endl;
+    cout << "5. Avbryt" << endl;
+    char valg = lesChar("Valg: ", "12345");
+    
+    switch (valg) {
+        case '1': {
+            NyTing::endreNavn(std::string nyttNavn);
+            break;
+        }
+        case '2': {
+            NyTing::endreAntall(int nyttAntall);
+            break;
+        }
+        case '3': {
+            NyTing::endrePris(int nyPris);
+            break;
+        }
+        case '4': {
+            NyTing::endreBeskrivelse(std::string nyBeskrivelse);
+            break;
+        }
+        case '5': {
+            break;
+    }
+
+        }
+}
