@@ -101,20 +101,20 @@ void NyTing::endreTing() {
 
 NyTing::NyTing(ofstream & tingFil) {
     tingFil >> nummer;
-    kundeFil.ignore();
+    tingFil.ignore();
     tingFil >> pris;
-    kundeFil.ignore();
+    tingFil.ignore();
     tingFil >> antall;
-    kundeFil.ignore();
+    tingFil.ignore();
     
     tingFil >> antall;  // denne må ignoreres hvis den e 0
-    kundeFil.ignore();  // denne må ignoreres hvis den e 0
+    tingFil.ignore();  // denne må ignoreres hvis den e 0
     tingFil >> antall;  // denne må ignoreres hvis den e 0
-    kundeFil.ignore();  // denne må ignoreres hvis den e 0
+    tingFil.ignore();  // denne må ignoreres hvis den e 0
 
-    std::getline(kundeFil, navn);
+    std::getline(tingFil, navn);
     navn[navn.length-1] = '\0';
 
-    std::getline(kundeFil, beskrivelse);
+    std::getline(tingFil, beskrivelse);
     beskrivelse[beskrivelse.length-1] = '\0';
 }
