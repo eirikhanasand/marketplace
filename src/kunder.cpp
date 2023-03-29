@@ -20,8 +20,8 @@ Kunder::Kunder() {
 }
 // Destructor
 Kunder::~Kunder() {
-    for(auto &k : kundeListe) {
-        k->~Kunde();
+    for(auto &kunde : kundeListe) {
+        kunde->~Kunde();
     }
     std::cout << "Slettet alle kunder." << std::endl;
 }
@@ -113,9 +113,9 @@ void Kunder::fjernKunde(int kundeNummer) {
 
 // Finds customer
 Kunde* Kunder::finnKunde(int kundeNummer) {
-    for (auto &k: kundeListe) {
-        if (k->hentKundeNummer() == kundeNummer) {
-            return k;
+    for (auto &kunde: kundeListe) {
+        if (kunde->hentKundeNummer() == kundeNummer) {
+            return kunde;
         };
     };
     return nullptr;
@@ -128,12 +128,12 @@ void Kunder::skrivAlle() {
     std::cout << "Siste kunde: " << sisteNummer << ". " << "Det finnes nå " 
               << kundeListe.size() << " kunder." << std::endl;
         
-    for (const auto &k: kundeListe) {
+    for (const auto &kunde: kundeListe) {
         if (i && i % 20 == 0) {
             valg = lesChar("Skriv ut 20 kunder til? (y/N)");
             if (valg != 'y') break;
         }
-        k->skrivInfo();
+        kunde->skrivInfo();
         i++; 
     };
 }
