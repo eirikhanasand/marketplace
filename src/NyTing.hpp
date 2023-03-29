@@ -18,6 +18,8 @@ public:
 
     virtual void settData();
 
+    virtual std::string skrivData() const;
+
     std::string hentNavn() const;
 
 private:

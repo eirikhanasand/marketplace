@@ -35,3 +35,8 @@ void BruktTing::settData() {
         case 5: kvalitet = Sliten;      break;
     };
 }
+
+void BruktTing::skrivData() {
+    NyTing::skrivData();
+    std::cout << "Tingens alder: " << aar << "\tKvalitet: " << kvalitet << std::endl;
+}

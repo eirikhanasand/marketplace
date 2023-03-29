@@ -20,6 +20,8 @@ public:
 
     void settData();
 
+    void skrivData();
+
 private:
     int aar;
     Kvalitet kvalitet;
