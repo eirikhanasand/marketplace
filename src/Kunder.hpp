@@ -18,7 +18,7 @@ public:
 
     ~Kunder();
 
-    void handling();
+    void handling(char valg);
 
     void skrivAlle();
 

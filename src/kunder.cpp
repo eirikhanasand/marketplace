@@ -13,67 +13,62 @@
 
 // Constructor
 Kunder::Kunder() {
-    
+
 }
 
 // Destructor
 Kunder::~Kunder() {
-    for(auto &kunde : kundeListe) {
+    for (auto &kunde: kundeListe) {
         kunde->~Kunde();
     }
     std::cout << "Slettet alle kunder." << std::endl;
 }
 
 // Håndterer valg
-void Kunder::handling() {
-    char valg = toupper(lesChar("\nKommando: "));
-
-    while (valg != 'Q') {
-        switch (valg) {
-            case 'N': {
-                lagKunde();
-                valg = 0;
-                break;
-            }
-            case 'A': {
-                if (kundeListe.size()) {
-                    skrivAlle();
-                } else {
-                    std::cout << "Det finnes ingen kunder å skrive ut." << std::endl;
-                }
-                valg = 0;
-                break;
-            }
-            case 'S': {
-                if (kundeListe.size()) {
-                    int kundeNummer = lesInt("Kundenummer:", 0, kundeListe.size());
-                    Kunde *kunde = finnKunde(kundeNummer);
-                    if(kunde) {
-                        kunde->skrivData();
-                    } else {
-                        std::cout << "Det finnes ingen kunde med kundenummer " << kundeNummer << std::endl;
-                    }
-                } else {
-                    std::cout << "Det finnes ingen kunder, kan derfor ikke skrive enkeltkunde." << std::endl;
-                }
-                valg = 0;
-                break;
-            }
-            case 'F': {
-                if(kundeListe.size()) {
-                    int kundeNummer = lesInt("Kundenummer:", 0, kundeListe.size());
-                    fjernKunde(kundeNummer);
-                } else {
-                    std::cout << "Det finnes ingen kunder å slette." << std::endl;
-                }
-                valg = 0;
-                break;
-            }
-
-            default:
-                valg = toupper(lesChar("\nKommando: "));
-                break;
+void Kunder::handling(char valg) {
+    switch (valg) {
+        case 'N': {
+            lagKunde();
+            valg = 0;
+            break;
         }
+        case 'A': {
+            if (kundeListe.size()) {
+                skrivAlle();
+            } else {
+                std::cout << "Det finnes ingen kunder å skrive ut." << std::endl;
+            }
+            valg = 0;
+            break;
+        }
+        case 'S': {
+            if (kundeListe.size()) {
+                int kundeNummer = lesInt("Kundenummer:", 0, kundeListe.size());
+                Kunde *kunde = finnKunde(kundeNummer);
+                if (kunde) {
+                    kunde->skrivData();
+                } else {
+                    std::cout << "Det finnes ingen kunde med kundenummer " << kundeNummer << std::endl;
+                }
+            } else {
+                std::cout << "Det finnes ingen kunder, kan derfor ikke skrive enkeltkunde." << std::endl;
+            }
+            valg = 0;
+            break;
+        }
+        case 'F': {
+            if (kundeListe.size()) {
+                int kundeNummer = lesInt("Kundenummer:", 0, kundeListe.size());
+                fjernKunde(kundeNummer);
+            } else {
+                std::cout << "Det finnes ingen kunder å slette." << std::endl;
+            }
+            valg = 0;
+            break;
+        }
+        default:
+            std::cout << "Ugyldig kommando!\n";
+            break;
     }
 }
 
@@ -126,7 +121,7 @@ void Kunder::fjernKunde(int kundeNummer) {
 }
 
 // Finds customer
-Kunde* Kunder::finnKunde(int kundeNummer) {
+Kunde *Kunder::finnKunde(int kundeNummer) {
     for (auto &kunde: kundeListe) {
         if (kunde->hentKundeNummer() == kundeNummer) {
             return kunde;
@@ -139,16 +134,16 @@ void Kunder::skrivAlle() {
     int i = 0;
     char valg;
 
-    std::cout << "Siste kunde: " << sisteNummer << ". " << "Det finnes nå " 
+    std::cout << "Siste kunde: " << sisteNummer << ". " << "Det finnes nå "
               << kundeListe.size() << " kunder." << std::endl;
-        
+
     for (const auto &kunde: kundeListe) {
         if (i && i % 20 == 0) {
             valg = lesChar("Skriv ut 20 kunder til? (y/N)");
             if (valg != 'y') break;
         }
         kunde->skrivInfo();
-        i++; 
+        i++;
     }
 }
 
@@ -157,7 +152,7 @@ int Kunder::antallKunder() {
 }
 
 void Kunder::lagKunde() {
-    Kunde* kunde = new Kunde(kundeListe.size());
+    Kunde *kunde = new Kunde(kundeListe.size());
     kundeListe.push_back(kunde);
     std::cout << "Opprettet kunde med ";
     kunde->skrivInfo();
