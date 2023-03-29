@@ -11,19 +11,7 @@
 #include <string>
 
 class Kunde {
-    public:
-    int kundeNummer;
-    int mobilNummer;
-    int postNummer;
-    int antallTingKjopt;
-    int antallTingSolgt;
-    int antallTingTilSalgs;
-
-    std::string navn;
-    std::string gateAdresse;
-    std::string postSted;
-    std::string mailAdresse;
-    
+public:
     // Constructor
     Kunde(int KundeNummer);
 
@@ -38,6 +26,21 @@ class Kunde {
 
     // Prints user data
     void skrivData();
+
+    int hentKundeNummer();
+
+private:
+    int kundeNummer;
+    int mobilNummer;
+    int postNummer;
+    int antallTingKjopt;
+    int antallTingSolgt;
+    int antallTingTilSalgs;
+
+    std::string navn;
+    std::string gateAdresse;
+    std::string postSted;
+    std::string mailAdresse;
 };
 
 #endif

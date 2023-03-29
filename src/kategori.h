@@ -1,5 +1,5 @@
 /**
- *   Header for klassen Kunde
+ *   Header for klassen Kategori
  *
  *   @file      Kunde.h
  *   @authors   todo
@@ -11,7 +11,7 @@
 #include <iostream>
 #include <list>
 #include <string>
-#include "nyTing.h"
+#include "NyTing.h"
 
 class Kategori {
 public:

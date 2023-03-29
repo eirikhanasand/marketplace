@@ -9,11 +9,11 @@
 
 #include <iostream>
 
-#include "skrivMeny.h"
-#include "kategorier.h"
-#include "lesData3.h"
-#include "kunder.h"
-#include "kunde.h"
+#include "SkrivMeny.h"
+#include "Kategorier.h"
+#include "LesData3.h"
+#include "Kunder.h"
+#include "Kunde.h"
 
 Kunder gKundebase;    // Globalt container-objekt med ALLE kundene.
 Kategorier gKategoribase; // Globalt container-objekt med ALLE kategoriene.

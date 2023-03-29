@@ -6,7 +6,7 @@
  */
 
 #include <iostream>
-#include "nyTing.h"
+#include "NyTing.h"
 
 // Constructor
 NyTing::NyTing() {

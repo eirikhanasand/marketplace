@@ -11,39 +11,43 @@
 #include <iostream>
 #include <string>
 #include <map>
-#include "kategori.h"
+#include "Kategori.h"
+#include "Kunde.h"
 
 class Kategorier {
-    public:
-        // Kart over kategorier
-        std::map<std::string, Kategori*> nyTingMap;
+public:
+    // Constructor
+    Kategorier();
 
-        // Constructor
-        Kategorier();
+    // Destructor
+    ~Kategorier();
 
-        // Destructor
-        ~Kategorier();
-        
-        // Håndterer valg
-        void handling(char valg);
+    // Håndterer valg
+    void handling(char valg);
 
-        // Leser fra fil
-        void lesFraFil();
+    // Leser fra fil
+    void lesFraFil();
 
-        // Skriver til fil
-        void skrivTilFil();
+    // Skriver til fil
+    void skrivTilFil();
 
-        // Oppretter ny kategori
-        void nyKategori();
+    // Oppretter ny kategori
+    void nyKategori();
 
-        // Sjekker om kategori finnes med samme navn
-        bool kategoriFinnes(std::string kategoriNavn);
+    // Sjekker om kategori finnes med samme navn
+    bool kategoriFinnes(std::string kategoriNavn);
 
-        // Skriver alle kategorier
-        void skrivAlle();
+    // Skriver alle kategorier
+    void skrivAlle();
 
-        // Finner kategori hvis kategori stemmer
-        Kategori* finnKategori(std::string kategoriNavn);
+    void fjernKategori(Kategori *kategori);
+
+    // Finner kategori hvis kategori stemmer
+    Kategori *finnKategori(std::string kategoriNavn);
+
+private:
+    // Kart over kategorier
+    std::map<std::string, Kategori *> kategoriMap;
 };
 
 #endif

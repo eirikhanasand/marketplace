@@ -10,36 +10,38 @@
 
 #include <iostream>
 #include <list>
-#include "kunde.h"
+#include "Kunde.h"
 
 class Kunder {
+public:
+    // Constructor
+    Kunder();
+
+    // Destructor
+    ~Kunder();
+
+    // Håndterer valg
+    void handling();
+
+    // Skriver alle kunder
+    void skrivAlle();
+
+    // Leser fra fil
+    void lesFraFil();
+
+    // Skriver til fil
+    void skrivTilFil();
+
+    // Deletes customer
+    void fjernKunde(int kundeNummer);
+
+    // Finner kunde
+    Kunde *finnKunde(int kundeNummer);
+
+private:
+    std::list<Kunde *> kundeListe;
+
     int sisteNr;
-
-    public:
-        std::list<Kunde*> kundeListe;
-        // Constructor
-        Kunder();
-
-        // Destructor
-        ~Kunder();
-
-        // Håndterer valg
-        void handling();
-
-        // Skriver alle kunder
-        void skrivAlle();
-
-        // Leser fra fil
-        void lesFraFil();
-
-        // Skriver til fil
-        void skrivTilFil();
-
-        // Deletes customer
-        void slettKunde(int kundeNummer);
-
-        // Finner kunde
-        Kunde* finnKunde(int kundeNummer);
 };
 
 #endif

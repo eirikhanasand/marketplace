@@ -6,7 +6,7 @@
  */
 
 #include <iostream>
-#include "skrivMeny.h"
+#include "SkrivMeny.h"
 
 /**
  *  Skriver programmets hovedmeny

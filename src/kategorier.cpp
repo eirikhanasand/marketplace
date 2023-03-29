@@ -9,9 +9,9 @@
 #include <fstream>
 #include <string>
 #include <map>
-#include "kategorier.h"
-#include "kategori.h"
-#include "lesData3.h"
+#include "Kategorier.h"
+#include "Kategori.h"
+#include "LesData3.h"
 
 // Constructor
 Kategorier::Kategorier() {

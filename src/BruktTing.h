@@ -13,7 +13,7 @@
 
 class BruktTing : NyTing {
     int aar;
-    
+
     enum kvalitet {
         SomNy,
         PentBrukt,

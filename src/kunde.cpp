@@ -6,9 +6,9 @@
  */
 
 #include <iostream>
-#include "kunde.h"
-#include "kunder.h"
-#include "lesData3.h"
+#include "Kunde.h"
+#include "Kunder.h"
+#include "LesData3.h"
 
 extern Kunder gKundebase;
 

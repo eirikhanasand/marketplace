@@ -11,8 +11,8 @@
 #include <iostream>
 #include <string>
 #include <map>
-#include "kategori.h"
-#include "kunde.h"
+#include "Kategori.h"
+#include "Kunde.h"
 
 class Kategorier {
 public:

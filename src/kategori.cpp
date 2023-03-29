@@ -9,9 +9,9 @@
 #include <fstream>
 #include <string>
 
-#include "kategori.h"
-#include "kategorier.h"
-#include "lesData3.h"
+#include "Kategori.h"
+#include "Kategorier.h"
+#include "LesData3.h"
 
 Kategori::Kategori(std::string KategoriNavn) {
     kategoriNavn = KategoriNavn;

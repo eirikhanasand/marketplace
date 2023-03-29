@@ -10,7 +10,7 @@
 
 #include <iostream>
 #include <list>
-#include "kunde.h"
+#include "Kunde.h"
 
 class Kunder {
 public:
