@@ -18,7 +18,6 @@ extern Kategorier gKategoribase;
 // Constructor
 NyTing::NyTing(int Nummer) {
     nummer = Nummer;
-    settData();
 }
 
 // Destructor
@@ -35,4 +34,20 @@ void NyTing::settData() {
 
 std::string NyTing::hentNavn() const {
     return navn;
+}
+
+void NyTing::endreAntall(int nyttAntall) {
+    antall = nyttAntall;
+}
+
+void NyTing::endreNavn(std::string nyttNavn) {
+    navn = nyttNavn;
+}
+
+void NyTing::endrePris(int nyPris) {
+    pris = nyPris;
+}
+
+void NyTing::endreBeskrivelse(std::string nyBeskrivelse) {
+    beskrivelse = nyBeskrivelse;
 }

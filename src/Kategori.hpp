@@ -21,7 +21,7 @@ public:
 
     void settData();
 
-    void skrivData();
+    void skrivData() const;
 
     std::string hentNavn() const;
 

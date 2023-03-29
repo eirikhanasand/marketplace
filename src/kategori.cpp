@@ -30,7 +30,7 @@ void Kategori::settData() {
 }
 
 // Prints category data
-void Kategori::skrivData() {
+void Kategori::skrivData() const {
     std::cout << "Kategorinavn: " << kategoriNavn << "\tAntall ting til salgs: " << antallTingTilSalgs << std::endl;
 }
 
@@ -40,6 +40,7 @@ std::string Kategori::hentNavn() const {
 
 void Kategori::lagTing() {
     auto *ting = new NyTing(tingListe.size());
+    ting->settData();
     tingListe.push_back(ting);
 }
 
@@ -49,7 +50,7 @@ int Kategori::hentAntallTing() {
 
 void Kategori::skrivFullKategori() {
     for (const auto &ting: tingListe) {
-        ting.second->skrivData();
+        tin.
     };
     // Skriv alle data om alle ting i denne kategorien utenom selgerens nummer, 
     // om den er NY eller BRUKT og tingens unike nummer fra 1 og oppover

@@ -14,12 +14,11 @@
 
 // Constructor
 BruktTing::BruktTing(int Nummer):NyTing(Nummer) {
-    BruktTing::settData();
 }
 
 // Destructor
 BruktTing::~BruktTing() {
-    
+
 }
 
 void BruktTing::settData() {

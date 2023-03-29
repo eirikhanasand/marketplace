@@ -20,6 +20,11 @@ public:
 
     std::string hentNavn() const;
 
+    void endreNavn(std::string nyttNavn);
+    void endrePris(int nyPris);
+    void endreAntall(int nyttAntall);
+    void endreBeskrivelse(std::string nyBeskrivelse);
+
 private:
     int nummer;
     int pris;
