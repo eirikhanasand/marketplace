@@ -88,7 +88,6 @@ void NyTing::endreTing() {
          default: {
             std::cout << "Det er ikke en gyldig kommando!" << std::endl;
             break;
- 
-
         }
+    }
 }
