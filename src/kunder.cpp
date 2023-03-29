@@ -40,9 +40,12 @@ void Kunder::handling() {
                 Kunde* kunde = finnKunde(kundeNummer);
                 break;
             }
-            case 'F':
-                // TODO
+            case 'F': {
+                int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.kundeListe.size());
+                slettKunde(kundeNummer);
                 break;
+            }
+
             default:
                 valg = toupper(lesChar("\nKommando: "));
                 break;
@@ -81,9 +84,8 @@ void Kunder::skrivTilFil(){
 }
 
 // Deletes customer 
-void Kunder::slettKunde() { 
+void Kunder::slettKunde(int kundeNummer) {
     char bekreftelse = lesChar("Er du sikker på at du vil slette kunden? (J/N): ");
-    int kundeNummer = lesInt("Kundenummer: ",0,gKundebase.kundeListe.size());
     auto kunde = finnKunde(kundeNummer);
     
     if (kunde) {
