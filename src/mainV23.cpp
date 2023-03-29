@@ -47,8 +47,9 @@ int main() {
                 gKategoribase.kategoriHandling(andreValg);
                 break;
             case 'K': break;
-            case 'T'
-
+            case 'T':
+                gKategoribase.tingHandling(andreValg);
+                break;
             default:
                 skrivMeny();
                 break;
