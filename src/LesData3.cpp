@@ -1,11 +1,13 @@
 /**
- *   Enkel verktøykasse for å lese:  tegn og tall.
+ *  Utvidet verktøykasse for å lese tegn, tall og stringer.
  *
- *   FULLSTENDIG IDENTISK til 'LesData2.h' bare at adskilt
- *   funksjonenes DEKLARASJON og DEFINISJON (som er på DENNE filen).
+ *  Identisk til 'LesData2.h' bare at funksjonenes DEKLARASJON 
+ *  og DEFINISJON (som er på DENNE filen) er adskilt, og at denne
+ *  også støtter innlesning av strings.
+ *   
  *
- *   @file     LesData3.CPP
- *   @author   Frode Haug, NTNU
+ *  @file     lesData3.cpp
+ *  @author   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther, Frode Haug, NTNU
  */
 
 #include <iostream>                 //  cin, cout
@@ -13,7 +15,7 @@
 #include <cctype>                   //  toupper
 #include <cstdlib>                  //  atoi, atof
 #include <string>
-#include "LesData3.h"               //  Prototypene for denne filens innhold
+#include "LesData3.hpp"             //  Prototypene for denne filens innhold
 
 /**
  *  Leser og returnerer ett (upcaset) tegn.
@@ -98,9 +100,8 @@ int lesInt(const char *t, const int min, const int max) {
  */
 std::string lesString(std::string tekst) {
     std::string string;
-    
     std::cout << tekst << ':' << std::endl;
     std::getline(std::cin, string);
-
+    
     return string;
 };

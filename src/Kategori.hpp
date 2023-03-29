@@ -1,8 +1,8 @@
 /**
- *   Header for klassen Kategori
+ *  Definisjon av funksjoner i BruktTing klassen
  *
- *   @file      Kunde.h
- *   @authors   todo
+ *  @file      bruktTing.cpp
+ *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 
 #ifndef __KATEGORI_H
@@ -11,23 +11,18 @@
 #include <iostream>
 #include <list>
 #include <string>
-#include "NyTing.h"
+#include "NyTing.hpp"
 
 class Kategori {
 public:
-    // Constructor
     Kategori(std::string KategoriNavn);
 
-    // Destructor
     ~Kategori();
 
-    // Setter kategoridata
     void settData();
 
-    // Skriver kategoridata
     void skrivData();
 
-    // Henter kategorinavn
     std::string hentNavn() const;
 
 private:

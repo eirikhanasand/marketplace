@@ -1,6 +1,4 @@
 # Mac
-.vscode
-prosjekt
 .DS_Store
 
 # IntelliJ IDEA
@@ -16,3 +14,17 @@ prosjekt
 out
 CMakeLists.txt
 cmake-build-debug
+
+#VSCode
+.vscode
+prosjekt
+BruktTing.hpp.gch
+Const.hpp.gch
+Enum.hpp.gch
+Kategori.hpp.gch
+Kategorier.hpp.gch
+Kunde.hpp.gch
+Kunder.hpp.gch
+LesData3.hpp.gch
+NyTing.hpp.gch
+SkrivMeny.hpp.gch

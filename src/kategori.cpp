@@ -1,17 +1,17 @@
 /**
- *   todo
+ *  Definisjon av funksjoner i Kategori klassen
  *
- *   @file      kategorier.cpp
- *   @authors   todo
+ *  @file      kategori.cpp
+ *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 
 #include <iostream>
 #include <fstream>
 #include <string>
 
-#include "Kategori.h"
-#include "Kategorier.h"
-#include "LesData3.h"
+#include "Kategori.hpp"
+#include "Kategorier.hpp"
+#include "LesData3.hpp"
 
 Kategori::Kategori(std::string KategoriNavn) {
     kategoriNavn = KategoriNavn;

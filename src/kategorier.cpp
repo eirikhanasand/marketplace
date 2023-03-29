@@ -1,17 +1,17 @@
 /**
- *   todo
+ *  Definisjon av funksjoner i Kategorier klassen
  *
- *   @file      kategorier.cpp
- *   @authors   todo
+ *  @file      kategorier.cpp
+ *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <map>
-#include "Kategorier.h"
-#include "Kategori.h"
-#include "LesData3.h"
+#include "Kategorier.hpp"
+#include "Kategori.hpp"
+#include "LesData3.hpp"
 
 // Constructor
 Kategorier::Kategorier() {

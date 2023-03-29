@@ -1,8 +1,8 @@
 /**
- *   Headere for klassen Kunder
+ *  Definisjon av funksjoner i NyTing klassen
  *
- *   @file      Kunder.h
- *   @authors   todo
+ *  @file      NyTing.h
+ *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 
 #ifndef __NYTING_H
@@ -12,16 +12,12 @@
 
 class NyTing {
 public:
-    // Constructor
-    NyTing();
+    NyTing(int Nummer);
 
-    // Destructor
     ~NyTing();
 
-    // Setter data
-    void settData(int Nummer);
+    void settData();
 
-    // Kjøper en ting
     void kjopTing();
 
 private:

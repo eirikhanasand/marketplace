@@ -1,19 +1,18 @@
 /**
- *   Hovedprogrammet for OOP-prosjektet V23 med et Miniatyr-Finn<dot>no
- *   med salg av "Leker og Spill".
+ *  Hovedprogrammet for OOP-prosjektet V23 med et Miniatyr-Finn<dot>no
+ *  med salg av "Leker og Spill".
  *
- *   @file     main.cpp
- *   @authors  todo
+ *  @file     mainV23.cpp
+ *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
-
 
 #include <iostream>
 
-#include "SkrivMeny.h"
-#include "Kategorier.h"
-#include "LesData3.h"
-#include "Kunder.h"
-#include "Kunde.h"
+#include "SkrivMeny.hpp"
+#include "Kategorier.hpp"
+#include "LesData3.hpp"
+#include "Kunder.hpp"
+#include "Kunde.hpp"
 
 Kunder gKundebase;    // Globalt container-objekt med ALLE kundene.
 Kategorier gKategoribase; // Globalt container-objekt med ALLE kategoriene.

@@ -1,21 +1,23 @@
 /**
- *   todo
+ *  Definisjon av funksjoner i BruktTing klassen
  *
- *   @file      kunde.cpp
- *   @authors   todo
+ *  @file      nyTing.cpp
+ *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 
 #include <iostream>
-#include "NyTing.h"
-#include "LesData3.h"
-#include "Kunder.h"
-#include "Kategorier.h"
-#include "Kategori.h"
+#include "NyTing.hpp"
+#include "LesData3.hpp"
+#include "Kunder.hpp"
+#include "Kategorier.hpp"
+#include "Kategori.hpp"
 
 extern Kunder gKundebase;
+extern Kategorier gKategoribase;
 
 // Constructor
-NyTing::NyTing() {
+NyTing::NyTing(int Nummer) {
+    nummer = Nummer;
     settData();
 }
 
@@ -24,8 +26,7 @@ NyTing::~NyTing() {
 
 }
 
-void NyTing::settData(int Nummer) {
-    nummer = Nummer;
+void NyTing::settData() {
     navn = lesString("Navn på tingen");
     beskrivelse = lesString("Beskriv tingen");
     pris = lesInt("Hvor mye koster tingen", 0, INT32_MAX);
@@ -34,14 +35,14 @@ void NyTing::settData(int Nummer) {
 
 void NyTing::kjopTing() {
     int ting;
-    int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.kundeListe.size());
+    int kundeNummer = lesInt("Kundenummer:", 0, noe);
     std::string kategoriNavn = lesString("Kategori");
 
     auto k = finnKategori(kategoriNavn);
 
     if(k) {
         k->skrivFullKategori();
-        ting = lesInt("Skriv inn nummer på tingen du vil kjøpe", 0, tingMap.size());
+        ting = lesInt("Skriv inn nummer på tingen du vil kjøpe", 0, k->tingMap.size());
         /**
          * Ifm. kjøpet må alt følgende skje: Kjøperens antall kjøp telles opp med en. 
          * Selgerens antall salg telles opp med en. Antall av tingen telles ned med en, 

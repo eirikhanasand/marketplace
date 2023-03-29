@@ -1,26 +1,19 @@
 /**
- *   Skriver programmets hovedmeny
+ *  Skriver programmets hovedmeny
  *
- *   @file      skrivMeny.cpp
- *   @authors   todo
+ *  @file      skrivMeny.cpp
+ *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 
 #include <iostream>
-#include "SkrivMeny.h"
+#include "SkrivMeny.hpp"
 
 /**
  *  Skriver programmets hovedmeny
 */
 void skrivMeny() {
-    std::cout << "Meny" << std::endl;
-    std::cout << "UN - Opprett ny kunde" << std::endl;
-    std::cout << "UA - Skriv alle kunder" << std::endl;
-    std::cout << "US - Skriv bestemt kunde" << std::endl;
-    std::cout << "UF - Slett kunde" << std::endl;
-    std::cout << "AN - Opprett kategori" << std::endl;
-    std::cout << "AA - Skriv alle kategorier" << std::endl;
-    std::cout << "AS - Skriv en entydig navngitt kategori" << std::endl;
-    std::cout << "TN - Opprett ny ting" << std::endl;
-    std::cout << "TE - Endre ting" << std::endl;
-    std::cout << " K - Kjøp ting" << std::endl;
+    std::cout << "Meny" << '\n' << "UN - Opprett ny kunde" << '\n' << "UA - Skriv alle kunder" 
+    << '\n' << "US - Skriv bestemt kunde" << '\n' << "UF - Slett kunde" << '\n' 
+    << "AN - Opprett kategori" << '\n' << "AA - Skriv alle kategorier" << '\n' << "AS - Skriv en entydig navngitt kategori" 
+    << '\n' << "TN - Opprett ny ting" << '\n' << "TE - Endre ting" << '\n' << " K - Kjøp ting" << std::endl;
 }

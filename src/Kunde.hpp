@@ -1,8 +1,8 @@
 /**
- *   Header for klassen Kunde
+ *  Header for Kunde klassen
  *
- *   @file      Kunde.h
- *   @authors   todo
+ *  @file      Kunde.h
+ *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 
 #ifndef __KUNDE_H
@@ -12,22 +12,16 @@
 
 class Kunde {
 public:
-    // Constructor
     Kunde(int KundeNummer);
 
-    // Destructor
     ~Kunde();
 
-    // Input user data
     void settData();
 
-    // Skriver data om kunden
     void skrivData();
 
-    // Henter kundenummer
     int hentKundeNummer();
 
-    // Printer kundenummer navn og telefonnummer
     void skrivInfo();
 
 private:

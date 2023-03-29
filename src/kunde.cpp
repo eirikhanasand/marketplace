@@ -1,14 +1,14 @@
 /**
- *   todo
+ *  Definisjon av funksjoner i Kunde klassen
  *
- *   @file      kunde.cpp
- *   @authors   todo
+ *  @file      kunde.cpp
+ *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 
 #include <iostream>
-#include "Kunde.h"
-#include "Kunder.h"
-#include "LesData3.h"
+#include "Kunde.hpp"
+#include "Kunder.hpp"
+#include "LesData3.hpp"
 
 extern Kunder gKundebase;
 
@@ -39,15 +39,10 @@ int Kunde::hentKundeNummer() {
 }
 
 void Kunde::skrivData() {
-    std::cout << "Navn: " << navn << std::endl;
-    std::cout << "Gateadresse: " << gateAdresse << std::endl;
-    std::cout << "Mobilnummer: " << mobilNummer << std::endl;
-    std::cout << "Mailadresse: " << mailAdresse << std::endl;
-    std::cout << "Poststed: " << postSted << std::endl;
-    std::cout << "Postnummer: " << postNummer << std::endl;
-    std::cout << "Antall ting kjøpt: " << antallTingKjopt << std::endl;
-    std::cout << "Antall ting solgt: " << antallTingSolgt << std::endl;
-    std::cout << "Antall til salgs: " << antallTingTilSalgs << std::endl;
+    std::cout << "Navn: " << navn << '\n' << "Gateadresse: " << gateAdresse << '\n' << "Mobilnummer: " 
+    << mobilNummer << '\n' << "Mailadresse: " << mailAdresse << '\n' << "Poststed: " << postSted << '\n' 
+    << "Postnummer: " << postNummer << '\n' << "Antall ting kjøpt: " << antallTingKjopt << '\n' 
+    << "Antall ting solgt: " << antallTingSolgt << '\n' << "Antall til salgs: " << antallTingTilSalgs << std::endl;
 }
 
 void Kunde::skrivInfo() {

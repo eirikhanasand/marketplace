@@ -1,8 +1,8 @@
 /**
- *   Header for klassen Kunder
+ *  Header for Kunder klassen
  *
- *   @file      Kunder.h
- *   @authors   todo
+ *  @file      Kunder.h
+ *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 
 #ifndef __KUNDER_H
@@ -10,33 +10,27 @@
 
 #include <iostream>
 #include <list>
-#include "Kunde.h"
+#include "Kunde.hpp"
 
 class Kunder {
 public:
-    // Constructor
     Kunder();
 
-    // Destructor
     ~Kunder();
 
-    // Håndterer valg
     void handling();
 
-    // Skriver alle kunder
     void skrivAlle();
 
-    // Leser fra fil
     void lesFraFil();
 
-    // Skriver til fil
     void skrivTilFil();
 
-    // Fjerner kunde
     void fjernKunde(int kundeNummer);
 
-    // Finner kunde
     Kunde *finnKunde(int kundeNummer);
+
+    int antallKunder();
 
 private:
     std::list<Kunde *> kundeListe;

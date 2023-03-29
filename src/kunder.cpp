@@ -1,15 +1,15 @@
 /**
- *   todo
+ *  Definisjon av funksjoner i Kunder klassen
  *
- *   @file      kunder.cpp
- *   @authors   todo
+ *  @file      kunder.cpp
+ *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 
 #include <iostream>
 #include <fstream>
-#include "Kunder.h"
-#include "Kunde.h"
-#include "LesData3.h"
+#include "Kunder.hpp"
+#include "Kunde.hpp"
+#include "LesData3.hpp"
 
 // Constructor
 Kunder::Kunder() {
@@ -21,7 +21,7 @@ Kunder::Kunder() {
 // Destructor
 Kunder::~Kunder() {
     for(auto &k : kundeListe) {
-        k->~Kunde;
+        k->~Kunde();
     }
     std::cout << "Slettet alle kunder." << std::endl;
 }
@@ -134,7 +134,10 @@ void Kunder::skrivAlle() {
             if (valg != 'y') break;
         }
         k->skrivInfo();
-        i++;
+        i++; 
     };
 }
 
+int Kunder::antallKunder() {
+    return kundeListe.size();
+}
