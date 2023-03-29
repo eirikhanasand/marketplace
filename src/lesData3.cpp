@@ -92,6 +92,38 @@ int lesInt(const char *t, const int min, const int max) {
 }
 
 /**
+ * Leser og returnerer en bool.
+ *
+ *
+ *  @param   t    - Ledetekst til brukeren når ber om input/et tall
+ *  @param   ja  - Bokstaven som tilsvarer et ja(true)
+ *  @param   nei  - Bokstaven som tilsvarer et nei(false)
+ *
+ *  @return True eller false fra om brukeren svarte ja eller nei.
+ */
+bool lesBool(const char *t, const char ja, const char nei) {
+    char buffer[MAXCHAR] = "";
+    bool svar = false;
+    bool feil = false;
+
+    do {
+        feil = false;
+        std::cout << std::fixed << std::showpoint << std::setprecision(2);
+        std::cout << t;
+        char svarBokstav = lesChar("");
+
+        if (svarBokstav != ja && svarBokstav != nei) {
+            feil = true;
+            std::cout << "\nERROR: Not a correct character\n\n";
+        } else {
+            svar = svarBokstav == ja;
+        }
+    } while (feil);
+
+    return svar;
+}
+
+/**
  *  Leser og returnerer en linje
  *
  *  @param   tekst - Ledetekst til brukeren
