@@ -25,7 +25,9 @@ public:
 
     std::string hentNavn() const;
 
-    void addTing();
+    void lagTing();
+    
+    void skrivFullKategori();
 
 private:
     std::list<NyTing*> tingListe;

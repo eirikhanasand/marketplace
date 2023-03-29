@@ -35,10 +35,10 @@ public:
     void fjernKategori(Kategori *kategori);
 
     Kategori *finnKategori(std::string kategoriNavn);
-
-    void skrivFullKategori();
     
     void lagTing();
+
+    void kjopTing();
 
 private:
     std::map<std::string, Kategori *> kategoriMap;

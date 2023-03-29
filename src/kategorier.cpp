@@ -140,18 +140,7 @@ Kategori* Kategorier::finnKategori(std::string kategoriNavn) {
             return dynamic_cast<Kategori *>(k.second);
         };
     };
-    return nullptr
-}
-
-void Kategorier::skrivFullKategori() {
-    for (const auto &k: kategoriMap) {
-        k.second->skrivData();
-        for (const auto &t: kategoriMap) {
-            t.second->skrivData();
-        };
-        // Skriv alle data om alle ting i denne kategorien utenom selgerens nummer, 
-        // om den er NY eller BRUKT og tingens unike nummer fra 1 og oppover
-    };
+    return nullptr;
 }
 
 void Kategorier::lagTing() {
@@ -159,8 +148,29 @@ void Kategorier::lagTing() {
     auto kategori = finnKategori(kategoriNavn);
 
     if (kategori) {
-        kategori->addTing();
+        kategori->lagTing();
     } else {
         std::cout << "Det finnes ingen kategori med navn " << kategoriNavn << std::endl;
+    };
+}
+
+void Kategorier::kjopTing() {
+    int ting;
+    int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.antallKunder());
+    std::string kategoriNavn = lesString("Kategori");
+
+    auto k = finnKategori(kategoriNavn);
+
+    if(k) {
+        k->skrivFullKategori();
+        ting = lesInt("Skriv inn nummer på tingen du vil kjøpe", 0, k->tingMap.size());
+        /**
+         * Ifm. kjøpet må alt følgende skje: Kjøperens antall kjøp telles opp med en. 
+         * Selgerens antall salg telles opp med en. Antall av tingen telles ned med en, 
+         * evt. at den slettes helt fra datastrukturen om dette er den siste/eneste. 
+         * I så fall telles også antallet av det selgeren har til salgs ned med en også.
+        */
+    } else {
+        std::cout << "Denne kategorien finnes ikke!" << std::endl;
     };
 }

@@ -1,14 +1,16 @@
-bruktTing.o: bruktTing.cpp NyTing.hpp BruktTing.hpp Enum.hpp LesData3.hpp \
-  Kategorier.hpp Kategori.hpp Kunde.hpp
-kategori.o: kategori.cpp Kategori.hpp NyTing.hpp Kategorier.hpp Kunde.hpp \
-  LesData3.hpp
-kategorier.o: kategorier.cpp Kunder.hpp Kunde.hpp Kategorier.hpp \
-  Kategori.hpp NyTing.hpp LesData3.hpp
-kunde.o: kunde.cpp Kunde.hpp Kunder.hpp LesData3.hpp
-kunder.o: kunder.cpp Kunder.hpp Kunde.hpp LesData3.hpp
-lesData3.o: lesData3.cpp LesData3.hpp
-mainV23.o: mainV23.cpp SkrivMeny.hpp Kategorier.hpp Kategori.hpp \
-  NyTing.hpp Kunde.hpp LesData3.hpp Kunder.hpp
-nyTing.o: nyTing.cpp NyTing.hpp LesData3.hpp Kunder.hpp Kunde.hpp \
-  Kategorier.hpp Kategori.hpp
-skrivMeny.o: skrivMeny.cpp SkrivMeny.hpp
+bruktTing.o: src/bruktTing.cpp src/NyTing.hpp src/BruktTing.hpp \
+  src/Enum.hpp src/LesData3.hpp src/Kategorier.hpp src/Kategori.hpp \
+  src/Kunde.hpp
+kategori.o: src/kategori.cpp src/Kategori.hpp src/NyTing.hpp \
+  src/Kategorier.hpp src/Kunde.hpp src/LesData3.hpp
+kategorier.o: src/kategorier.cpp src/Kunder.hpp src/Kunde.hpp \
+  src/Kategorier.hpp src/Kategori.hpp src/NyTing.hpp src/LesData3.hpp
+kunde.o: src/kunde.cpp src/Kunde.hpp src/Kunder.hpp src/LesData3.hpp
+kunder.o: src/kunder.cpp src/Kunder.hpp src/Kunde.hpp src/LesData3.hpp
+lesData3.o: src/lesData3.cpp src/LesData3.hpp
+mainV23.o: src/mainV23.cpp src/SkrivMeny.hpp src/Kategorier.hpp \
+  src/Kategori.hpp src/NyTing.hpp src/Kunde.hpp src/LesData3.hpp \
+  src/Kunder.hpp
+nyTing.o: src/nyTing.cpp src/NyTing.hpp src/LesData3.hpp src/Kunder.hpp \
+  src/Kunde.hpp src/Kategorier.hpp src/Kategori.hpp
+skrivMeny.o: src/skrivMeny.cpp src/SkrivMeny.hpp

@@ -36,7 +36,18 @@ std::string Kategori::hentNavn() const {
     return kategoriNavn;
 }
 
-void Kategori::addTing() {
+void Kategori::lagTing() {
     auto *ting = new NyTing(tingListe.size());
     tingListe.push_back(ting);
+}
+
+void Kategori::skrivFullKategori() {
+    for (const auto &k: kategoriMap) {
+        k.second->skrivData();
+        for (const auto &t: kategoriMap) {
+            t.second->skrivData();
+        };
+        // Skriv alle data om alle ting i denne kategorien utenom selgerens nummer, 
+        // om den er NY eller BRUKT og tingens unike nummer fra 1 og oppover
+    };
 }

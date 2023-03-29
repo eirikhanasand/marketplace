@@ -18,8 +18,6 @@ public:
 
     void settData();
 
-    void kjopTing();
-
     std::string hentNavn() const;
 
 private:
