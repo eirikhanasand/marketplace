@@ -35,8 +35,8 @@ class Kunder {
         // Skriver til fil
         void skrivTilFil();
 
-        // Sletter kunde
-        void slettKunde();
+        // Deletes customer
+        void slettKunde(int kundeNummer);
 
         // Finner kunde
         Kunde* finnKunde(int kundeNummer);
