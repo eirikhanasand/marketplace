@@ -21,6 +21,8 @@ public:
     virtual void skrivData() const;
 
     std::string hentNavn() const;
+    int hentKundeNummer() const;
+
 
     void endreNavn(std::string nyttNavn);
     void endrePris(int nyPris);

@@ -56,6 +56,10 @@ void NyTing::endreBeskrivelse(std::string nyBeskrivelse) {
     beskrivelse = nyBeskrivelse;
 }
 
+int NyTing::hentKundeNummer() const {
+    return nummer;
+}
+
 void NyTing::endreTing() {
     std::cout << "Hva vil du endre på?" << '\n'
         << "1. Navn" << '\n'

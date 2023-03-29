@@ -31,6 +31,8 @@ public:
 
     int hentAntallTing();
 
+    NyTing* finnTing(int kundeNummer);
+
 private:
     std::list<NyTing*> tingListe;
 

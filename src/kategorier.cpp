@@ -41,8 +41,19 @@ void Kategorier::lagKategorier() {
     }
 }
 
+void Kategorier::tingHandling(char valg) {
+    if (valg == 'N') {
+        lagTingIKategori();
+    } else if (valg == 'E') {
+
+    } else {
+        std::cout << "Ugyldig kommando!\n";
+    }
+}
+
+
 // Håndterer valg
-void Kategorier::handling(char valg) {
+void Kategorier::kategoriHandling(char valg) {
     switch (valg) {
         case 'N':
             Kategorier();
@@ -152,6 +163,18 @@ void Kategorier::lagTingIKategori() {
 
     if (kategori) {
         kategori->lagTing();
+    } else {
+        std::cout << "Det finnes ingen kategori med navn " << kategoriNavn << std::endl;
+    }
+}
+
+void Kategorier::endreTingIKategori() {
+    std::string kategoriNavn = lesString("Velg kategori");
+    auto kategori = finnKategori(kategoriNavn);
+
+    if (kategori) {
+        int kundeNummer = lesInt("Kundenummer: ", 1, kategori->hentAntallTing());
+        kategori->finnTing(kundeNummer-1)->endreTing();
     } else {
         std::cout << "Det finnes ingen kategori med navn " << kategoriNavn << std::endl;
     }

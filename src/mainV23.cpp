@@ -44,10 +44,11 @@ int main() {
                 gKundebase.handling(andreValg);
                 break;
             case 'A':
-            case 'K':
-            case 'T':
-                gKategoribase.handling(andreValg);
+                gKategoribase.kategoriHandling(andreValg);
                 break;
+            case 'K': break;
+            case 'T'
+
             default:
                 skrivMeny();
                 break;
