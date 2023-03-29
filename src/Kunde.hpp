@@ -9,10 +9,12 @@
 #define __KUNDE_H
 
 #include <string>
+#include <fstream>
 
 class Kunde {
 public:
     Kunde(int KundeNummer);
+    Kunde(std::ifstream &kundeFil);
 
     ~Kunde();
 
@@ -23,6 +25,8 @@ public:
     int hentKundeNummer();
 
     void skrivInfo();
+    
+    void skrivTilFil(ofstream &kundeFil);
 
 private:
     int kundeNummer;

@@ -9,6 +9,7 @@
 #include <fstream>
 #include <string>
 #include <map>
+
 #include "Kunder.hpp"
 #include "Kategorier.hpp"
 #include "Kategori.hpp"
@@ -88,20 +89,6 @@ void Kategorier::lesFraFil() {
     kundeFil.close();
 }
 
-// Skriver til fil
-void Kategorier::skrivTilFil() {
-    std::ofstream kundeFil;
-    kundeFil.open("../data/KATEGORIER.DTA");
-
-    if (kundeFil.is_open()) {
-        // skriv til kundefil
-    } else {
-        std::cout << "Kunne ikke skrive til /data/KATEGORIER.DTA." << std::endl;
-    }
-
-    kundeFil.close();
-}
-
 // Oppretter ny kategori
 void Kategorier::nyKategori() {
     std::string kategoriNavn = lesString("Kategorinavn");
@@ -176,5 +163,40 @@ void Kategorier::kjopTing() {
         */
     } else {
         std::cout << "Denne kategorien finnes ikke!" << std::endl;
+    }
+}
+
+// Skriver til fil
+void Kategorier::skrivAlleTilFil() {
+    std::ofstream kategoriFil("../data/KATEGORIER.DTA");
+
+   if (kategoriFil) {
+        std::cout << "Leser til filen KATEGORIER.DTA" << std::endl;
+
+        for(const auto &kategori: kategoriMap) {
+            kategori->skrivTilFil(kategoriFil);
+        }
+
+        kategoriFil.close();
+    } else {
+        std::cout << "Kunne ikke lese til /data/KATEGORIER.DTA." << std::endl;
+    }
+
+    kategoriFil.close();
+}
+
+void Kategorier::lesAlleFraFil() {
+    std::ifstream kategoriFil("../data/KATEGORIER.DTA");
+
+    if(kategoriFil) {
+        std::cout << "Leser fra filen KUNDER.DTA" << std::endl;
+
+        while(!kategoriFil.eof()) {
+            kategoriMap.push_back(new Kategori(innfil));
+        }
+
+        kategoriFil.close();
+    } else {
+        std::cout << "Kunne ikke lese fra fil /data/KATEGORIER.DTA." << std::endl;
     }
 }

@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <list>
+
 #include "Kunde.hpp"
 
 class Kunder {
@@ -24,7 +25,7 @@ public:
 
     void lesFraFil();
 
-    void skrivTilFil();
+    void skrivAlleTilFil();
 
     void fjernKunde(int kundeNummer);
 

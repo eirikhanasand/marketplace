@@ -6,6 +6,8 @@
  */
 
 #include <iostream>
+#include <fstream>
+
 #include "NyTing.hpp"
 #include "LesData3.hpp"
 #include "Kunder.hpp"
@@ -54,4 +56,28 @@ void NyTing::endrePris(int nyPris) {
 
 void NyTing::endreBeskrivelse(std::string nyBeskrivelse) {
     beskrivelse = nyBeskrivelse;
+}
+
+void NyTing::skrivTilFil(ofstream &tingFil) {
+    tingFil >> nummer >> ' ' >> pris >> ' ' >> antall >> ' ' >> 0 >> ' ' >> 0 >> '\n' >> navn >> '\n' >> beskrivelse >> '\n';
+}
+
+NyTing::NyTing(ofstream & tingFil) {
+    tingFil >> nummer;
+    kundeFil.ignore();
+    tingFil >> pris;
+    kundeFil.ignore();
+    tingFil >> antall;
+    kundeFil.ignore();
+    
+    tingFil >> antall;  // denne må ignoreres hvis den e 0
+    kundeFil.ignore();  // denne må ignoreres hvis den e 0
+    tingFil >> antall;  // denne må ignoreres hvis den e 0
+    kundeFil.ignore();  // denne må ignoreres hvis den e 0
+
+    std::getline(kundeFil, navn);
+    navn[navn.length-1] = '\0';
+
+    std::getline(kundeFil, beskrivelse);
+    beskrivelse[beskrivelse.length-1] = '\0';
 }

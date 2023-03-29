@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <fstream>
+
 #include "Kunder.hpp"
 #include "Kunde.hpp"
 #include "LesData3.hpp"
@@ -79,31 +80,39 @@ void Kunder::handling() {
 
 // Leser fra fil
 void Kunder::lesFraFil() {
-    std::ifstream kundeFil;
-    kundeFil.open("../data/KUNDER.DTA");
+    std::ifstream kundeFil("../data/KUNDER.DTA");
 
-    if (kundeFil.is_open()) {
-        // les fra kundefil
+    if (kundeFil) {        
+        std::cout << "Leser fra filen KUNDER.DTA" << std::endl;
+
+        while(!kundeFil.eof()) {
+            kundeListe.push_back(new Kunde(innfil));
+        }
+
+        kundeFil.close();
     } else {
         std::cout << "Kunne ikke lese fra /data/KUNDER.DTA." << std::endl;
     }
 
-    // write here
     kundeFil.close();
 }
 
 // Skriver til fil
-void Kunder::skrivTilFil() {
-    std::ofstream kundeFil;
-    kundeFil.open("../data/KUNDER.DTA");
+void Kunder::skrivAlleTilFil() {
+    std::ofstream kundeFil("../data/KUNDER.DTA");
 
-    if (kundeFil.is_open()) {
-        // skriv til kundefil
+   if (kundeFil) {
+        std::cout << "Leser til filen KUNDER.DTA" << std::endl;
+
+        for(const auto &kunde: kundeListe) {
+            kunde->skrivTilFil(kundeFil);
+        }
+
+        kundeFil.close();
     } else {
-        std::cout << "Kunne ikke skrive til /data/KUNDER.DTA." << std::endl;
+        std::cout << "Kunne ikke lese til /data/KUNDER.DTA." << std::endl;
     }
 
-    // write here
     kundeFil.close();
 }
 

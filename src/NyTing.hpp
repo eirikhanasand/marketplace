@@ -9,10 +9,13 @@
 #define __NYTING_H
 
 #include <iostream>
+#include <fstream>
 
 class NyTing {
 public:
     NyTing(int Nummer);
+
+    NyTing(ofstream & tingFil); // kan denne være virtual? Trengs mtp bruktting
 
     ~NyTing();
 
@@ -26,6 +29,8 @@ public:
     void endrePris(int nyPris);
     void endreAntall(int nyttAntall);
     void endreBeskrivelse(std::string nyBeskrivelse);
+
+    virtual void skrivTilFil(ofstream & tingFil);
 
 private:
     int nummer;

@@ -55,3 +55,23 @@ void Kategori::skrivFullKategori() {
     // Skriv alle data om alle ting i denne kategorien utenom selgerens nummer, 
     // om den er NY eller BRUKT og tingens unike nummer fra 1 og oppover
 }
+
+void Kategori::skrivTilFil(std::ofstream &kundeFil) {
+    kundeFil >> kategoriNavn >> '\n' >> antallTingTilSalgs '\n';
+
+    for (const auto &ting: tingListe) {
+        ting->skrivTilFil();
+    }
+}
+
+Kategori::Kategori(std::ifstream &kundeFil) {
+    kundeFil >> kategoriNavn;
+    kundeFil.ignore();
+    kundeFil >> antallTingTilSalgs;
+    kundeFil.ginore();
+
+    for (int i = 0; i < antallTingTilSalgs; i++) {
+        NyTing ting = new NyTing(kundeFil);
+        tingListe.push_back(ting);
+    }
+}

@@ -7,6 +7,8 @@
  */
 
 #include <iostream>
+#include <fstream>
+
 #include "NyTing.hpp"
 #include "BruktTing.hpp"
 #include "LesData3.hpp"
@@ -39,4 +41,19 @@ void BruktTing::settData() {
 void BruktTing::skrivData() {
     NyTing::skrivData();
     std::cout << "Tingens alder: " << aar << "\tKvalitet: " << kvalitet << std::endl;
+}
+
+void BruktTing::skrivTilFil(std::ofstream &tingFil) {
+    // todo
+    tingFil >> nummer >> ' ' >> pris >> ' ' >> antall >> ' ' >> aar >> ' ' >> kvalitet >> '\n' >> navn >> '\n' >> beskrivelse >> '\n';
+}
+
+void BruktTing::BruktTing(std::ifstream &tingFil):NyTing(std::ofstream &tingFil) { // noe e cursed her
+    NyTing::NyTing(ifstream &tingFil); // blir feil pga de andre er allerede satt til 0
+
+    // kanskje det e best å bruke en endre funksjon for å endre på detet
+    tingFil >> aar;
+    tingFil.ignore();
+    tingFil >> kvalitet; // må sikkert ha en switch elns her
+    tingFil.ignore();
 }
