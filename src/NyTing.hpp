@@ -18,7 +18,7 @@ public:
 
     virtual void settData();
 
-    virtual std::string skrivData() const;
+    virtual void skrivData() const;
 
     std::string hentNavn() const;
 
