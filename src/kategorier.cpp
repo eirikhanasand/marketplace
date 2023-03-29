@@ -163,7 +163,7 @@ void Kategorier::lagTing() {
     auto k = finnKategori(kategoriNavn);
     NyTing* ting = new NyTing(k->tingMap.size());
     if (k) {
-        k->NyTing.push_back(ting);
+        k->tingMap.push_back(ting);
     } else {
         std::cout << "Det finnes ingen kategori med navn " << kategoriNavn << std::endl;
     };
