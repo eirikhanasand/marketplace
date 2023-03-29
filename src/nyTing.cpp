@@ -32,6 +32,10 @@ void NyTing::settData() {
     antall = lesInt("Hvor mange selger du", 0, INT32_MAX);
 }
 
+void NyTing::skrivData() const {
+    std::cout << "Ting: " << nummer << "\tNavn: " << navn << "\tAntall: " << antall << "\tPris: " << pris << "\tBeskrivelse: " << beskrivelse << std::endl;
+}
+
 std::string NyTing::hentNavn() const {
     return navn;
 }
