@@ -6,6 +6,8 @@
  */
 
 #include <iostream>
+#include <fstream>
+
 #include "NyTing.hpp"
 #include "LesData3.hpp"
 #include "Kunder.hpp"
@@ -95,4 +97,24 @@ void NyTing::endreTing() {
             break;
         }
     }
+}
+
+NyTing::NyTing(ofstream & tingFil) {
+    tingFil >> nummer;
+    tingFil.ignore();
+    tingFil >> pris;
+    tingFil.ignore();
+    tingFil >> antall;
+    tingFil.ignore();
+    
+    tingFil >> antall;  // denne må ignoreres hvis den e 0
+    tingFil.ignore();  // denne må ignoreres hvis den e 0
+    tingFil >> antall;  // denne må ignoreres hvis den e 0
+    tingFil.ignore();  // denne må ignoreres hvis den e 0
+
+    std::getline(tingFil, navn);
+    navn[navn.length()-1] = '\0';
+
+    std::getline(tingFil, beskrivelse);
+    beskrivelse[beskrivelse.length()-1] = '\0';
 }

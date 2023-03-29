@@ -11,6 +11,8 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <fstream>
+
 #include "Kategori.hpp"
 #include "Kunde.hpp"
 
@@ -26,8 +28,6 @@ public:
 
     void lesFraFil();
 
-    void skrivTilFil();
-
     void nyKategori();
 
     bool kategoriFinnes(std::string kategoriNavn);
@@ -37,7 +37,7 @@ public:
     void fjernKategori(Kategori *kategori);
 
     Kategori *finnKategori(std::string kategoriNavn);
-    
+
     void lagTingIKategori();
 
     void endreTingIKategori();
@@ -45,6 +45,10 @@ public:
     void kjopTing();
 
     void lagKategorier();
+
+    void skrivAlleTilFil();
+
+    void lesAlleFraFil();
 
 private:
     std::map<std::string, Kategori *> kategoriMap;

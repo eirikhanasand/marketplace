@@ -9,13 +9,16 @@
 #define __KATEGORI_H
 
 #include <iostream>
+#include <fstream>
 #include <list>
 #include <string>
+
 #include "NyTing.hpp"
 
 class Kategori {
 public:
     Kategori(std::string KategoriNavn);
+    Kategori(std::ifstream &kundeFil);
 
     ~Kategori();
 
@@ -30,6 +33,9 @@ public:
     void skrivFullKategori();
 
     int hentAntallTing();
+    
+    void skrivTilFil(std::ofstream &kundeFil);
+
 
     NyTing* finnTing(int kundeNummer);
 
