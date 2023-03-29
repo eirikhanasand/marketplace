@@ -113,8 +113,8 @@ NyTing::NyTing(ofstream & tingFil) {
     tingFil.ignore();  // denne må ignoreres hvis den e 0
 
     std::getline(tingFil, navn);
-    navn[navn.length-1] = '\0';
+    navn[navn.length()-1] = '\0';
 
     std::getline(tingFil, beskrivelse);
-    beskrivelse[beskrivelse.length-1] = '\0';
+    beskrivelse[beskrivelse.length()-1] = '\0';
 }
