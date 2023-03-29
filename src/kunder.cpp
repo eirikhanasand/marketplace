@@ -39,7 +39,7 @@ void Kunder::handling() {
                 if (kundeListe.size()) {
                     skrivAlle();
                 } else {
-                    std::cout << "Det finnes ingen kunder" << std::endl;
+                    std::cout << "Det finnes ingen kunder å skrive ut." << std::endl;
                 }
                 valg = 0;
                 break;
@@ -55,7 +55,7 @@ void Kunder::handling() {
                     }
                     valg = 0;
                 } else {
-                    std::cout << "Det finnes ingen kunder." << std::endl;
+                    std::cout << "Det finnes ingen kunder, kan derfor ikke skrive enkeltkunde." << std::endl;
                 }
                 break;
             }
@@ -65,7 +65,7 @@ void Kunder::handling() {
                     fjernKunde(kundeNummer);
                     valg = 0;
                 } else {
-                    std::cout << "Det finnes ingen kunder." << std::endl;
+                    std::cout << "Det finnes ingen kunder å slette." << std::endl;
                 }
                 break;
             }
