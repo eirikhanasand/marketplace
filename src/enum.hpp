@@ -1,7 +1,7 @@
 /**
- *  Definisjon av funksjoner i Kategori klassen
+ *  Definisjon av Enumer i prosjektet
  *
- *  @file      Enum.hpp
+ *  @file      enum.hpp
  *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 

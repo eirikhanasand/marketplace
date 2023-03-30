@@ -26,7 +26,7 @@ int main() {
 
     gKundebase.lesFraFil();
     gKategoribase.lesFraFil();
-
+    
     skrivMeny();
 
     valg = lesString("\nKommando");

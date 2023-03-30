@@ -24,6 +24,10 @@ BruktTing::~BruktTing() {
 
 }
 
+BruktTing::BruktTing(std::ifstream &tingFil):NyTing(tingFil) {
+    settData(tingFil);
+}
+
 void BruktTing::settData() {
     NyTing::settData();
     aar = lesInt("Tingens alder", 0, INT32_MAX);
@@ -58,13 +62,15 @@ void BruktTing::skrivTilFil(std::ofstream &tingFil) {
     tingFil << aar << ' ' << kvalitetInt << '\n';
 }
 
-BruktTing::BruktTing(std::ifstream &tingFil):NyTing(tingFil) {
+void BruktTing::settData(std::ifstream &tingFil) {
     int kvalitetInt;
-    // det e noe feil her pga aar og kvalitet e allerede lest inn i parent funksjonen så me får isje brukt det her // todo
+    NyTing::settData(tingFil);
+    
     tingFil >> aar;
     tingFil.ignore();
     tingFil >> kvalitetInt;
     tingFil.ignore();
+
 
     switch (kvalitetInt) {
         case 1:   kvalitet = SomNy;       break;

@@ -16,11 +16,12 @@ class NyTing {
 public:
     NyTing(int Nummer);
 
-    NyTing(std::ifstream & tingFil); // kan denne være virtual? Trengs mtp bruktting
+    NyTing(std::ifstream & tingFil);
 
     ~NyTing();
 
     virtual void settData();
+    virtual void settData(std::ifstream &tingFil);
 
     virtual void skrivData() const;
 

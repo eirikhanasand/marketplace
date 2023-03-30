@@ -88,13 +88,25 @@ void Kategori::skrivTilFil(std::ofstream &kundeFil) {
 }
 
 Kategori::Kategori(std::ifstream &kundeFil) {
-    kundeFil >> kategoriNavn;
-    kundeFil.ignore();
+    int type;
+
+    std::getline(kundeFil, kategoriNavn);
+    kategoriNavn[kategoriNavn.length()-1] = '\0';
+
     kundeFil >> antallTingTilSalgs;
     kundeFil.ignore();
 
     for (int i = 0; i < antallTingTilSalgs; i++) {
-        NyTing *ting = new NyTing(kundeFil);
-        tingListe.push_back(ting);
+        kundeFil >> type;
+        std::cout << "Type: " << type << std::endl;
+        kundeFil.ignore();
+
+        if (type) {
+            BruktTing *bruktTing = new BruktTing(kundeFil);
+            tingListe.push_back(bruktTing);
+        } else {
+            NyTing *nyTing = new NyTing(kundeFil);
+            tingListe.push_back(nyTing);
+        }
     }
 }

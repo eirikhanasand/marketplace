@@ -14,6 +14,7 @@
 #include "kunder.hpp"
 #include "kategorier.hpp"
 #include "kategori.hpp"
+#include "bruktTing.hpp"
 
 extern Kunder gKundebase;
 extern Kategorier gKategoribase;
@@ -105,7 +106,15 @@ void NyTing::endreTing() {
     }
 }
 
-NyTing::NyTing(std::ifstream & tingFil) {
+NyTing::NyTing(std::ifstream &tingFil) {
+    settData(tingFil);
+} 
+
+void NyTing::skrivTilFil(std::ofstream &tingFil) {
+    tingFil << selgernummer << nummer << ' ' << pris << ' ' << antall << ' ' << 0 << ' ' << 0 << '\n' << navn << '\n' << beskrivelse << '\n';
+}
+
+void NyTing::settData(std::ifstream &tingFil) {
     tingFil >> selgernummer;
     tingFil.ignore();
     tingFil >> nummer;
@@ -115,18 +124,9 @@ NyTing::NyTing(std::ifstream & tingFil) {
     tingFil >> antall;
     tingFil.ignore();
     
-    tingFil >> antall;  // denne må ignoreres hvis den e 0
-    tingFil.ignore();  // denne må ignoreres hvis den e 0
-    tingFil >> antall;  // denne må ignoreres hvis den e 0
-    tingFil.ignore();  // denne må ignoreres hvis den e 0
-
     std::getline(tingFil, navn);
     navn[navn.length()-1] = '\0';
 
     std::getline(tingFil, beskrivelse);
     beskrivelse[beskrivelse.length()-1] = '\0';
-} 
-
-void NyTing::skrivTilFil(std::ofstream &tingFil) { // todo , noe e cursed her 
-    tingFil << selgernummer << nummer << ' ' << pris << ' ' << antall << ' ' << 0 << ' ' << 0 << '\n' << navn << '\n' << beskrivelse << '\n';
 }

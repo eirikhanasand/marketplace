@@ -46,7 +46,7 @@ void Kategorier::tingHandling(char valg) {
     if (valg == 'N') {
         lagTingIKategori();
     } else if (valg == 'E') {
-        // todo
+        endreTingIKategori();
     } else {
         std::cout << "Ugyldig kommando!\n";
     }

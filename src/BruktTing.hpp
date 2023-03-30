@@ -22,6 +22,7 @@ public:
     ~BruktTing();
 
     void settData();
+    void settData(std::ifstream &tingFil);
 
     void skrivData() const;
 
