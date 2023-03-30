@@ -7,7 +7,7 @@ LDFLAGS=-g
 
 # Source files
 SRCS=$(wildcard src/*.cpp)
-OBJS=$(subst src/.cpp,.o,$(SRCS))
+OBJS=$(subst src/,,$(SRCS:.cpp=.o))
 
 # Compiled binary filename
 BINOUT=prosjekt
@@ -19,16 +19,14 @@ all: prosjekt
 prosjekt: $(OBJS)
 	$(CC) $(LDFLAGS) -o $(BINOUT) $(OBJS)
 
-# Compiled project dependencies
-depend: .depend
-
-.depend: $(SRCS)
-	$(RM) ./.depend
-	$(CC) $(CPPFLAGS) -MM $^>>./.depend;
+# Compile .cpp files to .o files
+%.o: src/%.cpp
+	$(CC) $(CPPFLAGS) -c $< -o $@
 
 # Remove all object files
 clean:
 	$(RM) $(OBJS)
+	$(RM) .depend
 
 # Remove all object and temporary files
 distclean: clean
@@ -45,6 +43,3 @@ cleanall: distclean rmdata
 run:
 	if [ ! -d "$(DATADIR)" ]; then mkdir "$(DATADIR)"; fi
 	./$(BINOUT)
-
-# Dynamically generated dependency file
-include .depend
