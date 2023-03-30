@@ -22,6 +22,7 @@ public:
 
     virtual void settData();
     virtual void settData(std::ifstream &tingFil);
+    virtual void settRestData(std::ifstream &tingFil);
 
     virtual void skrivData() const;
 

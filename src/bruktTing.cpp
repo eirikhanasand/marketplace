@@ -71,7 +71,6 @@ void BruktTing::settData(std::ifstream &tingFil) {
     tingFil >> kvalitetInt;
     tingFil.ignore();
 
-
     switch (kvalitetInt) {
         case 1:   kvalitet = SomNy;       break;
         case 2:   kvalitet = PentBrukt;   break;
@@ -79,4 +78,6 @@ void BruktTing::settData(std::ifstream &tingFil) {
         case 4:   kvalitet = GodtBrukt;   break;
         case 5:   kvalitet = Sliten;      break;
     }
+
+    NyTing::settRestData(tingFil);
 }

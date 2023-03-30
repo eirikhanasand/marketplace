@@ -87,6 +87,17 @@ void Kategori::skrivTilFil(std::ofstream &kundeFil) {
     }
 }
 
+// 0 1 1 2000 1
+// ForsteLego
+// Den nyeste legoen som finnes! Helt ny, og enda ikke brukt!! Passer godt til både store og små!
+// 1 2 2 10000 1 230 4
+// ForsteBruktLego
+// Den første legoen som noensinne ble laget! Denne er av ekstrem sjeldenhet, og går derfor til en høy pris.
+// 0 2 3 3000 2
+// AndreLego
+// Denne legoen er fra serie 2 av lego som ble laget helt tilbake i 
+// Den første legoen som noensinne ble laget! Denne er av ekstrem sjeldenhet, og går derfor til en høy pris.
+
 Kategori::Kategori(std::ifstream &kundeFil) {
     int type;
 
@@ -97,15 +108,17 @@ Kategori::Kategori(std::ifstream &kundeFil) {
     kundeFil.ignore();
 
     for (int i = 0; i < antallTingTilSalgs; i++) {
+        type = 0;
         kundeFil >> type;
-        std::cout << "Type: " << type << std::endl;
         kundeFil.ignore();
 
         if (type) {
             BruktTing *bruktTing = new BruktTing(kundeFil);
+            bruktTing->skrivData();
             tingListe.push_back(bruktTing);
         } else {
             NyTing *nyTing = new NyTing(kundeFil);
+            nyTing->skrivData();
             tingListe.push_back(nyTing);
         }
     }

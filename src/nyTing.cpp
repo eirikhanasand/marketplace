@@ -108,10 +108,11 @@ void NyTing::endreTing() {
 
 NyTing::NyTing(std::ifstream &tingFil) {
     settData(tingFil);
+    settRestData(tingFil);
 } 
 
 void NyTing::skrivTilFil(std::ofstream &tingFil) {
-    tingFil << selgernummer << nummer << ' ' << pris << ' ' << antall << ' ' << 0 << ' ' << 0 << '\n' << navn << '\n' << beskrivelse << '\n';
+    tingFil << selgernummer << nummer << ' ' << pris << ' ' << antall << '\n' << navn << '\n' << beskrivelse << '\n';
 }
 
 void NyTing::settData(std::ifstream &tingFil) {
@@ -123,10 +124,12 @@ void NyTing::settData(std::ifstream &tingFil) {
     tingFil.ignore();
     tingFil >> antall;
     tingFil.ignore();
-    
+}
+
+void NyTing::settRestData(std::ifstream &tingFil) {
     std::getline(tingFil, navn);
-    navn[navn.length()-1] = '\0';
+    navn[navn.length()] = '\0';
 
     std::getline(tingFil, beskrivelse);
-    beskrivelse[beskrivelse.length()-1] = '\0';
+    beskrivelse[beskrivelse.length()] = '\0';
 }
