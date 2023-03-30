@@ -8,6 +8,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "algorithm"
 
 #include "Kategori.hpp"
 #include "Kategorier.hpp"
@@ -40,12 +41,16 @@ std::string Kategori::hentNavn() const {
 }
 
 NyTing* Kategori::finnTing(int kundeNummer) {
+    return *std::find_if(tingListe.begin(), tingListe.end(),[kundeNummer](NyTing* ting) {
+        return ting->hentKundeNummer() == kundeNummer;
+    });
+    /*
     for (const auto &item: tingListe) {
         if (item->hentKundeNummer() == kundeNummer) {
             return item;
         }
     }
-    return nullptr;
+    return nullptr;*/
 }
 
 void Kategori::lagTing() {

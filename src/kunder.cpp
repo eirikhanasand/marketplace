@@ -21,7 +21,7 @@ Kunder::Kunder() {
 // Destructor
 Kunder::~Kunder() {
     for (auto &kunde: kundeListe) {
-        kunde->~Kunde();
+        delete kunde;
     }
     std::cout << "Slettet alle kunder." << std::endl;
 }
@@ -136,7 +136,6 @@ Kunde *Kunder::finnKunde(int kundeNummer) {
                          [kundeNummer](Kunde *kunde) {
                              return kunde->hentKundeNummer() == kundeNummer;
                          });
-
     /*
     for (auto &kunde: kundeListe) {
         if (kunde->hentKundeNummer() == kundeNummer) {

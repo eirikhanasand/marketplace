@@ -113,12 +113,15 @@ void Kategorier::nyKategori() {
 
 //Sjekker om kategori finnes med samme navn
 bool Kategorier::kategoriFinnes(std::string kategoriNavn) {
+    return kategoriMap.count(kategoriNavn);
+
+    /*
     for (const auto &kategori: kategoriMap) {
         if (kategori.second->hentNavn() == kategoriNavn) {
             return true;
         }
     }
-    return false;
+    return false;*/
 }
 
 void Kategorier::fjernKategori(Kategori *kategori) {
@@ -136,12 +139,15 @@ void Kategorier::skrivAlle() {
 }
 
 Kategori *Kategorier::finnKategori(std::string kategoriNavn) {
+    return kategoriMap.find(kategoriNavn)->second;
+
+    /*
     for (const auto &kategori: kategoriMap) {
         if (!kategori.second->hentNavn().compare(0, kategoriNavn.size(), kategoriNavn)) {
             return dynamic_cast<Kategori *>(kategori.second);
         }
     }
-    return nullptr;
+    return nullptr;*/
 }
 
 void Kategorier::lagTingIKategori() {
