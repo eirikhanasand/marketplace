@@ -28,8 +28,6 @@ public:
 
     void lesFraFil();
 
-    void nyKategori();
-
     bool kategoriFinnes(std::string kategoriNavn);
 
     void skrivAlle() const;

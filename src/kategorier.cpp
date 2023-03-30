@@ -51,12 +51,13 @@ void Kategorier::kategoriHandling(char valg) {
             skrivAlle();
             break;
         case 'S': {
-            int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.antallKunder());
-            Kunde *kunde = gKundebase.hentKunde(kundeNummer);
-            if (kunde) {
-                kunde->skrivData();
+            std::string kategoriNavn = lesString("Kategori");
+            auto kategori = hentKategori(kategoriNavn);
+
+            if (kategori) {
+                kategori->skrivData();
             } else {
-                std::cout << "Det finnes ingen kunde med kundenummer " << kundeNummer << std::endl;
+                std::cout << "Det finnes ingen kategori med navn " << kategoriNavn << std::endl;
             }
             break;
         }
@@ -70,7 +71,6 @@ void Kategorier::kategoriHandling(char valg) {
             std::cout << "Ugyldig kommando!\n";
             break;
     }
-
 }
 
 // Leser fra fil
