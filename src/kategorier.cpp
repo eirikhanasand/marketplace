@@ -104,7 +104,8 @@ void Kategorier::nyKategori() {
     std::string kategoriNavn = lesString("Kategorinavn");
 
     if (!kategoriFinnes(kategoriNavn)) {
-        Kategori *kategori = new Kategori(kategoriNavn);
+        Kategori *kategori = new Kategori();
+        kategori->settData();
         kategoriMap.insert(std::pair<std::string, Kategori *>(kategoriNavn, kategori));
     } else {
         std::cout << "Kategorien finnes allerede." << std::endl;

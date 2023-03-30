@@ -17,9 +17,8 @@
 
 
 
-Kategori::Kategori(std::string KategoriNavn) {
-    kategoriNavn = KategoriNavn;
-    settData();
+Kategori::Kategori() {
+
 }
 
 Kategori::~Kategori() {
@@ -28,6 +27,7 @@ Kategori::~Kategori() {
 
 // Input category data
 void Kategori::settData() {
+    kategoriNavn = KategoriNavn;
     antallTingTilSalgs = 0;
 }
 
@@ -44,13 +44,6 @@ NyTing* Kategori::finnTing(int kundeNummer) {
     return *std::find_if(tingListe.begin(), tingListe.end(),[kundeNummer](NyTing* ting) {
         return ting->hentKundeNummer() == kundeNummer;
     });
-    /*
-    for (const auto &item: tingListe) {
-        if (item->hentKundeNummer() == kundeNummer) {
-            return item;
-        }
-    }
-    return nullptr;*/
 }
 
 void Kategori::lagTing() {
@@ -75,14 +68,12 @@ void Kategori::skrivFullKategori() {
     for (const auto &ting: tingListe) {
         ting->skrivData();
     }
-    // Skriv alle data om alle ting i denne kategorien utenom selgerens nummer, 
-    // om den er NY eller BRUKT og tingens unike nummer fra 1 og oppover
 }
 
 void Kategori::skrivTilFil(std::ofstream &kundeFil) {
     kundeFil << kategoriNavn << '\n' << antallTingTilSalgs << '\n';
 
-    for (const auto &ting: tingListe) {
+    for (const auto &ting: tingListe) { 
         ting->skrivTilFil(kundeFil);
     }
 }

@@ -17,7 +17,7 @@
 
 class Kategori {
 public:
-    Kategori(std::string KategoriNavn);
+    Kategori();
     Kategori(std::ifstream &kundeFil);
 
     ~Kategori();
