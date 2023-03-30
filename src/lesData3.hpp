@@ -26,4 +26,6 @@ bool lesBool(const char *t, const char ja = 'j', const char nei = 'n');
 
 std::string lesString(std::string tekst);
 
+std::string stringTilLiten(std::string tekst);
+
 #endif

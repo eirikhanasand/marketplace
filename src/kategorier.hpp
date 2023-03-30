@@ -34,7 +34,7 @@ public:
 
     void fjernKategori(Kategori *kategori);
 
-    Kategori *hentKategori(std::string kategoriNavn);
+    Kategori *hentKategoriEntydig(std::string kategoriNavn);
 
     void lagTingIKategori();
 

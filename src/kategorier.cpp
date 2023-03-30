@@ -9,6 +9,8 @@
 #include <fstream>
 #include <string>
 #include <map>
+#include "vector"
+#include "algorithm"
 
 #include "kunder.hpp"
 #include "kategorier.hpp"
@@ -52,7 +54,7 @@ void Kategorier::kategoriHandling(char valg) {
             break;
         case 'S': {
             std::string kategoriNavn = lesString("Kategori");
-            auto kategori = hentKategori(kategoriNavn);
+            auto kategori = hentKategoriEntydig(kategoriNavn);
 
             if (kategori) {
                 kategori->skrivData();
@@ -126,28 +128,42 @@ void Kategorier::skrivAlle() const {
     }
 }
 
-Kategori *Kategorier::hentKategori(std::string kategoriNavn) {
-    std::map<std::string, Kategori*>::iterator element;
+Kategori *Kategorier::hentKategoriEntydig(std::string kategoriNavn) {
+   Kategori* element = nullptr;
 
     if (!kategoriMap.count(kategoriNavn)) {
+        std::vector<std::string> funn;
+
+        std::string liteNavn = stringTilLiten(kategoriNavn);
+
         for (auto iterator = kategoriMap.begin();
                 iterator != kategoriMap.end();
                 iterator++)
         {
-            if (!(iterator->second->hentNavn().compare(0, kategoriNavn.size(), kategoriNavn))) {
-                element = iterator;
-                break;
+            std::string liteFunn = stringTilLiten(iterator->first);
+
+            if (liteFunn.find(liteNavn) != std::string::npos) {
+                funn.push_back(iterator->first);
             }
         }
+
+        if (funn.size()) {
+            for (int i = 1; i <= funn.size(); i++) {
+                std::cout << '[' << i << ']' << " " << funn.at(i-1) << '\n';
+            }
+            int valg = lesInt("Velg kategori:", 1, funn.size());
+
+            element = kategoriMap.find(funn.at(valg-1))->second;
+        }
     } else {
-        element = kategoriMap.find(kategoriNavn);
+        element = kategoriMap.find(kategoriNavn)->second;
     }
-    return (element != kategoriMap.end()) ? element->second : nullptr;
+    return element;
 }
 
 void Kategorier::lagTingIKategori() {
     std::string kategoriNavn = lesString("Velg kategori");
-    auto kategori = hentKategori(kategoriNavn);
+    auto kategori = hentKategoriEntydig(kategoriNavn);
 
     if (kategori) {
         kategori->lagTing();
@@ -158,7 +174,7 @@ void Kategorier::lagTingIKategori() {
 
 void Kategorier::endreTingIKategori() {
     std::string kategoriNavn = lesString("Velg kategori");
-    auto kategori = hentKategori(kategoriNavn);
+    auto kategori = hentKategoriEntydig(kategoriNavn);
 
     if (kategori) {
         int kundeNummer = lesInt("Kundenummer: ", 1, kategori->hentAntallTing());
@@ -173,7 +189,7 @@ void Kategorier::kjopTing() {
     int kundenummer = lesInt("Kundenummer:", 0, gKundebase.antallKunder());
     std::string kategoriNavn = lesString("Kategori");
 
-    auto kategori = hentKategori(kategoriNavn);
+    auto kategori = hentKategoriEntydig(kategoriNavn);
 
     if (kategori) {
         kategori->skrivFullKategori();

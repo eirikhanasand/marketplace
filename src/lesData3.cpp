@@ -15,6 +15,7 @@
 #include <cstdlib>                  //  atoi, atof
 #include <string>
 #include "lesData3.hpp"             //  Prototypene for denne filens innhold
+#include "algorithm"
 
 /**
  *  Leser og returnerer ett (upcaset) tegn.
@@ -100,7 +101,7 @@ int lesInt(const char *t, const int min, const int max) {
  *
  *  @return True eller false fra om brukeren svarte ja eller nei.
  */
-bool lesBool(const char *t, const char ja = 'j', const char nei = 'n') {
+bool lesBool(const char *t, const char ja, const char nei) {
     bool svar = false;
     bool feil = false;
 
@@ -133,4 +134,9 @@ std::string lesString(std::string tekst) {
     std::getline(std::cin, string);
     
     return string;
+}
+
+std::string stringTilLiten(std::string tekst) {
+    std::transform(tekst.begin(), tekst.end(), tekst.begin(), tolower);
+    return tekst;
 }
