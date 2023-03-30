@@ -108,7 +108,6 @@ bool lesBool(const char *t, const char ja, const char nei) {
 
     do {
         feil = false;
-        std::cout << std::fixed << std::showpoint << std::setprecision(2);
         std::cout << t;
         char svarBokstav = lesChar("");
 
