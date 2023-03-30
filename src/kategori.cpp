@@ -8,7 +8,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "algorithm"
 
 #include "Kategori.hpp"
 #include "Kategorier.hpp"
@@ -27,7 +26,7 @@ Kategori::~Kategori() {
 
 // Input category data
 void Kategori::settData() {
-    kategoriNavn = KategoriNavn;
+    kategoriNavn = lesString("Kategorinavn");
     antallTingTilSalgs = 0;
 }
 
@@ -36,14 +35,17 @@ void Kategori::skrivData() const {
     std::cout << "Kategorinavn: " << kategoriNavn << "\tAntall ting til salgs: " << antallTingTilSalgs << std::endl;
 }
 
-std::string Kategori::hentNavn() const {
+std::string Kategori::hentNavn() {
     return kategoriNavn;
 }
 
-NyTing* Kategori::finnTing(int kundeNummer) {
-    return *std::find_if(tingListe.begin(), tingListe.end(),[kundeNummer](NyTing* ting) {
-        return ting->hentKundeNummer() == kundeNummer;
-    });
+NyTing* Kategori::hentTing(int kundeNummer) {
+    for (const auto &item: tingListe) {
+        if (item->hentKundeNummer() == kundeNummer) {
+            return item;
+        }
+    }
+    return nullptr;
 }
 
 void Kategori::lagTing() {

@@ -34,9 +34,9 @@ void Kategorier::lagKategorier() {
     std::string navn = lesString("Kategorinavn");
 
     if (!kategoriFinnes(navn)) {
-        auto *kategori = new Kategori(navn);
-        kategori->settData();
-        std::cout << "Opprettet kategori " << navn << std::endl;
+        auto *kategori = new Kategori();
+        kategori->settData(); 
+        std::cout << "Opprettet kategori " << kategori->hentNavn() << std::endl;
     } else {
         std::cout << "Beklager, det finnes allerede en " << navn << " kategori!" << std::endl;
     }
@@ -46,7 +46,7 @@ void Kategorier::tingHandling(char valg) {
     if (valg == 'N') {
         lagTingIKategori();
     } else if (valg == 'E') {
-
+        // todo
     } else {
         std::cout << "Ugyldig kommando!\n";
     }
@@ -64,7 +64,7 @@ void Kategorier::kategoriHandling(char valg) {
             break;
         case 'S': {
             int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.antallKunder());
-            Kunde *kunde = gKundebase.finnKunde(kundeNummer);
+            Kunde *kunde = gKundebase.hentKunde(kundeNummer);
             if (kunde) {
                 kunde->skrivData();
             } else {
@@ -87,8 +87,7 @@ void Kategorier::kategoriHandling(char valg) {
 
 // Leser fra fil
 void Kategorier::lesFraFil() {
-    std::ifstream kundeFil;
-    kundeFil.open("../data/KATEGORIER.DTA");
+    std::ifstream kundeFil("../data/KATEGORIER.DTA");
 
     if (kundeFil.is_open()) {
         // les fra kundefil
@@ -115,45 +114,35 @@ void Kategorier::nyKategori() {
 //Sjekker om kategori finnes med samme navn
 bool Kategorier::kategoriFinnes(std::string kategoriNavn) {
     return kategoriMap.count(kategoriNavn);
-
-    /*
-    for (const auto &kategori: kategoriMap) {
-        if (kategori.second->hentNavn() == kategoriNavn) {
-            return true;
-        }
-    }
-    return false;*/
 }
 
+// Fjerner en kategori
 void Kategorier::fjernKategori(Kategori *kategori) {
-    auto iterator = kategoriMap.find(kategori->hentNavn());
-    kategoriMap.erase(iterator);
+    auto funn = kategoriMap.find(kategori->hentNavn());
+    kategoriMap.erase(funn);
     delete kategori;
 }
 
 
 // Skriver alle kategorier
-void Kategorier::skrivAlle() {
+void Kategorier::skrivAlle() const {
     for (const auto &kategori: kategoriMap) {
         kategori.second->skrivData();
     }
 }
 
-Kategori *Kategorier::finnKategori(std::string kategoriNavn) {
-    return kategoriMap.find(kategoriNavn)->second;
-
-    /*
-    for (const auto &kategori: kategoriMap) {
-        if (!kategori.second->hentNavn().compare(0, kategoriNavn.size(), kategoriNavn)) {
-            return dynamic_cast<Kategori *>(kategori.second);
+Kategori *Kategorier::hentKategori(std::string kategoriNavn) {
+    for (auto &kategori: kategoriMap) {
+        if (kategori.second->hentNavn() == kategoriNavn) {
+            return kategori.second;
         }
     }
-    return nullptr;*/
+    return nullptr;
 }
 
 void Kategorier::lagTingIKategori() {
     std::string kategoriNavn = lesString("Velg kategori");
-    auto kategori = finnKategori(kategoriNavn);
+    auto kategori = hentKategori(kategoriNavn);
 
     if (kategori) {
         kategori->lagTing();
@@ -164,11 +153,11 @@ void Kategorier::lagTingIKategori() {
 
 void Kategorier::endreTingIKategori() {
     std::string kategoriNavn = lesString("Velg kategori");
-    auto kategori = finnKategori(kategoriNavn);
+    auto kategori = hentKategori(kategoriNavn);
 
     if (kategori) {
         int kundeNummer = lesInt("Kundenummer: ", 1, kategori->hentAntallTing());
-        kategori->finnTing(kundeNummer-1)->endreTing();
+        kategori->hentTing(kundeNummer-1)->endreTing();
     } else {
         std::cout << "Det finnes ingen kategori med navn " << kategoriNavn << std::endl;
     }
@@ -179,11 +168,15 @@ void Kategorier::kjopTing() {
     int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.antallKunder());
     std::string kategoriNavn = lesString("Kategori");
 
-    auto kategori = finnKategori(kategoriNavn);
+    auto kategori = hentKategori(kategoriNavn);
 
     if (kategori) {
         kategori->skrivFullKategori();
         ting = lesInt("Skriv inn nummer på tingen du vil kjøpe", 0, kategori->hentAntallTing());
+        
+        // kanskje lag egen funksjon for dette
+        Kunde* kunde = Kunde::h
+        
         /**
          * Ifm. kjøpet må alt følgende skje: Kjøperens antall kjøp telles opp med en. 
          * Selgerens antall salg telles opp med en. Antall av tingen telles ned med en, 

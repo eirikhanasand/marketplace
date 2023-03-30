@@ -20,13 +20,15 @@ public:
 
     void settData();
 
-    void skrivData();
+    void skrivData() const;
 
     int hentKundeNummer();
 
-    void skrivInfo();
+    void skrivInfo() const;
     
     void skrivTilFil(std::ofstream &kundeFil);
+
+    Kunde* hentKundeFraKundenummer(int kundenummer);
 
 private:
     int kundeNummer;

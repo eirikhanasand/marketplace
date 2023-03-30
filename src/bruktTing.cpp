@@ -38,19 +38,39 @@ void BruktTing::settData() {
     }
 }
 
-void BruktTing::skrivData() {
+void BruktTing::skrivData() const {
     NyTing::skrivData();
     std::cout << "Tingens alder: " << aar << "\tKvalitet: " << kvalitet << std::endl;
 }
 
 void BruktTing::skrivTilFil(std::ofstream &tingFil) {
     NyTing::skrivTilFil(tingFil);
-    tingFil << aar << ' ' << kvalitet << '\n';
+    int kvalitetInt = 0;
+
+    switch (kvalitet) {
+        case SomNy:     kvalitetInt = 1; break; 
+        case PentBrukt: kvalitetInt = 2; break; 
+        case Brukt:     kvalitetInt = 3; break; 
+        case GodtBrukt: kvalitetInt = 4; break; 
+        case Sliten:    kvalitetInt = 5; break;
+    }
+
+    tingFil << aar << ' ' << kvalitetInt << '\n';
 }
 
-BruktTing::BruktTing(std::ifstream &tingFil):NyTing(tingFil) { // fixed by sindre
+BruktTing::BruktTing(std::ifstream &tingFil):NyTing(tingFil) {
+    int kvalitetInt;
+    // det e noe feil her pga aar og kvalitet e allerede lest inn i parent funksjonen så me får isje brukt det her // todo
     tingFil >> aar;
     tingFil.ignore();
-    tingFil >> kvalitet; // må sikkert ha en switch elns her
+    tingFil >> kvalitetInt;
     tingFil.ignore();
+
+    switch (kvalitetInt) {
+        case 1:   kvalitet = SomNy;       break;
+        case 2:   kvalitet = PentBrukt;   break;
+        case 3:   kvalitet = Brukt;       break;
+        case 4:   kvalitet = GodtBrukt;   break;
+        case 5:   kvalitet = Sliten;      break;
+    }
 }

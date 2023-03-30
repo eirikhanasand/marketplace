@@ -26,7 +26,7 @@ public:
 
     void skrivData() const;
 
-    std::string hentNavn() const;
+    std::string hentNavn();
 
     void lagTing();
     
@@ -37,7 +37,7 @@ public:
     void skrivTilFil(std::ofstream &kundeFil);
 
 
-    NyTing* finnTing(int kundeNummer);
+    NyTing* hentTing(int kundeNummer);
 
 private:
     std::list<NyTing*> tingListe;

@@ -46,7 +46,7 @@ void Kunder::handling(char valg) {
         case 'S': {
             if (kundeListe.size()) {
                 int kundeNummer = lesInt("Kundenummer:", 0, kundeListe.size());
-                Kunde *kunde = finnKunde(kundeNummer);
+                Kunde *kunde = hentKunde(kundeNummer);
                 if (kunde) {
                     kunde->skrivData();
                 } else {
@@ -115,7 +115,7 @@ void Kunder::skrivAlleTilFil() {
 // Deletes customer 
 void Kunder::fjernKunde(int kundeNummer) {
     char bekreftelse = lesChar("Er du sikker på at du vil slette kunden? (j/N)");
-    auto kunde = finnKunde(kundeNummer);
+    auto kunde = hentKunde(kundeNummer);
 
     if (kunde) {
         if (bekreftelse == 'j') {
@@ -131,18 +131,13 @@ void Kunder::fjernKunde(int kundeNummer) {
 }
 
 // Finds customer
-Kunde *Kunder::finnKunde(int kundeNummer) {
-    return *std::find_if(kundeListe.begin(),kundeListe.end(),
-                         [kundeNummer](Kunde *kunde) {
-                             return kunde->hentKundeNummer() == kundeNummer;
-                         });
-    /*
+Kunde *Kunder::hentKunde(int kundeNummer) {
     for (auto &kunde: kundeListe) {
         if (kunde->hentKundeNummer() == kundeNummer) {
             return kunde;
         }
     }
-    return nullptr;*/ // GAMLE
+    return nullptr;
 }
 
 void Kunder::skrivAlle() {

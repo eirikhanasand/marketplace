@@ -29,7 +29,7 @@ public:
 
     void fjernKunde(int kundeNummer);
 
-    Kunde *finnKunde(int kundeNummer);
+    Kunde *hentKunde(int kundeNummer);
 
     int antallKunder();
 

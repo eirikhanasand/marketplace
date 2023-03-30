@@ -32,11 +32,11 @@ public:
 
     bool kategoriFinnes(std::string kategoriNavn);
 
-    void skrivAlle();
+    void skrivAlle() const;
 
     void fjernKategori(Kategori *kategori);
 
-    Kategori *finnKategori(std::string kategoriNavn);
+    Kategori *hentKategori(std::string kategoriNavn);
 
     void lagTingIKategori();
 

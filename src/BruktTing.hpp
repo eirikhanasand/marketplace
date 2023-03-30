@@ -23,7 +23,7 @@ public:
 
     void settData();
 
-    void skrivData();
+    void skrivData() const;
 
     void skrivTilFil(std::ofstream &tingFil);
 

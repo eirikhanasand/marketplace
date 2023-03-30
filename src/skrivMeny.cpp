@@ -1,5 +1,5 @@
 /**
- *  Skriver programmets hovedmeny
+ *  Skriver programmets hovedmeny og beskriver alle valgmuligheter
  *
  *  @file      skrivMeny.cpp
  *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
@@ -9,7 +9,7 @@
 #include "SkrivMeny.hpp"
 
 /**
- *  Skriver programmets hovedmeny
+ *  Skriver programmets hovedmeny og beskriver alle valgmuligheter
 */
 void skrivMeny() {
     std::cout << "UN - Opprett ny kunde" << '\n' 

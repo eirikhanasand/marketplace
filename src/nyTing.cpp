@@ -117,8 +117,8 @@ NyTing::NyTing(std::ifstream & tingFil) {
 
     std::getline(tingFil, beskrivelse);
     beskrivelse[beskrivelse.length()-1] = '\0';
-}
+} 
 
-void NyTing::skrivTilFil(std::ofstream &tingFil) { // todo , noe e cursed her
+void NyTing::skrivTilFil(std::ofstream &tingFil) { // todo , noe e cursed her 
     tingFil << nummer << ' ' << pris << ' ' << antall << ' ' << 0 << ' ' << 0 << '\n' << navn << '\n' << beskrivelse << '\n';
 }
