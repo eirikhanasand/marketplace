@@ -11,6 +11,7 @@
 #include "Kunder.hpp"
 #include "Kunde.hpp"
 #include "LesData3.hpp"
+#include "algorithm"
 
 // Constructor
 Kunder::Kunder() {
@@ -131,12 +132,18 @@ void Kunder::fjernKunde(int kundeNummer) {
 
 // Finds customer
 Kunde *Kunder::finnKunde(int kundeNummer) {
+    return *std::find_if(kundeListe.begin(),kundeListe.end(),
+                         [kundeNummer](Kunde *kunde) {
+                             return kunde->hentKundeNummer() == kundeNummer;
+                         });
+
+    /*
     for (auto &kunde: kundeListe) {
         if (kunde->hentKundeNummer() == kundeNummer) {
             return kunde;
         }
     }
-    return nullptr;
+    return nullptr;*/ // GAMLE
 }
 
 void Kunder::skrivAlle() {
