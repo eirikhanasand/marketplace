@@ -98,7 +98,7 @@ void Kunder::skrivAlleTilFil() {
     std::ofstream kundeFil("../data/KUNDER.DTA");
 
    if (kundeFil) {
-        std::cout << "Leser til filen KUNDER.DTA" << std::endl;
+        std::cout << "Skriver til filen KUNDER.DTA" << std::endl;
 
         for(const auto &kunde: kundeListe) {
             kunde->skrivTilFil(kundeFil);
@@ -106,7 +106,7 @@ void Kunder::skrivAlleTilFil() {
 
         kundeFil.close();
     } else {
-        std::cout << "Kunne ikke lese til /data/KUNDER.DTA." << std::endl;
+        std::cout << "Kunne ikke skrive til /data/KUNDER.DTA." << std::endl;
     }
 
     kundeFil.close();
