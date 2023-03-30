@@ -167,7 +167,7 @@ int Kunder::antallKunder() {
 }
 
 void Kunder::lagKunde() {
-    Kunde *kunde = new Kunde(kundeListe.size());
+    Kunde *kunde = new Kunde(kundeListe.size()+1);
     kundeListe.push_back(kunde);
     std::cout << "Opprettet kunde med ";
     kunde->skrivInfo();
