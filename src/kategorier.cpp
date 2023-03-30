@@ -30,7 +30,7 @@ Kategorier::~Kategorier() {
     kategoriMap.clear();
 }
 
-void Kategorier::lagKategorier() {
+void Kategorier::lagKategori() {
     std::string navn = lesString("Kategorinavn");
 
     if (!kategoriFinnes(navn)) {
@@ -57,7 +57,7 @@ void Kategorier::tingHandling(char valg) {
 void Kategorier::kategoriHandling(char valg) {
     switch (valg) {
         case 'N':
-            Kategorier();
+            lagKategorier();
             break;
         case 'A':
             skrivAlle();

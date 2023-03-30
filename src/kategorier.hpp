@@ -44,7 +44,7 @@ public:
 
     void kjopTing();
 
-    void lagKategorier();
+    void lagKategori();
 
     void skrivAlleTilFil();
 
