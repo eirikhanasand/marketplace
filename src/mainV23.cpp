@@ -55,8 +55,8 @@ int main() {
         }
 
         valg = lesString("\nKommando");
-        forsteValg = valg.at(0);
-        andreValg = valg.at(1);
+        forsteValg = std::toupper(valg.at(0));
+        andreValg = std::toupper(valg.at(1));
     }
     
     gKundebase.skrivAlleTilFil();
