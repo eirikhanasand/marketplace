@@ -30,18 +30,6 @@ Kategorier::~Kategorier() {
     kategoriMap.clear();
 }
 
-void Kategorier::lagKategori() {
-    std::string navn = lesString("Kategorinavn");
-
-    if (!kategoriFinnes(navn)) {
-        auto *kategori = new Kategori();
-        kategori->settData(navn); 
-        std::cout << "Opprettet kategori " << kategori->hentNavn() << std::endl;
-    } else {
-        std::cout << "Beklager, det finnes allerede en " << navn << " kategori!" << std::endl;
-    }
-}
-
 void Kategorier::tingHandling(char valg) {
     if (valg == 'N') {
         lagTingIKategori();
@@ -106,12 +94,12 @@ void Kategorier::lesFraFil() {
 }
 
 // Oppretter ny kategori
-void Kategorier::nyKategori() {
+void Kategorier::lagKategori() {
     std::string kategoriNavn = lesString("Kategorinavn");
 
     if (!kategoriFinnes(kategoriNavn)) {
         Kategori *kategori = new Kategori();
-        kategori->settData();
+        kategori->settData(kategoriNavn);
         kategoriMap.insert(std::pair<std::string, Kategori *>(kategoriNavn, kategori));
     } else {
         std::cout << "Kategorien finnes allerede." << std::endl;
