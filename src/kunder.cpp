@@ -60,7 +60,7 @@ void Kunder::handling(char valg) {
         }
         case 'F': {
             if (kundeListe.size()) {
-                int kundenummer = lesInt("Kundenummer:", 0, kundeListe.size());
+                int kundenummer = lesInt("Kundenummer:", 1, kundeListe.size());
                 fjernKunde(kundenummer);
             } else {
                 std::cout << "Det finnes ingen kunder å slette." << std::endl;
