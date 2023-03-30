@@ -35,7 +35,7 @@ void Kategorier::lagKategori() {
 
     if (!kategoriFinnes(navn)) {
         auto *kategori = new Kategori();
-        kategori->settData(); 
+        kategori->settData(navn); 
         std::cout << "Opprettet kategori " << kategori->hentNavn() << std::endl;
     } else {
         std::cout << "Beklager, det finnes allerede en " << navn << " kategori!" << std::endl;

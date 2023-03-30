@@ -22,7 +22,7 @@ public:
 
     ~Kategori();
 
-    void settData();
+    void settData(std::string navn);
 
     void skrivData() const;
 

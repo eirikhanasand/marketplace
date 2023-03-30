@@ -26,8 +26,8 @@ Kategori::~Kategori() {
 }
 
 // Input category data
-void Kategori::settData() {
-    kategoriNavn = lesString("Kategorinavn");
+void Kategori::settData(std::string navn) {
+    kategoriNavn = navn;
     antallTingTilSalgs = 0;
 }
 
