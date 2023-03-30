@@ -85,8 +85,6 @@ void Kunder::lesFraFil() {
             kundeListe.push_back(new Kunde(kundeFil));
         }
 
-        kundeFil.close();
-
         std::cout << "Leste inn " << kundeListe.size() << " kunder fra KUNDER.DTA" << std::endl;
     } else {
         std::cout << "Kunne ikke lese fra /data/KUNDER.DTA." << std::endl;
