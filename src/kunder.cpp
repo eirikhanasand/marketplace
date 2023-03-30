@@ -123,6 +123,7 @@ void Kunder::fjernKunde(int kundenummer) {
         if (bekreftelse == 'J') {
             kundeListe.remove(kunde);
             kunde->~Kunde();
+            std::cout << "Kunden ble slettet." << std::endl;
         } else {
             std::cout << "Kunde ble ikke slettet." << std::endl;
         }
