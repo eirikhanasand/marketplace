@@ -114,12 +114,13 @@ void Kunder::skrivAlleTilFil() {
 
 // Deletes customer 
 void Kunder::fjernKunde(int kundenummer) {
-    char bekreftelse = lesChar("Er du sikker på at du vil slette kunden? (j/N)");
+    char bekreftelse;
     auto kunde = hentKunde(kundenummer);
 
     if (kunde) {
+        kunde->skrivData();
+        bekreftelse = lesChar("Er du sikker på at du vil slette kunden? (j/N)");
         if (bekreftelse == 'J') {
-            kunde->skrivData();
             kundeListe.remove(kunde);
             kunde->~Kunde();
         } else {
