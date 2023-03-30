@@ -15,8 +15,8 @@
 #include "kunder.hpp"
 #include "kunde.hpp"
 
-Kunder gKundebase;    // Globalt container-objekt med ALLE kundene.
-Kategorier gKategoribase; // Globalt container-objekt med ALLE kategoriene.
+Kunder gKundebase;          // Globalt container-objekt med ALLE kundene.
+Kategorier gKategoribase;   // Globalt container-objekt med ALLE kategoriene.
 
 /**
  *  Hovedprogram.
