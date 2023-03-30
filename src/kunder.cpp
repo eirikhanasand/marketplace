@@ -76,7 +76,7 @@ void Kunder::handling(char valg) {
 
 // Leser fra fil
 void Kunder::lesFraFil() {
-    std::ifstream kundeFil("KUNDER.DTA");
+    std::ifstream kundeFil("data/KUNDER.DTA");
 
     if (kundeFil) {
         std::cout << "Leser fra filen KUNDER.DTA" << std::endl;
@@ -86,6 +86,8 @@ void Kunder::lesFraFil() {
         }
 
         kundeFil.close();
+
+        std::cout << "Leste inn " << kundeListe.size() << " kunder fra KUNDER.DTA" << std::endl;
     } else {
         std::cout << "Kunne ikke lese fra /data/KUNDER.DTA." << std::endl;
     }

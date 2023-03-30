@@ -87,15 +87,22 @@ void Kategorier::kategoriHandling(char valg) {
 
 // Leser fra fil
 void Kategorier::lesFraFil() {
-    std::ifstream kundeFil("../data/KATEGORIER.DTA");
+    std::ifstream kategoriFil("data/KATEGORIER.DTA");
 
-    if (kundeFil.is_open()) {
-        // les fra kundefil
+    if (kategoriFil) {
+        std::cout << "Leser fra filen KATEGORIER.DTA" << std::endl;
+
+        while(!kategoriFil.eof()) {
+            Kategori *kategori = new Kategori(kategoriFil);
+            kategoriMap.insert(std::pair<std::string, Kategori *>(kategori->hentNavn(), kategori));
+        }
+
+        std::cout << "Leste inn " << kategoriMap.size() << " kategorier fra KATEGORIER.DTA" << std::endl;
     } else {
         std::cout << "Kunne ikke lese fra /data/KATEGORIER.DTA." << std::endl;
     }
 
-    kundeFil.close();
+    kategoriFil.close();
 }
 
 // Oppretter ny kategori
