@@ -33,20 +33,28 @@ int main() {
     valg = lesString("\nKommando");
 
     char forsteValg = std::toupper(valg.at(0));
-    char andreValg = std::toupper(valg.at(1));
+
+    if (valg.size() == 1 && (forsteValg != 'J' || forsteValg != 'Q')) {
+        valg = lesString("\nUgyldig Kommando");
+    }
+    forsteValg = std::toupper(valg.at(0));
+    char andreValg;
 
     while (forsteValg != 'Q') {
         switch (forsteValg) {
             case 'U':
+                andreValg = std::toupper(valg.at(1));
                 gKundebase.handling(andreValg);
                 break;
             case 'A':
+                andreValg = std::toupper(valg.at(1));
                 gKategoribase.kategoriHandling(andreValg);
                 break;
             case 'K':
                 gKategoribase.kjopTing();
                 break;
             case 'T':
+                andreValg = std::toupper(valg.at(1));
                 gKategoribase.tingHandling(andreValg);
                 break;
             default:
@@ -56,7 +64,11 @@ int main() {
 
         valg = lesString("\nKommando");
         forsteValg = std::toupper(valg.at(0));
-        andreValg = std::toupper(valg.at(1));
+
+        if (valg.size() == 1 && (forsteValg != 'J' || forsteValg != 'Q')) {
+            valg = lesString("\nUgyldig Kommando");
+        }
+        forsteValg = std::toupper(valg.at(0));
     }
     
     gKundebase.skrivAlleTilFil();
