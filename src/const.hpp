@@ -5,6 +5,6 @@
  *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 
-int maksKunder = 200;
-int maksTing = 200;
-int maksPris = 1000000;
+const int MAKS_KUNDER = 200;
+const int MAKS_TING = 200;
+const int MAKS_PRIS = 1000000;
