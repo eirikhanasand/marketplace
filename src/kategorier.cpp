@@ -57,7 +57,7 @@ void Kategorier::tingHandling(char valg) {
 void Kategorier::kategoriHandling(char valg) {
     switch (valg) {
         case 'N':
-            lagKategorier();
+            lagKategori();
             break;
         case 'A':
             skrivAlle();
