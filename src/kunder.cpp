@@ -76,9 +76,9 @@ void Kunder::handling(char valg) {
 
 // Leser fra fil
 void Kunder::lesFraFil() {
-    std::ifstream kundeFil("../data/KUNDER.DTA");
+    std::ifstream kundeFil("KUNDER.DTA");
 
-    if (kundeFil) {        
+    if (kundeFil) {
         std::cout << "Leser fra filen KUNDER.DTA" << std::endl;
 
         while(!kundeFil.eof()) {
