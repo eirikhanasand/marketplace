@@ -27,9 +27,9 @@ public:
 
     void skrivAlleTilFil();
 
-    void fjernKunde(int kundeNummer);
+    void fjernKunde(int kundenummer);
 
-    Kunde *hentKunde(int kundeNummer);
+    Kunde *hentKunde(int kundenummer);
 
     int antallKunder();
 
@@ -38,7 +38,7 @@ public:
 private:
     std::list<Kunde *> kundeListe;
 
-    int sisteNummer;
+    int sistenummer;
 };
 
 #endif

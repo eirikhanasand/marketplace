@@ -29,13 +29,12 @@ public:
     std::string hentNavn();
 
     void lagTing();
-    
+
     void skrivFullKategori();
 
     int hentAntallTing();
-    
-    void skrivTilFil(std::ofstream &kundeFil);
 
+    void skrivTilFil(std::ofstream &kundeFil);
 
     NyTing* hentTing(int kundeNummer);
 

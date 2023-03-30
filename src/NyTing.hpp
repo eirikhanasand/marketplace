@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <string>
 
 class NyTing {
 public:
@@ -24,8 +25,10 @@ public:
     virtual void skrivData() const;
 
     std::string hentNavn() const;
-    int hentKundeNummer() const;
+    int hentKundenummer() const;
 
+    int hentAntall();
+    void endreTing();
 
     void endreNavn(std::string nyttNavn);
     void endrePris(int nyPris);
@@ -33,9 +36,9 @@ public:
     void endreBeskrivelse(std::string nyBeskrivelse);
 
     virtual void skrivTilFil(std::ofstream & tingFil);
-    void endreTing();
 
 private:
+    int selgernummer;
     int nummer;
     int pris;
     int antall;

@@ -40,14 +40,14 @@ std::string Kategori::hentNavn() {
     return kategoriNavn;
 }
 
-NyTing* Kategori::hentTing(int kundeNummer) {
-    auto element = std::find_if(tingListe.begin(), tingListe.end(),[kundeNummer](NyTing* ting) {
-        return ting->hentKundeNummer() == kundeNummer;
+NyTing* Kategori::hentTing(int kundenummer) {
+    auto element = std::find_if(tingListe.begin(), tingListe.end(),[kundenummer](NyTing* ting) {
+        return ting->hentKundenummer() == kundenummer;
     });
     return (element != tingListe.end()) ? *element : nullptr;
     /*
     for (const auto &item: tingListe) {
-        if (item->hentKundeNummer() == kundeNummer) {
+        if (item->hentKundenummer() == kundenummer) {
             return item;
         }
     }
@@ -66,6 +66,7 @@ void Kategori::lagTing() {
 
     ting->settData();
     tingListe.push_back(ting);
+    antallTingTilSalgs++;
 }
 
 int Kategori::hentAntallTing() {

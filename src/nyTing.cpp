@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <string>
 
 #include "NyTing.hpp"
 #include "LesData3.hpp"
@@ -28,6 +29,7 @@ NyTing::~NyTing() {
 }
 
 void NyTing::settData() {
+    selgernummer = lesInt("Kundenummer", 0, gKundebase.antallKunder());
     navn = lesString("Navn på tingen");
     beskrivelse = lesString("Beskriv tingen");
     pris = lesInt("Hvor mye koster tingen", 0, INT32_MAX);
@@ -35,11 +37,15 @@ void NyTing::settData() {
 }
 
 void NyTing::skrivData() const {
-    std::cout << "Ting: " << nummer << "\tNavn: " << navn << "\tAntall: " << antall << "\tPris: " << pris << "\tBeskrivelse: " << beskrivelse << std::endl;
+    std::cout << "Selger " << selgernummer << "\tTing: " << nummer << "\tNavn: " << navn << "\tAntall: " << antall << "\tPris: " << pris << "\tBeskrivelse: " << beskrivelse << std::endl;
 }
 
 std::string NyTing::hentNavn() const {
     return navn;
+}
+
+int NyTing::hentAntall() {
+    return antall;
 }
 
 void NyTing::endreAntall(int nyttAntall) {
@@ -58,7 +64,7 @@ void NyTing::endreBeskrivelse(std::string nyBeskrivelse) {
     beskrivelse = nyBeskrivelse;
 }
 
-int NyTing::hentKundeNummer() const {
+int NyTing::hentKundenummer() const {
     return nummer;
 }
 
@@ -100,6 +106,8 @@ void NyTing::endreTing() {
 }
 
 NyTing::NyTing(std::ifstream & tingFil) {
+    tingFil >> selgernummer;
+    tingFil.ignore();
     tingFil >> nummer;
     tingFil.ignore();
     tingFil >> pris;
@@ -120,5 +128,5 @@ NyTing::NyTing(std::ifstream & tingFil) {
 } 
 
 void NyTing::skrivTilFil(std::ofstream &tingFil) { // todo , noe e cursed her 
-    tingFil << nummer << ' ' << pris << ' ' << antall << ' ' << 0 << ' ' << 0 << '\n' << navn << '\n' << beskrivelse << '\n';
+    tingFil << selgernummer << nummer << ' ' << pris << ' ' << antall << ' ' << 0 << ' ' << 0 << '\n' << navn << '\n' << beskrivelse << '\n';
 }

@@ -7,6 +7,7 @@
  */
 
 #include <iostream>
+#include <string>
 
 #include "SkrivMeny.hpp"
 #include "Kategorier.hpp"
@@ -46,7 +47,9 @@ int main() {
             case 'A':
                 gKategoribase.kategoriHandling(andreValg);
                 break;
-            case 'K': break;
+            case 'K':
+                gKategoribase.kjopTing();
+                break;
             case 'T':
                 gKategoribase.tingHandling(andreValg);
                 break;

@@ -7,28 +7,30 @@
 
 #include <iostream>
 #include <fstream>
+#include <string>
 
 #include "Kunde.hpp"
 #include "Kunder.hpp"
 #include "LesData3.hpp"
+#include "NyTing.hpp"
 
 extern Kunder gKundebase;
 
 // Opprettet kunde med kundenummer
 Kunde::Kunde(int KundeNummer) {
-    kundeNummer = KundeNummer;
+    kundenummer = KundeNummer;
     settData();
 }
 
 // Leser kunde fra fil
 Kunde::Kunde(std::ifstream &kundeFil) {
-    kundeFil >> kundeNummer;
+    kundeFil >> kundenummer;
     kundeFil.ignore();
 
-    kundeFil >> mobilNummer;
+    kundeFil >> mobilnummer;
     kundeFil.ignore();
 
-    kundeFil >> postNummer;
+    kundeFil >> postnummer;
     kundeFil.ignore();
 
     kundeFil >> antallTingKjopt;
@@ -62,10 +64,10 @@ Kunde::~Kunde() {
 void Kunde::settData() {
     navn = lesString("Navn");
     gateAdresse = lesString("Gateadresse");
-    mobilNummer = lesInt("Mobilnummer", 40000000, 99999999);
+    mobilnummer = lesInt("Mobilnummer", 40000000, 99999999);
     mailAdresse = lesString("Mailadresse");
     postSted = lesString("Poststed");
-    postNummer = lesInt("Postnummer", 0, 9999);
+    postnummer = lesInt("Postnummer", 0, 9999);
 
     antallTingKjopt = 0;
     antallTingSolgt = 0;
@@ -73,31 +75,53 @@ void Kunde::settData() {
 }
 
 // Returnerer kunde sitt kundenummer
-int Kunde::hentKundeNummer() {
-    return kundeNummer;
+int Kunde::hentKundenummer() {
+    return kundenummer;
 }
 
 // Skriver all data om kunde
 void Kunde::skrivData() const {
     std::cout << "Navn: " << navn << '\n' << "Gateadresse: " << gateAdresse << '\n' << "Mobilnummer: " 
-    << mobilNummer << '\n' << "Mailadresse: " << mailAdresse << '\n' << "Poststed: " << postSted << '\n' 
-    << "Postnummer: " << postNummer << '\n' << "Antall ting kjøpt: " << antallTingKjopt << '\n' 
+    << mobilnummer << '\n' << "Mailadresse: " << mailAdresse << '\n' << "Poststed: " << postSted << '\n' 
+    << "Postnummer: " << postnummer << '\n' << "Antall ting kjøpt: " << antallTingKjopt << '\n' 
     << "Antall ting solgt: " << antallTingSolgt << '\n' << "Antall til salgs: " << antallTingTilSalgs << std::endl;
 }
 
 // Skriver basisinfo om kunde
 void Kunde::skrivInfo() const {
-    std::cout << "Kundenummer: " << kundeNummer << "\tNavn: " << navn << "\tTlf: " << mobilNummer << std::endl;
+    std::cout << "Kundenummer: " << kundenummer << "\tNavn: " << navn << "\tTlf: " << mobilnummer << std::endl;
 }
 
 // Skriver til fil
 void Kunde::skrivTilFil(std::ofstream &kundeFil) {
-    kundeFil << kundeNummer << ' ' << mobilNummer << ' ' << postNummer << ' ' 
+    kundeFil << kundenummer << ' ' << mobilnummer << ' ' << postnummer << ' ' 
     << antallTingKjopt << ' ' << antallTingSolgt << ' ' << antallTingTilSalgs << '\n'
     << navn << '\n' << gateAdresse << '\n' << postSted << '\n' << mailAdresse << '\n';
 }
 
-// Returnener kunde tilhørende kundenummer
-Kunde* Kunde::hentKundeFraKundenummer(int kundenummer) {
-    
+// Kunde kjøper en ting
+void Kunde::kjopTing(Kategori *kategori, NyTing *ting) {
+    int selgernummer = ting->hentKundenummer();
+    Kunde* selger = gKundebase.hentKunde(selgernummer);
+
+    if (kundenummer != selgernummer) {
+        std::cout << "Kjøpte ting " << ting->hentNavn() << std::endl;
+        selger->selgTing(ting);
+        antallTingKjopt+=1;
+    } else {
+        std::cout << "Du kan ikke kjøpe av deg selv!" << std::endl;
+    }
+}
+
+// Kunde selger en ting
+void Kunde::selgTing(NyTing *ting) {
+    int antall = ting->hentAntall();
+    antallTingSolgt+=1;
+    antallTingTilSalgs-=1;
+
+    if (antall > 1) {
+        ting->endreAntall(antall-1);
+    } else {
+        delete ting;
+    }
 }

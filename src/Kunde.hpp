@@ -10,10 +10,12 @@
 
 #include <string>
 #include <fstream>
+#include <string>
+#include "Kategori.hpp"
 
 class Kunde {
 public:
-    Kunde(int KundeNummer);
+    Kunde(int Kundenummer);
     Kunde(std::ifstream &kundeFil);
 
     ~Kunde();
@@ -22,18 +24,21 @@ public:
 
     void skrivData() const;
 
-    int hentKundeNummer();
+    int hentKundenummer();
 
     void skrivInfo() const;
     
     void skrivTilFil(std::ofstream &kundeFil);
 
-    Kunde* hentKundeFraKundenummer(int kundenummer);
+    void kjopTing(Kategori *kategori, NyTing *ting);
+
+    void selgTing(NyTing *ting);
+
 
 private:
-    int kundeNummer;
-    int mobilNummer;
-    int postNummer;
+    int kundenummer;
+    int mobilnummer;
+    int postnummer;
     int antallTingKjopt;
     int antallTingSolgt;
     int antallTingTilSalgs;

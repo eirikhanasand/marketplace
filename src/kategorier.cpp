@@ -160,25 +160,23 @@ void Kategorier::endreTingIKategori() {
 }
 
 void Kategorier::kjopTing() {
-    int ting;
-    int kundeNummer = lesInt("Kundenummer:", 0, gKundebase.antallKunder());
+    int tingnummer;
+    int kundenummer = lesInt("Kundenummer:", 0, gKundebase.antallKunder());
     std::string kategoriNavn = lesString("Kategori");
 
     auto kategori = hentKategori(kategoriNavn);
 
     if (kategori) {
         kategori->skrivFullKategori();
-        ting = lesInt("Skriv inn nummer på tingen du vil kjøpe", 0, kategori->hentAntallTing());
-        
-        // kanskje lag egen funksjon for dette
-        Kunde* kunde = Kunde::h
-        
-        /**
-         * Ifm. kjøpet må alt følgende skje: Kjøperens antall kjøp telles opp med en. 
-         * Selgerens antall salg telles opp med en. Antall av tingen telles ned med en, 
-         * evt. at den slettes helt fra datastrukturen om dette er den siste/eneste. 
-         * I så fall telles også antallet av det selgeren har til salgs ned med en også.
-        */
+        tingnummer = lesInt("Skriv inn nummer på tingen du vil kjøpe, 0 for å avbryte", 0, kategori->hentAntallTing());
+
+        if (tingnummer) {
+            auto ting = kategori->hentTing(tingnummer);
+            Kunde *kunde = gKundebase.hentKunde(kundenummer);
+            kunde->kjopTing(kategori, ting);
+        } else {
+            std::cout << "Avbrøt kjøp!" << std::endl;
+        }
     } else {
         std::cout << "Denne kategorien finnes ikke!" << std::endl;
     }

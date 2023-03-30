@@ -26,6 +26,8 @@ kunde.o
 kunder.o
 lesData3.o
 mainV23.o
+nyTing.o
+skrivMeny.o
 .depend
 prosjekt.dSYM
 prosjekt

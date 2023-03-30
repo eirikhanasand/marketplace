@@ -45,12 +45,12 @@ void Kunder::handling(char valg) {
         }
         case 'S': {
             if (kundeListe.size()) {
-                int kundeNummer = lesInt("Kundenummer:", 0, kundeListe.size());
-                Kunde *kunde = hentKunde(kundeNummer);
+                int kundenummer = lesInt("Kundenummer:", 0, kundeListe.size());
+                Kunde *kunde = hentKunde(kundenummer);
                 if (kunde) {
                     kunde->skrivData();
                 } else {
-                    std::cout << "Det finnes ingen kunde med kundenummer " << kundeNummer << std::endl;
+                    std::cout << "Det finnes ingen kunde med kundenummer " << kundenummer << std::endl;
                 }
             } else {
                 std::cout << "Det finnes ingen kunder, kan derfor ikke skrive enkeltkunde." << std::endl;
@@ -60,8 +60,8 @@ void Kunder::handling(char valg) {
         }
         case 'F': {
             if (kundeListe.size()) {
-                int kundeNummer = lesInt("Kundenummer:", 0, kundeListe.size());
-                fjernKunde(kundeNummer);
+                int kundenummer = lesInt("Kundenummer:", 0, kundeListe.size());
+                fjernKunde(kundenummer);
             } else {
                 std::cout << "Det finnes ingen kunder å slette." << std::endl;
             }
@@ -113,9 +113,9 @@ void Kunder::skrivAlleTilFil() {
 }
 
 // Deletes customer 
-void Kunder::fjernKunde(int kundeNummer) {
+void Kunder::fjernKunde(int kundenummer) {
     char bekreftelse = lesChar("Er du sikker på at du vil slette kunden? (j/N)");
-    auto kunde = hentKunde(kundeNummer);
+    auto kunde = hentKunde(kundenummer);
 
     if (kunde) {
         if (bekreftelse == 'j') {
@@ -131,14 +131,14 @@ void Kunder::fjernKunde(int kundeNummer) {
 }
 
 // Finds customer
-Kunde *Kunder::hentKunde(int kundeNummer) {
-    auto element = std::find_if(kundeListe.begin(), kundeListe.end(),[kundeNummer](Kunde *kunde){
-        return kunde->hentKundeNummer() == kundeNummer;
+Kunde *Kunder::hentKunde(int kundenummer) {
+    auto element = std::find_if(kundeListe.begin(), kundeListe.end(),[kundenummer](Kunde *kunde){
+        return kunde->hentKundenummer() == kundenummer;
     });
     return (element != kundeListe.end()) ? *element : nullptr;
     /*
-    for (auto &kunde:    kundeListe) {
-        if (kunde->hentKundeNummer() == kundeNummer) {
+    for (auto &kunde: kundeListe) {
+        if (kunde->hentKundenummer() == kundenummer) {
             return kunde;
         }
     }
@@ -149,7 +149,7 @@ void Kunder::skrivAlle() {
     int i = 0;
     char valg;
 
-    std::cout << "Siste kunde: " << sisteNummer << ". " << "Det finnes nå "
+    std::cout << "Siste kunde: " << sistenummer << ". " << "Det finnes nå "
               << kundeListe.size() << " kunder." << std::endl;
 
     for (const auto &kunde: kundeListe) {
@@ -168,6 +168,7 @@ int Kunder::antallKunder() {
 
 void Kunder::lagKunde() {
     Kunde *kunde = new Kunde(kundeListe.size());
+    kunde->settData();
     kundeListe.push_back(kunde);
     std::cout << "Opprettet kunde med ";
     kunde->skrivInfo();
