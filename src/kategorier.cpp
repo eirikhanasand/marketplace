@@ -132,12 +132,8 @@ void Kategorier::skrivAlle() const {
 }
 
 Kategori *Kategorier::hentKategori(std::string kategoriNavn) {
-    for (auto &kategori: kategoriMap) {
-        if (kategori.second->hentNavn() == kategoriNavn) {
-            return kategori.second;
-        }
-    }
-    return nullptr;
+    auto element = kategoriMap.find(kategoriNavn);
+    return (element != kategoriMap.end()) ? element->second : nullptr;
 }
 
 void Kategorier::lagTingIKategori() {

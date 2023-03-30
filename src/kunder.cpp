@@ -132,12 +132,17 @@ void Kunder::fjernKunde(int kundeNummer) {
 
 // Finds customer
 Kunde *Kunder::hentKunde(int kundeNummer) {
-    for (auto &kunde: kundeListe) {
+    auto element = std::find_if(kundeListe.begin(), kundeListe.end(),[kundeNummer](Kunde *kunde){
+        return kunde->hentKundeNummer() == kundeNummer;
+    });
+    return (element != kundeListe.end()) ? *element : nullptr;
+    /*
+    for (auto &kunde:    kundeListe) {
         if (kunde->hentKundeNummer() == kundeNummer) {
             return kunde;
         }
     }
-    return nullptr;
+    return nullptr;*/
 }
 
 void Kunder::skrivAlle() {
