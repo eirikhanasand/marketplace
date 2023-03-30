@@ -118,7 +118,7 @@ void Kunder::fjernKunde(int kundenummer) {
     auto kunde = hentKunde(kundenummer);
 
     if (kunde) {
-        if (bekreftelse == 'j') {
+        if (bekreftelse == 'J') {
             kunde->skrivData();
             kundeListe.remove(kunde);
             kunde->~Kunde();
@@ -147,15 +147,15 @@ Kunde *Kunder::hentKunde(int kundenummer) {
 
 void Kunder::skrivAlle() {
     int i = 0;
-    char valg;
+    bool valg;
 
     std::cout << "Siste kunde: " << sistenummer << ". " << "Det finnes nå "
               << kundeListe.size() << " kunder." << std::endl;
 
     for (const auto &kunde: kundeListe) {
         if (i && i % 20 == 0) {
-            valg = lesChar("Skriv ut 20 kunder til? (y/N)");
-            if (valg != 'y') break;
+            valg = lesBool("Skriv ut 20 kunder til? j/N");
+            if (!valg) break;
         }
         kunde->skrivInfo();
         i++;

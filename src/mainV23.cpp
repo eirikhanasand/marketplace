@@ -26,13 +26,14 @@ int main() {
 
     gKundebase.lesFraFil();
     gKategoribase.lesFraFil();
-    
+
     skrivMeny();
 
+    
     valg = lesString("\nKommando");
 
-    char forsteValg = valg.at(0);
-    char andreValg = valg.at(1);
+    char forsteValg = std::toupper(valg.at(0));
+    char andreValg = std::toupper(valg.at(1));
 
     while (forsteValg != 'Q') {
         switch (forsteValg) {
