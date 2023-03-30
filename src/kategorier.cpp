@@ -127,7 +127,21 @@ void Kategorier::skrivAlle() const {
 }
 
 Kategori *Kategorier::hentKategori(std::string kategoriNavn) {
-    auto element = kategoriMap.find(kategoriNavn);
+    std::map<std::string, Kategori*>::iterator element;
+
+    if (!kategoriMap.count(kategoriNavn)) {
+        for (auto iterator = kategoriMap.begin();
+                iterator != kategoriMap.end();
+                iterator++)
+        {
+            if (!(iterator->second->hentNavn().compare(0, kategoriNavn.size(), kategoriNavn))) {
+                element = iterator;
+                break;
+            }
+        }
+    } else {
+        element = kategoriMap.find(kategoriNavn);
+    }
     return (element != kategoriMap.end()) ? element->second : nullptr;
 }
 
