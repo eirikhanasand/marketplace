@@ -10,10 +10,10 @@
 #include <string>
 #include <map>
 
-#include "Kunder.hpp"
-#include "Kategorier.hpp"
-#include "Kategori.hpp"
-#include "LesData3.hpp"
+#include "kunder.hpp"
+#include "kategorier.hpp"
+#include "kategori.hpp"
+#include "lesData3.hpp"
 
 extern Kunder gKundebase;
 

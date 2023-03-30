@@ -9,10 +9,10 @@
 #include <iostream>
 #include <fstream>
 
-#include "NyTing.hpp"
-#include "BruktTing.hpp"
-#include "LesData3.hpp"
-#include "Kategorier.hpp"
+#include "nyTing.hpp"
+#include "bruktTing.hpp"
+#include "lesData3.hpp"
+#include "kategorier.hpp"
 
 // Constructor
 BruktTing::BruktTing(int Nummer):NyTing(Nummer) {

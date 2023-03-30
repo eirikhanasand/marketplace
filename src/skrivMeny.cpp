@@ -6,7 +6,7 @@
  */
 
 #include <iostream>
-#include "SkrivMeny.hpp"
+#include "skrivMeny.hpp"
 
 /**
  *  Skriver programmets hovedmeny og beskriver alle valgmuligheter

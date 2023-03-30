@@ -10,10 +10,10 @@
 #include <string>
 #include "algorithm"
 
-#include "Kategori.hpp"
-#include "Kategorier.hpp"
-#include "LesData3.hpp"
-#include "BruktTing.hpp"
+#include "kategori.hpp"
+#include "kategorier.hpp"
+#include "lesData3.hpp"
+#include "bruktTing.hpp"
 
 
 

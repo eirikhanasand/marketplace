@@ -8,9 +8,9 @@
 #include <iostream>
 #include <fstream>
 
-#include "Kunder.hpp"
-#include "Kunde.hpp"
-#include "LesData3.hpp"
+#include "kunder.hpp"
+#include "kunde.hpp"
+#include "lesData3.hpp"
 #include "algorithm"
 
 // Constructor

@@ -9,19 +9,14 @@
 #include <iostream>
 #include <string>
 
-#include "SkrivMeny.hpp"
-#include "Kategorier.hpp"
-#include "LesData3.hpp"
-#include "Kunder.hpp"
-#include "Kunde.hpp"
+#include "skrivMeny.hpp"
+#include "kategorier.hpp"
+#include "lesData3.hpp"
+#include "kunder.hpp"
+#include "kunde.hpp"
 
 Kunder gKundebase;    // Globalt container-objekt med ALLE kundene.
 Kategorier gKategoribase; // Globalt container-objekt med ALLE kategoriene.
-
-//  Kode som legges innledningsvis i de .cpp-filene som trenger å bruke
-//  en eller begge det to globale objektene definert ovenfor:
-//  extern Kunder     gKundebase;
-//  extern Kategorier gKategoribase;
 
 /**
  *  Hovedprogram.
@@ -66,7 +61,7 @@ int main() {
     gKundebase.skrivAlleTilFil();
     gKategoribase.skrivAlleTilFil();
 
-    std::cout << "\n\n";
+   std::cout << "All data er lagret, og programmet er avsluttet." << std::endl;
 
     return 0;
 }

@@ -9,10 +9,10 @@
 #include <fstream>
 #include <string>
 
-#include "Kunde.hpp"
-#include "Kunder.hpp"
-#include "LesData3.hpp"
-#include "NyTing.hpp"
+#include "kunde.hpp"
+#include "kunder.hpp"
+#include "lesData3.hpp"
+#include "nyTing.hpp"
 
 extern Kunder gKundebase;
 

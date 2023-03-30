@@ -15,7 +15,7 @@
 #include <cctype>                   //  toupper
 #include <cstdlib>                  //  atoi, atof
 #include <string>
-#include "LesData3.hpp"             //  Prototypene for denne filens innhold
+#include "lesData3.hpp"             //  Prototypene for denne filens innhold
 
 /**
  *  Leser og returnerer ett (upcaset) tegn.

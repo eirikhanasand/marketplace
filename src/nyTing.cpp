@@ -9,11 +9,11 @@
 #include <fstream>
 #include <string>
 
-#include "NyTing.hpp"
-#include "LesData3.hpp"
-#include "Kunder.hpp"
-#include "Kategorier.hpp"
-#include "Kategori.hpp"
+#include "nyTing.hpp"
+#include "lesData3.hpp"
+#include "kunder.hpp"
+#include "kategorier.hpp"
+#include "kategori.hpp"
 
 extern Kunder gKundebase;
 extern Kategorier gKategoribase;
