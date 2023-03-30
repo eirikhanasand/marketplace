@@ -95,16 +95,16 @@ int lesInt(const char *t, const int min, const int max) {
  * Leser og returnerer en bool.
  *
  *
- *  @param   t    - Ledetekst til brukeren når ber om input/et tall
+ *  @param   t   - Ledetekst til brukeren når ber om input/et tall
  *  @param   ja  - Bokstaven som tilsvarer et ja(true)
- *  @param   nei  - Bokstaven som tilsvarer et nei(false)
+ *  @param   nei - Bokstaven som tilsvarer et nei(false)
  *
  *  @return True eller false fra om brukeren svarte ja eller nei.
  */
 bool lesBool(const char *t, const char ja, const char nei) {
     bool svar = false;
     bool feil = false;
-
+    
     do {
         feil = false;
         std::cout << t;
@@ -112,7 +112,7 @@ bool lesBool(const char *t, const char ja, const char nei) {
 
         if (svarBokstav != ja && svarBokstav != nei) {
             feil = true;
-            std::cout << "\nERROR: Not a correct character\n\n";
+            std::cout << "\nERROR: Invalid character\n\n";
         } else {
             svar = svarBokstav == ja;
         }
@@ -124,13 +124,13 @@ bool lesBool(const char *t, const char ja, const char nei) {
 /**
  *  Leser og returnerer en linje
  *
- *  @param   tekst - Ledetekst til brukeren
+ *  @param   t - Ledetekst til brukeren
  *
  *  @return  string
  */
-std::string lesString(std::string tekst) {
+std::string lesString(const std::string t) {
     std::string string;
-    std::cout << tekst << ':' << std::endl;
+    std::cout << t << ':' << std::endl;
     std::getline(std::cin, string);
     
     return string;
