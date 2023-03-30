@@ -43,16 +43,16 @@ Kunde::Kunde(std::ifstream &kundeFil) {
     kundeFil.ignore();
 
     std::getline(kundeFil, navn);
-    navn[navn.length()-1] = '\0';
+    navn[navn.length()] = '\0';
 
     std::getline(kundeFil, gateAdresse);
-    gateAdresse[gateAdresse.length()-1] = '\0';
+    gateAdresse[gateAdresse.length()] = '\0';
 
     std::getline(kundeFil, postSted);
-    postSted[postSted.length()-1] = '\0';
+    postSted[postSted.length()] = '\0';
 
     std::getline(kundeFil, mailAdresse);
-    mailAdresse[mailAdresse.length()-1] = '\0';
+    mailAdresse[mailAdresse.length()] = '\0';
 }
 
 // Destructor

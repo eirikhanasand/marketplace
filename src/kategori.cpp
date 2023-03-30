@@ -102,7 +102,7 @@ Kategori::Kategori(std::ifstream &innfil) {
     int type;
 
     std::getline(innfil, kategoriNavn);
-    kategoriNavn[kategoriNavn.length()-1] = '\0';
+    kategoriNavn[kategoriNavn.length()] = '\0';
 
     innfil >> antallTingTilSalgs;
     innfil.ignore();

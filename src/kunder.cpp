@@ -45,7 +45,7 @@ void Kunder::handling(char valg) {
         }
         case 'S': {
             if (kundeListe.size()) {
-                int kundenummer = lesInt("Kundenummer:", 0, kundeListe.size());
+                int kundenummer = lesInt("Kundenummer", 1, kundeListe.size());
                 Kunde *kunde = hentKunde(kundenummer);
                 if (kunde) {
                     kunde->skrivData();
