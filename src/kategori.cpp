@@ -98,27 +98,26 @@ void Kategori::skrivTilFil(std::ofstream &kundeFil) {
 // Denne legoen er fra serie 2 av lego som ble laget helt tilbake i 
 // Den første legoen som noensinne ble laget! Denne er av ekstrem sjeldenhet, og går derfor til en høy pris.
 
-Kategori::Kategori(std::ifstream &kundeFil) {
+Kategori::Kategori(std::ifstream &innfil) {
     int type;
 
-    std::getline(kundeFil, kategoriNavn);
+    std::getline(innfil, kategoriNavn);
     kategoriNavn[kategoriNavn.length()-1] = '\0';
 
-    kundeFil >> antallTingTilSalgs;
-    kundeFil.ignore();
+    innfil >> antallTingTilSalgs;
+    innfil.ignore();
 
     for (int i = 0; i < antallTingTilSalgs; i++) {
         type = 0;
-        kundeFil >> type;
-        kundeFil.ignore();
+        innfil >> type;
+        innfil.ignore();
 
         if (type) {
-            BruktTing *bruktTing = new BruktTing(kundeFil);
-            bruktTing->skrivData();
+            BruktTing *bruktTing = new BruktTing(innfil);
             tingListe.push_back(bruktTing);
         } else {
-            NyTing *nyTing = new NyTing(kundeFil);
-            nyTing->skrivData();
+            NyTing *nyTing = new NyTing(innfil);
+            nyTing->settRestData(innfil);
             tingListe.push_back(nyTing);
         }
     }

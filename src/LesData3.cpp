@@ -101,7 +101,6 @@ int lesInt(const char *t, const int min, const int max) {
  *  @return True eller false fra om brukeren svarte ja eller nei.
  */
 bool lesBool(const char *t, const char ja, const char nei) {
-    char buffer[MAXCHAR] = "";
     bool svar = false;
     bool feil = false;
 

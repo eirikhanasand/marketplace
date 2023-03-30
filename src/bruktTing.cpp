@@ -64,7 +64,6 @@ void BruktTing::skrivTilFil(std::ofstream &tingFil) {
 
 void BruktTing::settData(std::ifstream &tingFil) {
     int kvalitetInt;
-    NyTing::settData(tingFil);
     
     tingFil >> aar;
     tingFil.ignore();

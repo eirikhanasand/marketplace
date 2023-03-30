@@ -108,7 +108,6 @@ void NyTing::endreTing() {
 
 NyTing::NyTing(std::ifstream &tingFil) {
     settData(tingFil);
-    settRestData(tingFil);
 } 
 
 void NyTing::skrivTilFil(std::ofstream &tingFil) {
