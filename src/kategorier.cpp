@@ -147,8 +147,9 @@ void Kategorier::endreTingIKategori() {
     auto kategori = hentKategori(kategoriNavn);
 
     if (kategori) {
-        int kundeNummer = lesInt("Kundenummer: ", 1, kategori->hentAntallTing());
-        kategori->hentTing(kundeNummer-1)->endreTing();
+        kategori->skrivData();
+        int tingNummer = lesInt("Hvilken ting vil du endre?", 1, kategori->hentAntallTing());
+        kategori->hentTing(tingNummer)->endreTing();
     } else {
         std::cout << "Det finnes ingen kategori med navn " << kategoriNavn << std::endl;
     }

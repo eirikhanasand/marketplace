@@ -108,8 +108,7 @@ bool lesBool(const char *t, const char ja, const char nei) {
         feil = false;
         std::cout << t;
         char svarBokstav = lesChar("");
-        std::cout << ja << std::endl;
-        std::cout << svarBokstav;
+
         if (svarBokstav != ja && svarBokstav != nei) {
             feil = true;
             std::cout << "\nERROR: Invalid character\n\n";
