@@ -1,7 +1,7 @@
 /**
  *  Klasse for brukte ting, med funksjoner som setting av data, lesing av data.
  * 
- *  @file      bruktTing.cpp
+ *  @file      bruktTing.hpp
  *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 

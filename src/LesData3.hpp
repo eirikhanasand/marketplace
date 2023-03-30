@@ -4,9 +4,8 @@
  *  Identisk til 'LesData2.h' bare at funksjonenes DEKLARASJON 
  *  og DEFINISJON (som er på DENNE filen) er adskilt, og at denne
  *  også støtter innlesning av strings.
- *   
  *
- *  @file     lesData3.cpp
+ *  @file     lesData3.hpp
  *  @author   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther, Frode Haug, NTNU
  */
 

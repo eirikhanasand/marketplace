@@ -1,7 +1,7 @@
 /**
  *  Definisjon av funksjoner i BruktTing klassen
  *
- *  @file      bruktTing.cpp
+ *  @file      bruktTing.hpp
  *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 

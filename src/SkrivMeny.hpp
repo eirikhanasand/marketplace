@@ -2,7 +2,7 @@
  *  Skriver programmets meny og beskriver alle valgmuligheter.
  *
  *  @see       skrivMeny.cpp
- *  @file      SkrivMeny.h
+ *  @file      skrivMeny.hpp
  *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 

@@ -1,7 +1,7 @@
 /**
  *  Header for Kategorier klassen
  *
- *  @file      Kategorier.h
+ *  @file      Kategorier.hpp
  *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 

@@ -1,7 +1,7 @@
 /**
  *  Definisjon av funksjoner i NyTing klassen
  *
- *  @file      NyTing.h
+ *  @file      nyTing.hpp
  *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 

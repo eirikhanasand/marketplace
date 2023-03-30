@@ -1,7 +1,7 @@
 /**
  *  Header for Kunde klassen
  *
- *  @file      Kunde.h
+ *  @file      Kunde.hpp
  *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 
