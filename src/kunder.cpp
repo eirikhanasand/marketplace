@@ -5,18 +5,14 @@
  *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 
+#include <algorithm>
 #include <iostream>
 #include <fstream>
 
+#include "skrivMeny.hpp"
+#include "lesData3.hpp"
 #include "kunder.hpp"
 #include "kunde.hpp"
-#include "lesData3.hpp"
-#include "algorithm"
-
-// Constructor
-Kunder::Kunder() {
-
-}
 
 // Destructor
 Kunder::~Kunder() {
@@ -70,6 +66,7 @@ void Kunder::handling(char valg) {
         }
         default:
             std::cout << "Ugyldig kommando!\n";
+            skrivMeny();
             break;
     }
 }
@@ -136,13 +133,6 @@ Kunde *Kunder::hentKunde(int kundenummer) {
         return kunde->hentKundenummer() == kundenummer;
     });
     return (element != kundeListe.end()) ? *element : nullptr;
-    /*
-    for (auto &kunde: kundeListe) {
-        if (kunde->hentKundenummer() == kundenummer) {
-            return kunde;
-        }
-    }
-    return nullptr;*/
 }
 
 void Kunder::skrivAlle() {

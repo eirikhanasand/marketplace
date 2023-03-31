@@ -9,12 +9,13 @@
 #include <fstream>
 #include <string>
 
-#include "nyTing.hpp"
-#include "lesData3.hpp"
-#include "kunder.hpp"
 #include "kategorier.hpp"
-#include "kategori.hpp"
 #include "bruktTing.hpp"
+#include "kategori.hpp"
+#include "lesData3.hpp"
+#include "nyTing.hpp"
+#include "kunder.hpp"
+#include "const.hpp"
 
 extern Kunder gKundebase;
 extern Kategorier gKategoribase;
@@ -24,21 +25,21 @@ NyTing::NyTing(int Nummer) {
     nummer = Nummer;
 }
 
-// Destructor
-NyTing::~NyTing() {
-
-}
-
 void NyTing::settData() {
-    selgernummer = lesInt("Kundenummer", 0, gKundebase.antallKunder());
+    selgernummer = lesInt("Kundenummer", 1, gKundebase.antallKunder());
     navn = lesString("Navn på tingen");
     beskrivelse = lesString("Beskriv tingen");
-    pris = lesInt("Hvor mye koster tingen", 0, INT32_MAX);
-    antall = lesInt("Hvor mange selger du", 0, INT32_MAX);
+    pris = lesInt("Hvor mye koster tingen", 0, MAKS_PRIS);
+    antall = lesInt("Hvor mange selger du", 0, MAKS_ANTALL);
 }
 
 void NyTing::skrivData() const {
-    std::cout << "Selger " << selgernummer << "\tTing: " << nummer << "\tNavn: " << navn << "\tAntall: " << antall << "\tPris: " << pris << "\tBeskrivelse: " << beskrivelse << std::endl;
+    std::cout << "Selger " << selgernummer 
+              << "\tTing: " << nummer 
+              << "\tNavn: " << navn 
+              << "\tAntall: " << antall 
+              << "\tPris: " << pris 
+              << "\tBeskrivelse: " << beskrivelse << std::endl;
 }
 
 std::string NyTing::hentNavn() const {
@@ -86,12 +87,12 @@ void NyTing::endreTing() {
             break;
         }
         case '2': {
-            int antall = lesInt("Nytt antall: ", 0, INT32_MAX);
+            int antall = lesInt("Nytt antall: ", 1, MAKS_ANTALL);
             NyTing::endreAntall(antall);
             break;
         }
         case '3': {
-            int pris = lesInt("Ny pris: ", 0, INT32_MAX);
+            int pris = lesInt("Ny pris: ", 1, MAKS_PRIS);
             NyTing::endrePris(pris);
             break;
         }
@@ -111,9 +112,15 @@ NyTing::NyTing(std::ifstream &tingFil) {
 } 
 
 void NyTing::skrivTilFil(std::ofstream &tingFil) {
-    tingFil << selgernummer << nummer << ' ' << pris << ' ' << antall << '\n' << navn << '\n' << beskrivelse << '\n';
+    tingFil << selgernummer << nummer << ' ' << pris << ' ' << antall << '\n' 
+            << navn << '\n' << beskrivelse << '\n';
 }
 
+/**
+ * Setter alle int datamedlemmer for ting utifra det som blir lest inn fra fil.
+ * 
+ * @param tingFil Filen tingens variabler skal leses inn fra
+*/
 void NyTing::settData(std::ifstream &tingFil) {
     tingFil >> selgernummer;
     tingFil.ignore();
@@ -125,6 +132,12 @@ void NyTing::settData(std::ifstream &tingFil) {
     tingFil.ignore();
 }
 
+/**
+ * Setter navn og beskrivelse for ting. Dette må ha egen funksjon for at 
+ * BruktTing sin lesData skal funke, på grunn av måten dette er lagret på fil.
+ * 
+ * @param tingFil Filen tingens variabler skal leses inn fra
+*/
 void NyTing::settRestData(std::ifstream &tingFil) {
     std::getline(tingFil, navn);
     navn[navn.length()] = '\0';

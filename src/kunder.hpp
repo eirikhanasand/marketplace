@@ -15,8 +15,6 @@
 
 class Kunder {
 public:
-    Kunder();
-
     ~Kunder();
 
     void handling(char valg);

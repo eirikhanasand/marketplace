@@ -18,8 +18,6 @@ public:
 
     NyTing(std::ifstream & tingFil);
 
-    ~NyTing();
-
     virtual void settData();
     virtual void settData(std::ifstream &tingFil);
     virtual void settRestData(std::ifstream &tingFil);

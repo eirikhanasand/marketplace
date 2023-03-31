@@ -8,3 +8,5 @@
 const int MAKS_KUNDER = 200;
 const int MAKS_TING = 200;
 const int MAKS_PRIS = 1000000;
+const int MAKS_ANTALL = 50;
+const int MAKS_ALDER = 200;

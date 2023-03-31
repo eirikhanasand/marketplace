@@ -9,20 +9,30 @@
 #include <fstream>
 #include <string>
 
-#include "kunde.hpp"
-#include "kunder.hpp"
 #include "lesData3.hpp"
+#include "kunder.hpp"
 #include "nyTing.hpp"
+#include "kunde.hpp"
 
 extern Kunder gKundebase;
 
-// Opprettet kunde med kundenummer
-Kunde::Kunde(int KundeNummer) {
-    kundenummer = KundeNummer;
+/**
+ * Oppretter ny kunde med gitt kundenummer, og setter alle datamedlemmer.
+ * 
+ * @param Kundenummer Kundenummeret til kunden som skal opprettes
+ * 
+ * @see Kunde::settData()
+*/
+Kunde::Kunde(int Kundenummer) {
+    kundenummer = Kundenummer;
     settData();
 }
 
-// Leser kunde fra fil
+/**
+ * Kunde constructor med filparameter for å opprette kunder fra fil
+ * 
+ * @param kundeFil Filen som skal leses inn fra
+*/
 Kunde::Kunde(std::ifstream &kundeFil) {
     kundeFil >> kundenummer;
     kundeFil.ignore();
@@ -55,12 +65,12 @@ Kunde::Kunde(std::ifstream &kundeFil) {
     mailAdresse[mailAdresse.length()] = '\0';
 }
 
-// Destructor
-Kunde::~Kunde() {
-    // todo
-}
-
-// Setter data for kunde
+/**
+ * Setter alle datamedlemmer for gitt kunde
+ * 
+ * @see lesString(...)
+ * @see lesInt(...)
+*/
 void Kunde::settData() {
     navn = lesString("Navn");
     gateAdresse = lesString("Gateadresse");
@@ -74,32 +84,62 @@ void Kunde::settData() {
     antallTingTilSalgs = 0;
 }
 
-// Returnerer kunde sitt kundenummer
+/**
+ * Henter gitt kunde sitt kundenummer
+ * 
+ * @return int kundenummer
+*/
 int Kunde::hentKundenummer() {
     return kundenummer;
 }
 
-// Skriver all data om kunde
+/**
+ * Skriver ut all data om kunde.
+*/
 void Kunde::skrivData() const {
-    std::cout << "Navn: " << navn << '\n' << "Gateadresse: " << gateAdresse << '\n' << "Mobilnummer: " 
-    << mobilnummer << '\n' << "Mailadresse: " << mailAdresse << '\n' << "Poststed: " << postSted << '\n' 
-    << "Postnummer: " << postnummer << '\n' << "Antall ting kjøpt: " << antallTingKjopt << '\n' 
-    << "Antall ting solgt: " << antallTingSolgt << '\n' << "Antall til salgs: " << antallTingTilSalgs << std::endl;
+    std::cout << "Navn: " << navn << '\n' 
+              << "Gateadresse: " << gateAdresse << '\n' 
+              << "Mobilnummer: " << mobilnummer << '\n' 
+              << "Mailadresse: " << mailAdresse << '\n' 
+              << "Poststed: " << postSted << '\n' 
+              << "Postnummer: " << postnummer << '\n' 
+              << "Antall ting kjøpt: " << antallTingKjopt << '\n' 
+              << "Antall ting solgt: " << antallTingSolgt << '\n' 
+              << "Antall til salgs: " << antallTingTilSalgs << std::endl;
 }
 
-// Skriver basisinfo om kunde
+/**
+ * Skriver ut basisinfo om kunde. Dette innebærer kundenummer, navn og tlfnr.
+*/
 void Kunde::skrivInfo() const {
-    std::cout << "Kundenummer: " << kundenummer << "\tNavn: " << navn << "\tTlf: " << mobilnummer << std::endl;
+    std::cout << "Kundenummer: " << kundenummer 
+              << "\tNavn: " << navn 
+              << "\tTlf: " << mobilnummer << std::endl;
 }
 
-// Skriver til fil
+/**
+ * Skriver gitt kunde til fil.
+ * 
+ * @param kundeFil Filen kunden skal skrives til
+*/
 void Kunde::skrivTilFil(std::ofstream &kundeFil) {
     kundeFil << kundenummer << ' ' << mobilnummer << ' ' << postnummer << ' ' 
-    << antallTingKjopt << ' ' << antallTingSolgt << ' ' << antallTingTilSalgs << '\n'
-    << navn << '\n' << gateAdresse << '\n' << postSted << '\n' << mailAdresse << '\n';
+    << antallTingKjopt << ' ' << antallTingSolgt << ' ' << antallTingTilSalgs 
+    << '\n' << navn << '\n' << gateAdresse << '\n' << postSted << '\n' 
+    << mailAdresse << '\n';
 }
 
-// Kunde kjøper en ting
+/**
+ * Funksjon for å la kunde kjøpe ting i kategorier
+ * 
+ * @param kategori Peker til aktuell kategori
+ * @param ting Peker til aktuell ting
+ * 
+ * @see NyTing::hentKundenummer()
+ * @see NyTing::hentNavn()
+ * @see Kunder::hentKunde(...)
+ * @see Kunde::selgTing(...)
+*/
 void Kunde::kjopTing(Kategori *kategori, NyTing *ting) {
     int selgernummer = ting->hentKundenummer();
     Kunde* selger = gKundebase.hentKunde(selgernummer);
@@ -113,7 +153,16 @@ void Kunde::kjopTing(Kategori *kategori, NyTing *ting) {
     }
 }
 
-// Kunde selger en ting
+/**
+ * Funksjon for å la kunde selge ting i kategorier. Øker antall ting solgt,
+ * senker antall ting til salgs, og endrer antall igjen av tingen, evt sletter 
+ * tingen.
+ * 
+ * @param ting Tingen som skal selges
+ * 
+ * @see NyTing::hentAntall()
+ * @see NyTing::endreAntall()
+*/
 void Kunde::selgTing(NyTing *ting) {
     int antall = ting->hentAntall();
     antallTingSolgt+=1;

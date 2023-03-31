@@ -9,13 +9,14 @@
  *  @author   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther, Frode Haug, NTNU
  */
 
+#include <algorithm>
 #include <iostream>                 //  cin, cout
 #include <iomanip>                  //  setprecision
-#include <cctype>                   //  toupper
 #include <cstdlib>                  //  atoi, atof
+#include <cctype>                   //  toupper
 #include <string>
+
 #include "lesData3.hpp"             //  Prototypene for denne filens innhold
-#include "algorithm"
 
 /**
  *  Leser og returnerer ett (upcaset) tegn.
@@ -31,7 +32,6 @@ char lesChar(const char *t) {
     std::cin.ignore(MAXCHAR, '\n');
     return (toupper(tegn));
 }
-
 
 /**
  *  Leser og returnerer et flyttall mellom to gitte grenser.
@@ -61,7 +61,6 @@ float lesFloat(const char *t, const float min, const float max) {
 
     return tall;
 }
-
 
 /**
  *  Leser og returnerer et heltall mellom to gitte grenser.
@@ -136,7 +135,7 @@ std::string lesString(const std::string t) {
     return string;
 }
 
-std::string stringTilLiten(std::string tekst) {
-    std::transform(tekst.begin(), tekst.end(), tekst.begin(), tolower);
-    return tekst;
+std::string stringTilLiten(std::string t) {
+    std::transform(t.begin(), t.end(), t.begin(), tolower);
+    return t;
 }

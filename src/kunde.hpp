@@ -8,17 +8,15 @@
 #ifndef __KUNDE_H
 #define __KUNDE_H
 
-#include <string>
 #include <fstream>
 #include <string>
+
 #include "kategori.hpp"
 
 class Kunde {
 public:
     Kunde(int Kundenummer);
     Kunde(std::ifstream &kundeFil);
-
-    ~Kunde();
 
     void settData();
 

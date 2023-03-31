@@ -9,29 +9,49 @@
 #include <iostream>
 #include <fstream>
 
-#include "nyTing.hpp"
+#include "kategorier.hpp"
 #include "bruktTing.hpp"
 #include "lesData3.hpp"
-#include "kategorier.hpp"
+#include "nyTing.hpp"
+#include "const.hpp"
 
-// Constructor
+/**
+ * Constructor for bruktting. Denne inneholder ingenting, men er nødvendig for
+ * compileren ettersom den først kjører NyTing sin constructor. 
+ * 
+ * @param Nummer Tingens unike nummer
+ * 
+ * @see NyTing(...)
+*/
 BruktTing::BruktTing(int Nummer):NyTing(Nummer) {
 
 }
 
-// Destructor
-BruktTing::~BruktTing() {
-
-}
-
+/**
+ * Constructor som leser inn BruktTing fra fil via constructoren for NyTing.
+ * 
+ * @param tingFil Referanse til filen som skal leses inn fra
+ * 
+ * @see NyTing(...)
+ * @see settData(...) 
+*/
 BruktTing::BruktTing(std::ifstream &tingFil):NyTing(tingFil) {
     settData(tingFil);
 }
 
+/**
+ * Settdata funksjon for BruktTing, for å sette ekstra datamedlemmer som ikke 
+ * finnes i NyTing sin settData. Kaller først på morklassen sin settData 
+ * funksjon, og setter deretter spesifikke data for denne subklassen.
+ * 
+ * @see NyTing::settData()
+ * @see lesInt(...)
+*/
 void BruktTing::settData() {
     NyTing::settData();
-    aar = lesInt("Tingens alder", 0, INT32_MAX);
-    int kategoriKvalitet = lesInt("Hvor sliten er tingen? 1 = SomNy, 2 = PentBrukt, 3 = Brukt, 4 = GodtBrukt, 5 = Sliten", 1, 5);
+    aar = lesInt("Tingens alder", 0, MAKS_ALDER);
+    int kategoriKvalitet = lesInt("Hvor sliten er tingen? 1 = SomNy, 2 = "
+    "PentBrukt, 3 = Brukt, 4 = GodtBrukt, 5 = Sliten", 1, 5);
 
     switch (kategoriKvalitet) {
         case 1: kvalitet = SomNy;       break;
@@ -42,11 +62,24 @@ void BruktTing::settData() {
     }
 }
 
+/**
+ * Skriver ut alle datamedlemmer om objekter av BruktTing klassen
+ * 
+ * @see NyTing::skrivData()
+*/
 void BruktTing::skrivData() const {
     NyTing::skrivData();
-    std::cout << "Tingens alder: " << aar << "\tKvalitet: " << kvalitet << std::endl;
+    std::cout << "Tingens alder: " << aar 
+              << "\tKvalitet: " << kvalitet << std::endl;
 }
 
+/**
+ * Skriver BruktTing objekter til fil 
+ * 
+ * @param tingFil Referanse til filen som skal skrives til
+ * 
+ * @see NyTing::skrivTilFil(...)
+*/
 void BruktTing::skrivTilFil(std::ofstream &tingFil) {
     NyTing::skrivTilFil(tingFil);
     int kvalitetInt = 0;
@@ -62,6 +95,14 @@ void BruktTing::skrivTilFil(std::ofstream &tingFil) {
     tingFil << aar << ' ' << kvalitetInt << '\n';
 }
 
+/**
+ * Leser inn datamedlemmer for BruktTing, deretter restmedlemmer 
+ * fra NyTing klassen som ikke kan leses inn før dette er gjort.
+ * 
+ * @param tingFil Referanse til filen som skal leses fra
+ * 
+ * @see NyTing::settRestData(...)
+*/
 void BruktTing::settData(std::ifstream &tingFil) {
     int kvalitetInt;
     

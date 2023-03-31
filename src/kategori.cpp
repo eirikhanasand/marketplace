@@ -5,55 +5,79 @@
  *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 
+#include <algorithm>
 #include <iostream>
 #include <fstream>
 #include <string>
-#include "algorithm"
 
 #include "kategori.hpp"
 #include "kategorier.hpp"
 #include "lesData3.hpp"
 #include "bruktTing.hpp"
 
-
-
+/**
+ * Constructor for kategori. Denne er tom (default), men er nødvendig for
+ * compileren.
+*/
 Kategori::Kategori() {
 
 }
 
-Kategori::~Kategori() {
-    //TODO
-}
-
-// Input category data
+/**
+ * Setter navn og antall ting til salgs for en kategori.
+ * 
+ * @param navn Navnet på kategorien 
+*/
 void Kategori::settData(std::string navn) {
     kategoriNavn = navn;
     antallTingTilSalgs = 0;
 }
 
-// Prints category data
+/**
+ * Skriver ut navn og antall ting til salgs i en kategori
+*/
 void Kategori::skrivData() const {
-    std::cout << "Kategorinavn: " << kategoriNavn << "\tAntall ting til salgs: " << antallTingTilSalgs << std::endl;
+    std::cout << "Kategorinavn: " << kategoriNavn 
+              << "\tAntall ting til salgs: " << antallTingTilSalgs << std::endl;
 }
 
+/**
+ * Henter navnet på en kategori
+ * 
+ * @return std::string kategoriNavn
+*/
 std::string Kategori::hentNavn() {
     return kategoriNavn;
 }
 
+/**
+ * Henter ting i kategori som tilhører spesifikt kundenummer. Sjekker listen
+ * og finner matchende elementer som returneres, evt nullptr.
+ * 
+ * @param kundenummer Kundenummeret til kunden
+ * 
+ * @see NyTing::hentKundenummer()
+ * 
+ * @return NyTing peker til funnet ting, evt nullptr
+*/
 NyTing* Kategori::hentTing(int kundenummer) {
-    auto element = std::find_if(tingListe.begin(), tingListe.end(),[kundenummer](NyTing* ting) {
+    auto element = std::find_if(tingListe.begin(), tingListe.end(),
+    [kundenummer](NyTing* ting) {
         return ting->hentKundenummer() == kundenummer;
     });
     return (element != tingListe.end()) ? *element : nullptr;
-    /*
-    for (const auto &item: tingListe) {
-        if (item->hentKundenummer() == kundenummer) {
-            return item;
-        }
-    }
-    return nullptr;*/
 }
 
+/**
+ * Oppretter en ny ting i en kategori, bestemmer ut ifra om den er brukt om
+ * den tilhører klassen NyTing eller BruktTing. Setter deretter data om tingen
+ * og legger den bakerst i listen. Øker til slutt antall ting til salgs.
+ * 
+ * @see lesBool(...)
+ * @see BruktTing(...)
+ * @see NyTing(...)
+ * @see NyTing::settData()
+*/
 void Kategori::lagTing() {
     bool brukt = lesBool("Brukt (j/n)");
     NyTing* ting = nullptr;
@@ -69,16 +93,33 @@ void Kategori::lagTing() {
     antallTingTilSalgs++;
 }
 
+/**
+ * Henter antall ting i en kategori
+ * 
+ * @return int Antall ting i kategorien
+*/
 int Kategori::hentAntallTing() {
     return tingListe.size();
 }
 
+/**
+ * Skriver all informasjon om alle ting i en gitt kategori.
+ * 
+ * @see NyTing::skrivData()
+*/
 void Kategori::skrivFullKategori() {
     for (const auto &ting: tingListe) {
         ting->skrivData();
     }
 }
 
+/**
+ * Skriver en kategori og alle dens ting til fil.
+ * 
+ * @param kundeFil Fil som skal skrives til
+ * 
+ * @see NyTing::skrivTilFIl(...)
+*/
 void Kategori::skrivTilFil(std::ofstream &kundeFil) {
     kundeFil << kategoriNavn << '\n' << antallTingTilSalgs << '\n';
 
@@ -87,17 +128,15 @@ void Kategori::skrivTilFil(std::ofstream &kundeFil) {
     }
 }
 
-// 0 1 1 2000 1
-// ForsteLego
-// Den nyeste legoen som finnes! Helt ny, og enda ikke brukt!! Passer godt til både store og små!
-// 1 2 2 10000 1 230 4
-// ForsteBruktLego
-// Den første legoen som noensinne ble laget! Denne er av ekstrem sjeldenhet, og går derfor til en høy pris.
-// 0 2 3 3000 2
-// AndreLego
-// Denne legoen er fra serie 2 av lego som ble laget helt tilbake i 
-// Den første legoen som noensinne ble laget! Denne er av ekstrem sjeldenhet, og går derfor til en høy pris.
-
+/**
+ * Kategori constructor med filparameter for å opprette kategorier fra fil
+ * 
+ * @param innfil Filen som skal leses inn fra
+ * 
+ * @see NyTing::NyTing(...)
+ * @see BruktTing::BruktTing(...)
+ * @see NyTing::settRestData(...)
+*/
 Kategori::Kategori(std::ifstream &innfil) {
     int type;
 

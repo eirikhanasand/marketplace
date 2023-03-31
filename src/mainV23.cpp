@@ -9,8 +9,8 @@
 #include <iostream>
 #include <string>
 
-#include "skrivMeny.hpp"
 #include "kategorier.hpp"
+#include "skrivMeny.hpp"
 #include "lesData3.hpp"
 #include "kunder.hpp"
 #include "kunde.hpp"
@@ -28,7 +28,6 @@ int main() {
     gKategoribase.lesFraFil();
 
     skrivMeny();
-
     
     valg = lesString("\nKommando");
 
@@ -37,6 +36,7 @@ int main() {
     if (valg.size() == 1 && (forsteValg != 'J' && forsteValg != 'Q')) {
         valg = lesString("\nUgyldig Kommando");
     }
+    
     forsteValg = std::toupper(valg.at(0));
     char andreValg;
 

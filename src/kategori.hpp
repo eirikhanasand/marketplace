@@ -10,33 +10,23 @@
 
 #include <iostream>
 #include <fstream>
-#include <list>
 #include <string>
+#include <list>
 
 #include "nyTing.hpp"
 
 class Kategori {
 public:
-    Kategori();
+    Kategori();    
     Kategori(std::ifstream &kundeFil);
-
-    ~Kategori();
-
-    void settData(std::string navn);
-
-    void skrivData() const;
-
-    std::string hentNavn();
-
-    void lagTing();
-
-    void skrivFullKategori();
-
-    int hentAntallTing();
-
-    void skrivTilFil(std::ofstream &kundeFil);
-
     NyTing* hentTing(int kundeNummer);
+    std::string hentNavn();
+    int hentAntallTing();
+    void settData(std::string navn);
+    void skrivData() const;
+    void lagTing();
+    void skrivFullKategori();
+    void skrivTilFil(std::ofstream &kundeFil);
 
 private:
     std::list<NyTing*> tingListe;

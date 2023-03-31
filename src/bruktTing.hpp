@@ -18,14 +18,9 @@ class BruktTing : public NyTing {
 public:
     BruktTing(int Nummer);
     BruktTing(std::ifstream &tingFil);
-
-    ~BruktTing();
-
     void settData();
     void settData(std::ifstream &tingFil);
-
     void skrivData() const;
-
     void skrivTilFil(std::ofstream &tingFil);
 
 private:
