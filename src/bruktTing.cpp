@@ -30,7 +30,7 @@ BruktTing::BruktTing(int Nummer):NyTing(Nummer) {
 }
 
 /**
- * Constructor som leser inn BruktTing fra fil.
+ * @brief Constructor som leser inn BruktTing fra fil.
  * 
  * @param tingFil Referanse til filen som skal leses inn fra
  * 

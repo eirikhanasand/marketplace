@@ -96,7 +96,7 @@ int Kunde::hentKundenummer() {
 }
 
 /**
- * Skriver ut all data om kunde.
+ * @brief Skriver ut all data om kunde.
 */
 void Kunde::skrivData() const {
     std::cout << "Navn: " << navn << '\n' 
@@ -158,6 +158,8 @@ void Kunde::kjopTing(Kategori *kategori, NyTing *ting) {
 }
 
 /**
+ * @brief Selger ting
+ * 
  * Funksjon for å la kunde selge ting i kategorier. Øker antall ting solgt,
  * senker antall ting til salgs, og endrer antall igjen av tingen, evt sletter 
  * tingen.

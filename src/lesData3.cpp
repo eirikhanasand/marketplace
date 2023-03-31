@@ -91,7 +91,7 @@ int lesInt(const char *t, const int min, const int max) {
 }
 
 /**
- * Leser og returnerer en bool.
+ * @brief Leser og returnerer en bool.
  *
  *
  *  @param   t   - Ledetekst til brukeren når ber om input/et tall
@@ -121,7 +121,7 @@ bool lesBool(const char *t, const char ja, const char nei) {
 }
 
 /**
- *  Leser og returnerer en linje
+ *  @brief Leser og returnerer en linje
  *
  *  @param   t - Ledetekst til brukeren
  *
@@ -135,6 +135,13 @@ std::string lesString(const std::string t) {
     return string;
 }
 
+/**
+ * @brief Konverterer tekst til lowercase
+ * 
+ * @param t Teksten som skal konverteres
+ * 
+ * @returns Lowercase tekst
+*/
 std::string stringTilLiten(std::string t) {
     std::transform(t.begin(), t.end(), t.begin(), tolower);
     return t;

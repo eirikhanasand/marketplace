@@ -135,9 +135,10 @@ void Kunder::skrivAlleTilFil() {
 }
 
 /**
- * Sletter en gitt kunde basert på kundenummer. All informasjon om kunden
- * skrives ut, og brukeren må deretter bekrefte at de ønsker å gjennomføre
- * slettingen.
+ * @brief Sletter kunde
+ * 
+ * Basert på kundenummer. All informasjon om kunden skrives ut, og brukeren må 
+ * deretter bekrefte at de ønsker å gjennomføre slettingen.
  * 
  * @param kundenummer Nummeret på kunden man ønsker å slette
  * 
