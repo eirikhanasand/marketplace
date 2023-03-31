@@ -14,7 +14,9 @@
 #include "kunder.hpp"
 #include "kunde.hpp"
 
-// Destructor
+/**
+ * @brief Kunder sin destructor
+ */
 Kunder::~Kunder() {
     for (auto &kunde: kundeListe) {
         delete kunde;
@@ -23,7 +25,9 @@ Kunder::~Kunder() {
 }
 
 /**
- * Håndterer valgmuligheter for kunder
+ * @brief Håndterer valgmuligheter for kunder
+ *
+ * Valgmuligheter:
  * - Opprettelse av ny kunde
  * - Utskriving av alle kunder
  * - Utskriving av spesifikk kunde
@@ -85,8 +89,9 @@ void Kunder::handling(char valg) {
 }
 
 /**
- * Leser kunder fra fil, oppretter disse som objekter, og legger de bakerst I 
- * kundelisten.
+ * @brief Leser kunder fra fil.
+ *
+ * Deretter oppretter disse som objekter, og legger de bakerst i kundelisten.
  * 
  * @see Kunde::Kunde(...)
 */
@@ -176,8 +181,9 @@ Kunde *Kunder::hentKunde(int kundenummer) {
 }
 
 /**
- * Skriver alle kunder, hvor bruker må bekrefte at de vil skrive ut flere
- * for hver 20. kunde.
+ * @brief Skriver alle kunder.
+ *
+ * Bruker må bekrefte at de vil skrive ut flere for hver 20. kunde.
  * 
  * @see Kunde#skrivInfo()
  * @see lesBool(...)
@@ -200,7 +206,7 @@ void Kunder::skrivAlle() {
 }
 
 /**
- * Returnerer antall kunder som finnes for øyeblikket
+ * @brief Returnerer antall kunder som finnes for øyeblikket
  * 
  * @return int Antall kunder
 */
@@ -209,7 +215,9 @@ int Kunder::antallKunder() {
 }
 
 /**
- * Oppretter en ny kunde, setter alle dens datamedlemmer, 
+ * @brief Oppretter en ny kunde.
+ *
+ * Deretter setter alle dens datamedlemmer,
  * og legger den inn i kundelisten. 
  * 
  * @see Kunde#skrivInfo()

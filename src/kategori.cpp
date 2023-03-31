@@ -16,15 +16,16 @@
 #include "bruktTing.hpp"
 
 /**
- * Constructor for kategori. Denne er tom (default), men er nødvendig for
- * compileren.
+ * @brief Constructor for kategori.
+ *
+ * Denne er tom (default), men er nødvendig for compileren.
 */
 Kategori::Kategori() {
 
 }
 
 /**
- * Setter navn og antall ting til salgs for en kategori.
+ * @brief Setter navn og antall ting til salgs for en kategori.
  * 
  * @param navn Navnet på kategorien 
 */
@@ -34,7 +35,7 @@ void Kategori::settData(std::string navn) {
 }
 
 /**
- * Skriver ut navn og antall ting til salgs i en kategori
+ * @brief Skriver ut navn og antall ting til salgs i en kategori
 */
 void Kategori::skrivData() const {
     std::cout << "Kategorinavn: " << kategoriNavn 
@@ -42,7 +43,7 @@ void Kategori::skrivData() const {
 }
 
 /**
- * Henter navnet på en kategori
+ * @brief Henter navnet til en kategori
  * 
  * @return std::string kategoriNavn
 */
@@ -51,8 +52,9 @@ std::string Kategori::hentNavn() {
 }
 
 /**
- * Henter ting i kategori som tilhører spesifikt kundenummer. Sjekker listen
- * og finner matchende elementer som returneres, evt nullptr.
+ * @brief Henter ting i kategori som tilhører spesifikt kundenummer.
+ *
+ * Sjekker listen og finner matchende elementer som returneres, evt nullptr.
  * 
  * @param kundenummer Kundenummeret til kunden
  * 
@@ -69,9 +71,11 @@ NyTing* Kategori::hentTing(int kundenummer) {
 }
 
 /**
- * Oppretter en ny ting i en kategori, bestemmer ut ifra om den er brukt om
- * den tilhører klassen NyTing eller BruktTing. Setter deretter data om tingen
- * og legger den bakerst i listen. Øker til slutt antall ting til salgs.
+ * @brief Oppretter en ny ting i en kategori.
+ *
+ * Bestemmer ut ifra om den er brukt om den tilhører klassen NyTing eller BruktTing.
+ * Setter deretter data om tingen og legger den bakerst i listen.
+ * Øker til slutt antall ting til salgs.
  * 
  * @see lesBool(...)
  * @see BruktTing(...)
@@ -94,7 +98,7 @@ void Kategori::lagTing() {
 }
 
 /**
- * Henter antall ting i en kategori
+ * @brief Henter antall ting i en kategori
  * 
  * @return int Antall ting i kategorien
 */
@@ -103,7 +107,7 @@ int Kategori::hentAntallTing() {
 }
 
 /**
- * Skriver all informasjon om alle ting i en gitt kategori.
+ * @brief Skriver all informasjon om alle ting i en gitt kategori.
  * 
  * @see NyTing::skrivData()
 */
@@ -114,7 +118,7 @@ void Kategori::skrivFullKategori() {
 }
 
 /**
- * Skriver en kategori og alle dens ting til fil.
+ * @brief Skriver en kategori og alle dens ting til fil.
  * 
  * @param kundeFil Fil som skal skrives til
  * 
@@ -129,7 +133,7 @@ void Kategori::skrivTilFil(std::ofstream &kundeFil) {
 }
 
 /**
- * Kategori constructor med filparameter for å opprette kategorier fra fil
+ * @brief Kategori constructor med filparameter for å opprette kategorier fra fil
  * 
  * @param innfil Filen som skal leses inn fra
  * 

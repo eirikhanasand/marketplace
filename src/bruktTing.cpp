@@ -16,19 +16,21 @@
 #include "const.hpp"
 
 /**
- * Constructor for bruktting. Denne inneholder ingenting, men er nødvendig for
- * compileren ettersom den først kjører NyTing sin constructor. 
+ * @brief Constructor for BruktTing.
+ *
+ * Denne inneholder ingenting, men er nødvendig for
+ * compileren ettersom den først kjører NyTing sin constructor.
  * 
  * @param Nummer Tingens unike nummer
  * 
- * @see NyTing(...)
+ * @see NyTing(int)
 */
 BruktTing::BruktTing(int Nummer):NyTing(Nummer) {
 
 }
 
 /**
- * Constructor som leser inn BruktTing fra fil via constructoren for NyTing.
+ * Constructor som leser inn BruktTing fra fil.
  * 
  * @param tingFil Referanse til filen som skal leses inn fra
  * 
@@ -40,8 +42,10 @@ BruktTing::BruktTing(std::ifstream &tingFil):NyTing(tingFil) {
 }
 
 /**
- * Settdata funksjon for BruktTing, for å sette ekstra datamedlemmer som ikke 
- * finnes i NyTing sin settData. Kaller først på morklassen sin settData 
+ * @brief Settdata funksjon for BruktTing,
+ * for å sette ekstra datamedlemmer som ikke finnes i NyTing sin settData.
+ *
+ * Kaller først på morklassen sin settData
  * funksjon, og setter deretter spesifikke data for denne subklassen.
  * 
  * @see NyTing::settData()
@@ -63,7 +67,7 @@ void BruktTing::settData() {
 }
 
 /**
- * Skriver ut alle datamedlemmer om objekter av BruktTing klassen
+ * @brief Skriver ut alle datamedlemmer om objekter av BruktTing klassen
  * 
  * @see NyTing::skrivData()
 */
@@ -74,7 +78,7 @@ void BruktTing::skrivData() const {
 }
 
 /**
- * Skriver BruktTing objekter til fil 
+ * @brief Skriver BruktTing objekter til fil
  * 
  * @param tingFil Referanse til filen som skal skrives til
  * 
@@ -96,7 +100,9 @@ void BruktTing::skrivTilFil(std::ofstream &tingFil) {
 }
 
 /**
- * Leser inn datamedlemmer for BruktTing, deretter restmedlemmer 
+ * @brief Leser inn datamedlemmer for BruktTing.
+ *
+ * Leser deretter restmedlemmer
  * fra NyTing klassen som ikke kan leses inn før dette er gjort.
  * 
  * @param tingFil Referanse til filen som skal leses fra

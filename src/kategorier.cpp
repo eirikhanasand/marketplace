@@ -21,8 +21,10 @@
 extern Kunder gKundebase;
 
 /**
- * Deconstructor for kategorier. Sletter først hver kategori, sletter deretter
- * kategoriMappet i seg selv. 
+ * @brief Deconstructor for kategorier
+ *
+ * Sletter først hver kategori, sletter deretter
+ * kategoriMappet i seg selv
 */
 Kategorier::~Kategorier() {
     for (auto &kategori: kategoriMap) {
@@ -32,7 +34,7 @@ Kategorier::~Kategorier() {
 }
 
 /**
- * Skriver ut valgmuligheter for ting.
+ * @brief Skriver ut valgmuligheter for ting.
  * 
  * @param valg Valget brukeren ønsker å foreta
  * 
@@ -51,7 +53,9 @@ void Kategorier::tingHandling(char valg) {
 }
 
 /**
- * Håndterer overordnede valgmuligheter for kategorier. 
+ * @brief Håndterer overordnede valgmuligheter for kategorier.
+ *
+ * Valgmuligheter:
  * - Ny ting i kategori
  * - Skriv alle ting i kategori
  * - Skriv entydig kategori
@@ -74,7 +78,7 @@ void Kategorier::kategoriHandling(char valg) {
 }
 
 /**
- * Leser alle kategorier og alle deres ting fra fil.
+ * @brief Leser alle kategorier og alle deres ting fra fil.
  * 
  * @see Kategori::Kategori(...)
  * @see Kategori::hentNavn()
@@ -102,7 +106,7 @@ void Kategorier::lesFraFil() {
 }
 
 /**
- * Oppretter ny kategori dersom den ikke allerede finnes.
+ * @brief Oppretter ny kategori dersom den ikke allerede finnes.
  * 
  * @see lesString(...)
  * @see kategoriFinnes(...)
@@ -126,7 +130,7 @@ void Kategorier::lagKategori() {
 }
 
 /**
- * Sjekker om det finnes en kategori med gitt navn
+ * @brief Sjekker om det finnes en kategori med gitt navn
  * 
  * @param kategoriNavn Navnet på kategorien
  * 
@@ -137,7 +141,7 @@ bool Kategorier::kategoriFinnes(std::string kategoriNavn) {
 }
 
 /**
- * Fjerner en gitt kategori
+ * @brief Fjerner en gitt kategori
  * 
  * @param kategori Peker til kategorien som skal slettes
  * 
@@ -151,7 +155,7 @@ void Kategorier::fjernKategori(Kategori *kategori) {
 
 
 /**
- * Skriver alle kategorier.
+ * @brief Skriver alle kategorier.
  * 
  * @see Kategori::skrivData()
 */
@@ -162,7 +166,9 @@ void Kategorier::skrivAlle() const {
 }
 
 /**
- * Skriver en entydig kategori. Entydig har vi tolket som at det er den eneste
+ * @brief Henter en entydig kategori.
+ *
+ * Entydig har vi tolket som at det er den eneste
  * som ligner eller som det kan være. Dersom det er flere som kan tolkes som 
  * entydige får brukeren beskjed om dette, og mulighet til å velge den de mente.
  * 
@@ -170,13 +176,14 @@ void Kategorier::skrivAlle() const {
  * 
  * @see stringTilLiten(...)
  * @see lesInt(...)
+ * @see kategoriFinnes(std::string)
  * 
  * @return Kategori peker, evt nullptr
 */
 Kategori *Kategorier::hentKategoriEntydig(std::string kategoriNavn) {
    Kategori* element = nullptr;
 
-    if (!kategoriMap.count(kategoriNavn)) {
+    if (!kategoriFinnes(kategoriNavn)) {
         // Vector over funn
         std::vector<std::string> funn;
 
@@ -215,7 +222,7 @@ Kategori *Kategorier::hentKategoriEntydig(std::string kategoriNavn) {
 }
 
 /**
- * Oppretter ny ting i en gitt kategori.
+ * @brief Oppretter ny ting i en gitt kategori.
  * 
  * @see lesString(...)
  * @see hentKategoriEntydig(...)
@@ -234,8 +241,9 @@ void Kategorier::lagTingIKategori() {
 }
 
 /**
- * Endre datamedlemmer for gitt ting i gitt kategori, evt feilmelding om
- * kategorien ikke finnes.
+ * @brief Endre datamedlemmer for gitt ting i gitt kategori.
+ *
+ * Evt feilmelding om kategorien ikke finnes.
  * 
  * @see lesString(...)
  * @see Kategorier::hentKategoriEntydig(...)
@@ -261,7 +269,9 @@ void Kategorier::endreTingIKategori() {
 }
 
 /**
- * Kjøp ting i kategori. Spør først etter kundenummer, spør deretter etter 
+ * @brief Kjøp ting i kategori.
+ *
+ * Spør først etter kundenummer, spør deretter etter
  * navnet på kategorien, og deretter navnet på tingen de ønsker å kjøpte, evt
  * 0 for å avbryte kjøpet. Har også feilmelding dersom kategorien ikke finnes.
  * 
@@ -269,7 +279,7 @@ void Kategorier::endreTingIKategori() {
  * @see lesString(...)
  * @see Kategori::skrivFullKategori(...)
  * @see Kategori::hentAntallTing(...)
- * @see Kategorier::hentKategoriEntydig(...)
+ * @see hentKategoriEntydig(...)
  * @see Kunder::hentKunde(...)
  * @see Kunde::kjopTing(...)
 */
@@ -298,7 +308,7 @@ void Kategorier::kjopTing() {
 }
 
 /**
- * Skriver alle kategorier og alle ting i hver enkelt kategori til fil
+ * @brief Skriver alle kategorier og alle ting i hver enkelt kategori til fil
  * 
  * @see Kategori::skrivTilFil(...)
 */
@@ -321,7 +331,7 @@ void Kategorier::skrivAlleTilFil() {
 }
 
 /**
- * Skriver entydig kategori ut ifra gitt input.
+ * @brief Skriver entydig kategori ut ifra gitt input.
  * 
  * @see lesString(...)
  * @see hentKategoriEntydig(...)

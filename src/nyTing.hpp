@@ -27,7 +27,7 @@ public:
     int hentNummer() const;
     int hentAntall();
     void endreTing();
-    void hentSelgernummer();
+    int hentSelgernummer() const;
     void endreNavn(std::string nyttNavn);
     void endrePris(int nyPris);
     void endreAntall(int nyttAntall);

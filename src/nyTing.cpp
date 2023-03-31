@@ -21,6 +21,8 @@ extern Kunder gKundebase;
 extern Kategorier gKategoribase;
 
 /**
+ * @brief NyTing constructor
+ *
  * Oppretter ting basert på medsendt nummer og setter tingens nummer til dette.
 */
 NyTing::NyTing(int Nummer) {
@@ -28,7 +30,7 @@ NyTing::NyTing(int Nummer) {
 }
 
 /**
- * Setter alle datamedlemmer for en gitt ting
+ * @brief Setter alle datamedlemmer for en NyTing
  * 
  * @see lesInt(...)
  * @see lesString(...)
@@ -42,8 +44,7 @@ void NyTing::settData() {
 }
 
 /**
- * Skriver all data om en gitt ting
- * 
+ * @brief Skriver all data en NyTing
 */
 void NyTing::skrivData() const {
     std::cout << "Selger " << selgernummer 
@@ -55,7 +56,7 @@ void NyTing::skrivData() const {
 }
 
 /**
- * Henter navnet til en gitt ting
+ * @brief Henter navnet til en NyTing
  * 
  * @returns std::string Navnet på tingen
  */
@@ -64,7 +65,7 @@ std::string NyTing::hentNavn() const {
 }
 
 /**
- * Henter antall av en gitt ting
+ * @brief Henter antallet til en NyTing
  * 
  * @returns int Antall av tingen
  */
@@ -73,7 +74,7 @@ int NyTing::hentAntall() {
 }
 
 /**
- * Endrer antall av en gitt ting
+ * @brief Endrer antall av en NyTing
  * 
  * @param nyttAntall Tingens nye antall
 */
@@ -82,7 +83,7 @@ void NyTing::endreAntall(int nyttAntall) {
 }
 
 /**
- * Endrer navn på en gitt ting
+ * @brief Endrer navn på en NyTing
  * 
  * @param nyttNavn Tingens nye navn
 */
@@ -91,7 +92,7 @@ void NyTing::endreNavn(std::string nyttNavn) {
 }
 
 /**
- * Endrer pris for en gitt ting
+ * @brief Endrer pris for en NyTing
  * 
  * @param nyPris Tingens nye pris
 */
@@ -100,14 +101,16 @@ void NyTing::endrePris(int nyPris) {
 }
 
 /**
- * Endrer beskrivelse for gitt ting
+ *  @brief Endrer beskrivelse for en NyTing
+ *
+ *  @param nyBeskrivelse Tingens nye beskrivelsen
 */
 void NyTing::endreBeskrivelse(std::string nyBeskrivelse) {
     beskrivelse = nyBeskrivelse;
 }
 
 /**
- * Henter nummer for gitt ting
+ * @brief Henter nummer for en NyTing
  * 
  * @return int nummer
 */
@@ -116,7 +119,7 @@ int NyTing::hentNummer() const {
 }
 
 /**
- * Henter selgernummer for gitt ting
+ * @brief Henter selgernummer for en NyTing
  * 
  * @return int selgernummer
 */
@@ -125,9 +128,10 @@ int NyTing::hentSelgernummer() const {
 }
 
 /**
- * Funksjon for å endre på en gitt ting sine datamedlemmer. Skriver først
- * ut meny for å bestemme hvilket datamedlem som skal endres på, og referererer
- * videre til relevant funksjon som kan utføre endringen.
+ * @brief Funksjon for å endre på en NyTing sine datamedlemmer.
+ *
+ * Skriver først ut meny for å bestemme hvilket datamedlem som skal endres på,
+ * og referererer videre til relevant funksjon som kan utføre endringen.
  * 
  * @see lesInt(...)
  * @see lesString(...)
@@ -194,7 +198,7 @@ void NyTing::skrivTilFil(std::ofstream &tingFil) {
 }
 
 /**
- * Setter alle int datamedlemmer for ting utifra det som blir lest inn fra fil.
+ * @brief Setter alle int datamedlemmer for ting utifra det som blir lest inn fra fil.
  * 
  * @param tingFil Filen tingens variabler skal leses inn fra
 */
@@ -210,8 +214,10 @@ void NyTing::settData(std::ifstream &tingFil) {
 }
 
 /**
- * Setter navn og beskrivelse for ting. Dette må ha egen funksjon for at 
- * BruktTing sin lesData skal funke, på grunn av måten dette er lagret på fil.
+ * @brief Setter navn og beskrivelse for en NyTing.
+ *
+ * Dette må ha egen funksjon for at BruktTing sin lesData skal funke,
+ * på grunn av måten dette er lagret på fil.
  * 
  * @param tingFil Filen tingens variabler skal leses inn fra
 */

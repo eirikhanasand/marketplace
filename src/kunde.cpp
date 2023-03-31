@@ -17,7 +17,9 @@
 extern Kunder gKundebase;
 
 /**
- * Oppretter ny kunde med gitt kundenummer, og setter alle datamedlemmer.
+ * @brief Kunde constructor med Kundenummer parameter.
+ *
+ * Den setter også alle datamedlemmer.
  * 
  * @param Kundenummer Kundenummeret til kunden som skal opprettes
  * 
@@ -29,7 +31,7 @@ Kunde::Kunde(int Kundenummer) {
 }
 
 /**
- * Kunde constructor med filparameter for å opprette kunder fra fil
+ * @brief Kunde constructor med filparameter for å opprette kunder fra fil
  * 
  * @param kundeFil Filen som skal leses inn fra
 */
@@ -66,7 +68,7 @@ Kunde::Kunde(std::ifstream &kundeFil) {
 }
 
 /**
- * Setter alle datamedlemmer for gitt kunde
+ * @brief Setter alle datamedlemmer for gitt kunde
  * 
  * @see lesString(...)
  * @see lesInt(...)
@@ -85,9 +87,9 @@ void Kunde::settData() {
 }
 
 /**
- * Henter gitt kunde sitt kundenummer
+ * @brief Henter gitt kunde sitt kundenummer
  * 
- * @return int kundenummer
+ * @return int kundenummer kundenummeret
 */
 int Kunde::hentKundenummer() {
     return kundenummer;
@@ -109,7 +111,9 @@ void Kunde::skrivData() const {
 }
 
 /**
- * Skriver ut basisinfo om kunde. Dette innebærer kundenummer, navn og tlfnr.
+ * @brief Skriver ut basisinfo om kunde.
+ *
+ * Dette innebærer kundenummer, navn og telefonnummer.
 */
 void Kunde::skrivInfo() const {
     std::cout << "Kundenummer: " << kundenummer 
@@ -118,7 +122,7 @@ void Kunde::skrivInfo() const {
 }
 
 /**
- * Skriver gitt kunde til fil.
+ * @brief Skriver gitt kunde til fil.
  * 
  * @param kundeFil Filen kunden skal skrives til
 */
@@ -130,7 +134,7 @@ void Kunde::skrivTilFil(std::ofstream &kundeFil) {
 }
 
 /**
- * Funksjon for å la kunde kjøpe ting i kategorier
+ * @brief Funksjon for å la kunde kjøpe ting i kategorier
  * 
  * @param kategori Peker til aktuell kategori
  * @param ting Peker til aktuell ting
@@ -138,7 +142,7 @@ void Kunde::skrivTilFil(std::ofstream &kundeFil) {
  * @see NyTing::hentSelgernummer()
  * @see NyTing::hentNavn()
  * @see Kunder::hentKunde(...)
- * @see Kunde::selgTing(...)
+ * @see selgTing(...)
 */
 void Kunde::kjopTing(Kategori *kategori, NyTing *ting) {
     int selgernummer = ting->hentSelgernummer();
