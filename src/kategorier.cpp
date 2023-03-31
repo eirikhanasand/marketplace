@@ -87,7 +87,7 @@ void Kategorier::lesFraFil() {
     std::ifstream kategoriFil("data/KATEGORIER.DTA");
 
     if (kategoriFil) {
-        std::cout << "Leser fra filen KATEGORIER.DTA" << std::endl;
+        std::cout << "Leser fra filen KATEGORIER.DTA\n";
 
         while(!kategoriFil.eof()) {
             Kategori *kategori = new Kategori(kategoriFil);
@@ -97,9 +97,9 @@ void Kategorier::lesFraFil() {
         }
 
         std::cout << "Leste inn " << kategoriMap.size() 
-                  << " kategorier fra KATEGORIER.DTA" << std::endl;
+                  << " kategorier fra KATEGORIER.DTA\n";
     } else {
-        std::cout << "Kunne ikke lese fra /data/KATEGORIER.DTA." << std::endl;
+        std::cout << "Kunne ikke lese fra /data/KATEGORIER.DTA.\n";
     }
 
     kategoriFil.close();
@@ -125,7 +125,7 @@ void Kategorier::lagKategori() {
         (kategoriNavn, kategori));
         std::cout << "Opprettet kategori " << kategori->hentNavn() << ".\n";
     } else {
-        std::cout << "Kategorien finnes allerede." << std::endl;
+        std::cout << "Kategorien finnes allerede.\n";
     }
 }
 
@@ -158,6 +158,7 @@ void Kategorier::fjernKategori(Kategori *kategori) {
  * @brief Skriver alle kategorier.
  * 
  * @see Kategori::skrivData()
+ * @see Kategori::skrivTing()
 */
 void Kategorier::skrivAlle() const {
     for (const auto &kategori: kategoriMap) {
@@ -236,7 +237,7 @@ void Kategorier::lagTingIKategori() {
         kategori->lagTing();
     } else {
         std::cout << "Det finnes ingen kategori med navn " 
-        << kategoriNavn << std::endl;
+        << kategoriNavn << '\n';
     }
 }
 
@@ -264,7 +265,7 @@ void Kategorier::endreTingIKategori() {
         kategori->hentTing(tingNummer)->endreTing();
     } else {
         std::cout << "Det finnes ingen kategori med navn " 
-                  << kategoriNavn << std::endl;
+                  << kategoriNavn << '\n';
     }
 }
 
@@ -277,7 +278,7 @@ void Kategorier::endreTingIKategori() {
  * 
  * @see lesInt(...)
  * @see lesString(...)
- * @see Kategori::skrivFullKategori(...)
+ * @see Kategori::skrivTing(...)
  * @see Kategori::hentAntallTing(...)
  * @see hentKategoriEntydig(...)
  * @see Kunder::hentKunde(...)
@@ -291,7 +292,7 @@ void Kategorier::kjopTing() {
     auto kategori = hentKategoriEntydig(kategoriNavn);
 
     if (kategori) {
-        kategori->skrivFullKategori();
+        kategori->skrivTing();
         tingnummer = lesInt("Skriv inn nummer på tingen du vil kjøpe, 0"
         " for å avbryte", 0, kategori->hentAntallTing());
 
@@ -300,10 +301,10 @@ void Kategorier::kjopTing() {
             Kunde *kunde = gKundebase.hentKunde(kundenummer);
             kunde->kjopTing(kategori, ting);
         } else {
-            std::cout << "Avbrøt kjøp!" << std::endl;
+            std::cout << "Avbrøt kjøp!\n";
         }
     } else {
-        std::cout << "Denne kategorien finnes ikke!" << std::endl;
+        std::cout << "Denne kategorien finnes ikke!\n";
     }
 }
 
@@ -316,7 +317,7 @@ void Kategorier::skrivAlleTilFil() {
     std::ofstream kategoriFil("data/KATEGORIER.DTA");
 
    if (kategoriFil) {
-        std::cout << "Leser til filen KATEGORIER.DTA" << std::endl;
+        std::cout << "Leser til filen KATEGORIER.DTA\n";
 
         for(const auto &kategori: kategoriMap) {
             kategori.second->skrivTilFil(kategoriFil);
@@ -324,7 +325,7 @@ void Kategorier::skrivAlleTilFil() {
 
         kategoriFil.close();
     } else {
-        std::cout << "Kunne ikke lese til /data/KATEGORIER.DTA." << std::endl;
+        std::cout << "Kunne ikke lese til /data/KATEGORIER.DTA.\n";
     }
 
     kategoriFil.close();
@@ -336,6 +337,7 @@ void Kategorier::skrivAlleTilFil() {
  * @see lesString(...)
  * @see hentKategoriEntydig(...)
  * @see Kategori::skrivData()
+ * @see Kategori::skrivTing()
 */
 void Kategorier::skrivEntydig() {
     std::string kategoriNavn = lesString("Kategori");
@@ -343,7 +345,8 @@ void Kategorier::skrivEntydig() {
 
     if (kategori) {
         kategori->skrivData();
+        kategori->skrivTing();
     } else {
-        std::cout << kategoriNavn << " er ikke en kategori!" << std::endl;
+        std::cout << kategoriNavn << " er ikke en kategori!\n";
     }
 }

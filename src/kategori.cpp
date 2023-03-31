@@ -39,7 +39,7 @@ void Kategori::settData(std::string navn) {
 */
 void Kategori::skrivData() const {
     std::cout << "Kategorinavn: " << kategoriNavn 
-              << "\tAntall ting til salgs: " << antallTingTilSalgs << std::endl;
+              << "\tAntall ting til salgs: " << antallTingTilSalgs << '\n';
 }
 
 /**
@@ -73,8 +73,8 @@ NyTing* Kategori::hentTing(int kundenummer) {
 /**
  * @brief Oppretter en ny ting i en kategori.
  *
- * Bestemmer ut ifra om den er brukt om den tilhører klassen NyTing eller BruktTing.
- * Setter deretter data om tingen og legger den bakerst i listen.
+ * Bestemmer ut ifra om den er brukt om den tilhører klassen NyTing eller 
+ * BruktTing. Setter deretter data om tingen og legger den bakerst i listen.
  * Øker til slutt antall ting til salgs.
  * 
  * @see lesBool(...)
@@ -111,7 +111,7 @@ int Kategori::hentAntallTing() {
  * 
  * @see NyTing::skrivData()
 */
-void Kategori::skrivFullKategori() {
+void Kategori::skrivTing() {
     for (const auto &ting: tingListe) {
         ting->skrivData();
     }
@@ -133,7 +133,7 @@ void Kategori::skrivTilFil(std::ofstream &kundeFil) {
 }
 
 /**
- * @brief Kategori constructor med filparameter for å opprette kategorier fra fil
+ * @brief Kategori constructor med filparameter for å lage kategorier fra fil
  * 
  * @param innfil Filen som skal leses inn fra
  * 

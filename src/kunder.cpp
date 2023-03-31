@@ -21,7 +21,7 @@ Kunder::~Kunder() {
     for (auto &kunde: kundeListe) {
         delete kunde;
     }
-    std::cout << "Slettet alle kunder." << std::endl;
+    std::cout << "Slettet alle kunder.\n";
 }
 
 /**
@@ -51,7 +51,7 @@ void Kunder::handling(char valg) {
             if (kundeListe.size()) {
                 skrivAlle();
             } else {
-                std::cout << "Det finnes ingen kunder å skrive ut." << std::endl;
+                std::cout << "Det finnes ingen kunder å skrive ut.\n";
             }
             valg = 0;
             break;
@@ -63,10 +63,12 @@ void Kunder::handling(char valg) {
                 if (kunde) {
                     kunde->skrivData();
                 } else {
-                    std::cout << "Det finnes ingen kunde med kundenummer " << kundenummer << std::endl;
+                    std::cout << "Det finnes ingen kunde med kundenummer " 
+                              << kundenummer << '\n';
                 }
             } else {
-                std::cout << "Det finnes ingen kunder, kan derfor ikke skrive enkeltkunde." << std::endl;
+                std::cout << "Det finnes ingen kunder, kan derfor ikke skrive"
+                " enkeltkunde.\n";
             }
             valg = 0;
             break;
@@ -76,7 +78,7 @@ void Kunder::handling(char valg) {
                 int kundenummer = lesInt("Kundenummer:", 1, kundeListe.size());
                 fjernKunde(kundenummer);
             } else {
-                std::cout << "Det finnes ingen kunder å slette." << std::endl;
+                std::cout << "Det finnes ingen kunder å slette.\n";
             }
             valg = 0;
             break;
@@ -99,15 +101,16 @@ void Kunder::lesFraFil() {
     std::ifstream kundeFil("data/KUNDER.DTA");
 
     if (kundeFil) {
-        std::cout << "Leser fra filen KUNDER.DTA" << std::endl;
+        std::cout << "Leser fra filen KUNDER.DTA\n";
 
         while(!kundeFil.eof()) {
             kundeListe.push_back(new Kunde(kundeFil));
         }
 
-        std::cout << "Leste inn " << kundeListe.size() << " kunder fra KUNDER.DTA" << std::endl;
+        std::cout << "Leste inn " << kundeListe.size() 
+                  << " kunder fra KUNDER.DTA\n";
     } else {
-        std::cout << "Kunne ikke lese fra /data/KUNDER.DTA." << std::endl;
+        std::cout << "Kunne ikke lese fra /data/KUNDER.DTA.\n";
     }
 
     kundeFil.close();
@@ -122,13 +125,13 @@ void Kunder::skrivAlleTilFil() {
     std::ofstream kundeFil("data/KUNDER.DTA");
 
    if (kundeFil) {
-        std::cout << "Skriver til filen KUNDER.DTA" << std::endl;
+        std::cout << "Skriver til filen KUNDER.DTA\n";
 
         for(const auto &kunde: kundeListe) {
             kunde->skrivTilFil(kundeFil);
         }
     } else {
-        std::cout << "Kunne ikke skrive til /data/KUNDER.DTA." << std::endl;
+        std::cout << "Kunne ikke skrive til /data/KUNDER.DTA.\n";
     }
 
     kundeFil.close();
@@ -157,12 +160,12 @@ void Kunder::fjernKunde(int kundenummer) {
         if (bekreftelse == 'J') {
             kundeListe.remove(kunde);
             kunde->~Kunde();
-            std::cout << "Kunden ble slettet." << std::endl;
+            std::cout << "Kunden ble slettet.\n";
         } else {
-            std::cout << "Kunde ble ikke slettet." << std::endl;
+            std::cout << "Kunde ble ikke slettet.\n";
         }
     } else {
-        std::cout << "Kunde finnes ikke." << std::endl;
+        std::cout << "Kunde finnes ikke.\n";
     }
 }
 
@@ -194,7 +197,7 @@ void Kunder::skrivAlle() {
     bool valg;
 
     std::cout << "Siste kunde: " << sistenummer << ". " << "Det finnes nå "
-              << kundeListe.size() << " kunder." << std::endl;
+              << kundeListe.size() << " kunder.\n";
 
     for (const auto &kunde: kundeListe) {
         if (i && i % 20 == 0) {

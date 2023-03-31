@@ -19,7 +19,23 @@ Kunder gKundebase;          // Globalt container-objekt med ALLE kundene.
 Kategorier gKategoribase;   // Globalt container-objekt med ALLE kategoriene.
 
 /**
- *  Hovedprogram.
+ * @brief Programmets hovedmeny
+ * 
+ * Her skrives alle overordnede valgmuligheter ut, kunder og kategorier leses
+ * fra og til fil, og valg leses inn.
+ * 
+ * @see Kategorier::kategoriHandling(...)
+ * @see Kategorier::kjopTing(...)
+ * @see Kategorier::lesFraFil()
+ * @see Kategorier::skrivAlleTilFil()
+ * @see Kategorier::tingHandling(...)
+ * @see Kunder::handling(...)
+ * @see Kunder::lesFraFil()
+ * @see Kunder::skrivAlleTilFil()
+ * @see lesString(...)
+ * @see skrivMeny()
+ * 
+ * @return 0, programmet avsluttes
  */
 int main() {
     std::string valg;
@@ -34,9 +50,10 @@ int main() {
     char forsteValg = std::toupper(valg.at(0));
 
     if (valg.size() == 1 && (forsteValg != 'J' && forsteValg != 'Q')) {
+        skrivMeny();
         valg = lesString("\nUgyldig Kommando");
     }
-    
+
     forsteValg = std::toupper(valg.at(0));
     char andreValg;
 
@@ -66,6 +83,7 @@ int main() {
         forsteValg = std::toupper(valg.at(0));
 
         if (valg.size() == 1 && (forsteValg != 'J' || forsteValg != 'Q')) {
+            skrivMeny();
             valg = lesString("\nUgyldig Kommando");
         }
         forsteValg = std::toupper(valg.at(0));
@@ -74,7 +92,7 @@ int main() {
     gKundebase.skrivAlleTilFil();
     gKategoribase.skrivAlleTilFil();
 
-   std::cout << "All data er lagret, og programmet er avsluttet." << std::endl;
+   std::cout << "All data er lagret, og programmet er avsluttet.\n";
 
     return 0;
 }

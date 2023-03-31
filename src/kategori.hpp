@@ -25,7 +25,7 @@ public:
     void settData(std::string navn);
     void skrivData() const;
     void lagTing();
-    void skrivFullKategori();
+    void skrivTing();
     void skrivTilFil(std::ofstream &kundeFil);
 
 private:

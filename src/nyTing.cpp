@@ -52,7 +52,7 @@ void NyTing::skrivData() const {
               << "\tNavn: " << navn 
               << "\tAntall: " << antall 
               << "\tPris: " << pris 
-              << "\tBeskrivelse: " << beskrivelse << std::endl;
+              << "\tBeskrivelse: " << beskrivelse << '\n';
 }
 
 /**
@@ -141,12 +141,8 @@ int NyTing::hentSelgernummer() const {
  * @see NyTing::endreBeskrivelse(...)
 */
 void NyTing::endreTing() {
-    std::cout << "Hva vil du endre på?" << '\n'
-        << "1. Navn" << '\n'
-        << "2. Antall" << '\n'
-        << "3. Pris" << '\n'
-        << "4. Beskrivelse" << '\n'
-        << "5. Avbryt" << '\n';
+    std::cout << "Hva vil du endre på?\n1. Navn\n2. Antall\n3. Pris\n4. "
+    "Beskrivelse\n5. Avbryt\n";
 
     int valg = lesInt("Valg: ", 1, 5);
 
@@ -176,7 +172,7 @@ void NyTing::endreTing() {
 }
 
 /**
- * Constructor for ting som setter tingenes data ut ifra innhold lest
+ * @brief Constructor for ting som setter tingenes data ut ifra innhold lest
  * fra medsendt fil. 
  * 
  * @param tingFil Filen tingen leses inn fra
@@ -188,7 +184,7 @@ NyTing::NyTing(std::ifstream &tingFil) {
 } 
 
 /**
- * Skriver all informasjon om gitt ting til fil.
+ * @brief Skriver all informasjon om gitt ting til fil.
  * 
  * @param tingFil Filen tingen skal skrives til
 */
@@ -198,7 +194,10 @@ void NyTing::skrivTilFil(std::ofstream &tingFil) {
 }
 
 /**
- * @brief Setter alle int datamedlemmer for ting utifra det som blir lest inn fra fil.
+ * @brief Setter data om ting
+ * 
+ * Setter selgernummer, tingens nummer, pris og antall utifra det som
+ * ble lest inn fra fil
  * 
  * @param tingFil Filen tingens variabler skal leses inn fra
 */

@@ -10,17 +10,17 @@
 #include "skrivMeny.hpp"
 
 /**
- *  Skriver programmets hovedmeny og beskriver alle valgmuligheter
+ *  @brief Skriver programmets hovedmeny og beskriver alle valgmuligheter
 */
 void skrivMeny() {
-    std::cout << "UN - Opprett ny kunde" << '\n' 
-              << "UA - Skriv alle kunder" << '\n' 
-              << "US - Skriv bestemt kunde" << '\n' 
-              << "UF - Slett kunde" << '\n' 
-              << "AN - Opprett kategori" << '\n' 
-              << "AA - Skriv alle kategorier" << '\n' 
-              << "AS - Skriv en entydig navngitt kategori" << '\n' 
-              << "TN - Opprett ny ting" << '\n' 
-              << "TE - Endre ting" << '\n' 
-              << " K - Kjøp ting" << std::endl;
+    std::cout << "UN - Opprett ny kunde\n"
+              << "UA - Skriv alle kunder\n"
+              << "US - Skriv bestemt kunde\n"
+              << "UF - Slett kunde\n"
+              << "AN - Opprett kategori\n"
+              << "AA - Skriv alle kategorier\n"
+              << "AS - Skriv en entydig navngitt kategori\n"
+              << "TN - Opprett ny ting\n"
+              << "TE - Endre ting\n"
+              << " K - Kjøp ting\n";
 }

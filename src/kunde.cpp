@@ -99,15 +99,15 @@ int Kunde::hentKundenummer() {
  * @brief Skriver ut all data om kunde.
 */
 void Kunde::skrivData() const {
-    std::cout << "Navn: " << navn << '\n' 
-              << "Gateadresse: " << gateAdresse << '\n' 
-              << "Mobilnummer: " << mobilnummer << '\n' 
-              << "Mailadresse: " << mailAdresse << '\n' 
-              << "Poststed: " << postSted << '\n' 
-              << "Postnummer: " << postnummer << '\n' 
-              << "Antall ting kjøpt: " << antallTingKjopt << '\n' 
-              << "Antall ting solgt: " << antallTingSolgt << '\n' 
-              << "Antall til salgs: " << antallTingTilSalgs << std::endl;
+    std::cout << "Navn: " << navn
+              << "\nGateadresse: " << gateAdresse
+              << "\nMobilnummer: " << mobilnummer
+              << "\nMailadresse: " << mailAdresse
+              << "\nPoststed: " << postSted
+              << "\nPostnummer: " << postnummer
+              << "\nAntall ting kjøpt: " << antallTingKjopt
+              << "\nAntall ting solgt: " << antallTingSolgt
+              << "\nAntall til salgs: " << antallTingTilSalgs << '\n';
 }
 
 /**
@@ -118,7 +118,7 @@ void Kunde::skrivData() const {
 void Kunde::skrivInfo() const {
     std::cout << "Kundenummer: " << kundenummer 
               << "\tNavn: " << navn 
-              << "\tTlf: " << mobilnummer << std::endl;
+              << "\tTlf: " << mobilnummer << '\n';
 }
 
 /**
@@ -149,11 +149,11 @@ void Kunde::kjopTing(Kategori *kategori, NyTing *ting) {
     Kunde* selger = gKundebase.hentKunde(selgernummer);
 
     if (kundenummer != selgernummer) {
-        std::cout << "Kjøpte ting " << ting->hentNavn() << std::endl;
+        std::cout << "Kjøpte ting " << ting->hentNavn() << '\n';
         selger->selgTing(ting);
         antallTingKjopt+=1;
     } else {
-        std::cout << "Du kan ikke kjøpe av deg selv!" << std::endl;
+        std::cout << "Du kan ikke kjøpe av deg selv!\n";
     }
 }
 

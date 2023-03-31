@@ -6,20 +6,21 @@
  *  også støtter innlesning av strings.
  *
  *  @file     lesData3.cpp
- *  @author   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther, Frode Haug, NTNU
+ *  @author   Frode Haug, Eirik Hanasand, Sindre Hagen Strømdal, 
+ *            Steffen Ludviksen Sæther, NTNU.
  */
 
-#include <algorithm>
+#include <algorithm>                //  transform
 #include <iostream>                 //  cin, cout
 #include <iomanip>                  //  setprecision
 #include <cstdlib>                  //  atoi, atof
 #include <cctype>                   //  toupper
-#include <string>
+#include <string>                   //  string
 
 #include "lesData3.hpp"             //  Prototypene for denne filens innhold
 
 /**
- *  Leser og returnerer ett (upcaset) tegn.
+ *  @brief Leser og returnerer ett (upcaset) tegn.
  *
  *  @param   t  - Ledetekst til brukeren når ber om ett tegn
  *
@@ -34,7 +35,7 @@ char lesChar(const char *t) {
 }
 
 /**
- *  Leser og returnerer et flyttall mellom to gitte grenser.
+ *  @brief Leser og returnerer et flyttall mellom to gitte grenser.
  *
  *  @param   t    - Ledetekst til brukeren når ber om input/et tall
  *  @param   min  - Minimum for innlest og godtatt tallverdi
@@ -63,7 +64,7 @@ float lesFloat(const char *t, const float min, const float max) {
 }
 
 /**
- *  Leser og returnerer et heltall mellom to gitte grenser.
+ *  @brief Leser og returnerer et heltall mellom to gitte grenser.
  *
  *  @param   t    - Ledetekst til brukeren når ber om input/et tall
  *  @param   min  - Minimum for innlest og godtatt tallverdi
@@ -92,7 +93,6 @@ int lesInt(const char *t, const int min, const int max) {
 
 /**
  * @brief Leser og returnerer en bool.
- *
  *
  *  @param   t   - Ledetekst til brukeren når ber om input/et tall
  *  @param   ja  - Bokstaven som tilsvarer et ja(true)
@@ -129,7 +129,7 @@ bool lesBool(const char *t, const char ja, const char nei) {
  */
 std::string lesString(const std::string t) {
     std::string string;
-    std::cout << t << ':' << std::endl;
+    std::cout << t << ":\n";
     std::getline(std::cin, string);
     
     return string;
