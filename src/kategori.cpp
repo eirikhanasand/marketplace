@@ -56,14 +56,14 @@ std::string Kategori::hentNavn() {
  * 
  * @param kundenummer Kundenummeret til kunden
  * 
- * @see NyTing::hentKundenummer()
+ * @see NyTing::hentSelgernummer()
  * 
  * @return NyTing peker til funnet ting, evt nullptr
 */
 NyTing* Kategori::hentTing(int kundenummer) {
     auto element = std::find_if(tingListe.begin(), tingListe.end(),
     [kundenummer](NyTing* ting) {
-        return ting->hentKundenummer() == kundenummer;
+        return ting->hentSelgernummer() == kundenummer;
     });
     return (element != tingListe.end()) ? *element : nullptr;
 }

@@ -20,11 +20,19 @@
 extern Kunder gKundebase;
 extern Kategorier gKategoribase;
 
-// Constructor
+/**
+ * Oppretter ting basert på medsendt nummer og setter tingens nummer til dette.
+*/
 NyTing::NyTing(int Nummer) {
     nummer = Nummer;
 }
 
+/**
+ * Setter alle datamedlemmer for en gitt ting
+ * 
+ * @see lesInt(...)
+ * @see lesString(...)
+*/
 void NyTing::settData() {
     selgernummer = lesInt("Kundenummer", 1, gKundebase.antallKunder());
     navn = lesString("Navn på tingen");
@@ -33,6 +41,10 @@ void NyTing::settData() {
     antall = lesInt("Hvor mange selger du", 0, MAKS_ANTALL);
 }
 
+/**
+ * Skriver all data om en gitt ting
+ * 
+*/
 void NyTing::skrivData() const {
     std::cout << "Selger " << selgernummer 
               << "\tTing: " << nummer 
@@ -42,34 +54,88 @@ void NyTing::skrivData() const {
               << "\tBeskrivelse: " << beskrivelse << std::endl;
 }
 
+/**
+ * Henter navnet til en gitt ting
+ * 
+ * @returns std::string Navnet på tingen
+ */
 std::string NyTing::hentNavn() const {
     return navn;
 }
 
+/**
+ * Henter antall av en gitt ting
+ * 
+ * @returns int Antall av tingen
+ */
 int NyTing::hentAntall() {
     return antall;
 }
 
+/**
+ * Endrer antall av en gitt ting
+ * 
+ * @param nyttAntall Tingens nye antall
+*/
 void NyTing::endreAntall(int nyttAntall) {
     antall = nyttAntall;
 }
 
+/**
+ * Endrer navn på en gitt ting
+ * 
+ * @param nyttNavn Tingens nye navn
+*/
 void NyTing::endreNavn(std::string nyttNavn) {
     navn = nyttNavn;
 }
 
+/**
+ * Endrer pris for en gitt ting
+ * 
+ * @param nyPris Tingens nye pris
+*/
 void NyTing::endrePris(int nyPris) {
     pris = nyPris;
 }
 
+/**
+ * Endrer beskrivelse for gitt ting
+*/
 void NyTing::endreBeskrivelse(std::string nyBeskrivelse) {
     beskrivelse = nyBeskrivelse;
 }
 
-int NyTing::hentKundenummer() const {
+/**
+ * Henter nummer for gitt ting
+ * 
+ * @return int nummer
+*/
+int NyTing::hentNummer() const {
     return nummer;
 }
 
+/**
+ * Henter selgernummer for gitt ting
+ * 
+ * @return int selgernummer
+*/
+int NyTing::hentSelgernummer() const {
+    return selgernummer;
+}
+
+/**
+ * Funksjon for å endre på en gitt ting sine datamedlemmer. Skriver først
+ * ut meny for å bestemme hvilket datamedlem som skal endres på, og referererer
+ * videre til relevant funksjon som kan utføre endringen.
+ * 
+ * @see lesInt(...)
+ * @see lesString(...)
+ * @see NyTing::endreNavn(...)
+ * @see NyTing::endreAntall(...)
+ * @see NyTing::endrePris(...)
+ * @see NyTing::endreBeskrivelse(...)
+*/
 void NyTing::endreTing() {
     std::cout << "Hva vil du endre på?" << '\n'
         << "1. Navn" << '\n'
@@ -82,35 +148,46 @@ void NyTing::endreTing() {
 
     switch (valg) {
         case '1': {
-            std::string navn = lesString("Nytt navn: ");
-            NyTing::endreNavn(navn);
+            std::string navn = lesString("Nytt navn");
+            endreNavn(navn);
             break;
         }
         case '2': {
-            int antall = lesInt("Nytt antall: ", 1, MAKS_ANTALL);
-            NyTing::endreAntall(antall);
+            int antall = lesInt("Nytt antall", 1, MAKS_ANTALL);
+            endreAntall(antall);
             break;
         }
         case '3': {
-            int pris = lesInt("Ny pris: ", 1, MAKS_PRIS);
-            NyTing::endrePris(pris);
+            int pris = lesInt("Ny pris", 1, MAKS_PRIS);
+            endrePris(pris);
             break;
         }
         case '4': {
-            std::string beskrivelse = lesString("Ny beskrivelse: ");
-            NyTing::endreBeskrivelse(0);
+            std::string beskrivelse = lesString("Ny beskrivelse");
+            endreBeskrivelse(0);
             break;
         }
-        case '5': {
-            break;
-        }
+        default: break;
     }
 }
 
+/**
+ * Constructor for ting som setter tingenes data ut ifra innhold lest
+ * fra medsendt fil. 
+ * 
+ * @param tingFil Filen tingen leses inn fra
+ * 
+ * @see NyTing:::settData()
+*/
 NyTing::NyTing(std::ifstream &tingFil) {
     settData(tingFil);
 } 
 
+/**
+ * Skriver all informasjon om gitt ting til fil.
+ * 
+ * @param tingFil Filen tingen skal skrives til
+*/
 void NyTing::skrivTilFil(std::ofstream &tingFil) {
     tingFil << selgernummer << nummer << ' ' << pris << ' ' << antall << '\n' 
             << navn << '\n' << beskrivelse << '\n';

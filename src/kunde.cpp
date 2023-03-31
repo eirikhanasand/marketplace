@@ -135,13 +135,13 @@ void Kunde::skrivTilFil(std::ofstream &kundeFil) {
  * @param kategori Peker til aktuell kategori
  * @param ting Peker til aktuell ting
  * 
- * @see NyTing::hentKundenummer()
+ * @see NyTing::hentSelgernummer()
  * @see NyTing::hentNavn()
  * @see Kunder::hentKunde(...)
  * @see Kunde::selgTing(...)
 */
 void Kunde::kjopTing(Kategori *kategori, NyTing *ting) {
-    int selgernummer = ting->hentKundenummer();
+    int selgernummer = ting->hentSelgernummer();
     Kunde* selger = gKundebase.hentKunde(selgernummer);
 
     if (kundenummer != selgernummer) {

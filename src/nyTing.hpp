@@ -21,15 +21,13 @@ public:
     virtual void settData();
     virtual void settData(std::ifstream &tingFil);
     virtual void settRestData(std::ifstream &tingFil);
-
     virtual void skrivData() const;
 
     std::string hentNavn() const;
-    int hentKundenummer() const;
-
+    int hentNummer() const;
     int hentAntall();
     void endreTing();
-
+    void hentSelgernummer();
     void endreNavn(std::string nyttNavn);
     void endrePris(int nyPris);
     void endreAntall(int nyttAntall);

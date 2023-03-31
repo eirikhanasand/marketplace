@@ -22,7 +22,20 @@ Kunder::~Kunder() {
     std::cout << "Slettet alle kunder." << std::endl;
 }
 
-// Håndterer valg
+/**
+ * Håndterer valgmuligheter for kunder
+ * - Opprettelse av ny kunde
+ * - Utskriving av alle kunder
+ * - Utskriving av spesifikk kunde
+ * - Sletting av kunde
+ * 
+ * @param valg Bokstav som indikerer brukerens valg
+ * 
+ * @see Kunder::lagKunde()
+ * @see Kunder::skrivAlle()
+ * @see lesInt(...)
+ * @see Kunder::hentKunde(...)
+*/
 void Kunder::handling(char valg) {
     switch (valg) {
         case 'N': {
@@ -71,7 +84,12 @@ void Kunder::handling(char valg) {
     }
 }
 
-// Leser fra fil
+/**
+ * Leser kunder fra fil, oppretter disse som objekter, og legger de bakerst I 
+ * kundelisten.
+ * 
+ * @see Kunde::Kunde(...)
+*/
 void Kunder::lesFraFil() {
     std::ifstream kundeFil("data/KUNDER.DTA");
 
@@ -90,7 +108,11 @@ void Kunder::lesFraFil() {
     kundeFil.close();
 }
 
-// Skriver til fil
+/**
+ * @brief Skriver alle kunder til fil.
+ * 
+ * @see Kunde::skrivTilFil(...)
+*/
 void Kunder::skrivAlleTilFil() {
     std::ofstream kundeFil("data/KUNDER.DTA");
 
@@ -107,7 +129,18 @@ void Kunder::skrivAlleTilFil() {
     kundeFil.close();
 }
 
-// Deletes customer 
+/**
+ * Sletter en gitt kunde basert på kundenummer. All informasjon om kunden
+ * skrives ut, og brukeren må deretter bekrefte at de ønsker å gjennomføre
+ * slettingen.
+ * 
+ * @param kundenummer Nummeret på kunden man ønsker å slette
+ * 
+ * @see Kunder::hentKunde(...)
+ * @see Kunde::skrivData()
+ * @see lesChar(...)
+ * @see Kunde::~Kunde()
+*/
 void Kunder::fjernKunde(int kundenummer) {
     char bekreftelse;
     auto kunde = hentKunde(kundenummer);
@@ -127,14 +160,28 @@ void Kunder::fjernKunde(int kundenummer) {
     }
 }
 
-// Finds customer
+/**
+ * Henter kunde tilhørende gitt kundenummer.
+ * 
+ * @param kundenummer Kundenummeret på kunden man ønsker å hente
+ * 
+ * @return Kunde peker, evt nullptr om kunden ikke ble funnet.
+*/
 Kunde *Kunder::hentKunde(int kundenummer) {
-    auto element = std::find_if(kundeListe.begin(), kundeListe.end(),[kundenummer](Kunde *kunde){
+    auto element = std::find_if(kundeListe.begin(), kundeListe.end(),
+        [kundenummer](Kunde *kunde){
         return kunde->hentKundenummer() == kundenummer;
     });
     return (element != kundeListe.end()) ? *element : nullptr;
 }
 
+/**
+ * Skriver alle kunder, hvor bruker må bekrefte at de vil skrive ut flere
+ * for hver 20. kunde.
+ * 
+ * @see Kunde#skrivInfo()
+ * @see lesBool(...)
+*/
 void Kunder::skrivAlle() {
     int i = 0;
     bool valg;
@@ -152,10 +199,21 @@ void Kunder::skrivAlle() {
     }
 }
 
+/**
+ * Returnerer antall kunder som finnes for øyeblikket
+ * 
+ * @return int Antall kunder
+*/
 int Kunder::antallKunder() {
     return kundeListe.size();
 }
 
+/**
+ * Oppretter en ny kunde, setter alle dens datamedlemmer, 
+ * og legger den inn i kundelisten. 
+ * 
+ * @see Kunde#skrivInfo()
+*/
 void Kunder::lagKunde() {
     Kunde *kunde = new Kunde(kundeListe.size()+1);
     kundeListe.push_back(kunde);
