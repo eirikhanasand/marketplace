@@ -184,13 +184,23 @@ NyTing::NyTing(std::ifstream &tingFil) {
 } 
 
 /**
- * @brief Skriver all informasjon om gitt ting til fil.
+ * @brief Skriver talldata til fil
+ * 
+ * Skriver selgernummer, tingens nummer, pris og antall til fil
  * 
  * @param tingFil Filen tingen skal skrives til
 */
 void NyTing::skrivTilFil(std::ofstream &tingFil) {
-    tingFil << selgernummer << nummer << ' ' << pris << ' ' << antall << '\n' 
-            << navn << '\n' << beskrivelse << '\n';
+    tingFil << selgernummer << ' ' << nummer << ' ' << pris << ' ' << antall;
+}
+
+/**
+ * @brief Skriver all informasjon om gitt ting til fil.
+ * 
+ * @param tingFil Filen tingen skal skrives til
+*/
+void NyTing::skrivRestDataTilFil(std::ofstream &tingFil) {
+    tingFil  << '\n' << navn << '\n' << beskrivelse << '\n';
 }
 
 /**

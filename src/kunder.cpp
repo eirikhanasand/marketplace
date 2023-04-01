@@ -21,7 +21,6 @@ Kunder::~Kunder() {
     for (auto &kunde: kundeListe) {
         delete kunde;
     }
-    std::cout << "Slettet alle kunder.\n";
 }
 
 /**

@@ -49,7 +49,7 @@ int main() {
 
     char forsteValg = std::toupper(valg.at(0));
 
-    if (valg.size() == 1 && (forsteValg != 'J' && forsteValg != 'Q')) {
+    if (valg.size() == 1 && (forsteValg != 'K' && forsteValg != 'Q')) {
         skrivMeny();
         valg = lesString("\nUgyldig Kommando");
     }
@@ -82,7 +82,7 @@ int main() {
         valg = lesString("\nKommando");
         forsteValg = std::toupper(valg.at(0));
 
-        if (valg.size() == 1 && (forsteValg != 'J' || forsteValg != 'Q')) {
+        if (valg.size() == 1 && (forsteValg != 'K' || forsteValg != 'Q')) {
             skrivMeny();
             valg = lesString("\nUgyldig Kommando");
         }

@@ -36,6 +36,7 @@ Kunde::Kunde(int Kundenummer) {
  * @param kundeFil Filen som skal leses inn fra
 */
 Kunde::Kunde(std::ifstream &kundeFil) {
+    
     kundeFil >> kundenummer;
     kundeFil.ignore();
 

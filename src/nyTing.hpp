@@ -32,8 +32,8 @@ public:
     void endrePris(int nyPris);
     void endreAntall(int nyttAntall);
     void endreBeskrivelse(std::string nyBeskrivelse);
-
-    virtual void skrivTilFil(std::ofstream & tingFil);
+    void skrivRestDataTilFil(std::ofstream &tingFil);
+    virtual void skrivTilFil(std::ofstream &tingFil);
 
 private:
     int selgernummer;

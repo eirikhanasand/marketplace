@@ -125,10 +125,11 @@ void Kategori::skrivTing() {
  * @see NyTing::skrivTilFIl(...)
 */
 void Kategori::skrivTilFil(std::ofstream &kundeFil) {
-    kundeFil << kategoriNavn << '\n' << antallTingTilSalgs << '\n';
+    kundeFil << kategoriNavn << '\n' << antallTingTilSalgs;
 
     for (const auto &ting: tingListe) { 
         ting->skrivTilFil(kundeFil);
+        ting->skrivRestDataTilFil(kundeFil);
     }
 }
 

@@ -96,7 +96,7 @@ void BruktTing::skrivTilFil(std::ofstream &tingFil) {
         case Sliten:    kvalitetInt = 5; break;
     }
 
-    tingFil << aar << ' ' << kvalitetInt << '\n';
+    tingFil << ' ' << aar << ' ' << kvalitetInt;
 }
 
 /**
