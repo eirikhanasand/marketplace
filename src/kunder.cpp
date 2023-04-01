@@ -232,20 +232,3 @@ void Kunder::lagKunde() {
     std::cout << "Opprettet kunde med ";
     kunde->skrivInfo();
 }
-
-void Kunder::fyllKundeListeTomRom() {
-    for (auto kunde = kundeListe.begin(); kunde != kundeListe.end(); ++kunde) {
-        if (!*kunde) {
-            auto nesteKunde = std::find_if (kunde, kundeListe.end(), [](Kunde *kunde) {
-                return kunde != nullptr;
-            });
-
-            if (nesteKunde != kundeListe.end()) {
-                *kunde = *nesteKunde;
-                *nesteKunde = nullptr;
-            } else {
-                break;
-            }
-        }
-    }
-}

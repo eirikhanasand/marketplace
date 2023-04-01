@@ -32,7 +32,6 @@ public:
 
     void selgTing(NyTing *ting);
 
-
 private:
     int kundenummer;
     int mobilnummer;

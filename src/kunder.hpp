@@ -33,8 +33,6 @@ public:
 
     void lagKunde();
 
-    void fyllKundeListeTomRom();
-
 private:
     std::list<Kunde *> kundeListe;
 

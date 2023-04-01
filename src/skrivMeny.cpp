@@ -13,7 +13,8 @@
  *  @brief Skriver programmets hovedmeny og beskriver alle valgmuligheter
 */
 void skrivMeny() {
-    std::cout << "UN - Opprett ny kunde\n"
+    std::cout << "Programmets hovedmeny. Skriv inn som AA uten mellomrom\n"
+              << "UN - Opprett ny kunde\n"
               << "UA - Skriv alle kunder\n"
               << "US - Skriv bestemt kunde\n"
               << "UF - Slett kunde\n"
