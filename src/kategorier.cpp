@@ -68,10 +68,22 @@ void Kategorier::tingHandling(char valg) {
 */
 void Kategorier::kategoriHandling(char valg) {
     switch (valg) {
-        case 'N':   lagKategori();  break;
-        case 'A':   skrivAlle();    break;
-        case 'S':   skrivEntydig(); break;
-        default:    skrivMeny();    break;
+        case 'N': {
+            lagKategori();  
+            break;
+        }
+        case 'A': {
+            skrivAlle();    
+            break;
+        }
+        case 'S': {
+            skrivEntydig(); 
+            break;
+        }
+        default: {
+            skrivMeny();    
+            break;
+        }
     }
 }
 

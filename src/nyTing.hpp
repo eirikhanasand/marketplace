@@ -28,10 +28,7 @@ public:
     int hentAntall();
     void endreTing();
     int hentSelgernummer() const;
-    void endreNavn(std::string nyttNavn);
-    void endrePris(int nyPris);
     void endreAntall(int nyttAntall);
-    void endreBeskrivelse(std::string nyBeskrivelse);
     void skrivRestDataTilFil(std::ofstream &tingFil);
     virtual void skrivTilFil(std::ofstream &tingFil);
 

@@ -82,10 +82,11 @@ void Kunder::handling(char valg) {
             valg = 0;
             break;
         }
-        default:
+        default: {
             std::cout << "Ugyldig kommando!\n";
             skrivMeny();
             break;
+        }
     }
 }
 

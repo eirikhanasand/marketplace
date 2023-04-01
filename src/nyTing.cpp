@@ -83,33 +83,6 @@ void NyTing::endreAntall(int nyttAntall) {
 }
 
 /**
- * @brief Endrer navn på en NyTing
- * 
- * @param nyttNavn Tingens nye navn
-*/
-void NyTing::endreNavn(std::string nyttNavn) {
-    navn = nyttNavn;
-}
-
-/**
- * @brief Endrer pris for en NyTing
- * 
- * @param nyPris Tingens nye pris
-*/
-void NyTing::endrePris(int nyPris) {
-    pris = nyPris;
-}
-
-/**
- *  @brief Endrer beskrivelse for en NyTing
- *
- *  @param nyBeskrivelse Tingens nye beskrivelsen
-*/
-void NyTing::endreBeskrivelse(std::string nyBeskrivelse) {
-    beskrivelse = nyBeskrivelse;
-}
-
-/**
  * @brief Henter nummer for en NyTing
  * 
  * @return int nummer
@@ -144,30 +117,28 @@ void NyTing::endreTing() {
     std::cout << "Hva vil du endre på?\n1. Navn\n2. Antall\n3. Pris\n4. "
     "Beskrivelse\n5. Avbryt\n";
 
-    int valg = lesInt("Valg: ", 1, 5);
+    int valg = lesInt("Valg", 1, 5);
 
     switch (valg) {
-        case '1': {
-            std::string navn = lesString("Nytt navn");
-            endreNavn(navn);
+        case 1: {
+            navn = lesString("Nytt navn");                      
             break;
         }
-        case '2': {
-            int antall = lesInt("Nytt antall", 1, MAKS_ANTALL);
-            endreAntall(antall);
+        case 2: {
+            antall = lesInt("Nytt antall", 1, MAKS_ANTALL);     
             break;
         }
-        case '3': {
-            int pris = lesInt("Ny pris", 1, MAKS_PRIS);
-            endrePris(pris);
+        case 3: {
+            pris = lesInt("Ny pris", 1, MAKS_PRIS);             
             break;
         }
-        case '4': {
-            std::string beskrivelse = lesString("Ny beskrivelse");
-            endreBeskrivelse(0);
+        case 4: {
+            beskrivelse = lesString("Ny beskrivelse");          
             break;
         }
-        default: break;
+        default: {
+            break;
+        }
     }
 }
 

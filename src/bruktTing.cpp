@@ -58,11 +58,26 @@ void BruktTing::settData() {
     "PentBrukt, 3 = Brukt, 4 = GodtBrukt, 5 = Sliten", 1, 5);
 
     switch (kategoriKvalitet) {
-        case 1: kvalitet = SomNy;       break;
-        case 2: kvalitet = PentBrukt;   break;
-        case 3: kvalitet = Brukt;       break;
-        case 4: kvalitet = GodtBrukt;   break;
-        case 5: kvalitet = Sliten;      break;
+        case 1: {
+            kvalitet = SomNy;       
+            break;
+        }
+        case 2: {
+            kvalitet = PentBrukt;   
+            break;
+        }
+        case 3: {
+            kvalitet = Brukt;       
+            break;
+        }
+        case 4: {
+            kvalitet = GodtBrukt;   
+            break;
+        }
+        case 5: {
+            kvalitet = Sliten;      
+            break;
+        }
     }
 }
 
@@ -89,11 +104,26 @@ void BruktTing::skrivTilFil(std::ofstream &tingFil) {
     int kvalitetInt = 0;
 
     switch (kvalitet) {
-        case SomNy:     kvalitetInt = 1; break; 
-        case PentBrukt: kvalitetInt = 2; break; 
-        case Brukt:     kvalitetInt = 3; break; 
-        case GodtBrukt: kvalitetInt = 4; break; 
-        case Sliten:    kvalitetInt = 5; break;
+        case SomNy: {
+            kvalitetInt = 1; 
+            break; 
+        }
+        case PentBrukt: {
+            kvalitetInt = 2; 
+            break;
+        } 
+        case Brukt: {
+            kvalitetInt = 3; 
+            break; 
+        }
+        case GodtBrukt: {
+            kvalitetInt = 4; 
+            break; 
+        }
+        case Sliten: {
+            kvalitetInt = 5; 
+            break;
+        }
     }
 
     tingFil << ' ' << aar << ' ' << kvalitetInt;
@@ -118,11 +148,26 @@ void BruktTing::settData(std::ifstream &tingFil) {
     tingFil.ignore();
 
     switch (kvalitetInt) {
-        case 1:   kvalitet = SomNy;       break;
-        case 2:   kvalitet = PentBrukt;   break;
-        case 3:   kvalitet = Brukt;       break;
-        case 4:   kvalitet = GodtBrukt;   break;
-        case 5:   kvalitet = Sliten;      break;
+        case 1: {
+            kvalitet = SomNy;       
+            break;
+        }
+        case 2: {
+            kvalitet = PentBrukt;   
+            break;
+        }
+        case 3: {
+            kvalitet = Brukt;       
+            break;
+        }
+        case 4: {
+            kvalitet = GodtBrukt;   
+            break;
+        }
+        case 5: {
+            kvalitet = Sliten;      
+            break;
+        }
     }
 
     NyTing::settRestData(tingFil);

@@ -60,24 +60,29 @@ int main() {
     while (forsteValg != 'Q') {
         switch (forsteValg) {
             std::cout << forsteValg;
-            case 'U':
+            case 'U': {
                 andreValg = std::toupper(valg.at(1));
                 gKundebase.handling(andreValg);
                 break;
-            case 'A':
+            }
+            case 'A': {
                 andreValg = std::toupper(valg.at(1));
                 gKategoribase.kategoriHandling(andreValg);
                 break;
-            case 'K':
+            }
+            case 'K': {
                 gKategoribase.kjopTing();
                 break;
-            case 'T':
+            }
+            case 'T': {
                 andreValg = std::toupper(valg.at(1));
                 gKategoribase.tingHandling(andreValg);
                 break;
-            default:
+            }
+            default: {
                 skrivMeny();
                 break;
+            }
         }
 
         valg = lesString("\nKommando");
