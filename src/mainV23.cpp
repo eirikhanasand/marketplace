@@ -49,7 +49,7 @@ int main() {
 
     char forsteValg = std::toupper(valg.at(0));
 
-    if (valg.size() == 1 && (forsteValg != 'K' && forsteValg != 'Q')) {
+    while (valg.size() == 1 && (forsteValg != 'K' && forsteValg != 'Q')) {
         skrivMeny();
         valg = lesString("\nUgyldig Kommando");
     }
@@ -59,6 +59,7 @@ int main() {
 
     while (forsteValg != 'Q') {
         switch (forsteValg) {
+            std::cout << forsteValg;
             case 'U':
                 andreValg = std::toupper(valg.at(1));
                 gKundebase.handling(andreValg);
@@ -82,7 +83,7 @@ int main() {
         valg = lesString("\nKommando");
         forsteValg = std::toupper(valg.at(0));
 
-        if (valg.size() == 1 && (forsteValg != 'K' || forsteValg != 'Q')) {
+        while (valg.size() == 1 && (forsteValg != 'K' && forsteValg != 'Q')) {
             skrivMeny();
             valg = lesString("\nUgyldig Kommando");
         }

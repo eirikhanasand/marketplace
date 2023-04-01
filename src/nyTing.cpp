@@ -48,11 +48,11 @@ void NyTing::settData() {
 */
 void NyTing::skrivData() const {
     std::cout << "Selger " << selgernummer 
-              << "\tTing: " << nummer 
+              << "\tTingnummer: " << nummer 
               << "\tNavn: " << navn 
               << "\tAntall: " << antall 
               << "\tPris: " << pris 
-              << "\tBeskrivelse: " << beskrivelse << '\n';
+              << "kr\tBeskrivelse: " << beskrivelse << '\n';
 }
 
 /**

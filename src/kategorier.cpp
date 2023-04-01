@@ -43,12 +43,10 @@ Kategorier::~Kategorier() {
  * @see skrivMeny()
 */
 void Kategorier::tingHandling(char valg) {
-    if (valg == 'N') {
-        lagTingIKategori();
-    } else if (valg == 'E') {
-        endreTingIKategori();
-    } else {
-        skrivMeny();
+    switch (valg) {
+        case 'N': lagTingIKategori();   break;
+        case 'E': endreTingIKategori(); break;
+        default:  skrivMeny();          break;
     }
 }
 
@@ -259,6 +257,7 @@ void Kategorier::endreTingIKategori() {
 
     if (kategori) {
         kategori->skrivData();
+        kategori->skrivTing();
         int tingNummer = lesInt("Hvilken ting vil du endre?", 1, 
                                 kategori->hentAntallTing());
         // Endrer ting i funnet kategori

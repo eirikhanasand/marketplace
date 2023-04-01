@@ -73,8 +73,8 @@ void BruktTing::settData() {
 */
 void BruktTing::skrivData() const {
     NyTing::skrivData();
-    std::cout << "Tingens alder: " << aar 
-              << "\tKvalitet: " << kvalitet << '\n';
+    std::cout << "Tingens alder: " << aar << "år, kvalitet: " 
+              << kvalitet << '\n';
 }
 
 /**
