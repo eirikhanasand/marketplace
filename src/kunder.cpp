@@ -81,20 +81,21 @@ void Kunder::handling(char valg) {
             break;
         }
         case 'F': {
-            if (sisteKundenummer) {
-                int kundenummer = lesInt("Kundenummer:", 1, sisteKundenummer)-1;
-                if (hentKunde(kundenummer)) {
-                    fjernKunde(kundenummer);
+            if (kundeListe.size()) {
+                if (sisteKundenummer) {
+                    int kundenummer = lesInt("Kundenummer:", 1, sisteKundenummer)-1;
+                    if (hentKunde(kundenummer)) {
+                        fjernKunde(kundenummer);
+                    } else {
+                        std::cout << "Kunde nummer " << kundenummer+1 
+                                << " har blitt slettet.\n";
+                    }
                 } else {
-                    std::cout << "Kunde nummer " << kundenummer+1 
-                              << " har blitt slettet.\n";
+                    std::cout << "Det finnes ingen kunder å slette.\n";
                 }
-                
-            } else {
-                std::cout << "Det finnes ingen kunder å slette.\n";
+                valg = 0;
+                break;
             }
-            valg = 0;
-            break;
         }
         default: {
             std::cout << "Ugyldig kommando!\n";
