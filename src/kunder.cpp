@@ -94,8 +94,10 @@ void Kunder::handling(char valg) {
                     std::cout << "Det finnes ingen kunder å slette.\n";
                 }
                 valg = 0;
-                break;
+            } else {
+                std::cout << "Det finnes ingen kunder å slette.\n";
             }
+            break;
         }
         default: {
             std::cout << "Ugyldig kommando!\n";
