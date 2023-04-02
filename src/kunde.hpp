@@ -19,7 +19,7 @@ public:
     Kunde(std::ifstream &kundeFil, int Kundenummer);
     int hentKundenummer();
     void kjopTing(Kategori *kategori, NyTing *ting, int kundenummer);
-    void selgTing(NyTing *ting);
+    void selgTing(NyTing *ting, Kategori *kategori);
     void settData();
     void skrivData() const;
     void skrivInfo() const;

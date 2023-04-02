@@ -266,7 +266,7 @@ void Kategorier::lagTingIKategori() {
  * @see Kategorier::hentKategoriEntydig(...)
  * @see Kategori::skrivData()
  * @see Kategori::sisteTing()
- * @see Kategori::hentTingTingnummer(...)
+ * @see Kategori::hentTing(...)
  * @see Kategori::endreTing()
 */
 void Kategorier::endreTingIKategori() {
@@ -279,7 +279,7 @@ void Kategorier::endreTingIKategori() {
         int tingNummer = lesInt("Hvilken ting vil du endre?", 1, 
                                 antallTing);
         // Endrer ting i funnet kategori
-        auto ting = kategori->hentTingTingnummer(tingNummer);
+        auto ting = kategori->hentTing(tingNummer);
 
         if (ting) {
             ting->endreTing();
@@ -333,7 +333,7 @@ void Kategorier::kjopTing() {
         " for å avbryte", 0, antallTing);
 
         if (tingnummer) {
-            auto ting = kategori->hentTingTingnummer(tingnummer-1);
+            auto ting = kategori->hentTing(tingnummer);
             auto kunde = gKundebase.hentKunde(kundenummer);
 
             if (ting) {
@@ -393,10 +393,18 @@ void Kategorier::skrivEntydig() {
     }
 }
 
+/**
+ * @brief Øker antall ting som finnes totalt
+*/
 void Kategorier::okAntallTing() {
     antallTing++;
 }
 
+/**
+ * @brief Totalt antall ting i programmet
+ * 
+ * @return int antall ting
+*/
 int Kategorier::hentAntallTing() {
     return antallTing;
 }

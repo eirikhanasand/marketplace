@@ -9,12 +9,14 @@
 #include <fstream>
 #include <string>
 
+#include "kategorier.hpp"
 #include "lesData3.hpp"
 #include "kunder.hpp"
 #include "nyTing.hpp"
 #include "kunde.hpp"
 
 extern Kunder gKundebase;
+extern Kategorier gKategoribase;
 
 /**
  * @brief Kunde constructor med Kundenummer parameter.
@@ -31,9 +33,10 @@ Kunde::Kunde(int Kundenummer) {
 }
 
 /**
- * @brief Kunde constructor med filparameter for å opprette kunder fra fil
+ * @brief Kunde constructor med parametre for å opprette kunder fra fil
  * 
  * @param kundeFil Filen som skal leses inn fra
+ * @param Kundenummer Kundenummeret til kunden
 */
 Kunde::Kunde(std::ifstream &kundeFil, int Kundenummer) {
     kundenummer = Kundenummer;
@@ -137,6 +140,7 @@ void Kunde::skrivTilFil(std::ofstream &kundeFil) {
  * 
  * @param kategori Peker til aktuell kategori
  * @param ting Peker til aktuell ting
+ * @param kundenummer Kundenummeret til kjøper
  * 
  * @see NyTing::hentSelgernummer()
  * @see NyTing::hentNavn()
@@ -148,8 +152,8 @@ void Kunde::kjopTing(Kategori *kategori, NyTing *ting, int kundenummer) {
     Kunde* selger = gKundebase.hentKunde(selgernummer);
 
     if (kundenummer != selgernummer) {
-        std::cout << "Kjøpte ting " << ting->hentNavn() << '\n';
-        selger->selgTing(ting);
+        std::cout << "Kjøpte " << ting->hentNavn() << '\n';
+        selger->selgTing(ting, kategori);
         antallTingKjopt+=1;
     } else {
         std::cout << "Du kan ikke kjøpe av deg selv!\n";
@@ -164,11 +168,13 @@ void Kunde::kjopTing(Kategori *kategori, NyTing *ting, int kundenummer) {
  * tingen.
  * 
  * @param ting Tingen som skal selges
+ * @param kategori Kategorien tingen tilhører
  * 
  * @see NyTing::hentAntall()
- * @see NyTing::endreAntall()
+ * @see NyTing::endreAntall(...)
+ * @see NyTing::fjernTing(...)
 */
-void Kunde::selgTing(NyTing *ting) {
+void Kunde::selgTing(NyTing *ting, Kategori *kategori) {
     int antall = ting->hentAntall();
     antallTingSolgt+=1;
     antallTingTilSalgs-=1;
@@ -176,6 +182,6 @@ void Kunde::selgTing(NyTing *ting) {
     if (antall > 1) {
         ting->endreAntall(antall-1);
     } else {
-        delete ting;
+        kategori->fjernTing(ting);
     }
 }

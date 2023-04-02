@@ -16,6 +16,7 @@ class NyTing {
 public:
     NyTing(int Nummer);
     NyTing(std::ifstream & tingFil);
+    virtual ~NyTing();
     virtual void settData();
     virtual void settData(std::ifstream &tingFil);
     virtual void settRestData(std::ifstream &tingFil);

@@ -97,6 +97,8 @@ int lesInt(const char *t, const int min, const int max) {
  *  @param   t   - Ledetekst til brukeren når ber om input/et tall
  *  @param   ja  - Bokstaven som tilsvarer et ja(true)
  *  @param   nei - Bokstaven som tilsvarer et nei(false)
+ * 
+ * @see lesChar(...)
  *
  *  @return True eller false fra om brukeren svarte ja eller nei.
  */
@@ -144,7 +146,7 @@ std::string lesString(const std::string t) {
  * 
  * @param t Teksten som skal konverteres
  * 
- * @returns Lowercase tekst
+ * @returns string lowercase tekst
 */
 std::string stringTilLiten(std::string t) {
     std::transform(t.begin(), t.end(), t.begin(), tolower);

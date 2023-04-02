@@ -61,7 +61,7 @@ std::string Kategori::hentNavn() {
  * 
  * @return NyTing peker til funnet ting, evt nullptr
 */
-NyTing* Kategori::hentTingTingnummer(int tingnummer) {
+NyTing* Kategori::hentTing(int tingnummer) {
     auto element = std::find_if(tingListe.begin(), tingListe.end(),
         [tingnummer](NyTing *ting){
         return ting->hentNummer() == tingnummer;
@@ -80,6 +80,8 @@ NyTing* Kategori::hentTingTingnummer(int tingnummer) {
  * @see BruktTing(...)
  * @see NyTing(...)
  * @see NyTing::settData()
+ * @see Kategorier::okAntallTing()
+ * @see Kategorier::hentAntallTing()
 */
 void Kategori::lagTing() {
     bool brukt = lesBool("Brukt (j/n)");
@@ -118,9 +120,9 @@ void Kategori::skrivTing() const {
 }
 
 /**
- * @brief Skriver all informasjon om alle ting i en gitt kategori.
+ * @brief Skriver alt bortsett fra selgernummer for alle ting i en kategori.
  * 
- * @see NyTing::skrivData()
+ * @see NyTing::skrivMindreData()
 */
 void Kategori::skrivTingMindre() const {
     for (const auto &ting: tingListe) {
@@ -134,6 +136,7 @@ void Kategori::skrivTingMindre() const {
  * @param kundeFil Fil som skal skrives til
  * 
  * @see NyTing::skrivTilFIl(...)
+ * @see NyTing::skrivRestDataTilFil(...)
 */
 void Kategori::skrivTilFil(std::ofstream &kundeFil) {
     kundeFil << kategoriNavn << '\n' << sisteTingnummer << '\n';
@@ -148,10 +151,13 @@ void Kategori::skrivTilFil(std::ofstream &kundeFil) {
  * @brief Kategori constructor med filparameter for å lage kategorier fra fil
  * 
  * @param innfil Filen som skal leses inn fra
+ * @param navn Navnet på kategorien
  * 
  * @see NyTing::NyTing(...)
  * @see BruktTing::BruktTing(...)
  * @see NyTing::settRestData(...)
+ * @see NyTing::settBruktStatus(...)
+ * @see Kategorier::okAntallTing()
 */
 Kategori::Kategori(std::ifstream &innfil, std::string navn) {
     int type;
@@ -179,4 +185,13 @@ Kategori::Kategori(std::ifstream &innfil, std::string navn) {
             gKategoribase.okAntallTing();
         }
     }
+}
+
+/**
+ * @brief Fjerner gitt ting fra tinglisten
+ * 
+ * @param ting Tingen som skal slettes
+*/
+void Kategori::fjernTing(NyTing *ting) {
+    tingListe.remove(ting);
 }

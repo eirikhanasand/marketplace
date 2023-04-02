@@ -19,7 +19,7 @@ class Kategori {
 public:
     Kategori();    
     Kategori(std::ifstream &kundeFil, std::string navn);
-    NyTing* hentTingTingnummer(int tingnummer);
+    NyTing* hentTing(int tingnummer);
     std::string hentNavn();
     int sisteTing();
     void settData(std::string navn);
@@ -28,6 +28,7 @@ public:
     void lagTing();
     void skrivTing() const;
     void skrivTilFil(std::ofstream &kundeFil);
+    void fjernTing(NyTing *ting);
 
 private:
     std::list<NyTing*> tingListe;

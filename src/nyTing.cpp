@@ -30,10 +30,21 @@ NyTing::NyTing(int Nummer) {
 }
 
 /**
+ * @brief Destructor for NyTing.
+ *
+ * Denne er tom (default), men er nødvendig for compileren.
+*/
+NyTing::~NyTing() {
+
+}
+
+/**
  * @brief Setter alle datamedlemmer for en NyTing
  * 
  * @see lesInt(...)
  * @see lesString(...)
+ * @see Kunder::hentKunde(...)
+ * @see Kunder::sisteKunde()
 */
 void NyTing::settData() {
     int tempSelger;
@@ -234,6 +245,11 @@ void NyTing::settRestData(std::ifstream &tingFil) {
     beskrivelse[beskrivelse.length()] = '\0';
 }
 
+/**
+ * @brief Setter erBrukt for ting
+ * 
+ * @param status Om tingen er brukt eller ikke
+*/
 void NyTing::settBruktStatus(bool status) {
     if (status) {
         erBrukt = true;

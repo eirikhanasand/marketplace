@@ -34,10 +34,13 @@ Kunder::~Kunder() {
  * 
  * @param valg Bokstav som indikerer brukerens valg
  * 
- * @see Kunder::lagKunde()
- * @see Kunder::skrivAlle()
+ * @see lagKunde()
+ * @see skrivAlle()
  * @see lesInt(...)
- * @see Kunder::hentKunde(...)
+ * @see hentKunde(...)
+ * @see Kunde::skrivData(...)
+ * @see fjernKunde(...)
+ * @see skrivMeny()
 */
 void Kunder::handling(char valg) {
     switch (valg) {
@@ -192,6 +195,8 @@ void Kunder::fjernKunde(int kundenummer) {
  * 
  * @param kundenummer Kundenummeret på kunden man ønsker å hente
  * 
+ * @see hentKundenummer()
+ * 
  * @return Kunde peker, evt nullptr om kunden ikke ble funnet.
 */
 Kunde *Kunder::hentKunde(int kundenummer) {
@@ -207,7 +212,7 @@ Kunde *Kunder::hentKunde(int kundenummer) {
  *
  * Bruker må bekrefte at de vil skrive ut flere for hver 20. kunde.
  * 
- * @see Kunde#skrivInfo()
+ * @see Kunde::skrivInfo()
  * @see lesBool(...)
 */
 void Kunder::skrivAlle() {
@@ -242,7 +247,8 @@ int Kunder::sisteKunde() {
  * Deretter setter alle dens datamedlemmer,
  * og legger den inn i kundelisten. 
  * 
- * @see Kunde#skrivInfo()
+ * @see Kunde::Kunde(...)
+ * @see Kunde::skrivInfo()
 */
 void Kunder::lagKunde() {
     Kunde *kunde = new Kunde(sisteKundenummer);
@@ -252,6 +258,11 @@ void Kunder::lagKunde() {
     sisteKundenummer++;
 }
 
+/**
+ * @brief Henter antall kunder som faktisk finnes
+ * 
+ * @return int Antall kunder
+*/
 int Kunder::hentAntallKunder() {
     return kundeListe.size();
 }

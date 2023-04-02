@@ -23,7 +23,7 @@
  * 
  * @param Nummer Tingens unike nummer
  * 
- * @see NyTing(int)
+ * @see NyTing(...)
 */
 BruktTing::BruktTing(int Nummer):NyTing(Nummer) {
 
@@ -39,6 +39,15 @@ BruktTing::BruktTing(int Nummer):NyTing(Nummer) {
 */
 BruktTing::BruktTing(std::ifstream &tingFil):NyTing(tingFil) {
     settData(tingFil);
+}
+
+/**
+ * @brief Destructor for BruktTing.
+ *
+ * Denne er tom (default), men er nødvendig for compileren.
+*/
+BruktTing::~BruktTing() {
+
 }
 
 /**
