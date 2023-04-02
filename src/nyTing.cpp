@@ -36,19 +36,43 @@ NyTing::NyTing(int Nummer) {
  * @see lesString(...)
 */
 void NyTing::settData() {
-    selgernummer = lesInt("Kundenummer", 1, gKundebase.antallKunder());
+    int tempSelger;
+    Kunde* kunde;
+
+    do {
+        tempSelger = lesInt("Kundenummer", 1, gKundebase.sisteKunde())-1;
+        kunde = gKundebase.hentKunde(tempSelger);
+
+        if (!kunde) {
+            std::cout << "Denne kunden er slettet. Bruk kommandoen AA for å se"
+            " kundelisten.\n";
+        }
+    } while (!kunde);
+
+    selgernummer = tempSelger;
     navn = lesString("Navn på tingen");
     beskrivelse = lesString("Beskriv tingen");
     pris = lesInt("Hvor mye koster tingen", 0, MAKS_PRIS);
-    antall = lesInt("Hvor mange selger du", 0, MAKS_ANTALL);
+    antall = lesInt("Hvor mange selger du", 1, MAKS_ANTALL);
 }
 
 /**
- * @brief Skriver all data en NyTing
+ * @brief Skriver all data om en NyTing
 */
 void NyTing::skrivData() const {
-    std::cout << "Selger " << selgernummer 
+    std::cout << "Selger " << selgernummer+1 
               << "\tTingnummer: " << nummer 
+              << "\tNavn: " << navn 
+              << "\tAntall: " << antall 
+              << "\tPris: " << pris 
+              << "kr\tBeskrivelse: " << beskrivelse << '\n';
+}
+
+/**
+ * @brief Skriver all data om en NyTing utenom dens selgernummer.
+*/
+void NyTing::skrivMindreData() const {
+    std::cout << "Tingnummer: " << nummer 
               << "\tNavn: " << navn 
               << "\tAntall: " << antall 
               << "\tPris: " << pris 

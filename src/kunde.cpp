@@ -117,7 +117,7 @@ void Kunde::skrivData() const {
  * Dette innebærer kundenummer, navn og telefonnummer.
 */
 void Kunde::skrivInfo() const {
-    std::cout << "Kundenummer: " << kundenummer 
+    std::cout << "Kundenummer: " << kundenummer+1 
               << "\tNavn: " << navn 
               << "\tTlf: " << mobilnummer << '\n';
 }
@@ -145,7 +145,7 @@ void Kunde::skrivTilFil(std::ofstream &kundeFil) {
  * @see Kunder::hentKunde(...)
  * @see selgTing(...)
 */
-void Kunde::kjopTing(Kategori *kategori, NyTing *ting) {
+void Kunde::kjopTing(Kategori *kategori, NyTing *ting, int kundenummer) {
     int selgernummer = ting->hentSelgernummer();
     Kunde* selger = gKundebase.hentKunde(selgernummer);
 

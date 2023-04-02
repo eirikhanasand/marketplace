@@ -17,20 +17,13 @@ class Kunde {
 public:
     Kunde(int Kundenummer);
     Kunde(std::ifstream &kundeFil);
-
-    void settData();
-
-    void skrivData() const;
-
     int hentKundenummer();
-
-    void skrivInfo() const;
-    
-    void skrivTilFil(std::ofstream &kundeFil);
-
-    void kjopTing(Kategori *kategori, NyTing *ting);
-
+    void kjopTing(Kategori *kategori, NyTing *ting, int kundenummer);
     void selgTing(NyTing *ting);
+    void settData();
+    void skrivData() const;
+    void skrivInfo() const;
+    void skrivTilFil(std::ofstream &kundeFil);
 
 private:
     int kundenummer;

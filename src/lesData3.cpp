@@ -129,9 +129,13 @@ bool lesBool(const char *t, const char ja, const char nei) {
  */
 std::string lesString(const std::string t) {
     std::string string;
-    std::cout << t << ":\n";
-    std::getline(std::cin, string);
-    
+    do {
+        std::cout << t << ":\n";
+        std::getline(std::cin, string);
+        if (!string.length()) {
+            std::cout << "\nERROR: Empty string\n\n";
+        }
+    } while (!string.length());
     return string;
 }
 

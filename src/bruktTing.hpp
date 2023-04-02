@@ -21,6 +21,7 @@ public:
     void settData();
     void settData(std::ifstream &tingFil);
     void skrivData() const;
+    void skrivMindreData() const;
     void skrivTilFil(std::ofstream &tingFil);
 
 private:

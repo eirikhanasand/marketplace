@@ -16,27 +16,19 @@
 class Kunder {
 public:
     ~Kunder();
-
-    void handling(char valg);
-
-    void skrivAlle();
-
-    void lesFraFil();
-
-    void skrivAlleTilFil();
-
-    void fjernKunde(int kundenummer);
-
     Kunde *hentKunde(int kundenummer);
-
-    int antallKunder();
-
+    int sisteKunde();
+    void fjernKunde(int kundenummer);
+    void handling(char valg);
     void lagKunde();
+    void lesFraFil();
+    void skrivAlle();
+    void skrivAlleTilFil();
+    int hentAntallKunder();
 
 private:
     std::list<Kunde *> kundeListe;
-
-    int sistenummer;
+    int sisteKundenummer = 0;
 };
 
 #endif

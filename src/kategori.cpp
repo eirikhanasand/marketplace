@@ -15,6 +15,7 @@
 #include "lesData3.hpp"
 #include "bruktTing.hpp"
 
+extern Kategorier gKategoribase;
 /**
  * @brief Constructor for kategori.
  *
@@ -31,7 +32,7 @@ Kategori::Kategori() {
 */
 void Kategori::settData(std::string navn) {
     kategoriNavn = navn;
-    antallTingTilSalgs = 0;
+    sisteTingnummer = 0;
 }
 
 /**
@@ -39,7 +40,7 @@ void Kategori::settData(std::string navn) {
 */
 void Kategori::skrivData() const {
     std::cout << "Kategorinavn: " << kategoriNavn 
-              << "\tAntall ting til salgs: " << antallTingTilSalgs << '\n';
+              << "\tAntall ting til salgs: " << tingListe.size() << '\n';
 }
 
 /**
@@ -52,20 +53,18 @@ std::string Kategori::hentNavn() {
 }
 
 /**
- * @brief Henter ting i kategori som tilhører spesifikt kundenummer.
+ * @brief Henter ting i kategori som tilhører spesifikt tingnummer.
  *
- * Sjekker listen og finner matchende elementer som returneres, evt nullptr.
+ * Sjekker listen og finner matchende element som returneres, evt nullptr.
  * 
- * @param kundenummer Kundenummeret til kunden
- * 
- * @see NyTing::hentSelgernummer()
+ * @param tingnummer Tingens nummer
  * 
  * @return NyTing peker til funnet ting, evt nullptr
 */
-NyTing* Kategori::hentTing(int kundenummer) {
+NyTing* Kategori::hentTingTingnummer(int tingnummer) {
     auto element = std::find_if(tingListe.begin(), tingListe.end(),
-    [kundenummer](NyTing* ting) {
-        return ting->hentSelgernummer() == kundenummer;
+        [tingnummer](NyTing *ting){
+        return ting->hentNummer() == tingnummer;
     });
     return (element != tingListe.end()) ? *element : nullptr;
 }
@@ -87,14 +86,15 @@ void Kategori::lagTing() {
     NyTing* ting = nullptr;
 
     if (brukt) {
-        ting = new BruktTing(tingListe.size());
+        ting = new BruktTing(gKategoribase.hentAntallTing()+1);
     } else {
-        ting = new NyTing(tingListe.size());
+        ting = new NyTing(gKategoribase.hentAntallTing()+1);
     }
 
     ting->settData();
     tingListe.push_back(ting);
-    antallTingTilSalgs++;
+    sisteTingnummer++;
+    gKategoribase.okAntallTing();
 }
 
 /**
@@ -102,8 +102,8 @@ void Kategori::lagTing() {
  * 
  * @return int Antall ting i kategorien
 */
-int Kategori::hentAntallTing() {
-    return tingListe.size();
+int Kategori::sisteTing() {
+    return sisteTingnummer;
 }
 
 /**
@@ -111,9 +111,20 @@ int Kategori::hentAntallTing() {
  * 
  * @see NyTing::skrivData()
 */
-void Kategori::skrivTing() {
+void Kategori::skrivTing() const {
     for (const auto &ting: tingListe) {
         ting->skrivData();
+    }
+}
+
+/**
+ * @brief Skriver all informasjon om alle ting i en gitt kategori.
+ * 
+ * @see NyTing::skrivData()
+*/
+void Kategori::skrivTingMindre() const {
+    for (const auto &ting: tingListe) {
+        ting->skrivMindreData();
     }
 }
 
@@ -125,7 +136,7 @@ void Kategori::skrivTing() {
  * @see NyTing::skrivTilFIl(...)
 */
 void Kategori::skrivTilFil(std::ofstream &kundeFil) {
-    kundeFil << kategoriNavn << '\n' << antallTingTilSalgs;
+    kundeFil << kategoriNavn << '\n' << sisteTingnummer;
 
     for (const auto &ting: tingListe) { 
         ting->skrivTilFil(kundeFil);
@@ -148,10 +159,10 @@ Kategori::Kategori(std::ifstream &innfil) {
     std::getline(innfil, kategoriNavn);
     kategoriNavn[kategoriNavn.length()] = '\0';
 
-    innfil >> antallTingTilSalgs;
+    innfil >> sisteTingnummer;
     innfil.ignore();
 
-    for (int i = 0; i < antallTingTilSalgs; i++) {
+    for (int i = 0; i < sisteTingnummer; i++) {
         type = 0;
         innfil >> type;
         innfil.ignore();
@@ -159,10 +170,12 @@ Kategori::Kategori(std::ifstream &innfil) {
         if (type) {
             BruktTing *bruktTing = new BruktTing(innfil);
             tingListe.push_back(bruktTing);
+            gKategoribase.okAntallTing();
         } else {
             NyTing *nyTing = new NyTing(innfil);
             nyTing->settRestData(innfil);
             tingListe.push_back(nyTing);
+            gKategoribase.okAntallTing();
         }
     }
 }

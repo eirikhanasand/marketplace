@@ -73,7 +73,7 @@ void Kategorier::kategoriHandling(char valg) {
             break;
         }
         case 'A': {
-            skrivAlle();    
+            skrivAlle();
             break;
         }
         case 'S': {
@@ -106,7 +106,7 @@ void Kategorier::lesFraFil() {
             (kategori->hentNavn(), kategori));
         }
 
-        std::cout << "Leste inn " << kategoriMap.size() 
+        std::cout << "Leste inn " << kategoriMap.size()
                   << " kategorier fra KATEGORIER.DTA\n";
     } else {
         std::cout << "Kunne ikke lese fra /data/KATEGORIER.DTA.\n";
@@ -259,8 +259,8 @@ void Kategorier::lagTingIKategori() {
  * @see lesString(...)
  * @see Kategorier::hentKategoriEntydig(...)
  * @see Kategori::skrivData()
- * @see Kategori::hentAntallTing()
- * @see Kategori::hentTing(...)
+ * @see Kategori::sisteTing()
+ * @see Kategori::hentTingTingnummer(...)
  * @see Kategori::endreTing()
 */
 void Kategorier::endreTingIKategori() {
@@ -271,9 +271,16 @@ void Kategorier::endreTingIKategori() {
         kategori->skrivData();
         kategori->skrivTing();
         int tingNummer = lesInt("Hvilken ting vil du endre?", 1, 
-                                kategori->hentAntallTing());
+                                antallTing);
         // Endrer ting i funnet kategori
-        kategori->hentTing(tingNummer)->endreTing();
+        auto ting = kategori->hentTingTingnummer(tingNummer);
+
+        if (ting) {
+            ting->endreTing();
+        } else {
+            std::cout << "Det finnes ingen ting med tingnummer " << tingNummer 
+                      << " i denne kategorien!\n";
+        }
     } else {
         std::cout << "Det finnes ingen kategori med navn " 
                   << kategoriNavn << '\n';
@@ -290,14 +297,26 @@ void Kategorier::endreTingIKategori() {
  * @see lesInt(...)
  * @see lesString(...)
  * @see Kategori::skrivTing(...)
- * @see Kategori::hentAntallTing(...)
+ * @see Kategori::sisteTing(...)
  * @see hentKategoriEntydig(...)
  * @see Kunder::hentKunde(...)
  * @see Kunde::kjopTing(...)
 */
 void Kategorier::kjopTing() {
     int tingnummer;
-    int kundenummer = lesInt("Kundenummer:", 1, gKundebase.antallKunder());
+    Kunde* kunde;
+    int kundenummer;
+
+    do {
+        kundenummer = lesInt("Kundenummer:", 1, gKundebase.sisteKunde())-1;
+        kunde = gKundebase.hentKunde(kundenummer);
+
+        if (!kunde) {
+            std::cout << "Denne kunden er slettet. Vennligst bruk en annen"
+                         " kunde.\n";
+        }
+    } while (!kunde);
+
     std::string kategoriNavn = lesString("Kategori");
 
     auto kategori = hentKategoriEntydig(kategoriNavn);
@@ -305,12 +324,18 @@ void Kategorier::kjopTing() {
     if (kategori) {
         kategori->skrivTing();
         tingnummer = lesInt("Skriv inn nummer på tingen du vil kjøpe, 0"
-        " for å avbryte", 0, kategori->hentAntallTing());
+        " for å avbryte", 0, antallTing);
 
         if (tingnummer) {
-            auto ting = kategori->hentTing(tingnummer);
-            Kunde *kunde = gKundebase.hentKunde(kundenummer);
-            kunde->kjopTing(kategori, ting);
+            auto ting = kategori->hentTingTingnummer(tingnummer-1);
+            auto kunde = gKundebase.hentKunde(kundenummer);
+
+            if (ting) {
+                kunde->kjopTing(kategori, ting, kundenummer);
+            } else {
+                std::cout << "Det finnes ingen ting med nummer " 
+                          << tingnummer << " i denne kategorien!\n";
+            }
         } else {
             std::cout << "Avbrøt kjøp!\n";
         }
@@ -356,8 +381,16 @@ void Kategorier::skrivEntydig() {
 
     if (kategori) {
         kategori->skrivData();
-        kategori->skrivTing();
+        kategori->skrivTingMindre();
     } else {
         std::cout << kategoriNavn << " er ikke en kategori!\n";
     }
+}
+
+void Kategorier::okAntallTing() {
+    antallTing++;
+}
+
+int Kategorier::hentAntallTing() {
+    return antallTing;
 }

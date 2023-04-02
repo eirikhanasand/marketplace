@@ -21,6 +21,7 @@ public:
     ~Kategorier();
     Kategori *hentKategoriEntydig(std::string kategoriNavn);
     bool kategoriFinnes(std::string kategoriNavn);
+    int hentAntallTing();
     void kategoriHandling(char valg);
     void tingHandling(char valg);
     void lesFraFil();
@@ -32,9 +33,11 @@ public:
     void skrivEntydig();
     void fjernKategori(Kategori *kategori);
     void kjopTing();
+    void okAntallTing();
 
 private:
     std::map<std::string, Kategori *> kategoriMap;
+    int antallTing = 0;
 };
 
 #endif

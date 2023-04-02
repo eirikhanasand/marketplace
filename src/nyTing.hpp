@@ -15,22 +15,20 @@
 class NyTing {
 public:
     NyTing(int Nummer);
-
     NyTing(std::ifstream & tingFil);
-
     virtual void settData();
     virtual void settData(std::ifstream &tingFil);
     virtual void settRestData(std::ifstream &tingFil);
     virtual void skrivData() const;
-
+    virtual void skrivMindreData() const;
+    virtual void skrivTilFil(std::ofstream &tingFil);
     std::string hentNavn() const;
     int hentNummer() const;
     int hentAntall();
-    void endreTing();
     int hentSelgernummer() const;
+    void endreTing();
     void endreAntall(int nyttAntall);
     void skrivRestDataTilFil(std::ofstream &tingFil);
-    virtual void skrivTilFil(std::ofstream &tingFil);
 
 private:
     int selgernummer;

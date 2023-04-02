@@ -19,20 +19,19 @@ class Kategori {
 public:
     Kategori();    
     Kategori(std::ifstream &kundeFil);
-    NyTing* hentTing(int kundeNummer);
+    NyTing* hentTingTingnummer(int tingnummer);
     std::string hentNavn();
-    int hentAntallTing();
+    int sisteTing();
     void settData(std::string navn);
     void skrivData() const;
+    void skrivTingMindre() const;
     void lagTing();
-    void skrivTing();
+    void skrivTing() const;
     void skrivTilFil(std::ofstream &kundeFil);
 
 private:
     std::list<NyTing*> tingListe;
-
-    int antallTingTilSalgs;
-
+    int sisteTingnummer = 0;
     std::string kategoriNavn;
 };
 

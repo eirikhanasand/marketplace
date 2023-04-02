@@ -71,12 +71,20 @@ int main() {
                 break;
             }
             case 'K': {
-                gKategoribase.kjopTing();
+                if (gKundebase.hentAntallKunder()) {
+                    gKategoribase.kjopTing();
+                } else {
+                    std::cout << "Du må opprette en kunde for å kjøpe ting!\n";
+                }
                 break;
             }
             case 'T': {
-                andreValg = std::toupper(valg.at(1));
-                gKategoribase.tingHandling(andreValg);
+                if (gKundebase.hentAntallKunder()) {
+                    andreValg = std::toupper(valg.at(1));
+                    gKategoribase.tingHandling(andreValg);
+                } else {
+                    std::cout << "Opprett en kunde før du endrer på ting!\n";
+                }
                 break;
             }
             default: {

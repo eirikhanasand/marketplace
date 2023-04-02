@@ -93,6 +93,17 @@ void BruktTing::skrivData() const {
 }
 
 /**
+ * @brief Skriver alt utenom selgernummer for BruktTing
+ * 
+ * @see NyTing::skrivMindreData()
+*/
+void BruktTing::skrivMindreData() const {
+    NyTing::skrivMindreData();
+    std::cout << "Tingens alder: " << aar << "år, kvalitet: " 
+              << kvalitet << '\n';
+}
+
+/**
  * @brief Skriver BruktTing objekter til fil
  * 
  * @param tingFil Referanse til filen som skal skrives til

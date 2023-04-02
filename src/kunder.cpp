@@ -57,25 +57,36 @@ void Kunder::handling(char valg) {
         }
         case 'S': {
             if (kundeListe.size()) {
-                int kundenummer = lesInt("Kundenummer", 1, kundeListe.size());
-                Kunde *kunde = hentKunde(kundenummer);
-                if (kunde) {
-                    kunde->skrivData();
+                if (sisteKundenummer) {
+                    int kundenummer = 
+                        lesInt("Kundenummer", 1, sisteKundenummer)-1;
+                    Kunde *kunde = hentKunde(kundenummer);
+                    if (kunde) {
+                        kunde->skrivData();
+                    } else {
+                        std::cout << "Kunde nummer " << kundenummer+1 
+                                << " har blitt slettet.\n";
+                    }
                 } else {
-                    std::cout << "Det finnes ingen kunde med kundenummer " 
-                              << kundenummer << '\n';
+                    std::cout << "Det finnes ingen kunder, kan derfor ikke "
+                    "skrive enkeltkunde.\n";
                 }
+                valg = 0;
             } else {
-                std::cout << "Det finnes ingen kunder, kan derfor ikke skrive"
-                " enkeltkunde.\n";
+                std::cout << "Det finnes ingen kunder å skrive ut.\n";
             }
-            valg = 0;
             break;
         }
         case 'F': {
-            if (kundeListe.size()) {
-                int kundenummer = lesInt("Kundenummer:", 1, kundeListe.size());
-                fjernKunde(kundenummer);
+            if (sisteKundenummer) {
+                int kundenummer = lesInt("Kundenummer:", 1, sisteKundenummer)-1;
+                if (hentKunde(kundenummer)) {
+                    fjernKunde(kundenummer);
+                } else {
+                    std::cout << "Kunde nummer " << kundenummer+1 
+                              << " har blitt slettet.\n";
+                }
+                
             } else {
                 std::cout << "Det finnes ingen kunder å slette.\n";
             }
@@ -105,10 +116,11 @@ void Kunder::lesFraFil() {
 
         while(!kundeFil.eof()) {
             kundeListe.push_back(new Kunde(kundeFil));
+            sisteKundenummer++;
         }
 
-        std::cout << "Leste inn " << kundeListe.size() 
-                  << " kunder fra KUNDER.DTA\n";
+        std::cout << "Leste inn " << sisteKundenummer << " kunder fra "
+                     "KUNDER.DTA\n";
     } else {
         std::cout << "Kunne ikke lese fra /data/KUNDER.DTA.\n";
     }
@@ -196,7 +208,7 @@ void Kunder::skrivAlle() {
     int i = 0;
     bool valg;
 
-    std::cout << "Siste kunde: " << sistenummer << ". " << "Det finnes nå "
+    std::cout << "Siste kunde: " << sisteKundenummer << ". Det finnes nå "
               << kundeListe.size() << " kunder.\n";
 
     for (const auto &kunde: kundeListe) {
@@ -214,8 +226,8 @@ void Kunder::skrivAlle() {
  * 
  * @return int Antall kunder
 */
-int Kunder::antallKunder() {
-    return kundeListe.size();
+int Kunder::sisteKunde() {
+    return sisteKundenummer;
 }
 
 /**
@@ -227,8 +239,13 @@ int Kunder::antallKunder() {
  * @see Kunde#skrivInfo()
 */
 void Kunder::lagKunde() {
-    Kunde *kunde = new Kunde(kundeListe.size()+1);
+    Kunde *kunde = new Kunde(sisteKundenummer);
     kundeListe.push_back(kunde);
     std::cout << "Opprettet kunde med ";
     kunde->skrivInfo();
+    sisteKundenummer++;
+}
+
+int Kunder::hentAntallKunder() {
+    return kundeListe.size();
 }
