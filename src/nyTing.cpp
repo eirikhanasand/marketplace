@@ -186,7 +186,8 @@ NyTing::NyTing(std::ifstream &tingFil) {
  * @param tingFil Filen tingen skal skrives til
 */
 void NyTing::skrivTilFil(std::ofstream &tingFil) {
-    tingFil << selgernummer << ' ' << nummer << ' ' << pris << ' ' << antall;
+    int tallErBrukt = erBrukt ? 1:0;
+    tingFil << tallErBrukt <<  ' ' << selgernummer << ' ' << nummer << ' ' << pris << ' ' << antall;
 }
 
 /**
@@ -231,4 +232,12 @@ void NyTing::settRestData(std::ifstream &tingFil) {
 
     std::getline(tingFil, beskrivelse);
     beskrivelse[beskrivelse.length()] = '\0';
+}
+
+void NyTing::settBruktStatus(bool status) {
+    if (status) {
+        erBrukt = true;
+    } else {
+        erBrukt = false;
+    }
 }

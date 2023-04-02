@@ -29,12 +29,14 @@ public:
     void endreTing();
     void endreAntall(int nyttAntall);
     void skrivRestDataTilFil(std::ofstream &tingFil);
+    void settBruktStatus(bool status);
 
 private:
     int selgernummer;
     int nummer;
     int pris;
     int antall;
+    bool erBrukt;
 
     std::string navn;
     std::string beskrivelse;

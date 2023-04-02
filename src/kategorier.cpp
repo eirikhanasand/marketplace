@@ -95,15 +95,21 @@ void Kategorier::kategoriHandling(char valg) {
 */
 void Kategorier::lesFraFil() {
     std::ifstream kategoriFil("data/KATEGORIER.DTA");
+    std::string navn;
 
     if (kategoriFil) {
         std::cout << "Leser fra filen KATEGORIER.DTA\n";
 
         while(!kategoriFil.eof()) {
-            Kategori *kategori = new Kategori(kategoriFil);
-            // Legger inn kategorien i mappet, med navnet som identifikator
-            kategoriMap.insert(std::pair<std::string, Kategori *>
-            (kategori->hentNavn(), kategori));
+            std::getline(kategoriFil, navn);
+
+            if (navn.length()) {
+                navn[navn.length()] = '\0';
+                Kategori *kategori = new Kategori(kategoriFil, navn);
+                // Legger inn kategorien i mappet, med navnet som identifikator
+                kategoriMap.insert(std::pair<std::string, Kategori *>
+                (kategori->hentNavn(), kategori));
+            }
         }
 
         std::cout << "Leste inn " << kategoriMap.size()

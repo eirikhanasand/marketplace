@@ -35,10 +35,8 @@ Kunde::Kunde(int Kundenummer) {
  * 
  * @param kundeFil Filen som skal leses inn fra
 */
-Kunde::Kunde(std::ifstream &kundeFil) {
-    
-    kundeFil >> kundenummer;
-    kundeFil.ignore();
+Kunde::Kunde(std::ifstream &kundeFil, int Kundenummer) {
+    kundenummer = Kundenummer;
 
     kundeFil >> mobilnummer;
     kundeFil.ignore();
@@ -128,7 +126,7 @@ void Kunde::skrivInfo() const {
  * @param kundeFil Filen kunden skal skrives til
 */
 void Kunde::skrivTilFil(std::ofstream &kundeFil) {
-    kundeFil << kundenummer << ' ' << mobilnummer << ' ' << postnummer << ' ' 
+    kundeFil << kundenummer+1 << ' ' << mobilnummer << ' ' << postnummer << ' ' 
     << antallTingKjopt << ' ' << antallTingSolgt << ' ' << antallTingTilSalgs 
     << '\n' << navn << '\n' << gateAdresse << '\n' << postSted << '\n' 
     << mailAdresse << '\n';

@@ -18,7 +18,7 @@
 class Kategori {
 public:
     Kategori();    
-    Kategori(std::ifstream &kundeFil);
+    Kategori(std::ifstream &kundeFil, std::string navn);
     NyTing* hentTingTingnummer(int tingnummer);
     std::string hentNavn();
     int sisteTing();

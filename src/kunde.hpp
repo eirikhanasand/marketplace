@@ -16,7 +16,7 @@
 class Kunde {
 public:
     Kunde(int Kundenummer);
-    Kunde(std::ifstream &kundeFil);
+    Kunde(std::ifstream &kundeFil, int Kundenummer);
     int hentKundenummer();
     void kjopTing(Kategori *kategori, NyTing *ting, int kundenummer);
     void selgTing(NyTing *ting);

@@ -109,14 +109,20 @@ void Kunder::handling(char valg) {
  * @see Kunde::Kunde(...)
 */
 void Kunder::lesFraFil() {
+    int kundenummer = 0;
     std::ifstream kundeFil("data/KUNDER.DTA");
 
     if (kundeFil) {
         std::cout << "Leser fra filen KUNDER.DTA\n";
 
         while(!kundeFil.eof()) {
-            kundeListe.push_back(new Kunde(kundeFil));
-            sisteKundenummer++;
+            kundenummer = 0;
+            kundeFil >> kundenummer;
+            if (kundenummer) {
+                kundeFil.ignore();
+                kundeListe.push_back(new Kunde(kundeFil, kundenummer-1));
+                sisteKundenummer++;   
+            }
         }
 
         std::cout << "Leste inn " << sisteKundenummer << " kunder fra "

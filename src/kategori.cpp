@@ -136,7 +136,7 @@ void Kategori::skrivTingMindre() const {
  * @see NyTing::skrivTilFIl(...)
 */
 void Kategori::skrivTilFil(std::ofstream &kundeFil) {
-    kundeFil << kategoriNavn << '\n' << sisteTingnummer;
+    kundeFil << kategoriNavn << '\n' << sisteTingnummer << '\n';
 
     for (const auto &ting: tingListe) { 
         ting->skrivTilFil(kundeFil);
@@ -153,11 +153,10 @@ void Kategori::skrivTilFil(std::ofstream &kundeFil) {
  * @see BruktTing::BruktTing(...)
  * @see NyTing::settRestData(...)
 */
-Kategori::Kategori(std::ifstream &innfil) {
+Kategori::Kategori(std::ifstream &innfil, std::string navn) {
     int type;
 
-    std::getline(innfil, kategoriNavn);
-    kategoriNavn[kategoriNavn.length()] = '\0';
+    kategoriNavn = navn;
 
     innfil >> sisteTingnummer;
     innfil.ignore();
@@ -169,10 +168,12 @@ Kategori::Kategori(std::ifstream &innfil) {
 
         if (type) {
             BruktTing *bruktTing = new BruktTing(innfil);
+            bruktTing->settBruktStatus(true);
             tingListe.push_back(bruktTing);
             gKategoribase.okAntallTing();
         } else {
             NyTing *nyTing = new NyTing(innfil);
+            nyTing->settBruktStatus(false);
             nyTing->settRestData(innfil);
             tingListe.push_back(nyTing);
             gKategoribase.okAntallTing();
