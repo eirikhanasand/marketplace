@@ -107,8 +107,9 @@ void Kategorier::lesFraFil() {
                 navn[navn.length()] = '\0';
                 Kategori *kategori = new Kategori(kategoriFil, navn);
                 // Legger inn kategorien i mappet, med navnet som identifikator
-                kategoriMap.insert(std::pair<std::string, Kategori *>
-                (kategori->hentNavn(), kategori));
+                kategoriMap.insert(
+                    std::pair<std::string, Kategori *>(kategori->hentNavn(), kategori)
+                );
             }
         }
 
@@ -137,8 +138,9 @@ void Kategorier::lagKategori() {
         kategori->settData(kategoriNavn);
 
         // Legger kategorien inn i mappet
-        kategoriMap.insert(std::pair<std::string, Kategori *>
-        (kategoriNavn, kategori));
+        kategoriMap.insert(
+            std::pair<std::string, Kategori *>(kategoriNavn, kategori)
+        );
         std::cout << "Opprettet kategori " << kategori->hentNavn() << ".\n";
     } else {
         std::cout << "Kategorien finnes allerede.\n";
@@ -252,8 +254,8 @@ void Kategorier::lagTingIKategori() {
     if (kategori) {
         kategori->lagTing();
     } else {
-        std::cout << "Det finnes ingen kategori med navn " 
-        << kategoriNavn << '\n';
+        std::cout << "Det finnes ingen kategori med navn "
+                  << kategoriNavn << '\n';
     }
 }
 

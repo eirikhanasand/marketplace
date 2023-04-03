@@ -129,10 +129,16 @@ void Kunde::skrivInfo() const {
  * @param kundeFil Filen kunden skal skrives til
 */
 void Kunde::skrivTilFil(std::ofstream &kundeFil) {
-    kundeFil << kundenummer+1 << ' ' << mobilnummer << ' ' << postnummer << ' ' 
-    << antallTingKjopt << ' ' << antallTingSolgt << ' ' << antallTingTilSalgs 
-    << '\n' << navn << '\n' << gateAdresse << '\n' << postSted << '\n' 
-    << mailAdresse << '\n';
+    kundeFil << kundenummer+1 << ' '
+             << mobilnummer << ' '
+             << postnummer << ' '
+             << antallTingKjopt << ' '
+             << antallTingSolgt << ' '
+             << antallTingTilSalgs << '\n'
+             << navn << '\n'
+             << gateAdresse << '\n'
+             << postSted << '\n'
+             << mailAdresse << '\n';
 }
 
 /**
