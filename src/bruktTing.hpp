@@ -15,9 +15,9 @@
 #include "nyTing.hpp"
 
 class BruktTing : public NyTing {
-public:
-    BruktTing(int Nummer);
-    BruktTing(std::ifstream &tingFil);
+ public:
+    explicit BruktTing(int Nummer);
+    explicit BruktTing(std::ifstream &tingFil);
     ~BruktTing();
     void settData();
     void settData(std::ifstream &tingFil);
@@ -25,7 +25,7 @@ public:
     void skrivMindreData() const;
     void skrivTilFil(std::ofstream &tingFil);
 
-private:
+ private:
     int aar;
     Kvalitet kvalitet;
 };

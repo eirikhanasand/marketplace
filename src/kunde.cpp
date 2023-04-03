@@ -118,8 +118,8 @@ void Kunde::skrivData() const {
  * Dette innebærer kundenummer, navn og telefonnummer.
 */
 void Kunde::skrivInfo() const {
-    std::cout << "Kundenummer: " << kundenummer+1 
-              << "\tNavn: " << navn 
+    std::cout << "Kundenummer: " << kundenummer+1
+              << "\tNavn: " << navn
               << "\tTlf: " << mobilnummer << '\n';
 }
 
@@ -182,8 +182,8 @@ void Kunde::kjopTing(Kategori *kategori, NyTing *ting, int kundenummer) {
 */
 void Kunde::selgTing(NyTing *ting, Kategori *kategori) {
     int antall = ting->hentAntall();
-    antallTingSolgt+=1;
-    antallTingTilSalgs-=1;
+    antallTingSolgt++;
+    antallTingTilSalgs--;
 
     if (antall > 1) {
         ting->endreAntall(antall-1);

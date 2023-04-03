@@ -18,7 +18,7 @@
  * @brief Kunder sin destructor
  */
 Kunder::~Kunder() {
-    for (auto &kunde: kundeListe) {
+    for (auto &kunde : kundeListe) {
         delete kunde;
     }
 }
@@ -61,13 +61,13 @@ void Kunder::handling(char valg) {
         case 'S': {
             if (kundeListe.size()) {
                 if (sisteKundenummer) {
-                    int kundenummer = 
+                    int kundenummer =
                         lesInt("Kundenummer", 1, sisteKundenummer)-1;
                     Kunde *kunde = hentKunde(kundenummer);
                     if (kunde) {
                         kunde->skrivData();
                     } else {
-                        std::cout << "Kunde nummer " << kundenummer+1 
+                        std::cout << "Kunde nummer " << kundenummer+1
                                 << " har blitt slettet.\n";
                     }
                 } else {
@@ -83,11 +83,13 @@ void Kunder::handling(char valg) {
         case 'F': {
             if (kundeListe.size()) {
                 if (sisteKundenummer) {
-                    int kundenummer = lesInt("Kundenummer:", 1, sisteKundenummer)-1;
+                    int kundenummer =
+                            lesInt("Kundenummer:", 1, sisteKundenummer)-1;
+
                     if (hentKunde(kundenummer)) {
                         fjernKunde(kundenummer);
                     } else {
-                        std::cout << "Kunde nummer " << kundenummer+1 
+                        std::cout << "Kunde nummer " << kundenummer+1
                                 << " har blitt slettet.\n";
                     }
                 } else {
@@ -121,7 +123,7 @@ void Kunder::lesFraFil() {
     if (kundeFil) {
         std::cout << "Leser fra filen KUNDER.DTA\n";
 
-        while(!kundeFil.eof()) {
+        while (!kundeFil.eof()) {
             kundenummer = 0;
             kundeFil >> kundenummer;
             if (kundenummer) {
@@ -148,10 +150,10 @@ void Kunder::lesFraFil() {
 void Kunder::skrivAlleTilFil() {
     std::ofstream kundeFil("data/KUNDER.DTA");
 
-   if (kundeFil) {
+    if (kundeFil) {
         std::cout << "Skriver til filen KUNDER.DTA\n";
 
-        for(const auto &kunde: kundeListe) {
+        for (const auto &kunde : kundeListe) {
             kunde->skrivTilFil(kundeFil);
         }
     } else {
@@ -225,7 +227,7 @@ void Kunder::skrivAlle() {
     std::cout << "Siste kunde: " << sisteKundenummer << ". Det finnes nå "
               << kundeListe.size() << " kunder.\n";
 
-    for (const auto &kunde: kundeListe) {
+    for (const auto &kunde : kundeListe) {
         if (i && i % 20 == 0) {
             valg = lesBool("Skriv ut 20 kunder til? j/N");
             if (!valg) break;

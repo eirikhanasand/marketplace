@@ -22,7 +22,6 @@ extern Kategorier gKategoribase;
  * Denne er tom (default), men er nødvendig for compileren.
 */
 Kategori::Kategori() {
-
 }
 
 /**
@@ -39,7 +38,7 @@ void Kategori::settData(std::string navn) {
  * @brief Skriver ut navn og antall ting til salgs i en kategori
 */
 void Kategori::skrivData() const {
-    std::cout << "Kategorinavn: " << kategoriNavn 
+    std::cout << "Kategorinavn: " << kategoriNavn
               << "\tAntall ting til salgs: " << tingListe.size() << '\n';
 }
 
@@ -71,7 +70,7 @@ NyTing* Kategori::hentTing(int tingnummer) {
 
 NyTing* Kategori::hentTingMedIndeks(int indeks) {
     int iteratorIndeks = 1;
-    for (const auto &ting: tingListe) {
+    for (const auto &ting : tingListe) {
         if (iteratorIndeks == indeks) {
             return ting;
         }
@@ -126,7 +125,7 @@ int Kategori::sisteTing() {
  * @see NyTing::skrivData()
 */
 void Kategori::skrivTing() const {
-    for (const auto &ting: tingListe) {
+    for (const auto &ting : tingListe) {
         ting->skrivData();
     }
 }
@@ -137,7 +136,7 @@ void Kategori::skrivTing() const {
 */
 void Kategori::skrivTingIndeksert() const {
     int indeks = 1;
-    for (const auto &ting: tingListe) {
+    for (const auto &ting : tingListe) {
         std::cout << "[" << indeks << "] ";
         ting->skrivData();
         indeks++;
@@ -150,7 +149,7 @@ void Kategori::skrivTingIndeksert() const {
  * @see NyTing::skrivMindreData()
 */
 void Kategori::skrivTingMindre() const {
-    for (const auto &ting: tingListe) {
+    for (const auto &ting : tingListe) {
         ting->skrivMindreData();
     }
 }
@@ -166,7 +165,7 @@ void Kategori::skrivTingMindre() const {
 void Kategori::skrivTilFil(std::ofstream &kundeFil) {
     kundeFil << kategoriNavn << '\n' << sisteTingnummer << '\n';
 
-    for (const auto &ting: tingListe) { 
+    for (const auto &ting : tingListe) {
         ting->skrivTilFil(kundeFil);
         ting->skrivRestDataTilFil(kundeFil);
     }

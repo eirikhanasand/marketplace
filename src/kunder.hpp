@@ -14,7 +14,7 @@
 #include "kunde.hpp"
 
 class Kunder {
-public:
+ public:
     ~Kunder();
     Kunde *hentKunde(int kundenummer);
     int sisteKunde();
@@ -26,7 +26,7 @@ public:
     void skrivAlleTilFil();
     int hentAntallKunder();
 
-private:
+ private:
     std::list<Kunde *> kundeListe;
     int sisteKundenummer = 0;
 };

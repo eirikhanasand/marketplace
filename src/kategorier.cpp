@@ -27,7 +27,7 @@ extern Kunder gKundebase;
  * kategoriMappet i seg selv
 */
 Kategorier::~Kategorier() {
-    for (auto &kategori: kategoriMap) {
+    for (auto &kategori : kategoriMap) {
         delete kategori.second;
     }
     kategoriMap.clear();
@@ -69,7 +69,7 @@ void Kategorier::tingHandling(char valg) {
 void Kategorier::kategoriHandling(char valg) {
     switch (valg) {
         case 'N': {
-            lagKategori();  
+            lagKategori();
             break;
         }
         case 'A': {
@@ -77,11 +77,11 @@ void Kategorier::kategoriHandling(char valg) {
             break;
         }
         case 'S': {
-            skrivEntydig(); 
+            skrivEntydig();
             break;
         }
         default: {
-            skrivMeny();    
+            skrivMeny();
             break;
         }
     }
@@ -100,16 +100,14 @@ void Kategorier::lesFraFil() {
     if (kategoriFil) {
         std::cout << "Leser fra filen KATEGORIER.DTA\n";
 
-        while(!kategoriFil.eof()) {
+        while (!kategoriFil.eof()) {
             std::getline(kategoriFil, navn);
 
             if (navn.length()) {
                 navn[navn.length()] = '\0';
                 Kategori *kategori = new Kategori(kategoriFil, navn);
                 // Legger inn kategorien i mappet, med navnet som identifikator
-                kategoriMap.insert(
-                    std::pair<std::string, Kategori *>(kategori->hentNavn(), kategori)
-                );
+                kategoriMap[kategori->hentNavn()] = kategori;
             }
         }
 
@@ -138,9 +136,8 @@ void Kategorier::lagKategori() {
         kategori->settData(kategoriNavn);
 
         // Legger kategorien inn i mappet
-        kategoriMap.insert(
-            std::pair<std::string, Kategori *>(kategoriNavn, kategori)
-        );
+        kategoriMap[kategoriNavn] = kategori;
+
         std::cout << "Opprettet kategori " << kategori->hentNavn() << ".\n";
     } else {
         std::cout << "Kategorien finnes allerede.\n";
@@ -179,7 +176,7 @@ void Kategorier::fjernKategori(Kategori *kategori) {
  * @see Kategori::skrivTing()
 */
 void Kategorier::skrivAlle() const {
-    for (const auto &kategori: kategoriMap) {
+    for (const auto &kategori : kategoriMap) {
         kategori.second->skrivData();
     }
 }
@@ -200,7 +197,7 @@ void Kategorier::skrivAlle() const {
  * @return Kategori peker, evt nullptr
 */
 Kategori *Kategorier::hentKategoriEntydig(std::string kategoriNavn) {
-   Kategori* element = nullptr;
+    Kategori* element = nullptr;
 
     if (!kategoriFinnes(kategoriNavn)) {
         // Vector over funn
@@ -286,7 +283,7 @@ void Kategorier::endreTingIKategori() {
 
         ting->endreTing();
     } else {
-        std::cout << "Det finnes ingen kategori med navn " 
+        std::cout << "Det finnes ingen kategori med navn "
                   << kategoriNavn << '\n';
     }
 }
@@ -351,10 +348,10 @@ void Kategorier::kjopTing() {
 void Kategorier::skrivAlleTilFil() {
     std::ofstream kategoriFil("data/KATEGORIER.DTA");
 
-   if (kategoriFil) {
+    if (kategoriFil) {
         std::cout << "Leser til filen KATEGORIER.DTA\n";
 
-        for(const auto &kategori: kategoriMap) {
+        for (const auto &kategori : kategoriMap) {
             kategori.second->skrivTilFil(kategoriFil);
         }
 

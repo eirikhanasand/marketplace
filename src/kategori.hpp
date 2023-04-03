@@ -16,7 +16,7 @@
 #include "nyTing.hpp"
 
 class Kategori {
-public:
+ public:
     Kategori();    
     Kategori(std::ifstream &kundeFil, std::string navn);
     NyTing* hentTing(int tingnummer);
@@ -33,7 +33,7 @@ public:
     void fjernTing(NyTing *ting);
     int antallTing();
 
-private:
+ private:
     std::list<NyTing*> tingListe;
     int sisteTingnummer = 0;
     std::string kategoriNavn;

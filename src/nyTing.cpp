@@ -71,11 +71,11 @@ void NyTing::settData() {
  * @brief Skriver all data om en NyTing
 */
 void NyTing::skrivData() const {
-    std::cout << "Selger " << selgernummer+1 
-              << "\tTingnummer: " << nummer 
-              << "\tNavn: " << navn 
-              << "\tAntall: " << antall 
-              << "\tPris: " << pris 
+    std::cout << "Selger " << selgernummer+1
+              << "\tTingnummer: " << nummer
+              << "\tNavn: " << navn
+              << "\tAntall: " << antall
+              << "\tPris: " << pris
               << "kr\tBeskrivelse: " << beskrivelse << '\n';
 }
 
@@ -83,10 +83,10 @@ void NyTing::skrivData() const {
  * @brief Skriver all data om en NyTing utenom dens selgernummer.
 */
 void NyTing::skrivMindreData() const {
-    std::cout << "Tingnummer: " << nummer 
-              << "\tNavn: " << navn 
-              << "\tAntall: " << antall 
-              << "\tPris: " << pris 
+    std::cout << "Tingnummer: " << nummer
+              << "\tNavn: " << navn
+              << "\tAntall: " << antall
+              << "\tPris: " << pris
               << "kr\tBeskrivelse: " << beskrivelse << '\n';
 }
 
@@ -156,19 +156,19 @@ void NyTing::endreTing() {
 
     switch (valg) {
         case 1: {
-            navn = lesString("Nytt navn");                      
+            navn = lesString("Nytt navn");
             break;
         }
         case 2: {
-            antall = lesInt("Nytt antall", 1, MAKS_ANTALL);     
+            antall = lesInt("Nytt antall", 1, MAKS_ANTALL);
             break;
         }
         case 3: {
-            pris = lesInt("Ny pris", 1, MAKS_PRIS);             
+            pris = lesInt("Ny pris", 1, MAKS_PRIS);
             break;
         }
         case 4: {
-            beskrivelse = lesString("Ny beskrivelse");          
+            beskrivelse = lesString("Ny beskrivelse");
             break;
         }
         default: {
@@ -198,7 +198,12 @@ NyTing::NyTing(std::ifstream &tingFil) {
 */
 void NyTing::skrivTilFil(std::ofstream &tingFil) {
     int tallErBrukt = erBrukt ? 1:0;
-    tingFil << tallErBrukt <<  ' ' << selgernummer << ' ' << nummer << ' ' << pris << ' ' << antall;
+
+    tingFil << tallErBrukt <<  ' '
+            << selgernummer << ' '
+            << nummer << ' '
+            << pris << ' '
+            << antall;
 }
 
 /**

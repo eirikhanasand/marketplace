@@ -13,9 +13,9 @@
 #include <string>
 
 class NyTing {
-public:
-    NyTing(int Nummer);
-    NyTing(std::ifstream & tingFil);
+ public:
+    explicit NyTing(int Nummer);
+    explicit NyTing(std::ifstream & tingFil);
     virtual ~NyTing();
     virtual void settData();
     virtual void settData(std::ifstream &tingFil);
@@ -32,7 +32,7 @@ public:
     void skrivRestDataTilFil(std::ofstream &tingFil);
     void settBruktStatus(bool status);
 
-private:
+ private:
     int selgernummer;
     int nummer;
     int pris;

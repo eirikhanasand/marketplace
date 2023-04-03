@@ -17,7 +17,7 @@
 #include "kunde.hpp"
 
 class Kategorier {
-public:
+ public:
     ~Kategorier();
     Kategori *hentKategoriEntydig(std::string kategoriNavn);
     bool kategoriFinnes(std::string kategoriNavn);
@@ -35,7 +35,7 @@ public:
     void kjopTing();
     void okAntallTing();
 
-private:
+ private:
     std::map<std::string, Kategori *> kategoriMap;
     int antallTing = 0;
 };

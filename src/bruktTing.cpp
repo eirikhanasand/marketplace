@@ -63,9 +63,12 @@ BruktTing::~BruktTing() {
 void BruktTing::settData() {
     NyTing::settData();
     aar = lesInt("Tingens alder", 0, MAKS_ALDER);
-    int kategoriKvalitet = lesInt("Hvor sliten er tingen? 1 = SomNy, 2 = "
-    "PentBrukt, 3 = Brukt, 4 = GodtBrukt, 5 = Sliten", 1, 5);
-
+    int kategoriKvalitet = lesInt(
+            "Hvor sliten er tingen? 1 = SomNy, 2 = "
+            "PentBrukt, 3 = Brukt, 4 = GodtBrukt, 5 = Sliten",
+            1,
+            5
+    );
     kvalitet = static_cast<Kvalitet>(kategoriKvalitet-1);
 }
 
@@ -76,7 +79,7 @@ void BruktTing::settData() {
 */
 void BruktTing::skrivData() const {
     NyTing::skrivData();
-    std::cout << "Tingens alder: " << aar << "år, kvalitet: " 
+    std::cout << "Tingens alder: " << aar << "år, kvalitet: "
               << kvalitet << '\n';
 }
 
@@ -87,7 +90,7 @@ void BruktTing::skrivData() const {
 */
 void BruktTing::skrivMindreData() const {
     NyTing::skrivMindreData();
-    std::cout << "Tingens alder: " << aar << "år, kvalitet: " 
+    std::cout << "Tingens alder: " << aar << "år, kvalitet: "
               << kvalitet << '\n';
 }
 

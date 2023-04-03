@@ -14,8 +14,8 @@
 #include "kategori.hpp"
 
 class Kunde {
-public:
-    Kunde(int Kundenummer);
+ public:
+    explicit Kunde(int Kundenummer);
     Kunde(std::ifstream &kundeFil, int Kundenummer);
     int hentKundenummer();
     void kjopTing(Kategori *kategori, NyTing *ting, int kundenummer);
@@ -25,7 +25,7 @@ public:
     void skrivInfo() const;
     void skrivTilFil(std::ofstream &kundeFil);
 
-private:
+ private:
     int kundenummer;
     int mobilnummer;
     int postnummer;

@@ -106,7 +106,7 @@ int main() {
     gKundebase.skrivAlleTilFil();
     gKategoribase.skrivAlleTilFil();
 
-   std::cout << "All data er lagret, og programmet er avsluttet.\n";
+    std::cout << "All data er lagret, og programmet er avsluttet.\n";
 
     return 0;
 }
