@@ -20,6 +20,7 @@ public:
     Kategori();    
     Kategori(std::ifstream &kundeFil, std::string navn);
     NyTing* hentTing(int tingnummer);
+    NyTing* hentTingMedIndeks(int indeks);
     std::string hentNavn();
     int sisteTing();
     void settData(std::string navn);
@@ -27,8 +28,10 @@ public:
     void skrivTingMindre() const;
     void lagTing();
     void skrivTing() const;
+    void skrivTingIndeksert() const;
     void skrivTilFil(std::ofstream &kundeFil);
     void fjernTing(NyTing *ting);
+    int antallTing();
 
 private:
     std::list<NyTing*> tingListe;

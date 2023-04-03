@@ -275,18 +275,14 @@ void Kategorier::endreTingIKategori() {
 
     if (kategori) {
         kategori->skrivData();
-        kategori->skrivTing();
-        int tingNummer = lesInt("Hvilken ting vil du endre?", 1, 
-                                antallTing);
-        // Endrer ting i funnet kategori
-        auto ting = kategori->hentTing(tingNummer);
+        kategori->skrivTingIndeksert();
 
-        if (ting) {
-            ting->endreTing();
-        } else {
-            std::cout << "Det finnes ingen ting med tingnummer " << tingNummer 
-                      << " i denne kategorien!\n";
-        }
+        int tingIndeks = lesInt("Hvilken ting vil du endre?", 1,
+                                kategori->antallTing());
+        // Endrer ting i funnet kategori
+        auto ting = kategori->hentTingMedIndeks(tingIndeks);
+
+        ting->endreTing();
     } else {
         std::cout << "Det finnes ingen kategori med navn " 
                   << kategoriNavn << '\n';
@@ -309,7 +305,7 @@ void Kategorier::endreTingIKategori() {
  * @see Kunde::kjopTing(...)
 */
 void Kategorier::kjopTing() {
-    int tingnummer;
+    int indeks;
     Kunde* kunde;
     int kundenummer;
 
@@ -328,20 +324,15 @@ void Kategorier::kjopTing() {
     auto kategori = hentKategoriEntydig(kategoriNavn);
 
     if (kategori) {
-        kategori->skrivTing();
-        tingnummer = lesInt("Skriv inn nummer på tingen du vil kjøpe, 0"
-        " for å avbryte", 0, antallTing);
+        kategori->skrivTingIndeksert();
+        indeks = lesInt("Skriv inn nummer på tingen du vil kjøpe, 0"
+        " for å avbryte", 0, kategori->antallTing());
 
-        if (tingnummer) {
-            auto ting = kategori->hentTing(tingnummer);
+        if (indeks) {
+            auto ting = kategori->hentTingMedIndeks(indeks);
             auto kunde = gKundebase.hentKunde(kundenummer);
 
-            if (ting) {
-                kunde->kjopTing(kategori, ting, kundenummer);
-            } else {
-                std::cout << "Det finnes ingen ting med nummer " 
-                          << tingnummer << " i denne kategorien!\n";
-            }
+            kunde->kjopTing(kategori, ting, kundenummer);
         } else {
             std::cout << "Avbrøt kjøp!\n";
         }

@@ -69,6 +69,18 @@ NyTing* Kategori::hentTing(int tingnummer) {
     return (element != tingListe.end()) ? *element : nullptr;
 }
 
+NyTing* Kategori::hentTingMedIndeks(int indeks) {
+    int iteratorIndeks = 1;
+    for (const auto &ting: tingListe) {
+        if (iteratorIndeks == indeks) {
+            return ting;
+        }
+        iteratorIndeks++;
+    }
+    return nullptr;
+}
+
+
 /**
  * @brief Oppretter en ny ting i en kategori.
  *
@@ -118,6 +130,19 @@ void Kategori::skrivTing() const {
         ting->skrivData();
     }
 }
+/**
+ * @brief Skriver all informasjon om alle ting i en gitt kategori med indeks.
+ *
+ * @see NyTing::skrivData()
+*/
+void Kategori::skrivTingIndeksert() const {
+    int indeks = 1;
+    for (const auto &ting: tingListe) {
+        std::cout << "[" << indeks << "] ";
+        ting->skrivData();
+        indeks++;
+    }
+}
 
 /**
  * @brief Skriver alt bortsett fra selgernummer for alle ting i en kategori.
@@ -146,6 +171,16 @@ void Kategori::skrivTilFil(std::ofstream &kundeFil) {
         ting->skrivRestDataTilFil(kundeFil);
     }
 }
+
+/**
+ * @brief Antallet ting som er i tinglisten.
+ *
+ * @return antallet ting som er i listen.
+ */
+int Kategori::antallTing() {
+    return tingListe.size();
+}
+
 
 /**
  * @brief Kategori constructor med filparameter for å lage kategorier fra fil
