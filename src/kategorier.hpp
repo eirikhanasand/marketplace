@@ -22,7 +22,7 @@ class Kategorier {
     Kategori *hentKategoriEntydig(std::string kategoriNavn);
     bool kategoriFinnes(std::string kategoriNavn);
     int hentAntallTing();
-    int antallKategorier();
+    int antallKategorier() const;
     void kategoriHandling(char valg);
     void tingHandling(char valg);
     void lesFraFil();

@@ -133,8 +133,12 @@ void Kunder::lesFraFil() {
             }
         }
 
-        std::cout << "Leste inn " << sisteKundenummer << " kunder fra "
+        if (sisteKundenummer) {
+            std::cout << "Leste inn " << sisteKundenummer << " kunder fra "
                      "KUNDER.DTA\n";
+        } else {
+            std::cout << "Kundefilen er tom!\n";
+        }
     } else {
         std::cout << "Kunne ikke lese fra /data/KUNDER.DTA.\n";
     }
@@ -148,19 +152,23 @@ void Kunder::lesFraFil() {
  * @see Kunde::skrivTilFil(...)
 */
 void Kunder::skrivAlleTilFil() {
-    std::ofstream kundeFil("data/KUNDER.DTA");
+    if (hentAntallKunder()) {
+        std::ofstream kundeFil("data/KUNDER.DTA");
 
-    if (kundeFil) {
-        std::cout << "Skriver til filen KUNDER.DTA\n";
+        if (kundeFil) {
+            std::cout << "Skriver til filen KUNDER.DTA\n";
 
-        for (const auto &kunde : kundeListe) {
-            kunde->skrivTilFil(kundeFil);
+            for (const auto &kunde : kundeListe) {
+                kunde->skrivTilFil(kundeFil);
+            }
+        } else {
+            std::cout << "Kunne ikke skrive til /data/KUNDER.DTA.\n";
         }
-    } else {
-        std::cout << "Kunne ikke skrive til /data/KUNDER.DTA.\n";
-    }
 
-    kundeFil.close();
+        kundeFil.close();
+    } else {
+        std::cout << "Det finnes ingen kunder å skrive til fil.\n";
+    }
 }
 
 /**

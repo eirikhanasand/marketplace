@@ -92,6 +92,7 @@ void Kategorier::kategoriHandling(char valg) {
  * 
  * @see Kategori::Kategori(...)
  * @see Kategori::hentNavn()
+ * @see antallKategorier()
 */
 void Kategorier::lesFraFil() {
     std::ifstream kategoriFil("data/KATEGORIER.DTA");
@@ -111,8 +112,12 @@ void Kategorier::lesFraFil() {
             }
         }
 
-        std::cout << "Leste inn " << kategoriMap.size()
+        if (antallKategorier()) {
+            std::cout << "Leste inn " << antallKategorier() 
                   << " kategorier fra KATEGORIER.DTA\n";
+        } else {
+            std::cout << "Kategorifilen er tom!\n";
+        }
     } else {
         std::cout << "Kunne ikke lese fra /data/KATEGORIER.DTA.\n";
     }
@@ -174,14 +179,15 @@ void Kategorier::fjernKategori(Kategori *kategori) {
  * 
  * @see Kategori::skrivData()
  * @see Kategori::skrivTing()
+ * @see antallKategorier()
 */
 void Kategorier::skrivAlle() const {
-    if (antallKategorier() > 0) {
-    for (const auto &kategori : kategoriMap) {
-        kategori.second->skrivData();
-    }
+    if (antallKategorier()) {
+        for (const auto &kategori : kategoriMap) {
+            kategori.second->skrivData();
+        }
     } else {
-        std::cout << "Ingen kategorier å skrive ut.\n";
+        std::cout << "Det finnes ingen kategorier å skrive ut.\n";
     }
 }
 
@@ -348,23 +354,29 @@ void Kategorier::kjopTing() {
  * @brief Skriver alle kategorier og alle ting i hver enkelt kategori til fil
  * 
  * @see Kategori::skrivTilFil(...)
+ * @see antallKategorier()
 */
 void Kategorier::skrivAlleTilFil() {
-    std::ofstream kategoriFil("data/KATEGORIER.DTA");
+    // Sjekker først om det finnes kategorier, utfører deretter skriving til fil
+    if (antallKategorier()) {
+        std::ofstream kategoriFil("data/KATEGORIER.DTA");
 
-    if (kategoriFil) {
-        std::cout << "Leser til filen KATEGORIER.DTA\n";
+        if (kategoriFil) {
+            std::cout << "Leser til filen KATEGORIER.DTA\n";
 
-        for (const auto &kategori : kategoriMap) {
-            kategori.second->skrivTilFil(kategoriFil);
+            for (const auto &kategori : kategoriMap) {
+                kategori.second->skrivTilFil(kategoriFil);
+            }
+
+            kategoriFil.close();
+        } else {
+            std::cout << "Kunne ikke lese til /data/KATEGORIER.DTA.\n";
         }
 
         kategoriFil.close();
     } else {
-        std::cout << "Kunne ikke lese til /data/KATEGORIER.DTA.\n";
+        std::cout << "Det finnes ingen kategorier å skrive til fil.\n";
     }
-
-    kategoriFil.close();
 }
 
 /**
@@ -373,17 +385,22 @@ void Kategorier::skrivAlleTilFil() {
  * @see lesString(...)
  * @see hentKategoriEntydig(...)
  * @see Kategori::skrivData()
- * @see Kategori::skrivTing()
+ * @see Kategori::skrivTingMindre()
+ * @see antallKategorier()
 */
 void Kategorier::skrivEntydig() {
-    std::string kategoriNavn = lesString("Kategori");
-    auto kategori = hentKategoriEntydig(kategoriNavn);
+    if (antallKategorier()) {
+        std::string kategoriNavn = lesString("Kategori");
+        auto kategori = hentKategoriEntydig(kategoriNavn);
 
-    if (kategori) {
-        kategori->skrivData();
-        kategori->skrivTingMindre();
+        if (kategori) {
+            kategori->skrivData();
+            kategori->skrivTingMindre();
+        } else {
+            std::cout << kategoriNavn << " er ikke en kategori!\n";
+        }
     } else {
-        std::cout << kategoriNavn << " er ikke en kategori!\n";
+        std::cout << "Det finnes ingen kategorier å skrive ut.\n";
     }
 }
 
@@ -398,7 +415,7 @@ void Kategorier::okAntallTing() {
  * 
  * @return int Antall kategorier
  */
-int Kategorier::antallKategorier() {
+int Kategorier::antallKategorier() const {
   return kategoriMap.size();
 }
 

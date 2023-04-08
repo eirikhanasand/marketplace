@@ -23,7 +23,6 @@ class Kategori {
     NyTing* hentTingMedIndeks(int indeks);
     std::string hentNavn();
     int sisteTing();
-    int Kategori::antallKategorier();
     void settData(std::string navn);
     void skrivData() const;
     void skrivTingMindre() const;
