@@ -9,10 +9,13 @@
 #include <iostream>
 #include <fstream>
 
+#include "kategorier.hpp"
 #include "skrivMeny.hpp"
 #include "lesData3.hpp"
 #include "kunder.hpp"
 #include "kunde.hpp"
+
+extern Kategorier gKategoribase;
 
 /**
  * @brief Kunder sin destructor
@@ -151,7 +154,7 @@ void Kunder::lesFraFil() {
  * 
  * @see Kunde::skrivTilFil(...)
 */
-void Kunder::skrivAlleTilFil() {
+void Kunder::skrivAlleTilFil() const {
     if (hentAntallKunder()) {
         std::ofstream kundeFil("data/KUNDER.DTA");
 
@@ -181,6 +184,8 @@ void Kunder::skrivAlleTilFil() {
  * 
  * @see Kunder::hentKunde(...)
  * @see Kunde::skrivData()
+ * @see Kategorier::fjernAlleTingTilhorendeKunde()
+ * @see Kunde::hentKundenummer()
  * @see lesChar(...)
  * @see Kunde::~Kunde()
 */
@@ -192,6 +197,7 @@ void Kunder::fjernKunde(int kundenummer) {
         kunde->skrivData();
         bekreftelse = lesChar("Er du sikker på at du vil slette kunden? (j/N)");
         if (bekreftelse == 'J') {
+            gKategoribase.fjernAlleTingTilhorendeKunde(kunde->hentKundenummer());
             kundeListe.remove(kunde);
             kunde->~Kunde();
             std::cout << "Kunden ble slettet.\n";
@@ -212,7 +218,7 @@ void Kunder::fjernKunde(int kundenummer) {
  * 
  * @return Kunde peker, evt nullptr om kunden ikke ble funnet.
 */
-Kunde *Kunder::hentKunde(int kundenummer) {
+Kunde *Kunder::hentKunde(int kundenummer) const {
     auto element = std::find_if(kundeListe.begin(), kundeListe.end(),
         [kundenummer](Kunde *kunde){
         return kunde->hentKundenummer() == kundenummer;
@@ -228,7 +234,7 @@ Kunde *Kunder::hentKunde(int kundenummer) {
  * @see Kunde::skrivInfo()
  * @see lesBool(...)
 */
-void Kunder::skrivAlle() {
+void Kunder::skrivAlle() const {
     int i = 0;
     bool valg;
 
@@ -250,7 +256,7 @@ void Kunder::skrivAlle() {
  * 
  * @return int Antall kunder
 */
-int Kunder::sisteKunde() {
+int Kunder::sisteKunde() const {
     return sisteKundenummer;
 }
 
@@ -276,6 +282,6 @@ void Kunder::lagKunde() {
  * 
  * @return int Antall kunder
 */
-int Kunder::hentAntallKunder() {
+int Kunder::hentAntallKunder() const {
     return kundeListe.size();
 }

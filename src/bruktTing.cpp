@@ -101,7 +101,7 @@ void BruktTing::skrivMindreData() const {
  * 
  * @see NyTing::skrivTilFil(...)
 */
-void BruktTing::skrivTilFil(std::ofstream &tingFil) {
+void BruktTing::skrivTilFil(std::ofstream &tingFil) const {
     NyTing::skrivTilFil(tingFil);
     tingFil << ' ' << aar << ' ' << static_cast<int>(kvalitet);
 }

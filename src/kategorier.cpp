@@ -156,7 +156,7 @@ void Kategorier::lagKategori() {
  * 
  * @return true hvis den finnes, ellers false
 */
-bool Kategorier::kategoriFinnes(std::string kategoriNavn) {
+bool Kategorier::kategoriFinnes(std::string kategoriNavn) const {
     return kategoriMap.count(kategoriNavn);
 }
 
@@ -205,7 +205,7 @@ void Kategorier::skrivAlle() const {
  * 
  * @return Kategori peker, evt nullptr
 */
-Kategori *Kategorier::hentKategoriEntydig(std::string kategoriNavn) {
+Kategori *Kategorier::hentKategoriEntydig(std::string kategoriNavn) const {
     Kategori* element = nullptr;
 
     if (!kategoriFinnes(kategoriNavn)) {
@@ -274,6 +274,8 @@ void Kategorier::lagTingIKategori() {
  * @see Kategorier::hentKategoriEntydig(...)
  * @see Kategori::skrivData()
  * @see Kategori::sisteTing()
+ * @see Kateogri::skrivTingIndeksert()
+ * @see Kategori::hentTingMedIndeks()
  * @see Kategori::hentTing(...)
  * @see Kategori::endreTing()
 */
@@ -308,6 +310,8 @@ void Kategorier::endreTingIKategori() {
  * @see lesString(...)
  * @see Kategori::skrivTing(...)
  * @see Kategori::sisteTing(...)
+ * @see Kategori::skrivTingIndeksert()
+ * @see Kategori::hentTingMedIndeks()
  * @see hentKategoriEntydig(...)
  * @see Kunder::hentKunde(...)
  * @see Kunde::kjopTing(...)
@@ -332,18 +336,22 @@ void Kategorier::kjopTing() {
     auto kategori = hentKategoriEntydig(kategoriNavn);
 
     if (kategori) {
-        kategori->skrivTingIndeksert();
-        indeks = lesInt("Skriv inn nummer på tingen du vil kjøpe, 0"
-        " for å avbryte", 0, kategori->antallTing());
+        if (kategori->antallTing()) {
+            kategori->skrivTingIndeksert();
+            indeks = lesInt("Skriv inn nummer på tingen du vil kjøpe, 0"
+            " for å avbryte", 0, kategori->antallTing());
 
-        if (indeks) {
-            auto ting = kategori->hentTingMedIndeks(indeks);
-            auto kunde = gKundebase.hentKunde(kundenummer);
+            if (indeks) {
+                auto ting = kategori->hentTingMedIndeks(indeks);
+                auto kunde = gKundebase.hentKunde(kundenummer);
 
-            kunde->kjopTing(kategori, ting, kundenummer);
+                kunde->kjopTing(kategori, ting, kundenummer);
 
+            } else {
+                std::cout << "Avbrøt kjøp!\n";
+            }
         } else {
-            std::cout << "Avbrøt kjøp!\n";
+            std::cout << "Det finnes ingen ting i denne kategorien.\n";
         }
     } else {
         std::cout << "Denne kategorien finnes ikke!\n";
@@ -388,7 +396,7 @@ void Kategorier::skrivAlleTilFil() {
  * @see Kategori::skrivTingMindre()
  * @see antallKategorier()
 */
-void Kategorier::skrivEntydig() {
+void Kategorier::skrivEntydig() const {
     if (antallKategorier()) {
         std::string kategoriNavn = lesString("Kategori");
         auto kategori = hentKategoriEntydig(kategoriNavn);
@@ -425,6 +433,19 @@ int Kategorier::antallKategorier() const {
  * 
  * @return int antall ting
 */
-int Kategorier::hentAntallTing() {
+int Kategorier::hentAntallTing() const {
     return antallTing;
+}
+
+/**
+ * @brief Fjerner alle ting tilhørende gitt kundenummer
+ * 
+ * @param kundenummer Kundenummeret til tingene som skal slettes
+ * 
+ * @see Kategori::fjernTingMedSelgernummer(...)
+*/
+void Kategorier::fjernAlleTingTilhorendeKunde(int kundenummer) {
+    for (const auto &[navn, data] : kategoriMap) {
+        data->fjernTingMedSelgernummer(kundenummer);
+    }
 }

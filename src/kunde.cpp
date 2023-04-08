@@ -93,7 +93,7 @@ void Kunde::settData() {
  * 
  * @return int kundenummer kundenummeret
 */
-int Kunde::hentKundenummer() {
+int Kunde::hentKundenummer() const {
     return kundenummer;
 }
 
@@ -128,7 +128,7 @@ void Kunde::skrivInfo() const {
  * 
  * @param kundeFil Filen kunden skal skrives til
 */
-void Kunde::skrivTilFil(std::ofstream &kundeFil) {
+void Kunde::skrivTilFil(std::ofstream &kundeFil) const {
     kundeFil << kundenummer+1 << ' '
              << mobilnummer << ' '
              << postnummer << ' '

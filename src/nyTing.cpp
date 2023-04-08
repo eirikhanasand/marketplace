@@ -104,7 +104,7 @@ std::string NyTing::hentNavn() const {
  * 
  * @returns int Antall av tingen
  */
-int NyTing::hentAntall() {
+int NyTing::hentAntall() const {
     return antall;
 }
 
@@ -196,7 +196,7 @@ NyTing::NyTing(std::ifstream &tingFil) {
  * 
  * @param tingFil Filen tingen skal skrives til
 */
-void NyTing::skrivTilFil(std::ofstream &tingFil) {
+void NyTing::skrivTilFil(std::ofstream &tingFil) const {
     int tallErBrukt = erBrukt ? 1:0;
 
     tingFil << tallErBrukt <<  ' '

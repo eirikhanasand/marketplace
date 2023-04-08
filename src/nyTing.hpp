@@ -22,10 +22,10 @@ class NyTing {
     virtual void settRestData(std::ifstream &tingFil);
     virtual void skrivData() const;
     virtual void skrivMindreData() const;
-    virtual void skrivTilFil(std::ofstream &tingFil);
+    virtual void skrivTilFil(std::ofstream &tingFil) const;
     std::string hentNavn() const;
     int hentNummer() const;
-    int hentAntall();
+    int hentAntall() const;
     int hentSelgernummer() const;
     void endreTing();
     void endreAntall(int nyttAntall);

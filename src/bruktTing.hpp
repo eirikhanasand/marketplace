@@ -23,7 +23,7 @@ class BruktTing : public NyTing {
     void settData(std::ifstream &tingFil);
     void skrivData() const;
     void skrivMindreData() const;
-    void skrivTilFil(std::ofstream &tingFil);
+    void skrivTilFil(std::ofstream &tingFil) const;
 
  private:
     int aar;

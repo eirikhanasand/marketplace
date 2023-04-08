@@ -19,9 +19,9 @@
 class Kategorier {
  public:
     ~Kategorier();
-    Kategori *hentKategoriEntydig(std::string kategoriNavn);
-    bool kategoriFinnes(std::string kategoriNavn);
-    int hentAntallTing();
+    Kategori *hentKategoriEntydig(std::string kategoriNavn) const;
+    bool kategoriFinnes(std::string kategoriNavn) const;
+    int hentAntallTing() const;
     int antallKategorier() const;
     void kategoriHandling(char valg);
     void tingHandling(char valg);
@@ -31,10 +31,11 @@ class Kategorier {
     void endreTingIKategori();
     void skrivAlleTilFil();
     void skrivAlle() const;
-    void skrivEntydig();
+    void skrivEntydig() const;
     void fjernKategori(Kategori *kategori);
     void kjopTing();
     void okAntallTing();
+    void fjernAlleTingTilhorendeKunde(int kundenummer);
 
  private:
     std::map<std::string, Kategori *> kategoriMap;

@@ -17,13 +17,13 @@ class Kunde {
  public:
     explicit Kunde(int Kundenummer);
     Kunde(std::ifstream &kundeFil, int Kundenummer);
-    int hentKundenummer();
+    int hentKundenummer() const;
     void kjopTing(Kategori *kategori, NyTing *ting, int kundenummer);
     void selgTing(NyTing *ting, Kategori *kategori);
     void settData();
     void skrivData() const;
     void skrivInfo() const;
-    void skrivTilFil(std::ofstream &kundeFil);
+    void skrivTilFil(std::ofstream &kundeFil) const;
 
  private:
     int kundenummer;

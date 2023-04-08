@@ -47,7 +47,7 @@ void Kategori::skrivData() const {
  * 
  * @return std::string kategoriNavn
 */
-std::string Kategori::hentNavn() {
+std::string Kategori::hentNavn() const {
     return kategoriNavn;
 }
 
@@ -60,7 +60,7 @@ std::string Kategori::hentNavn() {
  * 
  * @return NyTing peker til funnet ting, evt nullptr
 */
-NyTing* Kategori::hentTing(int tingnummer) {
+NyTing* Kategori::hentTing(int tingnummer) const {
     auto element = std::find_if(tingListe.begin(), tingListe.end(),
         [tingnummer](NyTing *ting){
         return ting->hentNummer() == tingnummer;
@@ -68,7 +68,14 @@ NyTing* Kategori::hentTing(int tingnummer) {
     return (element != tingListe.end()) ? *element : nullptr;
 }
 
-NyTing* Kategori::hentTingMedIndeks(int indeks) {
+/**
+ * @brief Henter ting med gitt indeks
+ * 
+ * @param indeks Indeksen til tingen som skal hentes
+ * 
+ * @returns NyTing peker til ting, evt nullptr
+*/
+NyTing* Kategori::hentTingMedIndeks(int indeks) const {
     int iteratorIndeks = 1;
     for (const auto &ting : tingListe) {
         if (iteratorIndeks == indeks) {
@@ -115,7 +122,7 @@ void Kategori::lagTing() {
  * 
  * @return int Antall ting i kategorien
 */
-int Kategori::sisteTing() {
+int Kategori::sisteTing() const {
     return sisteTingnummer;
 }
 
@@ -162,7 +169,7 @@ void Kategori::skrivTingMindre() const {
  * @see NyTing::skrivTilFIl(...)
  * @see NyTing::skrivRestDataTilFil(...)
 */
-void Kategori::skrivTilFil(std::ofstream &kundeFil) {
+void Kategori::skrivTilFil(std::ofstream &kundeFil) const {
     kundeFil << kategoriNavn << '\n' << sisteTingnummer << '\n';
 
     for (const auto &ting : tingListe) {
@@ -176,7 +183,7 @@ void Kategori::skrivTilFil(std::ofstream &kundeFil) {
  *
  * @return antallet ting som er i listen.
  */
-int Kategori::antallTing() {
+int Kategori::antallTing() const {
     return tingListe.size();
 }
 
@@ -228,4 +235,25 @@ Kategori::Kategori(std::ifstream &innfil, std::string navn) {
 */
 void Kategori::fjernTing(NyTing *ting) {
     tingListe.remove(ting);
+}
+
+/**
+ * @brief Fjerner ting med gitt kundenummer
+ * 
+ * @param kundenummer Selgernummeret til tingene som skal fjernes
+ * 
+ * @see hentSelgernummer()
+*/
+void Kategori::fjernTingMedSelgernummer(int kundenummer) {
+    tingListe.erase(
+        std::remove_if(tingListe.begin(), tingListe.end(), 
+        [&](const auto &ting) {
+            if (ting->hentSelgernummer() == kundenummer) {
+                delete ting;
+                return true;
+            } else {
+                return false;
+            }
+        }), tingListe.end()
+    );
 }

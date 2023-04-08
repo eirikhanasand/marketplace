@@ -16,15 +16,15 @@
 class Kunder {
  public:
     ~Kunder();
-    Kunde *hentKunde(int kundenummer);
-    int sisteKunde();
+    Kunde *hentKunde(int kundenummer) const;
+    int sisteKunde() const;
     void fjernKunde(int kundenummer);
     void handling(char valg);
     void lagKunde();
     void lesFraFil();
-    void skrivAlle();
-    void skrivAlleTilFil();
-    int hentAntallKunder();
+    void skrivAlle() const;
+    void skrivAlleTilFil() const;
+    int hentAntallKunder() const;
 
  private:
     std::list<Kunde *> kundeListe;
