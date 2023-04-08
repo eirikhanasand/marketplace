@@ -176,8 +176,12 @@ void Kategorier::fjernKategori(Kategori *kategori) {
  * @see Kategori::skrivTing()
 */
 void Kategorier::skrivAlle() const {
+    if (antallKategorier() > 0) {
     for (const auto &kategori : kategoriMap) {
         kategori.second->skrivData();
+    }
+    } else {
+        std::cout << "Ingen kategorier å skrive ut.\n";
     }
 }
 
@@ -389,6 +393,15 @@ void Kategorier::skrivEntydig() {
 void Kategorier::okAntallTing() {
     antallTing++;
 }
+/**
+ * @brief Antall kategorier i programmet
+ * 
+ * @return int Antall kategorier
+ */
+int Kategorier::antallKategorier() {
+  return kategoriMap.size();
+}
+
 
 /**
  * @brief Totalt antall ting i programmet
