@@ -65,9 +65,7 @@ void BruktTing::settData() {
     aar = lesInt("Tingens alder", 0, MAKS_ALDER);
     int kategoriKvalitet = lesInt(
             "Hvor sliten er tingen? 1 = SomNy, 2 = "
-            "PentBrukt, 3 = Brukt, 4 = GodtBrukt, 5 = Sliten",
-            1,
-            5
+            "PentBrukt, 3 = Brukt, 4 = GodtBrukt, 5 = Sliten", 1, 5
     );
     kvalitet = static_cast<Kvalitet>(kategoriKvalitet-1);
 }
