@@ -341,6 +341,7 @@ void Kategorier::kjopTing() {
             auto kunde = gKundebase.hentKunde(kundenummer);
 
             kunde->kjopTing(kategori, ting, kundenummer);
+
         } else {
             std::cout << "Avbrøt kjøp!\n";
         }
