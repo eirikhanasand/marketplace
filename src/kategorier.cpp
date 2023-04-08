@@ -27,8 +27,8 @@ extern Kunder gKundebase;
  * kategoriMappet i seg selv
 */
 Kategorier::~Kategorier() {
-    for (auto &kategori : kategoriMap) {
-        delete kategori.second;
+    for (auto &[navn, data] : kategoriMap) {
+        delete data;
     }
     kategoriMap.clear();
 }
@@ -173,7 +173,6 @@ void Kategorier::fjernKategori(Kategori *kategori) {
     delete kategori;
 }
 
-
 /**
  * @brief Skriver alle kategorier.
  * 
@@ -183,8 +182,8 @@ void Kategorier::fjernKategori(Kategori *kategori) {
 */
 void Kategorier::skrivAlle() const {
     if (antallKategorier()) {
-        for (const auto &kategori : kategoriMap) {
-            kategori.second->skrivData();
+        for (const auto &[navn, data] : kategoriMap) {
+            data->skrivData();
         }
     } else {
         std::cout << "Det finnes ingen kategorier å skrive ut.\n";
@@ -364,8 +363,8 @@ void Kategorier::skrivAlleTilFil() {
         if (kategoriFil) {
             std::cout << "Leser til filen KATEGORIER.DTA\n";
 
-            for (const auto &kategori : kategoriMap) {
-                kategori.second->skrivTilFil(kategoriFil);
+            for (const auto &[navn, data] : kategoriMap) {
+                data->skrivTilFil(kategoriFil);
             }
 
             kategoriFil.close();
@@ -410,6 +409,7 @@ void Kategorier::skrivEntydig() {
 void Kategorier::okAntallTing() {
     antallTing++;
 }
+
 /**
  * @brief Antall kategorier i programmet
  * 
@@ -418,7 +418,6 @@ void Kategorier::okAntallTing() {
 int Kategorier::antallKategorier() const {
   return kategoriMap.size();
 }
-
 
 /**
  * @brief Totalt antall ting i programmet
