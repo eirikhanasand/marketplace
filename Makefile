@@ -2,7 +2,7 @@
 CC=g++
 RM=rm -f
 RMDIR=rm -rf
-CPPFLAGS=-g -Wall -std=c++11
+CPPFLAGS=-g -Wall -std=c++17
 LDFLAGS=-g
 
 # Source files
