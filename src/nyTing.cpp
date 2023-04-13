@@ -150,7 +150,7 @@ int NyTing::hentSelgernummer() const {
 */
 void NyTing::endreTing() {
     std::cout << "Hva vil du endre på?\n1. Navn\n2. Antall\n3. Pris\n4. "
-    "Beskrivelse\n5. Avbryt\n";
+    "Beskrivelse\n5. Avbryt / BruktTing\n";
 
     int valg = lesInt("Valg", 1, 5);
 

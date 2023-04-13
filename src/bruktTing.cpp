@@ -126,3 +126,31 @@ void BruktTing::settData(std::ifstream &tingFil) {
 
     NyTing::settRestData(tingFil);
 }
+
+/**
+ * @brief Funksjon for å endre på en BruktTing sine datamedlemmer.
+ *
+ * Skriver først ut meny for å bestemme hvilket datamedlem som skal endres på,
+ * og referererer videre til relevant funksjon som kan utføre endringen.
+ * 
+ * @see NyTing::endreTing()
+ * @see lesInt(...)
+ * @see lesString(...)
+*/
+void BruktTing::endreTing() {
+    NyTing::endreTing();
+    int valg = lesInt("1. Alder\n2. Kvalitet\n", 6, 7);
+    
+    switch (valg) {
+        case 6: 
+            aar = lesInt("Ny alder", 1, MAKS_ALDER);
+            break;
+        case 7:
+            int kategoriKvalitet = lesInt(
+            "Hvor sliten er tingen? 1 = SomNy, 2 = "
+            "PentBrukt, 3 = Brukt, 4 = GodtBrukt, 5 = Sliten", 1, 5
+            );
+            kvalitet = static_cast<Kvalitet>(kategoriKvalitet-1);
+            break;
+    }
+}

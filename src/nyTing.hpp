@@ -23,11 +23,11 @@ class NyTing {
     virtual void skrivData() const;
     virtual void skrivMindreData() const;
     virtual void skrivTilFil(std::ofstream &tingFil) const;
+    virtual void endreTing();
     std::string hentNavn() const;
     int hentNummer() const;
     int hentAntall() const;
     int hentSelgernummer() const;
-    void endreTing();
     void endreAntall(int nyttAntall);
     void skrivRestDataTilFil(std::ofstream &tingFil);
     void settBruktStatus(bool status);

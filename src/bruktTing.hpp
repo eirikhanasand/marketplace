@@ -24,7 +24,7 @@ class BruktTing : public NyTing {
     void skrivData() const;
     void skrivMindreData() const;
     void skrivTilFil(std::ofstream &tingFil) const;
-
+    void endreTing();
  private:
     int aar;
     Kvalitet kvalitet;
