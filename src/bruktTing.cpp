@@ -139,13 +139,13 @@ void BruktTing::settData(std::ifstream &tingFil) {
 */
 void BruktTing::endreTing() {
     NyTing::endreTing();
-    int valg = lesInt("1. Alder\n2. Kvalitet\n", 6, 7);
+    int valg = lesInt("1. Alder\n2. Kvalitet\n", 1, 2);
     
     switch (valg) {
-        case 6: 
+        case 1: 
             aar = lesInt("Ny alder", 1, MAKS_ALDER);
             break;
-        case 7:
+        case 2:
             int kategoriKvalitet = lesInt(
             "Hvor sliten er tingen? 1 = SomNy, 2 = "
             "PentBrukt, 3 = Brukt, 4 = GodtBrukt, 5 = Sliten", 1, 5
