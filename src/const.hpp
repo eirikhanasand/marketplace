@@ -1,12 +1,12 @@
 /**
- *  Definisjon av konstanter i prosjektet
+ *  Definitions of constacts for the project
  *
  *  @file      const.hpp
  *  @authors   Eirik Hanasand, Sindre Hagen Strømdal, Steffen Ludviksen Sæther
  */
 
-const int MAKS_KUNDER = 200;
-const int MAKS_TING = 200;
-const int MAKS_PRIS = 1000000;
-const int MAKS_ANTALL = 50;
-const int MAKS_ALDER = 200;
+const int MAX_CUSTOMERS = 200;
+const int MAX_ITEMS = 200;
+const int MAX_PRICE = 1000000;
+const int MAX_AMOUNT = 50;
+const int MAX_AGE = 200;

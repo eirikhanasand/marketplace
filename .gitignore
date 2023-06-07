@@ -19,15 +19,15 @@ cmake-build-debug
 .vscode
 
 # Makefile
-bruktTing.o
-kategori.o
-kategorier.o
-kunde.o
-kunder.o
-lesData3.o
-mainV23.o
-nyTing.o
-skrivMeny.o
+usedItem.o
+category.o
+categories.o
+customer.o
+customers.o
+readData.o
+mainS23.o
+newItem.o
+writeMenu.o
 .depend
-prosjekt.dSYM
-prosjekt
+project.dSYM
+project

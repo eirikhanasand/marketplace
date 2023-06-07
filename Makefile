@@ -10,13 +10,13 @@ SRCS=$(wildcard src/*.cpp)
 OBJS=$(subst src/,,$(SRCS:.cpp=.o))
 
 # Compiled binary filename
-BINOUT=prosjekt
+BINOUT=project
 DATADIR=data
 
 # Main compilation target
-all: prosjekt
+all: project
 
-prosjekt: $(OBJS)
+project: $(OBJS)
 	$(CC) $(LDFLAGS) -o $(BINOUT) $(OBJS)
 
 # Compile .cpp files to .o files
